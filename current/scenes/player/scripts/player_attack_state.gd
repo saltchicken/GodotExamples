@@ -21,7 +21,6 @@ func Update(_delta:float):
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
 				var body_current_state = body.state_machine.current_state
-				#if body.hitable:
 				if body_current_state.name != 'hit':
 					# TODO: Handle logic better to decide what states can be hit
 					if body_current_state.name == 'idle':
