@@ -1,7 +1,6 @@
 extends State
 
 @onready var character_body = self.get_owner()
-@export var sprite : AnimatedSprite2D
 
 var SPEED = 100.0
 

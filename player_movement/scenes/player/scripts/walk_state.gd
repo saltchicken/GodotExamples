@@ -1,7 +1,6 @@
 extends State
 
 @onready var character_body = self.get_owner()
-@export var sprite : AnimatedSprite2D
 
 var SPEED = 50.0
 
@@ -20,5 +19,3 @@ func Update(_delta:float):
 			character_body.velocity.y = character_body.movement.y * SPEED
 	else:
 		state_transition.emit(self, 'idle')
-	if character_body.use:
-		character_body._use_objects()
