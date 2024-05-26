@@ -328,4 +328,4 @@ script = ExtResource("4_m0ohx")
 [node name="hit" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_8drnr")
 
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/hit" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/hit" method="_on_animation_player_animation_finished"]

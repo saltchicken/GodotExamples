@@ -12,8 +12,10 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var attack
 @onready var use
 
+@onready var player_health = 100
 @onready var use_reach = 10
 @onready var attack_reach = 15
+@onready var attack_damage = 12
 
 func _ready():
 	add_to_group('Players')
@@ -29,6 +31,7 @@ func _get_input():
 	use = Input.is_action_just_pressed('use')
 	
 func _get_direction():
+	# TODO: Handle input from a joystick so that it conforms to (1, 0)
 	if movement:
 		if movement.x < 0 and movement.y == 0:
 			direction = movement
@@ -41,18 +44,6 @@ func _get_direction():
 			
 func _handle_use_hitbox_direction():
 	use_hitbox.position = direction * use_reach
-	#if direction == Vector2(0, 1):
-		#use_hitbox.position.x = 0
-		#use_hitbox.position.y = use_reach
-	#elif direction == Vector2(0, -1):
-		#use_hitbox.position.x = 0
-		#use_hitbox.position.y = -use_reach
-	#elif direction == Vector2(-1, 0):
-		#use_hitbox.position.x = -use_reach
-		#use_hitbox.position.y = 0
-	#elif direction == Vector2(1, 0):
-		#use_hitbox.position.x = use_reach
-		#use_hitbox.position.y = 0
 	
 func _use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()

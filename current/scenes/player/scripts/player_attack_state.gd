@@ -10,8 +10,7 @@ extends State
 var DECELERATION_SPEED = 10.0
 
 func Enter():
-	#character_body._attack()
-	animation_tree.get("parameters/playback").travel('attack')
+	animation_tree.get("parameters/playback").start('attack')
 	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction)
 	attack_collision.disabled = false
 	use_area_collision.disabled = true
@@ -30,17 +29,18 @@ func Update(_delta:float):
 		#var useable_object = useable_objects.front()
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				var body_current_state = body.state_machine.current_state
-				if body_current_state.name != 'hit':
-					# TODO: Handle logic better to decide what states can be hit
-					if body_current_state.name == 'idle':
-						#print(body.name + ' is ' + body_current_state.name)
-						body.state_machine.current_state.state_transition.emit(body_current_state, 'hit')
-					elif body_current_state.name == 'chase':
-						#print(body.name + ' is ' + body_current_state.name)
-						body.state_machine.current_state.state_transition.emit(body_current_state, 'hit')
-					else:
-						print('unhandled enemy state')
+				body._get_hit()
+				#var body_current_state = body.state_machine.current_state
+				#if body_current_state.name != 'hit':
+					## TODO: Handle logic better to decide what states can be hit
+					#if body_current_state.name == 'idle':
+						##print(body.name + ' is ' + body_current_state.name)
+						#body.state_machine.current_state.state_transition.emit(body_current_state, 'hit')
+					#elif body_current_state.name == 'chase':
+						##print(body.name + ' is ' + body_current_state.name)
+						#body.state_machine.current_state.state_transition.emit(body_current_state, 'hit')
+					#else:
+						#print('unhandled enemy state')
 					#body._hit()
 					#body.state_machine.current_state.state_transition.emit(self, 'test')
 					#body.hitable = false

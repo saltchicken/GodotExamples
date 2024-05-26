@@ -6,7 +6,6 @@ extends State
 var SPEED = 50.0
 
 func Enter():
-	#character_body._walk()	
 	animation_tree.get("parameters/playback").travel('walk')
 	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
 	
