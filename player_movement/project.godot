@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Lengen3"
+config/name="Player Movement"
 run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
