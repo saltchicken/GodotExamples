@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cjqipfkx82msx"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_main.gd" id="1_wpth8"]
-[ext_resource type="Texture2D" uid="uid://c74bj78s00ne7" path="res://assets/enemy/slime/slime_monster_updated_spritesheett.png" id="2_3o6t8"]
+[ext_resource type="Texture2D" uid="uid://c74bj78s00ne7" path="res://assets/enemy/slime/slime_monster_spritesheett.png" id="2_3o6t8"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_uugmm"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_idle_state.gd" id="3_518px"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_chase_state.gd" id="4_m0ohx"]

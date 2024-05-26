@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 @onready var state_machine = $StateMachine
 @onready var animation_player = $AnimationPlayer
 @onready var player = get_tree().get_first_node_in_group('Players')
