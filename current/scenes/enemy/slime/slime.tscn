@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjqipfkx82msx"]
+[gd_scene load_steps=19 format=3 uid="uid://cjqipfkx82msx"]
 
-[ext_resource type="Texture2D" uid="uid://b72nuglv3l7vo" path="res://assets/enemy/slime_monster_spritesheet.png" id="1_dfek6"]
 [ext_resource type="Script" path="res://scenes/enemy/slime/scripts/main.gd" id="1_wpth8"]
+[ext_resource type="Texture2D" uid="uid://c74bj78s00ne7" path="res://assets/enemy/slime/slime_monster_updated_spritesheett.png" id="2_3o6t8"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_uugmm"]
 [ext_resource type="Script" path="res://scenes/enemy/slime/scripts/idle_state.gd" id="3_518px"]
 [ext_resource type="Script" path="res://scenes/enemy/slime/scripts/chase_state.gd" id="4_m0ohx"]
+[ext_resource type="Script" path="res://scenes/enemy/slime/scripts/hit_state.gd" id="6_8drnr"]
 
 [sub_resource type="Animation" id="Animation_isyo0"]
 length = 0.001
@@ -153,6 +154,22 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_734iy"]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(3, 4)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dviih"]
 _data = {
 "RESET": SubResource("Animation_isyo0"),
@@ -160,6 +177,7 @@ _data = {
 "chase_left": SubResource("Animation_ftk0m"),
 "chase_right": SubResource("Animation_3lsxw"),
 "chase_up": SubResource("Animation_ngbxu"),
+"hit": SubResource("Animation_734iy"),
 "idle_down": SubResource("Animation_3bkug"),
 "idle_left": SubResource("Animation_wnja0"),
 "idle_right": SubResource("Animation_0m3tg"),
@@ -173,10 +191,10 @@ radius = 8.0
 script = ExtResource("1_wpth8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dfek6")
-hframes = 3
-vframes = 4
-frame = 9
+texture = ExtResource("2_3o6t8")
+hframes = 4
+vframes = 5
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -195,3 +213,8 @@ script = ExtResource("3_518px")
 
 [node name="chase" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_m0ohx")
+
+[node name="hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_8drnr")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/hit" method="_on_animation_player_animation_finished"]

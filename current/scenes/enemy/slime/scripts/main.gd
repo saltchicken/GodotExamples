@@ -13,8 +13,6 @@ var DEFAULT_DIRECTION = 'down'
 @onready var distance_to_player
 @onready var direction_to_player
 
-@onready var hitable = true
-
 @onready var CHASE_DISTANCE = 100.0
 
 func _ready():
@@ -44,12 +42,5 @@ func _chase():
 	animation_player.play('chase_' + direction)	
 	
 func _hit():
-	if hitable:
-		hitable = false
-		print('Slime hit')
-		print(-direction_to_player)
-		self.velocity = -direction_to_player * 1000.0
-		# TODO: Implement hit animation
-		await get_tree().create_timer(1.0).timeout
-		hitable = true
-		
+	animation_player.play('hit')
+	print('Slime hit')		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=31 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/scripts/main.gd" id="1_u0ca5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/scripts/run_state.gd" id="4_0pa3q"]
 [ext_resource type="Script" path="res://scenes/player/scripts/attack_state.gd" id="7_27ein"]
+[ext_resource type="Script" path="res://scenes/player/scripts/hit_state.gd" id="8_ioajo"]
 
 [sub_resource type="Animation" id="Animation_erpvo"]
 length = 0.001
@@ -295,6 +296,22 @@ tracks/0/keys = {
 "values": [Vector2i(0, 12), Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12), Vector2i(5, 12)]
 }
 
+[sub_resource type="Animation" id="Animation_2sgxd"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 20), Vector2i(1, 20), Vector2i(2, 20)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akx5f"]
 _data = {
 "RESET": SubResource("Animation_erpvo"),
@@ -302,6 +319,7 @@ _data = {
 "attack_left": SubResource("Animation_skmic"),
 "attack_right": SubResource("Animation_cayq6"),
 "attack_up": SubResource("Animation_dhmas"),
+"hit": SubResource("Animation_2sgxd"),
 "idle_down": SubResource("Animation_y8eqe"),
 "idle_left": SubResource("Animation_2aqqk"),
 "idle_right": SubResource("Animation_xnqoc"),
@@ -369,5 +387,8 @@ script = ExtResource("4_0pa3q")
 
 [node name="attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_27ein")
+
+[node name="hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_ioajo")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/attack" method="_on_animation_player_animation_finished"]
