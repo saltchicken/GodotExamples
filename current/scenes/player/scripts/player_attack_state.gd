@@ -29,7 +29,7 @@ func Update(_delta:float):
 		#var useable_object = useable_objects.front()
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body._get_hit()
+				body._get_hit(character_body.attack_damage)
 				#var body_current_state = body.state_machine.current_state
 				#if body_current_state.name != 'hit':
 					## TODO: Handle logic better to decide what states can be hit

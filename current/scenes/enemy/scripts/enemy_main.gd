@@ -18,9 +18,9 @@ func _physics_process(delta):
 	direction_to_player = self.global_position.direction_to(player.global_position  + Vector2(0.0, 23.0))
 	move_and_collide(self.velocity * delta)
 
-func _get_hit():
+func _get_hit(damage):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		health -= player.attack_damage
+		health -= damage
 		if health <= 0:
 			health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')

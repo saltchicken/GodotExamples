@@ -16,6 +16,8 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var attack_reach = 15
 @onready var attack_damage = 12
 
+@onready var health = 120
+
 func _ready():
 	add_to_group('Players')
 
@@ -43,6 +45,15 @@ func _get_direction():
 			
 func _handle_use_hitbox_direction():
 	use_hitbox.position = direction * use_reach
+	
+#func _get_hit(damage):
+	#if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
+		#health -= player.attack_damage
+		#if health <= 0:
+			#health = 0
+			#state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+		#else:
+			#state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
 	
 func _use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()
