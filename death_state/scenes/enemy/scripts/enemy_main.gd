@@ -1,16 +1,14 @@
 extends CharacterBody2D
 class_name Enemy
 @onready var state_machine = $StateMachine
-#@onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var player = get_tree().get_first_node_in_group('Players')
 
-var idle_direction = Vector2(0.0, 1.0) # Down
+@export var idle_direction = Vector2(0.0, 1.0)
+@export var health: int
 		
 @onready var distance_to_player
 @onready var direction_to_player
-
-@export var health: int
 
 func _ready():
 	add_to_group('Enemies')
