@@ -11,6 +11,8 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var distance_to_player
 @onready var direction_to_player
 
+@onready var HEALTH = 30
+
 func _ready():
 	add_to_group('Enemies')
 
@@ -32,5 +34,11 @@ func _get_direction():
 		direction = Vector2(0, 1)
 
 func _get_hit():
-	if state_machine.current_state.name != 'hit':
-		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
+		HEALTH -= player.attack_damage
+		print(HEALTH)
+		if HEALTH <= 0:
+			HEALTH = 0
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+		else:
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')

@@ -4,7 +4,6 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('enter idle')
 	animation_tree.get("parameters/playback").travel('idle')	
 	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	
@@ -13,7 +12,6 @@ func Exit():
 	
 func Update(_delta:float):
 	if character_body.distance_to_player < character_body.CHASE_DISTANCE:
-		print('going to chase')
 		state_transition.emit(self, 'chase')
 	else:
 		character_body.velocity.x = move_toward(character_body.velocity.x, 0, character_body.DECELERATION_SPEED)

@@ -4,7 +4,6 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('enter chase')
 	animation_tree.get("parameters/playback").travel('chase')
 	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cjqipfkx82msx"]
+[gd_scene load_steps=54 format=3 uid="uid://cjqipfkx82msx"]
 
 [ext_resource type="Script" path="res://scenes/enemy/slime/scripts/slime_main.gd" id="1_0ju1o"]
 [ext_resource type="Texture2D" uid="uid://3ihy37f8u0mb" path="res://assets/enemy/slime/slime_monster_spritesheet.png" id="2_odtml"]
@@ -326,25 +326,19 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_juino"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a7uen"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpocl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nf8di"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yo3t"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43rsn"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ltibh"]
 states/End/position = Vector2(1551, 196)
 states/chase/node = SubResource("AnimationNodeBlendTree_sp2e1")
 states/chase/position = Vector2(389, 311)
 states/death/node = SubResource("AnimationNodeBlendTree_uh3r4")
-states/death/position = Vector2(658, 423)
+states/death/position = Vector2(949, 127)
 states/hit/node = SubResource("AnimationNodeBlendTree_h4abx")
 states/hit/position = Vector2(706, 196)
 states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
-transitions = ["idle", "chase", SubResource("AnimationNodeStateMachineTransition_3ij05"), "chase", "idle", SubResource("AnimationNodeStateMachineTransition_rybts"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aosfy"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_aim7o"), "chase", "hit", SubResource("AnimationNodeStateMachineTransition_8aadu"), "hit", "chase", SubResource("AnimationNodeStateMachineTransition_8dwjh"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_juino"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_a7uen"), "chase", "death", SubResource("AnimationNodeStateMachineTransition_dpocl"), "death", "idle", SubResource("AnimationNodeStateMachineTransition_nf8di"), "death", "chase", SubResource("AnimationNodeStateMachineTransition_7yo3t")]
+transitions = ["idle", "chase", SubResource("AnimationNodeStateMachineTransition_3ij05"), "chase", "idle", SubResource("AnimationNodeStateMachineTransition_rybts"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aosfy"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_aim7o"), "chase", "hit", SubResource("AnimationNodeStateMachineTransition_8aadu"), "hit", "chase", SubResource("AnimationNodeStateMachineTransition_8dwjh"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_juino"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_43rsn")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jtqdn"]
 radius = 8.0
