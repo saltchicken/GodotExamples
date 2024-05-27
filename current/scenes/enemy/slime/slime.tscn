@@ -301,6 +301,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_s5xqn")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_v7b80")
 blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xor04"]
 
@@ -373,7 +374,7 @@ parameters/chase/TimeScale/scale = 1.0
 parameters/death/BlendSpace2D/blend_position = Vector2(0.000240803, 0.00207043)
 parameters/death/TimeScale/scale = 1.0
 parameters/hit/TimeScale/scale = 1.0
-parameters/idle/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/idle/BlendSpace2D/blend_position = Vector2(0.998555, 0.00207043)
 parameters/idle/TimeScale/scale = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

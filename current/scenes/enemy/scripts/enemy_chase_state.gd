@@ -8,7 +8,7 @@ func Enter():
 	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
 func Exit():
-	pass
+	character_body.idle_direction = character_body.direction_to_player
 	
 func Update(_delta:float):
 	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction_to_player)
