@@ -5,10 +5,10 @@ extends State
 
 func Enter():
 	animation_tree.get("parameters/playback").travel('idle')	
-	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.idle_direction)
 	
 func Exit():
-	pass
+	character_body.idle_direction = character_body.direction_to_player
 	
 func Update(_delta:float):
 	if character_body.distance_to_player < character_body.CHASE_DISTANCE:

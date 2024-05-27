@@ -5,16 +5,14 @@ extends State
 
 func Enter():
 	animation_tree.get("parameters/playback").travel('death')
-	animation_tree.set("parameters/death/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.set("parameters/death/BlendSpace2D/blend_position", character_body.direction_to_player)
 	#character_body.velocity = -character_body.direction_to_player * 10.0
 	character_body.velocity = Vector2(0.0, 0.0)
-	print('slime dead')
 	
 func Exit():
 	pass
 	
 func Update(_delta:float):
-	print('still dead')
 	# TODO: Implement taking damage
 	pass
 

@@ -223,6 +223,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_6b5to")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_u2yn4")
 blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wpsqq"]
 

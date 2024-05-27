@@ -5,10 +5,8 @@ extends State
 
 func Enter():
 	animation_tree.get("parameters/playback").start('hit')
-	animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 	character_body.velocity = -character_body.direction_to_player * 10.0
-	
-	print('slime hit')
 	
 func Exit():
 	pass
