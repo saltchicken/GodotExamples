@@ -27,7 +27,7 @@ func _handle_attack_hitbox_direction():
 func _check_attack_range():
 	var bodies = attack_hitbox.get_overlapping_bodies()
 	if bodies:
-		var closest_body = bodies.front() # TODO: Only interested in closest object?
+		#var closest_body = bodies.front() # TODO: Only interested in closest object?
 		for obj in bodies:
 			#print(obj)
 			if obj.get_script() == Player:

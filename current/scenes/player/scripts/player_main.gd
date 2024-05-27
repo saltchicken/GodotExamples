@@ -5,6 +5,8 @@ class_name Player
 @onready var use_hitbox = $UseArea
 #@onready var attack_hitbox = $AttackArea
 
+@onready var game = self.get_owner() # TODO: Find better way to check if game is paused. _get_input still works with Engine.time_scale = 0
+
 var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var direction = DEFAULT_DIRECTION		
 @onready var movement
@@ -27,10 +29,11 @@ func _physics_process(delta):
 	move_and_collide(self.velocity * delta)
 
 func _get_input():
-	movement = Input.get_vector("left", "right", "up", "down")
-	run = Input.is_action_pressed('run')
-	attack = Input.is_action_just_pressed('attack')
-	use = Input.is_action_just_pressed('use')
+	if !game.paused: # TODO: Find better way to check if game is paused. _get_input still works with Engine.time_scale = 0
+		movement = Input.get_vector("left", "right", "up", "down")
+		run = Input.is_action_pressed('run')
+		attack = Input.is_action_just_pressed('attack')
+		use = Input.is_action_just_pressed('use')
 	
 func _get_direction():
 	# TODO: Handle input from a joystick so that it conforms to (1, 0)

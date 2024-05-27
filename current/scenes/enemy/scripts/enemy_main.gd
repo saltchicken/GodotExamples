@@ -10,7 +10,7 @@ class_name Enemy
 @onready var distance_to_player
 @onready var direction_to_player
 
-@onready var attack_reach = 15
+@onready var attack_reach = 1
 @onready var attack_damage = 45
 
 func _ready():
