@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgbv7e2yr5xpl"]
+
+[ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
+[ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="2_wylly"]
+[ext_resource type="PackedScene" uid="uid://c6xio56a5a0uq" path="res://scenes/objects/chest/chest.tscn" id="3_pck36"]
+
+[node name="game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_iqfig")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+
+[node name="Slime" parent="." instance=ExtResource("2_wylly")]
+position = Vector2(194, 28)
+
+[node name="Chest" parent="." instance=ExtResource("3_pck36")]
+position = Vector2(-65, 20)
