@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 @onready var state_machine = $StateMachine
 @onready var animation_tree = $AnimationTree
 @onready var use_hitbox = $UseArea
@@ -46,14 +47,14 @@ func _get_direction():
 func _handle_use_hitbox_direction():
 	use_hitbox.position = direction * use_reach
 	
-#func _get_hit(damage):
-	#if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		#health -= player.attack_damage
-		#if health <= 0:
-			#health = 0
-			#state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
-		#else:
-			#state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+func _get_hit(damage):
+	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
+		health -= damage
+		if health <= 0:
+			health = 0
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+		else:
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
 	
 func _use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()

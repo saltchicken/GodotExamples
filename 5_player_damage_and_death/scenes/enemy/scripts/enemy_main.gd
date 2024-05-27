@@ -10,6 +10,9 @@ class_name Enemy
 @onready var distance_to_player
 @onready var direction_to_player
 
+@onready var attack_reach = 15
+@onready var attack_damage = 45
+
 func _ready():
 	add_to_group('Enemies')
 
@@ -26,3 +29,5 @@ func _get_hit(damage):
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+			
+

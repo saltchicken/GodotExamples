@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cjqipfkx82msx"]
+[gd_scene load_steps=69 format=3 uid="uid://cjqipfkx82msx"]
 
 [ext_resource type="Script" path="res://scenes/enemy/slime/scripts/slime_main.gd" id="1_0ju1o"]
 [ext_resource type="Texture2D" uid="uid://3ihy37f8u0mb" path="res://assets/enemy/slime/slime_monster_spritesheet.png" id="2_odtml"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_chase_state.gd" id="4_m0ohx"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_hit_state.gd" id="6_8drnr"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_death.gd" id="7_tayqr"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_attack_state.gd" id="8_g3ldy"]
 
 [sub_resource type="Animation" id="Animation_isyo0"]
 length = 0.001
@@ -187,9 +188,27 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cvrvn"]
+resource_name = "attack"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(1, 4), Vector2i(0, 4), Vector2i(1, 4)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dviih"]
 _data = {
 "RESET": SubResource("Animation_isyo0"),
+"attack": SubResource("Animation_cvrvn"),
 "chase_down": SubResource("Animation_lp7wl"),
 "chase_left": SubResource("Animation_ftk0m"),
 "chase_right": SubResource("Animation_3lsxw"),
@@ -201,6 +220,39 @@ _data = {
 "idle_right": SubResource("Animation_0m3tg"),
 "idle_up": SubResource("Animation_vtql7")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uadp2"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhhdx"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_udtk3"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jju16"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g5uuk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_uadp2")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xhhdx")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_udtk3")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_jju16")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8wp8h"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_232hn"]
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_g5uuk")
+nodes/BlendSpace2D/position = Vector2(920, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8wp8h")
+nodes/TimeScale/position = Vector2(1529, 168)
+nodes/output/position = Vector2(1820, 220)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1haw0"]
 animation = &"chase_down"
@@ -336,20 +388,28 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yo3t"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwev0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yyhg6"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ltibh"]
 states/End/position = Vector2(1551, 196)
+states/attack/node = SubResource("AnimationNodeBlendTree_232hn")
+states/attack/position = Vector2(994, 239)
 states/chase/node = SubResource("AnimationNodeBlendTree_sp2e1")
 states/chase/position = Vector2(389, 311)
 states/death/node = SubResource("AnimationNodeBlendTree_uh3r4")
-states/death/position = Vector2(658, 423)
+states/death/position = Vector2(761, 459)
 states/hit/node = SubResource("AnimationNodeBlendTree_h4abx")
-states/hit/position = Vector2(706, 196)
+states/hit/position = Vector2(772, 142)
 states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
-transitions = ["idle", "chase", SubResource("AnimationNodeStateMachineTransition_3ij05"), "chase", "idle", SubResource("AnimationNodeStateMachineTransition_rybts"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aosfy"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_aim7o"), "chase", "hit", SubResource("AnimationNodeStateMachineTransition_8aadu"), "hit", "chase", SubResource("AnimationNodeStateMachineTransition_8dwjh"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_juino"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_a7uen"), "chase", "death", SubResource("AnimationNodeStateMachineTransition_dpocl"), "death", "idle", SubResource("AnimationNodeStateMachineTransition_nf8di"), "death", "chase", SubResource("AnimationNodeStateMachineTransition_7yo3t")]
+transitions = ["idle", "chase", SubResource("AnimationNodeStateMachineTransition_3ij05"), "chase", "idle", SubResource("AnimationNodeStateMachineTransition_rybts"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aosfy"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_aim7o"), "chase", "hit", SubResource("AnimationNodeStateMachineTransition_8aadu"), "hit", "chase", SubResource("AnimationNodeStateMachineTransition_8dwjh"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_juino"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_a7uen"), "chase", "death", SubResource("AnimationNodeStateMachineTransition_dpocl"), "death", "idle", SubResource("AnimationNodeStateMachineTransition_nf8di"), "death", "chase", SubResource("AnimationNodeStateMachineTransition_7yo3t"), "chase", "attack", SubResource("AnimationNodeStateMachineTransition_qwev0"), "attack", "chase", SubResource("AnimationNodeStateMachineTransition_yyhg6")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jtqdn"]
 radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcrx4"]
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_0ju1o")
@@ -369,6 +429,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ltibh")
 anim_player = NodePath("../AnimationPlayer")
+parameters/attack/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/attack/TimeScale/scale = 1.0
 parameters/chase/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/chase/TimeScale/scale = 1.0
 parameters/death/BlendSpace2D/blend_position = Vector2(0.000240803, 0.00207043)
@@ -396,5 +458,14 @@ script = ExtResource("6_8drnr")
 [node name="death" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_tayqr")
 
+[node name="attack" type="Node2D" parent="StateMachine"]
+script = ExtResource("8_g3ldy")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_hcrx4")
+
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/death" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/attack" method="_on_animation_tree_animation_finished"]

@@ -72,11 +72,13 @@ func _handle_attack_hitbox_direction():
 		attack_hitbox.position.y = 0
 
 
-func _on_animation_tree_animation_finished(_anim_name):
-	if character_body.movement:
-		if character_body.run:
-			state_transition.emit(self, 'run')
+func _on_animation_tree_animation_finished(anim_name):
+	if 'attack' in anim_name:
+		print('leaving attack')
+		if character_body.movement:
+			if character_body.run:
+				state_transition.emit(self, 'run')
+			else:
+				state_transition.emit(self, 'walk')
 		else:
-			state_transition.emit(self, 'walk')
-	else:
-		state_transition.emit(self, 'idle')
+			state_transition.emit(self, 'idle')
