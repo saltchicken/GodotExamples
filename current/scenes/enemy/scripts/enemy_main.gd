@@ -10,7 +10,7 @@ var idle_direction = Vector2(0.0, 1.0) # Down
 @onready var distance_to_player
 @onready var direction_to_player
 
-@onready var HEALTH = 30
+@export var health: int
 
 func _ready():
 	add_to_group('Enemies')
@@ -22,9 +22,9 @@ func _physics_process(delta):
 
 func _get_hit():
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		HEALTH -= player.attack_damage
-		if HEALTH <= 0:
-			HEALTH = 0
+		health -= player.attack_damage
+		if health <= 0:
+			health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
