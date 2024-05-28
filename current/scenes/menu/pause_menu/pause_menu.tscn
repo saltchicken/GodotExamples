@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://3sne08pe16u5"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_pojbx"]
+[ext_resource type="Shader" path="res://scenes/menu/pause_menu/pause_menu.gdshader" id="2_2b868"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bws0r"]
+shader = ExtResource("2_2b868")
+shader_parameter/lod = 0.917
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pojbx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bws0r")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 257.0
+offset_right = 613.0
+offset_bottom = 358.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
