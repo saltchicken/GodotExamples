@@ -63,8 +63,13 @@ func _get_hit(damage, direction_to_player):
 func _use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()
 	if useable_objects:
-		#var useable_object = useable_objects.front()
-		for obj in useable_objects:
+		#var obj = useable_objects[0]
+		#obj._use()
+		#var obj = useable_objects.front()
+		#if obj.get_script() == Chest:
+			#obj._use()
+		for obj in useable_objects: # TODO: This needs better logic to choose the closest chest or useable object.
 			#print(obj)
 			if obj.get_script() == Chest:
 				obj._use()
+				break
