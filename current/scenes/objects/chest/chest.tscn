@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://c6xio56a5a0uq"]
 
 [ext_resource type="Script" path="res://scenes/objects/chest/scripts/chest_main.gd" id="1_2g3lg"]
-[ext_resource type="Texture2D" uid="uid://djppdb7cnqtgq" path="res://assets/objects/chest_spritesheet.png" id="2_mv8yi"]
+[ext_resource type="Texture2D" uid="uid://djppdb7cnqtgq" path="res://scenes/objects/chest/chest_spritesheet.png" id="2_mv8yi"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_g5cx0"]
 [ext_resource type="Script" path="res://scenes/objects/chest/scripts/closed_state.gd" id="4_dq4lv"]
 [ext_resource type="Script" path="res://scenes/objects/chest/scripts/open_state.gd" id="5_cf7q6"]
