@@ -1,7 +1,8 @@
-[gd_scene load_steps=106 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=107 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_main.gd" id="1_u0ca5"]
+[ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://scenes/inventory/inventory.tscn" id="2_3uprd"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_idle_state.gd" id="2_ivc8t"]
 [ext_resource type="Texture2D" uid="uid://4nqrtl2ov7dp" path="res://assets/player/universal_sprite.png" id="2_vjjc5"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_walk_state.gd" id="3_m6xxc"]
@@ -694,6 +695,8 @@ radius = 13.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u0ca5")
+
+[node name="InventoryMenu" parent="." instance=ExtResource("2_3uprd")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -22)

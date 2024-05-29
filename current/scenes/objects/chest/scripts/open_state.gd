@@ -6,6 +6,7 @@ extends State
 func Enter():
 	print('open now')
 	animation_tree.get("parameters/playback").travel('open')
+	character_body.player.inventory._collect_item("res://scenes/inventory/item/bow.tres")
 	#animation_tree.set("parameters/open/BlendSpace2D/blend_position", Vector2(0.0, 1.0))
 	pass
 	

@@ -5,6 +5,8 @@ class_name Player
 @onready var use_hitbox = $UseArea
 #@onready var attack_hitbox = $AttackArea
 
+@onready var inventory = $InventoryMenu
+
 var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var direction = DEFAULT_DIRECTION		
 @onready var movement

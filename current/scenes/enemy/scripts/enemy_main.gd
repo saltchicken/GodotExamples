@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 @onready var state_machine = $StateMachine
 @onready var animation_tree = $AnimationTree
-@onready var player = get_tree().get_first_node_in_group('Players')
+@onready var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
 
 @export var idle_direction = Vector2(0.0, 1.0)
 @export var health: int
