@@ -97,6 +97,7 @@ transitions = ["Start", "closed", SubResource("AnimationNodeStateMachineTransiti
 size = Vector2(24, 24)
 
 [node name="Chest" type="StaticBody2D"]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_2g3lg")
 

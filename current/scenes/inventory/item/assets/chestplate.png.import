@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfw7vbho84bjs"
-path="res://.godot/imported/bow.png-903fba485c7917c8e08a99753a8ecbc9.ctex"
+uid="uid://cbungl3wgervk"
+path="res://.godot/imported/chestplate.png-14c18cc2d201747ee14e60dedbb7e9ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/inventory/item/assets/bow.png"
-dest_files=["res://.godot/imported/bow.png-903fba485c7917c8e08a99753a8ecbc9.ctex"]
+source_file="res://scenes/inventory/item/assets/chestplate.png"
+dest_files=["res://.godot/imported/chestplate.png-14c18cc2d201747ee14e60dedbb7e9ed.ctex"]
 
 [params]
 

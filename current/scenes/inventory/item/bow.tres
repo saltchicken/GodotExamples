@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dwk8b2actwhwi"]
 
-[ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_item_data.gd" id="1_w22xn"]
-[ext_resource type="Texture2D" uid="uid://cbceu78aqoqbd" path="res://scenes/inventory/item/assets/bow.png" id="2_dvoxp"]
+[ext_resource type="Script" path="res://scenes/inventory/scripts/item_data.gd" id="1_cimd4"]
+[ext_resource type="Texture2D" uid="uid://cfw7vbho84bjs" path="res://scenes/inventory/item/assets/bow.png" id="2_58rjb"]
 
 [resource]
-script = ExtResource("1_w22xn")
+script = ExtResource("1_cimd4")
 type = 4
 name = "Bow"
 description = "A powerful bow"
-texture = ExtResource("2_dvoxp")
+texture = ExtResource("2_58rjb")
+attack_damage = 10
+defense = 0

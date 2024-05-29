@@ -9,7 +9,7 @@ func _ready():
 		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
 		%Inventory.add_child(slot)
 		
-	_load_items_from_file()		
+	#_load_items_from_file()
 	#get_inventory()
 	#check_inventory.connect(get_inventory)
 	
@@ -36,15 +36,15 @@ func _load_item_into_inventory(path_to_item, slot_index):
 	#var item_index = _get_first_open_slot()
 	%Inventory.get_child(slot_index).add_child(item)
 	
-func _load_items_from_file():
-	var itemsLoad = [
-	"res://scenes/inventory/item/sword.tres",
-	"res://scenes/inventory/item/bow.tres"
-]
-	for i in itemsLoad.size():
-		_load_item_into_inventory(itemsLoad[i], i)
-		#_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
-		#item.add_to_group('items')
+#func _load_items_from_file():
+	#var itemsLoad = [
+	#"res://scenes/inventory/item/sword.tres",
+	#"res://scenes/inventory/item/bow.tres"
+#]
+	#for i in itemsLoad.size():
+		#_load_item_into_inventory(itemsLoad[i], i)
+		##_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
+		##item.add_to_group('items')
 
 func _collect_item(item):
 	_load_item_into_inventory(item, _get_first_open_slot())

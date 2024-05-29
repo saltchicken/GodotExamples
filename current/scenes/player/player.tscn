@@ -697,6 +697,7 @@ radius = 13.0
 script = ExtResource("1_u0ca5")
 
 [node name="InventoryMenu" parent="." instance=ExtResource("2_3uprd")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -22)
