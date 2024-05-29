@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_slot.gd" id="2_uu36n"]
 
 [node name="InventoryMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_1pt06")
 
 [node name="InventoryPanel" type="Panel" parent="."]
@@ -27,11 +28,55 @@ offset_top = 291.0
 offset_right = 352.0
 offset_bottom = 487.0
 
-[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/Equipment"]
+[node name="HeadSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 17.0
-offset_right = 63.0
-offset_bottom = 57.0
+offset_left = 119.0
+offset_top = 23.0
+offset_right = 159.0
+offset_bottom = 63.0
+script = ExtResource("2_uu36n")
+
+[node name="ChestSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 77.0
+offset_right = 159.0
+offset_bottom = 117.0
+script = ExtResource("2_uu36n")
+type = 1
+
+[node name="LegsSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 133.0
+offset_right = 116.0
+offset_bottom = 173.0
+script = ExtResource("2_uu36n")
+type = 2
+
+[node name="FeetSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 132.0
+offset_right = 204.0
+offset_bottom = 172.0
+script = ExtResource("2_uu36n")
+type = 3
+
+[node name="WeaponSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 60.0
+offset_right = 103.0
+offset_bottom = 100.0
 script = ExtResource("2_uu36n")
 type = 4
+
+[node name="AccessorySlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 59.0
+offset_right = 218.0
+offset_bottom = 99.0
+script = ExtResource("2_uu36n")
+type = 5

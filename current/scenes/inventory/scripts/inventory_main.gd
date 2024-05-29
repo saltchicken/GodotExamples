@@ -14,9 +14,11 @@ func _ready():
 	#check_inventory.connect(get_inventory)
 	
 func _process(delta):
-	if Input.is_action_just_pressed('inventory'):
+	#if Input.is_action_just_pressed('inventory'):
+	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		# TODO: Add pausing the game, and change process for this node to always active.
 		self.visible = !self.visible
+		get_tree().paused = !get_tree().paused
 
 func _get_first_open_slot():
 	var slots = %Inventory.get_children()
