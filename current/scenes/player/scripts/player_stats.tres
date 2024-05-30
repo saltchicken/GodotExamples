@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://pu75moibq36b"]
+
+[ext_resource type="Script" path="res://scripts/character_stats.gd" id="1_n5ngd"]
+
+[resource]
+script = ExtResource("1_n5ngd")
+base_attack_damage = 10
+base_defense = 5

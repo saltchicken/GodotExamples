@@ -131,3 +131,8 @@ type = 5
 [connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/HeadSlot" to="." method="_on_head_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/ChestSlot" to="." method="_on_chest_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/LegsSlot" to="." method="_on_legs_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/FeetSlot" to="." method="_on_feet_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/WeaponSlot" to="." method="_on_weapon_slot_change_inventory"]

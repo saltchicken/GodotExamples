@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var player = get_parent()
+@onready 
+
 var InvSize = 24
 	
 func _ready():
@@ -62,12 +65,15 @@ func get_inventory():
 		if item:
 			print(item.data.name)
 			
+			
 func get_equipment():
 	var slotsCheck = %Equipment.get_children()
 	for slots in slotsCheck:
 		var item = slots.get_child(0)
 		if item:
-			print(item.data.name)
+			item.data.apply_upgrade(player)
+			#print(item.data.name)
+	print('Applied equipment modifiers')
 			
 func _is_in_inventory(): # TODO: Implement 
 	pass
@@ -88,3 +94,28 @@ func _on_quit_pressed():
 	# TODO: Add a confirmation pop up to make sure user wants to restart
 	_toggle()
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
+
+
+func _on_head_slot_change_inventory():
+	print('Inventory head_slot changed')
+	get_equipment()
+
+
+func _on_weapon_slot_change_inventory():
+	print('Inventory weapon_slot changed')
+	get_equipment()
+
+
+func _on_chest_slot_change_inventory():
+	print('Inventory chest_slot changed')
+	get_equipment()
+
+
+func _on_legs_slot_change_inventory():
+	print('Inventory legs_slot changed')
+	get_equipment()
+
+
+func _on_feet_slot_change_inventory():
+	print('Inventory feet_slot changed')
+	get_equipment()

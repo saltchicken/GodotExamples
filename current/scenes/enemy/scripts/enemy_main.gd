@@ -22,6 +22,7 @@ func _physics_process(delta):
 	move_and_collide(self.velocity * delta)
 
 func _get_hit(damage):
+	print('Enemy took ' + str(damage) + ' damage')
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		health -= damage
 		if health <= 0:

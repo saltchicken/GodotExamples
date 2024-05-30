@@ -1,6 +1,7 @@
 class_name InventorySlot
 extends PanelContainer
 
+signal change_inventory
 @export var type: ItemData.Type
 
 func init(t: ItemData.Type, cms: Vector2) -> void:
@@ -32,3 +33,4 @@ func _drop_data(at_position, data):
 		else:
 			item.reparent(data.get_parent())
 	data.reparent(self)
+	change_inventory.emit()

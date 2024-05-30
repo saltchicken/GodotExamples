@@ -14,10 +14,15 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var attack
 @onready var use
 
-@onready var player_health = 100
+
+@export var stats: Stats
+#@onready var player_health = 100
 @onready var use_reach = 10
 @onready var attack_reach = 15
 @onready var attack_damage = 12
+@onready var defense = 0
+
+
 
 @onready var health = 120
 @onready var direction_from_enemy: Vector2 # TODO: This shouldn't be stored here

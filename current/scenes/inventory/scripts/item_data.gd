@@ -9,3 +9,7 @@ enum Type {HEAD, CHEST, LEGS, FEET, WEAPON, ACCESSORY, MAIN}
 @export var texture: Texture2D
 @export var attack_damage: int
 @export var defense: int
+
+func apply_upgrade(body: CharacterBody2D):
+	body.attack_damage = body.stats.base_attack_damage + attack_damage
+	body.defense = body.stats.base_defense + defense
