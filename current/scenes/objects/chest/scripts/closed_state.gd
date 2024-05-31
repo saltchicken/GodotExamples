@@ -4,10 +4,9 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('closing now')
+	print('Chest closed now')
 	animation_tree.get("parameters/playback").travel('closed')	
 	#animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
-	pass
 	
 func Exit():
 	pass

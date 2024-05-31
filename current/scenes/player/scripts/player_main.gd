@@ -29,6 +29,7 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 func _ready():
 	add_to_group('Players')
+	#add_to_group('Persist')
 
 func _physics_process(delta):
 	_get_input()
@@ -78,3 +79,13 @@ func _use_objects():
 			if obj.get_script() == Chest:
 				obj._use()
 				break
+				
+#func save():
+	#var save_dict = {
+		#"filename" : get_scene_file_path(),
+		#"parent" : get_parent().get_path(),
+		#"pos_x" : position.x,
+		#"pos_y" : position.y,
+		##"current_state" : state_machine.current_state.name
+	#}
+	#return save_dict

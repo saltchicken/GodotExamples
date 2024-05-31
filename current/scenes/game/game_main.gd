@@ -15,3 +15,13 @@ func _ready():
 	#chest.init(bow)
 	#chest.global_position = Vector2(100.0, 10.0)
 	#add_child(chest)
+	
+func _process(_delta):
+	if Input.is_action_just_pressed('1'):
+		print('saving game')
+		Global.save_game()
+	
+	if Input.is_action_just_pressed('2'):
+		print('loading game')
+		Global.load_game()
+	

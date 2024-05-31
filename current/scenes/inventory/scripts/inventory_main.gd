@@ -119,3 +119,8 @@ func _on_legs_slot_change_inventory():
 func _on_feet_slot_change_inventory():
 	print('Inventory feet_slot changed')
 	get_equipment()
+
+
+func _on_load_latest_save_pressed():
+	Global.load_game()
+	pass # Replace with function body.

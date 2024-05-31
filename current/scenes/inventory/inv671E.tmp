@@ -105,7 +105,7 @@ offset_bottom = 173.0
 script = ExtResource("2_uu36n")
 type = 2
 
-[node name="FeetSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
+[node name="FeetSlot" type="PanelContainer" parent="InventoryPanel/Equipment" groups=["Persist"]]
 layout_mode = 0
 offset_left = 164.0
 offset_top = 132.0
