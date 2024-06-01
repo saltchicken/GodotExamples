@@ -22,6 +22,21 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_lqrpv"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4cb3r"]
 resource_name = "open"
 length = 0.4
@@ -36,21 +51,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_lqrpv"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(3, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqdfm"]
@@ -119,10 +119,11 @@ transitions = ["Start", "closed", SubResource("AnimationNodeStateMachineTransiti
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isabf"]
 size = Vector2(24, 24)
 
-[node name="Chest" type="StaticBody2D"]
+[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
 process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_2g3lg")
+initial_state = NodePath("StateMachine/closed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mv8yi")
@@ -144,9 +145,8 @@ parameters/opening/TimeScale/scale = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_isabf")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_g5cx0")
-initial_state = NodePath("closed")
 
 [node name="closed" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_dq4lv")

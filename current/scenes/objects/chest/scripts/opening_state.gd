@@ -4,7 +4,7 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('opening now')
+	#print('opening now')
 	animation_tree.get("parameters/playback").travel('opening')
 	if character_body.item and !character_body.item_taken:
 		character_body.player.inventory._collect_item(character_body.item.resource_path)

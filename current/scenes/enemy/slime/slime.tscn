@@ -411,9 +411,10 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcrx4"]
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 y_sort_enabled = true
 script = ExtResource("1_0ju1o")
+initial_state = NodePath("StateMachine/idle")
 health = 40
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -443,9 +444,8 @@ parameters/idle/TimeScale/scale = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jtqdn")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("2_uugmm")
-initial_state = NodePath("idle")
 
 [node name="idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("3_518px")

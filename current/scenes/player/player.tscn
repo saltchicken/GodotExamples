@@ -693,8 +693,9 @@ radius = 17.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_yakv4"]
 radius = 13.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_u0ca5")
+initial_state = NodePath("StateMachine/idle")
 
 [node name="InventoryMenu" parent="." instance=ExtResource("2_3uprd")]
 visible = false
@@ -750,9 +751,8 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UseArea"]
 shape = SubResource("CircleShape2D_yakv4")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("1_md2ya")
-initial_state = NodePath("idle")
 
 [node name="idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("2_ivc8t")

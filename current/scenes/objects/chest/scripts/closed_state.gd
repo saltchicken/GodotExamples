@@ -4,7 +4,7 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('Chest closed now')
+	print('Chest is in closed state')
 	animation_tree.get("parameters/playback").travel('closed')	
 	#animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	

@@ -3,20 +3,20 @@ class_name FiniteStateMachine
 
 var states : Dictionary = {}
 var current_state : State
-@export var initial_state : State
+
 
 func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.state_transition.connect(change_state)
-
-	if initial_state:
+	await owner.ready
+	if owner.initial_state:
 		call_deferred('_init_state')
-		current_state = initial_state
+		current_state = owner.initial_state
 
 func _init_state():
-	initial_state.Enter()
+	owner.initial_state.Enter()
 
 func  _physics_process(delta): # TODO: Should this be _physics or just _process
 	if current_state:

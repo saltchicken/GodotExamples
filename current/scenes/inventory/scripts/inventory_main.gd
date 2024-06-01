@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var player = get_parent()
-@onready 
 
 var InvSize = 24
 	
@@ -19,8 +18,8 @@ func _ready():
 func _process(delta):
 	#if Input.is_action_just_pressed('inventory'):
 	if Input.is_action_just_pressed('TESTTESTTEST'):
-		#get_inventory()
-		get_equipment()
+		get_inventory()
+		#get_equipment()
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		# TODO: Add pausing the game, and change process for this node to always active.
 		_toggle()
@@ -63,7 +62,25 @@ func get_inventory():
 	for slots in slotsCheck:
 		var item = slots.get_child(0)
 		if item:
-			print(item.data.name)
+			print(item.data.get_path())
+			
+func save_inventory():
+	var inventory_list = []
+	var slotsCheck = %Inventory.get_children()
+	for slots in slotsCheck:
+		var item = slots.get_child(0)
+		if item:
+			inventory_list.append(item.data.get_path())
+	return inventory_list
+	
+func save_equipment():
+	var equipment_list = []
+	var slotsCheck = %Equipment.get_children()
+	for slots in slotsCheck:
+		var item = slots.get_child(0)
+		if item:
+			equipment_list.append(item.data.get_path())
+	return equipment_list
 			
 			
 func get_equipment():

@@ -4,7 +4,7 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	print('Chest open now')
+	#print('Chest open now')
 	animation_tree.get("parameters/playback").travel('open')
 	
 func Exit():
