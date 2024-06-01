@@ -16,17 +16,8 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var attack
 @onready var use
 
+@export var stats: PlayerStats
 
-@export var stats: Stats
-#@onready var player_health = 100
-@onready var use_reach = 10
-@onready var attack_reach = 15
-@onready var attack_damage = 12
-@onready var defense = 0
-
-
-
-@onready var health = 120
 @onready var direction_from_enemy: Vector2 # TODO: This shouldn't be stored here
 
 func _ready():
@@ -56,14 +47,14 @@ func get_direction():
 			direction = movement
 			
 func handle_use_hitbox_direction():
-	use_hitbox.position = direction * use_reach
+	use_hitbox.position = direction * stats.use_reach
 	
 func get_hit(damage, direction_to_player):
 	direction_from_enemy = direction_to_player
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		health -= damage
-		if health <= 0:
-			health = 0
+		stats.health -= damage
+		if stats.health <= 0:
+			stats.health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')

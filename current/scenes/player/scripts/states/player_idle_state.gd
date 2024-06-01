@@ -3,11 +3,9 @@ extends State
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
 
-
 var DECELERATION_SPEED = 25.0
 
 func Enter():
-	#character_body._idle()
 	animation_tree.get("parameters/playback").travel('idle')	
 	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	

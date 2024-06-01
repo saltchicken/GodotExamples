@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
 [ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="2_wylly"]
 [ext_resource type="PackedScene" uid="uid://c6xio56a5a0uq" path="res://scenes/objects/chest/chest.tscn" id="3_pck36"]
-[ext_resource type="Resource" uid="uid://pu75moibq36b" path="res://scenes/player/scripts/player_stats.tres" id="3_y537o"]
+[ext_resource type="Resource" uid="uid://pu75moibq36b" path="res://scenes/player/resources/player_stats.tres" id="3_y537o"]
 [ext_resource type="Resource" uid="uid://dwk8b2actwhwi" path="res://scenes/inventory/item/bow.tres" id="5_01dxg"]
 [ext_resource type="Resource" uid="uid://cdtb0f5pms30g" path="res://scenes/inventory/item/chestplate.tres" id="5_jf6n8"]
 [ext_resource type="Resource" uid="uid://di112al45tois" path="res://scenes/inventory/item/sword.tres" id="7_vu0jx"]

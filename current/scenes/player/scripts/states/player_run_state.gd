@@ -4,17 +4,13 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 
-
 var SPEED = 100.0
 
 func Enter():
-	#character_body._run()	
-	#use_area_collision.disabled = true
 	animation_tree.get("parameters/playback").travel('run')
 	animation_tree.set("parameters/run/BlendSpace2D/blend_position", character_body.direction)
 	
 func Exit():
-	#use_area_collision.disabled = false
 	pass
 	
 func Update(_delta:float):
