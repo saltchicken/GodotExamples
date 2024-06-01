@@ -23,6 +23,10 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
+	
+	# TODO: This should be somewhere else
+	stats.attack_damage = stats.base_attack_damage
+	stats.defense = stats.base_defense
 
 func _physics_process(delta):
 	get_input()
