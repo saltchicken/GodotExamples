@@ -3,8 +3,6 @@ extends State
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
 
-var SPEED = 50.0
-
 func Enter():
 	animation_tree.get("parameters/playback").travel('walk')
 	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
@@ -23,8 +21,8 @@ func Update(_delta:float):
 		if character_body.run:
 			state_transition.emit(self, 'run')
 		else:
-			character_body.velocity.x = character_body.movement.x * SPEED
-			character_body.velocity.y = character_body.movement.y * SPEED
+			character_body.velocity.x = character_body.movement.x * character_body.stats.walk_speed
+			character_body.velocity.y = character_body.movement.y * character_body.stats.walk_speed
 	else:
 		state_transition.emit(self, 'idle')
 	if character_body.use:

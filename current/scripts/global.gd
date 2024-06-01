@@ -1,6 +1,11 @@
 extends Node
 
-
+func restart():
+	# TODO: This doesn't work
+	var scene_path = get_tree().current_scene.scene_file_path
+	get_tree().unload_current_scene()
+	get_tree().change_scene_to_file(scene_path)
+	
 func save_game():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")

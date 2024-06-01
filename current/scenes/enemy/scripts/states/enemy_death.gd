@@ -13,7 +13,6 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
-	# TODO: Implement taking damage
 	pass
 
 func _on_animation_tree_animation_finished(anim_name):

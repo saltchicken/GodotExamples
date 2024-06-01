@@ -1,13 +1,14 @@
-[gd_scene load_steps=69 format=3 uid="uid://cjqipfkx82msx"]
+[gd_scene load_steps=70 format=3 uid="uid://cjqipfkx82msx"]
 
-[ext_resource type="Script" path="res://scenes/enemy/slime/scripts/slime_main.gd" id="1_0ju1o"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_main.gd" id="1_daphs"]
+[ext_resource type="Resource" uid="uid://bvyr6xlwkotev" path="res://scenes/enemy/slime/resources/slime_stats.tres" id="2_hswul"]
 [ext_resource type="Texture2D" uid="uid://3ihy37f8u0mb" path="res://scenes/enemy/slime/assets/slime_monster_spritesheet.png" id="2_odtml"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_uugmm"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_idle_state.gd" id="3_518px"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_chase_state.gd" id="4_m0ohx"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_hit_state.gd" id="6_8drnr"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_death.gd" id="7_tayqr"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_attack_state.gd" id="8_g3ldy"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_idle_state.gd" id="3_518px"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_chase_state.gd" id="4_m0ohx"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_hit_state.gd" id="6_8drnr"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_death.gd" id="7_tayqr"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_attack_state.gd" id="8_g3ldy"]
 
 [sub_resource type="Animation" id="Animation_isyo0"]
 length = 0.001
@@ -413,9 +414,9 @@ radius = 8.0
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 y_sort_enabled = true
-script = ExtResource("1_0ju1o")
+script = ExtResource("1_daphs")
 initial_state = NodePath("StateMachine/idle")
-health = 40
+stats = ExtResource("2_hswul")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_odtml")

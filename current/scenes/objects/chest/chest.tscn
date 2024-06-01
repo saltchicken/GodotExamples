@@ -121,12 +121,15 @@ size = Vector2(24, 24)
 
 [node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
 process_mode = 1
+z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_2g3lg")
 initial_state = NodePath("StateMachine/closed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("2_mv8yi")
+offset = Vector2(0, -12)
 hframes = 4
 vframes = 4
 
@@ -143,6 +146,8 @@ parameters/opening/BlendSpace2D/blend_position = Vector2(-0.000758529, 1)
 parameters/opening/TimeScale/scale = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_as_relative = false
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_isabf")
 
 [node name="StateMachine" type="Node2D" parent="."]

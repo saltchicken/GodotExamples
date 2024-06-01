@@ -11,8 +11,9 @@ func Exit():
 	character_body.idle_direction = character_body.direction_to_player
 	
 func Update(_delta:float):
-	if character_body.distance_to_player < character_body.CHASE_DISTANCE:
+	if character_body.distance_to_player < character_body.stats.chase_distance:
 		state_transition.emit(self, 'chase')
 	else:
-		character_body.velocity.x = move_toward(character_body.velocity.x, 0, character_body.DECELERATION_SPEED)
-		character_body.velocity.y = move_toward(character_body.velocity.y, 0, character_body.DECELERATION_SPEED)
+		#character_body.velocity.x = move_toward(character_body.velocity.x, 0, character_body.stats.deceleration_speed)
+		#character_body.velocity.y = move_toward(character_body.velocity.y, 0, character_body.stats.deceleration_speed)
+		character_body.velocity = Vector2(0.0, 0.0)

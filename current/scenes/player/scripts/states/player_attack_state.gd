@@ -7,8 +7,6 @@ extends State
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 @onready var down_sword_sprite = $"../../DownSwordSprite"
 
-var DECELERATION_SPEED = 10.0
-
 func Enter():
 	animation_tree.get("parameters/playback").start('attack')
 	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction)
@@ -22,14 +20,15 @@ func Exit():
 	down_sword_sprite.visible = false # TODO: Make animation smart enough to make this invisible or have a position it goes to on hit.
 	
 func Update(_delta:float):
-	character_body.velocity.x = move_toward(character_body.velocity.x, 0, DECELERATION_SPEED)
-	character_body.velocity.y = move_toward(character_body.velocity.y, 0, DECELERATION_SPEED)
+	#character_body.velocity.x = move_toward(character_body.velocity.x, 0, DECELERATION_SPEED)
+	#character_body.velocity.y = move_toward(character_body.velocity.y, 0, DECELERATION_SPEED)
+	character_body.velocity = Vector2(0.0, 0.0)
 	
 	var bodies = attack_hitbox.get_overlapping_bodies()
 	if bodies:
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body._get_hit(character_body.stats.attack_damage)
+				body.get_hit(character_body.stats.attack_damage)
 		
 func handle_attack_hitbox_direction():
 	if character_body.direction == Vector2(0, 1):

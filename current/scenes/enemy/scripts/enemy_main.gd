@@ -7,13 +7,11 @@ class_name Enemy
 @export var initial_state : State
 
 @export var idle_direction = Vector2(0.0, 1.0)
-@export var health: int
 		
 @onready var distance_to_player
 @onready var direction_to_player
 
-@onready var attack_reach = 1
-@onready var attack_damage = 45
+@export var stats: EnemyStats
 
 func _ready():
 	add_to_group('Enemies')
@@ -23,12 +21,12 @@ func _physics_process(delta):
 	direction_to_player = self.global_position.direction_to(player.global_position)
 	move_and_collide(self.velocity * delta)
 
-func _get_hit(damage):
+func get_hit(damage):
 	print('Enemy took ' + str(damage) + ' damage')
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		health -= damage
-		if health <= 0:
-			health = 0
+		stats.health -= damage
+		if stats.health <= 0:
+			stats.health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')

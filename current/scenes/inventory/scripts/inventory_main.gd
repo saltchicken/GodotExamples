@@ -22,9 +22,9 @@ func _process(delta):
 		#get_equipment()
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		# TODO: Add pausing the game, and change process for this node to always active.
-		_toggle()
+		toggle()
 		
-func _toggle():
+func toggle():
 	self.visible = !self.visible
 	get_tree().paused = !get_tree().paused
 
@@ -98,18 +98,20 @@ func _is_in_inventory(): # TODO: Implement
 
 
 func _on_resume_pressed():
-	_toggle()
+	toggle()
 
 
 func _on_restart_pressed():
+	print('This is not implemented')
 	# TODO: Add a confirmation pop up to make sure user wants to restart
-	_toggle()
-	get_tree().reload_current_scene()
+	#toggle()
+	##Global.restart()
+	#get_tree().reload_current_scene()
 
 
 func _on_quit_pressed():
 	# TODO: Add a confirmation pop up to make sure user wants to restart
-	_toggle()
+	toggle()
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
 
 
