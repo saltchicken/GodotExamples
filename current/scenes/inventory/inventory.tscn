@@ -4,9 +4,8 @@
 [ext_resource type="Shader" path="res://scenes/inventory/scripts/inventory_menu.gdshader" id="2_irdu4"]
 [ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_slot.gd" id="2_uu36n"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u23ib"]
-shader = ExtResource("2_irdu4")
-shader_parameter/lod = 0.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay68b"]
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
 shader = ExtResource("2_irdu4")
@@ -17,7 +16,6 @@ process_mode = 3
 script = ExtResource("1_1pt06")
 
 [node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_u23ib")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,6 +27,7 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ay68b")
 
 [node name="SystemPanel" type="Control" parent="Panel"]
 layout_mode = 3
@@ -39,17 +38,8 @@ offset_bottom = 61.0
 [node name="ColorRect" type="ColorRect" parent="Panel/SystemPanel"]
 material = SubResource("ShaderMaterial_tnhip")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -30.5
-offset_right = 1117.0
-offset_bottom = 617.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/SystemPanel"]
 layout_mode = 0
@@ -78,6 +68,7 @@ layout_mode = 2
 text = "Load Last Save"
 
 [node name="InventoryPanel" type="Panel" parent="Panel"]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 1088.0
