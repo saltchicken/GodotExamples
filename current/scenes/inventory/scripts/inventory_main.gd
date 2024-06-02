@@ -52,7 +52,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 		##_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
 		##item.add_to_group('items')
 
-func _collect_item(item):
+func collect_item(item):
 	load_item_into_inventory(item, get_first_open_slot())
 	
 
