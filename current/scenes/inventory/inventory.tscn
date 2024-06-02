@@ -1,0 +1,162 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm1wpccpepime"]
+
+[ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_main.gd" id="1_1pt06"]
+[ext_resource type="Shader" path="res://scenes/inventory/scripts/inventory_menu.gdshader" id="2_irdu4"]
+[ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_slot.gd" id="2_uu36n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u23ib"]
+shader = ExtResource("2_irdu4")
+shader_parameter/lod = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
+shader = ExtResource("2_irdu4")
+shader_parameter/lod = 0.917
+
+[node name="InventoryMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1pt06")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_u23ib")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SystemPanel" type="Control" parent="Panel"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 70.0
+offset_bottom = 61.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel/SystemPanel"]
+material = SubResource("ShaderMaterial_tnhip")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -30.5
+offset_right = 1117.0
+offset_bottom = 617.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/SystemPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 31.0
+offset_right = 1088.0
+offset_bottom = 63.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SystemPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LoadLatestSave" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load Last Save"
+
+[node name="InventoryPanel" type="Panel" parent="Panel"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 584.0
+
+[node name="Inventory" type="GridContainer" parent="Panel/InventoryPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 260.0
+columns = 12
+
+[node name="Equipment" type="Panel" parent="Panel/InventoryPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 66.0
+offset_top = 291.0
+offset_right = 352.0
+offset_bottom = 487.0
+
+[node name="HeadSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 23.0
+offset_right = 159.0
+offset_bottom = 63.0
+script = ExtResource("2_uu36n")
+
+[node name="ChestSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 77.0
+offset_right = 159.0
+offset_bottom = 117.0
+script = ExtResource("2_uu36n")
+type = 1
+
+[node name="LegsSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 133.0
+offset_right = 116.0
+offset_bottom = 173.0
+script = ExtResource("2_uu36n")
+type = 2
+
+[node name="FeetSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 132.0
+offset_right = 204.0
+offset_bottom = 172.0
+script = ExtResource("2_uu36n")
+type = 3
+
+[node name="WeaponSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 60.0
+offset_right = 103.0
+offset_bottom = 100.0
+script = ExtResource("2_uu36n")
+type = 4
+
+[node name="AccessorySlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 59.0
+offset_right = 218.0
+offset_bottom = 99.0
+script = ExtResource("2_uu36n")
+type = 5
+
+[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
+[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/HeadSlot" to="." method="_on_head_slot_change_inventory"]
+[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/ChestSlot" to="." method="_on_chest_slot_change_inventory"]
+[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/LegsSlot" to="." method="_on_legs_slot_change_inventory"]
+[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/FeetSlot" to="." method="_on_feet_slot_change_inventory"]
+[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/WeaponSlot" to="." method="_on_weapon_slot_change_inventory"]

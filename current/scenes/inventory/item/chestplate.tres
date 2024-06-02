@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cdtb0f5pms30g"]
+
+[ext_resource type="Script" path="res://scenes/inventory/scripts/item_data.gd" id="1_jbs2i"]
+[ext_resource type="Texture2D" uid="uid://cbungl3wgervk" path="res://scenes/inventory/item/assets/chestplate.png" id="2_etm2s"]
+
+[resource]
+script = ExtResource("1_jbs2i")
+type = 1
+name = "Chestplate"
+description = "A standard chestplate"
+texture = ExtResource("2_etm2s")
+attack_damage = 0
+defense = 5
