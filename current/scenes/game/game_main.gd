@@ -22,7 +22,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed('TESTTESTTEST'):
 		var dialogue = get_node('DialogueLayer')
 		dialogue.set_text(['hello'])
-		print('calling again')
 		dialogue.main()
 	if Input.is_action_just_pressed('1'):
 		print('saving game')

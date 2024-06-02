@@ -9,11 +9,10 @@ var current_line: int = 0
 @export var story_text: PackedStringArray
 @onready var timer = get_node("Panel/Timer")
 
+@onready var letter_per_second = 30.0
+
 func _ready():
 	panel.hide()
-	print(story_text)
-	#await get_tree().create_timer(1.0).timeout # waits for 1 second
-	#main()
 
 func set_text(text_array: Array):
 	story_text = text_array
@@ -21,8 +20,9 @@ func set_text(text_array: Array):
 func type():
 	get_tree().paused = true
 	if current_line < story_text.size():
-		var lines = round((story_text[current_line].length()/15.0))
-		var time_length = round((story_text[current_line].length()/10.0))
+		#var lines = round((story_text[current_line].length()/1.0))
+		#print("Lines: '%s'" %lines)
+		var time_length = round((story_text[current_line].length() / letter_per_second))
 		label.text = ""
 		label.visible_ratio = 0
 		var tween = create_tween()
@@ -31,14 +31,13 @@ func type():
 		tween.set_trans(Tween.TRANS_LINEAR)
 		tween.tween_callback(start_timer)
 		
-		panel.position.y -= lines * 2
-		panel.size.y = label.size.y + lines * 4 + 5
+		#panel.position.y -= lines * 2
+		#panel.size.y = label.size.y + lines * 4 + 5
 	else:
 		finish()
 	
 func main():
 	panel.show()
-	current_line = 0
 	type()
 		
 func start_timer():
@@ -47,6 +46,7 @@ func start_timer():
 func finish():
 	panel.hide()
 	get_tree().paused = false
+	queue_free()
 	#finished_dialogue.emit()
 	
 func _on_timer_timeout():

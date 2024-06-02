@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://e1rx8rawxhv8" path="res://scenes/menu/main_menu/main_menu_theme.tres" id="2_l026q"]
 
 [node name="main_menu" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_tljp8")
 
 [node name="Panel" type="Panel" parent="."]

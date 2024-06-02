@@ -1,5 +1,13 @@
 extends Node
 
+var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
+
+func dialogue(parent_node, text_array: Array):
+	var dialogue_instance = dialogue_node.instantiate()
+	parent_node.add_child(dialogue_instance)
+	dialogue_instance.set_text(text_array)
+	dialogue_instance.main()
+	
 func restart():
 	# TODO: This doesn't work
 	var scene_path = get_tree().current_scene.scene_file_path
@@ -63,13 +71,8 @@ func load_game():
 		if node_data.has('current_state'):
 			new_object.initial_state = new_object.get_node('StateMachine').get_node(node_data['current_state'])
 			node_data.erase('current_state')
-
-		if node_data["filename"] == "res://scenes/player/player.tscn":
-			pass
-		else:
-			get_node(node_data["parent"]).add_child(new_object)	
 		
-		
+		get_node(node_data["parent"]).add_child(new_object)	
 		new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 
 		# Now we set the remaining variables.
