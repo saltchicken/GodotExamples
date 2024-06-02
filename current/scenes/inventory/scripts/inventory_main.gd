@@ -15,11 +15,12 @@ func _ready():
 	#get_inventory()
 	#check_inventory.connect(get_inventory)
 	
-func _process(delta):
+func _process(_delta):
 	#if Input.is_action_just_pressed('inventory'):
-	if Input.is_action_just_pressed('TESTTESTTEST'):
-		get_inventory()
+	#if Input.is_action_just_pressed('TESTTESTTEST'):
+		#get_inventory()
 		#get_equipment()
+	# TODO: Move this to main function with other inputs
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		# TODO: Add pausing the game, and change process for this node to always active.
 		toggle()
@@ -28,14 +29,14 @@ func toggle():
 	self.visible = !self.visible
 	get_tree().paused = !get_tree().paused
 
-func _get_first_open_slot():
+func get_first_open_slot():
 	var slots = %Inventory.get_children()
 	for i in slots.size():
 		if slots[i].get_child_count() == 0:
 			return i
 	return -1 # TODO: Better error handling for when inventory is full
 
-func _load_item_into_inventory(path_to_item, slot_index):
+func load_item_into_inventory(path_to_item, slot_index):
 	var item := InventoryItem.new()
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
@@ -52,47 +53,51 @@ func _load_item_into_inventory(path_to_item, slot_index):
 		##item.add_to_group('items')
 
 func _collect_item(item):
-	_load_item_into_inventory(item, _get_first_open_slot())
+	load_item_into_inventory(item, get_first_open_slot())
 	
 
 		
 func get_inventory():
 	print('TODO: Implement checking inventory')
 	var slotsCheck = %Inventory.get_children()
-	for slots in slotsCheck:
-		var item = slots.get_child(0)
-		if item:
-			print(item.data.get_path())
+	for slot in slotsCheck:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				print(item.data.get_path())
 			
 func save_inventory():
 	var inventory_list = []
 	var slotsCheck = %Inventory.get_children()
-	for slots in slotsCheck:
-		var item = slots.get_child(0)
-		if item:
-			inventory_list.append(item.data.get_path())
+	for slot in slotsCheck:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				inventory_list.append(item.data.get_path())
 	return inventory_list
 	
 func save_equipment():
 	var equipment_list = []
 	var slotsCheck = %Equipment.get_children()
-	for slots in slotsCheck:
-		var item = slots.get_child(0)
-		if item:
-			equipment_list.append(item.data.get_path())
+	for slot in slotsCheck:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				equipment_list.append(item.data.get_path())
 	return equipment_list
 			
 			
 func get_equipment():
 	var slotsCheck = %Equipment.get_children()
-	for slots in slotsCheck:
-		var item = slots.get_child(0)
-		if item:
-			item.data.apply_upgrade(player)
-			#print(item.data.name)
+	for slot in slotsCheck:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				item.data.apply_upgrade(player)
+				#print(item.data.name)
 	print('Applied equipment modifiers')
 			
-func _is_in_inventory(): # TODO: Implement 
+func is_in_inventory(): # TODO: Implement 
 	pass
 
 

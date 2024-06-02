@@ -7,7 +7,7 @@ func restart():
 	get_tree().change_scene_to_file(scene_path)
 	
 func save_game():
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		if node.scene_file_path.is_empty():
@@ -22,7 +22,7 @@ func save_game():
 		
 		var json_string = JSON.stringify(node_data)
 		
-		save_game.store_line(json_string)
+		save_game_file.store_line(json_string)
 		
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -40,9 +40,9 @@ func load_game():
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_game_file.get_position() < save_game_file.get_length():
+		var json_string = save_game_file.get_line()
 		var json = JSON.new()
 
 		var parse_result = json.parse(json_string)
