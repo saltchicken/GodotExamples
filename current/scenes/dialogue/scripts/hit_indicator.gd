@@ -3,7 +3,7 @@ extends Panel
 @onready var label = get_node("RichTextLabel")
 @onready var text: String
 @onready var timer = get_node("Timer")
-@onready var y_offset = 10.0
+@onready var y_offset = 0.0
 @onready var x_offset = 0.0
 
 #@onready var letter_per_second = 30.0
