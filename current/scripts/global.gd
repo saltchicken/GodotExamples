@@ -1,12 +1,21 @@
 extends Node
 
 var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
+var hit_indicator_node = preload("res://scenes/dialogue/hit_indicator.tscn")
 
 func dialogue(parent_node, text_array: Array):
 	var dialogue_instance = dialogue_node.instantiate()
 	parent_node.add_child(dialogue_instance)
 	dialogue_instance.set_text(text_array)
 	dialogue_instance.main()
+	
+func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offset: float = 10.0):
+	var hit_indicator_instance = hit_indicator_node.instantiate()
+	parent_node.add_child(hit_indicator_instance)
+	hit_indicator_instance.set_text(text_info)
+	hit_indicator_instance.x_offset = x_offset
+	hit_indicator_instance.y_offset = y_offset
+	hit_indicator_instance.main()
 	
 func restart():
 	# TODO: This doesn't work

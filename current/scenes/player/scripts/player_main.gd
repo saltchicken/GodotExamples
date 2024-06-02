@@ -54,6 +54,7 @@ func handle_use_hitbox_direction():
 	use_hitbox.position = direction * stats.use_reach
 	
 func get_hit(damage, direction_to_player):
+	Global.hit_indicator(self, str(damage), 3.0, 20.0)
 	direction_from_enemy = direction_to_player
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		stats.health -= damage

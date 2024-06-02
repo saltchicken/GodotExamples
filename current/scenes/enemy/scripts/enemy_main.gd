@@ -22,7 +22,8 @@ func _physics_process(delta):
 	move_and_collide(self.velocity * delta)
 
 func get_hit(damage):
-	print('Enemy took ' + str(damage) + ' damage')
+	#print('Enemy took ' + str(damage) + ' damage')
+	Global.hit_indicator(self, str(damage))
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		stats.health -= damage
 		if stats.health <= 0:
