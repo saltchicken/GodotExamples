@@ -14,11 +14,14 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var movement
 @onready var run
 @onready var attack
+@onready var cast
 @onready var use
 
 @export var stats: PlayerStats
 
 @onready var direction_from_enemy: Vector2 # TODO: This shouldn't be stored here
+
+@onready var current_spell = preload("res://scenes/spell/tornado/tornado.tscn")
 
 func _ready():
 	add_to_group('Players')
@@ -36,6 +39,7 @@ func get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
 	run = Input.is_action_pressed('run')
 	attack = Input.is_action_just_pressed('attack')
+	cast = Input.is_action_just_pressed('cast')
 	use = Input.is_action_just_pressed('use')
 	
 func get_direction():
@@ -54,15 +58,14 @@ func handle_use_hitbox_direction():
 	use_hitbox.position = direction * stats.use_reach
 	
 func get_hit(damage, direction_to_player):
-	Global.hit_indicator(self, str(damage), 3.0, 20.0)
 	direction_from_enemy = direction_to_player
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		stats.health -= damage
 		if stats.health <= 0:
 			stats.health = 0
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
 		else:
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})
 	
 func use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()

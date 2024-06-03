@@ -22,7 +22,7 @@ func  _physics_process(delta): # TODO: Should this be _physics or just _process
 	if current_state:
 		current_state.Update(delta)
 	
-func change_state(source_state : State, new_state_name : String):
+func change_state(source_state : State, new_state_name : String, params : Dictionary = {}):
 	if source_state != current_state:
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
 		#This typically only happens when trying to switch from death state following a force_change
@@ -37,5 +37,8 @@ func change_state(source_state : State, new_state_name : String):
 		current_state.Exit()
 		
 	#print('Entering ' + new_state_name) # For debugging state changes
-	new_state.Enter()
+	if params.size() > 0:
+		new_state.Enter(params)
+	else:
+		new_state.Enter()
 	current_state = new_state

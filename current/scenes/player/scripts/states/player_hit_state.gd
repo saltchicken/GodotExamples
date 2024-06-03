@@ -3,8 +3,10 @@ extends State
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
 
-func Enter():
-	print('Player has been hit. Health remaining: ' + str(character_body.stats.health)) # TODO: Implement way of monitoring health
+func Enter(params: Dictionary = {}):
+	#print('Player has been hit. Health remaining: ' + str(character_body.stats.health)) # TODO: Implement way of monitoring health
+	if params.has('damage'):
+		Global.hit_indicator(self, str(params['damage']), 3.0, 20.0)
 	animation_tree.get("parameters/playback").start('hit')
 	#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 	character_body.velocity = character_body.direction_from_enemy * (200.0 / character_body.stats.knockback_protection)

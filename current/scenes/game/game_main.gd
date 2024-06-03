@@ -3,6 +3,8 @@ extends Node
 var chest = preload("res://scenes/objects/chest/chest.tscn")
 var bow = preload("res://scenes/inventory/item/bow.tres")
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	# TODO: Put this in a better place
 	# Fix for ugly cursors in inventory
@@ -18,7 +20,9 @@ func _ready():
 	
 # TODO: These are just for testing remove both '1' and '2'
 func _process(_delta):
-	
+	if Input.is_action_just_pressed("rightclick"):
+		var enemy_position = Vector2(100.0, 100.0) 
+		Global.spawn_enemy(enemy_position)
 	if Input.is_action_just_pressed('TESTTESTTEST'):
 		var dialogue = get_node('DialogueLayer')
 		dialogue.set_text(['hello'])

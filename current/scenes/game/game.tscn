@@ -27,7 +27,6 @@ position = Vector2(194, 28)
 [node name="Chests" type="Node" parent="."]
 
 [node name="Chest_chestplate" parent="Chests" instance=ExtResource("3_pck36")]
-z_as_relative = false
 position = Vector2(-65, 20)
 item = ExtResource("5_jf6n8")
 

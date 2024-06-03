@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://ey4v4kmiwnnd"]
+
+[ext_resource type="Script" path="res://scenes/spell/tornado/scripts/tornado_main.gd" id="1_oe345"]
+[ext_resource type="Texture2D" uid="uid://cpmonl2kpb7x3" path="res://scenes/spell/tornado/assets/whirlwind.png" id="1_v5mfm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o15r5"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_fmxtr"]
+resource_name = "cast"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jnuek"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tgunx"]
+_data = {
+"RESET": SubResource("Animation_jnuek"),
+"cast": SubResource("Animation_fmxtr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wb3h6"]
+animation = &"cast"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7w7jd"]
+states/cast/node = SubResource("AnimationNodeAnimation_wb3h6")
+states/cast/position = Vector2(365, 100)
+
+[node name="Tornado" type="Area2D"]
+script = ExtResource("1_oe345")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v5mfm")
+hframes = 4
+
+[node name="AttackArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o15r5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tgunx")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_7w7jd")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

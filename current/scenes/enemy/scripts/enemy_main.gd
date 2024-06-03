@@ -23,13 +23,13 @@ func _physics_process(delta):
 
 func get_hit(damage):
 	#print('Enemy took ' + str(damage) + ' damage')
-	Global.hit_indicator(self, str(damage), 0.0, 5.0)
+	#Global.hit_indicator(self, str(damage), 0.0, 5.0)
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		stats.health -= damage
 		if stats.health <= 0:
 			stats.health = 0
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
 		else:
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})
 			
 

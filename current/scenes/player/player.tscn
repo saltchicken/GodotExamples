@@ -704,7 +704,7 @@ stats = ExtResource("2_j8050")
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -22)
+position = Vector2(0, -22)
 texture = ExtResource("2_vjjc5")
 hframes = 13
 vframes = 46
