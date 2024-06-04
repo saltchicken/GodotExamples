@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
 [ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="2_wylly"]
-[ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
+[ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest2.tscn" id="8_g8uvn"]
 
 [node name="game" type="Node2D"]
 z_index = -1
@@ -18,4 +18,3 @@ z_as_relative = false
 position = Vector2(194, 28)
 
 [node name="Chest" parent="." instance=ExtResource("8_g8uvn")]
-position = Vector2(-205, -53)

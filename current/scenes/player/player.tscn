@@ -695,10 +695,14 @@ radius = 17.0
 radius = 13.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_u0ca5")
 initial_state = NodePath("StateMachine/idle")
 stats = ExtResource("2_j8050")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="InventoryMenu" parent="." instance=ExtResource("2_3uprd")]
 visible = false

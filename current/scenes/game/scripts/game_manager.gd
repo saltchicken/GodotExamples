@@ -5,8 +5,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-const SPAWN_MIN = -500
-const SPAWN_MAX = 500
+const SPAWN_MIN = -100
+const SPAWN_MAX = 100
 
 const PLAYER_SPAWN_POSITION = Vector2(0, 0)
 
