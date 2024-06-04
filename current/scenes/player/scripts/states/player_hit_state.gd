@@ -9,7 +9,7 @@ func Enter(params: Dictionary = {}):
 		Global.hit_indicator(self, str(params['damage']), 3.0, 20.0)
 	animation_tree.get("parameters/playback").start('hit')
 	#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
-	character_body.velocity = character_body.direction_from_enemy * (200.0 / character_body.stats.knockback_protection)
+	character_body.velocity = character_body.direction_from_enemy * (200.0 / character_body.knockback_protection)
 	
 func Exit():
 	pass

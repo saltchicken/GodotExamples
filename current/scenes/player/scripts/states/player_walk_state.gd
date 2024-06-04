@@ -21,8 +21,8 @@ func Update(_delta:float):
 		if character_body.run:
 			state_transition.emit(self, 'run')
 		else:
-			character_body.velocity.x = character_body.movement.x * character_body.stats.walk_speed
-			character_body.velocity.y = character_body.movement.y * character_body.stats.walk_speed
+			character_body.velocity.x = character_body.movement.x * character_body.walk_speed
+			character_body.velocity.y = character_body.movement.y * character_body.walk_speed
 	else:
 		state_transition.emit(self, 'idle')
 	if character_body.use:

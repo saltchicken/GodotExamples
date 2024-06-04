@@ -13,6 +13,14 @@ class_name Enemy
 
 @export var stats: EnemyStats
 
+@onready var attack_reach = stats.attack_reach
+@onready var attack_damage = stats.attack_damage
+@onready var defense = stats.defense
+@onready var health = stats.health
+@onready var chase_distance = stats.chase_distance
+@onready var chase_speed = stats.chase_speed
+@onready var knockback_protection = stats.knockback_protection
+
 func _ready():
 	add_to_group('Enemies')
 
@@ -25,9 +33,9 @@ func get_hit(damage):
 	#print('Enemy took ' + str(damage) + ' damage')
 	#Global.hit_indicator(self, str(damage), 0.0, 5.0)
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		stats.health -= damage
-		if stats.health <= 0:
-			stats.health = 0
+		health -= damage
+		if health <= 0:
+			health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})

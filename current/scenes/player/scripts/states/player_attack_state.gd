@@ -28,20 +28,20 @@ func Update(_delta:float):
 	if bodies:
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body.get_hit(character_body.stats.attack_damage)
+				body.get_hit(character_body.attack_damage)
 		
 func handle_attack_hitbox_direction():
 	if character_body.direction == Vector2(0, 1):
 		attack_hitbox.position.x = 0
-		attack_hitbox.position.y = character_body.stats.attack_reach
+		attack_hitbox.position.y = character_body.attack_reach
 	elif character_body.direction == Vector2(0, -1):
 		attack_hitbox.position.x = 0
-		attack_hitbox.position.y = -character_body.stats.attack_reach
+		attack_hitbox.position.y = -character_body.attack_reach
 	elif character_body.direction == Vector2(-1, 0):
-		attack_hitbox.position.x = -character_body.stats.attack_reach
+		attack_hitbox.position.x = -character_body.attack_reach
 		attack_hitbox.position.y = 0
 	elif character_body.direction == Vector2(1, 0):
-		attack_hitbox.position.x = character_body.stats.attack_reach
+		attack_hitbox.position.x = character_body.attack_reach
 		attack_hitbox.position.y = 0
 
 func _on_animation_tree_animation_finished(anim_name):

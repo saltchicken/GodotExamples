@@ -2,9 +2,7 @@ class_name PlayerStats
 extends Resource
 
 @export var base_attack_damage: int
-var attack_damage: int = base_attack_damage
 @export var base_defense: int
-var defense: int = base_defense
 
 @export var use_reach: int
 @export var attack_reach: int

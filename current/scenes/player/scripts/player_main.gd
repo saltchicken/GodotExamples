@@ -19,6 +19,22 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @export var stats: PlayerStats
 
+@onready var base_attack_damage = stats.base_attack_damage
+@onready var attack_damage = stats.base_attack_damage
+@onready var base_defense = stats.base_defense
+@onready var defense = stats.base_defense
+
+@onready var use_reach = stats.use_reach
+@onready var attack_reach = stats.attack_reach
+@onready var health = stats.health
+
+@onready var walk_speed = stats.walk_speed
+@onready var run_speed = stats.run_speed
+
+@onready var knockback_protection = stats.knockback_protection
+
+
+
 @onready var direction_from_enemy: Vector2 # TODO: This shouldn't be stored here
 
 @onready var current_spell = preload("res://scenes/spell/tornado/tornado.tscn")
@@ -26,10 +42,6 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
-	
-	# TODO: This should be somewhere else
-	stats.attack_damage = stats.base_attack_damage
-	stats.defense = stats.base_defense
 
 func _physics_process(delta):
 	get_input()
@@ -55,14 +67,14 @@ func get_direction():
 			direction = movement
 			
 func handle_use_hitbox_direction():
-	use_hitbox.position = direction * stats.use_reach
+	use_hitbox.position = direction * use_reach
 	
 func get_hit(damage, direction_to_player):
 	direction_from_enemy = direction_to_player
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		stats.health -= damage
-		if stats.health <= 0:
-			stats.health = 0
+		health -= damage
+		if health <= 0:
+			health = 0
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
 		else:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})
