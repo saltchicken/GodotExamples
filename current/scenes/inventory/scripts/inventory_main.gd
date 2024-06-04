@@ -100,11 +100,8 @@ func get_equipment():
 func is_in_inventory(): # TODO: Implement 
 	pass
 
-
-
 func _on_resume_pressed():
 	toggle()
-
 
 func _on_restart_pressed():
 	print('This is not implemented')
@@ -112,18 +109,15 @@ func _on_restart_pressed():
 	#toggle()
 	##Global.restart()
 	#get_tree().reload_current_scene()
-
-
+	
 func _on_quit_pressed():
 	# TODO: Add a confirmation pop up to make sure user wants to restart
 	toggle()
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
 
-
 func _on_head_slot_change_inventory():
 	print('Inventory head_slot changed')
 	get_equipment()
-
 
 func _on_weapon_slot_change_inventory():
 	print('Inventory weapon_slot changed')

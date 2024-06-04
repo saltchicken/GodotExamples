@@ -18,10 +18,19 @@ func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offs
 	hit_indicator_instance.y_offset = y_offset
 	hit_indicator_instance.main()
 	
-func spawn_enemy(position):
+func spawn_enemy(parent_node, position):
 	var slime_instance = slime_node.instantiate()
 	slime_instance.position = position
-	add_child(slime_instance)
+	parent_node.add_child(slime_instance)
+	
+func check_if_space_occupied(parent_node, position: Vector2):
+	pass
+	#var sensor = sensor_node.instantiate()
+	#sensor.position = position
+	#parent_node.add_child(sensor)
+	#if sensor.check_for_bodies():
+		#print('found')
+	
 	
 func restart():
 	# TODO: This doesn't work
