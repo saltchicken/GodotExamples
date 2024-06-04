@@ -20,7 +20,8 @@ func Update(_delta:float):
 		#state_transtion.emit(self, 'cast') # TODO: Create a cast state
 		var current_spell = character_body.current_spell.instantiate()
 		current_spell.position = character_body.position
-		game_scene.add_child(current_spell)
+		get_tree().current_scene.add_child(current_spell)
+		#game_scene.add_child(current_spell)
 	if character_body.attack:
 		state_transition.emit(self, 'attack')
 	if character_body.movement:

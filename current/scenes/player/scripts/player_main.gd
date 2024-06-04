@@ -37,6 +37,8 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @onready var current_spell = preload("res://scenes/spell/tornado/tornado.tscn")
 
+@onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
+
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')

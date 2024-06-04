@@ -22,6 +22,8 @@ class_name Enemy
 @onready var chase_speed = stats.chase_speed
 @onready var knockback_protection = stats.knockback_protection
 
+@onready var hit_indicator_offset: Vector2 = stats.hit_indicator_offset
+
 func _ready():
 	add_to_group('Enemies')
 

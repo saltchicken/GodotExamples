@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1380c8ofppab"]
+
+[ext_resource type="Script" path="res://scenes/game/scripts/game_manager.gd" id="1_t78s6"]
+[ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="2_l8brt"]
+[ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="3_3sx6w"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_t78s6")
+Player = ExtResource("2_l8brt")
+Enemy = ExtResource("3_3sx6w")

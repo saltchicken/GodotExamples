@@ -10,3 +10,5 @@ extends Resource
 @export var chase_distance: int
 @export var chase_speed: int
 @export var knockback_protection: float
+
+@export var hit_indicator_offset: Vector2

@@ -5,18 +5,13 @@ extends State
 
 func Enter(params: Dictionary = {}):
 	if params.has('attacking_body'):
-		var attacking_body = params['attacking_body']
-		var damage = attacking_body.attack_damage
-		var knockback = attacking_body.attack_knockback
-		Global.hit_indicator(self, str(damage), 0.0, 5.0)
-		character_body.health -= damage
-		if character_body.health <= 0:
-			character_body.health = 0
+		if take_damage_check_death(character_body, params['attacking_body']):
 			state_transition.emit(character_body.state_machine.current_state, 'death')
 			return
 		else:
 			animation_tree.get("parameters/playback").start('hit')
 			#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
+			var knockback = params['attacking_body'].attack_knockback
 			character_body.velocity = -character_body.direction_to_player * (knockback / character_body.knockback_protection)
 	else:
 		print("Hit shouldn't be called without an attacking body")
