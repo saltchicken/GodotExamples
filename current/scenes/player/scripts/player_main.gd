@@ -21,8 +21,12 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @onready var base_attack_damage = stats.base_attack_damage
 @onready var attack_damage = stats.base_attack_damage
+@onready var base_attack_knockback = stats.base_attack_knockback
+@onready var attack_knockback = stats.base_attack_knockback
 @onready var base_defense = stats.base_defense
 @onready var defense = stats.base_defense
+@onready var base_knockback_protection = stats.base_knockback_protection
+@onready var knockback_protection = stats.base_knockback_protection
 
 @onready var use_reach = stats.use_reach
 @onready var attack_reach = stats.attack_reach
@@ -30,8 +34,6 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @onready var walk_speed = stats.walk_speed
 @onready var run_speed = stats.run_speed
-
-@onready var knockback_protection = stats.knockback_protection
 
 @onready var current_spell = preload("res://scenes/spell/tornado/tornado.tscn")
 

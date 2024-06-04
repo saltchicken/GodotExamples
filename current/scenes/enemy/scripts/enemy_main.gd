@@ -15,6 +15,7 @@ class_name Enemy
 
 @onready var attack_reach = stats.attack_reach
 @onready var attack_damage = stats.attack_damage
+@onready var attack_knockback = stats.attack_knockback
 @onready var defense = stats.defense
 @onready var health = stats.health
 @onready var chase_distance = stats.chase_distance
@@ -32,4 +33,3 @@ func _physics_process(delta):
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
-			

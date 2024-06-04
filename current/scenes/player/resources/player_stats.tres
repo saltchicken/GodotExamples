@@ -6,9 +6,10 @@
 script = ExtResource("1_384dr")
 base_attack_damage = 10
 base_defense = 5
+base_attack_knockback = 300.0
+base_knockback_protection = 1.0
 use_reach = 10
 attack_reach = 15
 health = 120
 walk_speed = 50.0
 run_speed = 100.0
-knockback_protection = 1.0

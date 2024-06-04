@@ -23,15 +23,15 @@ func _process(_delta):
 	if Input.is_action_just_pressed("rightclick"):
 		var enemy_position = Vector2(100.0, 100.0) 
 		Global.spawn_enemy(enemy_position)
-	if Input.is_action_just_pressed('TESTTESTTEST'):
-		var dialogue = get_node('DialogueLayer')
-		dialogue.set_text(['hello'])
-		dialogue.main()
-	if Input.is_action_just_pressed('1'):
-		print('saving game')
-		Global.save_game()
-	
-	if Input.is_action_just_pressed('2'):
-		print('loading game')
-		Global.load_game()
+	#if Input.is_action_just_pressed('TESTTESTTEST'):
+		#var dialogue = get_node('DialogueLayer')
+		#dialogue.set_text(['hello'])
+		#dialogue.main()
+	#if Input.is_action_just_pressed('1'):
+		#print('saving game')
+		#Global.save_game()
+	#
+	#if Input.is_action_just_pressed('2'):
+		#print('loading game')
+		#Global.load_game()
 	

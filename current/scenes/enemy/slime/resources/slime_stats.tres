@@ -6,8 +6,9 @@
 script = ExtResource("1_16qbf")
 attack_reach = 1
 attack_damage = 45
+attack_knockback = 200.0
 defense = 0
 health = 45
 chase_distance = 100
 chase_speed = 25
-knockback_protection = 10.0
+knockback_protection = 2.0
