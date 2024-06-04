@@ -4,11 +4,19 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter(params: Dictionary = {}):
-	if params.has('damage'):
-		Global.hit_indicator(self, str(params['damage']), 0.0, 5.0)
-	animation_tree.get("parameters/playback").start('hit')
-	animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
-	character_body.velocity = -character_body.direction_to_player * (100.0 / character_body.knockback_protection)
+	if params.has('attacking_body'):
+		var attacking_body = params['attacking_body']
+		var damage = attacking_body.attack_damage
+		Global.hit_indicator(self, str(damage), 0.0, 5.0)
+		character_body.health -= damage
+		if character_body.health <= 0:
+			character_body.health = 0
+			state_transition.emit(character_body.state_machine.current_state, 'death')
+			return
+		else:
+			animation_tree.get("parameters/playback").start('hit')
+			#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
+			character_body.velocity = -character_body.direction_to_player * (100.0 / character_body.knockback_protection)
 	
 func Exit():
 	pass

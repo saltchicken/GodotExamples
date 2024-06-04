@@ -11,5 +11,5 @@ enum Type {HEAD, CHEST, LEGS, FEET, WEAPON, ACCESSORY, MAIN}
 @export var defense: int
 
 func apply_upgrade(body: CharacterBody2D):
-	body.stats.attack_damage = body.stats.base_attack_damage + attack_damage
-	body.stats.defense = body.stats.base_defense + defense
+	body.attack_damage = body.base_attack_damage + attack_damage
+	body.defense = body.base_defense + defense

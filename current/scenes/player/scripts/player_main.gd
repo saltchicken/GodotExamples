@@ -33,10 +33,6 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @onready var knockback_protection = stats.knockback_protection
 
-
-
-@onready var direction_from_enemy: Vector2 # TODO: This shouldn't be stored here
-
 @onready var current_spell = preload("res://scenes/spell/tornado/tornado.tscn")
 
 func _ready():
@@ -69,15 +65,9 @@ func get_direction():
 func handle_use_hitbox_direction():
 	use_hitbox.position = direction * use_reach
 	
-func get_hit(damage, direction_to_player):
-	direction_from_enemy = direction_to_player
+func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		health -= damage
-		if health <= 0:
-			health = 0
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
-		else:
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})
+		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
 	
 func use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()

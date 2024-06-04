@@ -17,7 +17,7 @@ func Update(_delta:float):
 	if bodies:
 		for body in bodies:
 			if body.get_script() == Player: 
-				body.get_hit(character_body.stats.attack_damage, character_body.direction_to_player) 
+				body.get_hit(character_body) 
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == 'attack':

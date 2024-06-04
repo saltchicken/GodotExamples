@@ -6,7 +6,7 @@ extends Area2D
 
 @onready var cast_direction
 @onready var cast_speed = 50.0
-@onready var cast_damage = 10.0
+@onready var attack_damage = 10.0
 
 func _ready():
 	animation_tree.get("parameters/playback").start('cast')
@@ -21,7 +21,7 @@ func _process(delta):
 	if bodies:
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body.get_hit(cast_damage)
+				body.get_hit(self)
 
 
 func _on_timer_timeout():

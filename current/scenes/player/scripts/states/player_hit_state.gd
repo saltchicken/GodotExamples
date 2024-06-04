@@ -5,11 +5,20 @@ extends State
 
 func Enter(params: Dictionary = {}):
 	#print('Player has been hit. Health remaining: ' + str(character_body.stats.health)) # TODO: Implement way of monitoring health
-	if params.has('damage'):
-		Global.hit_indicator(self, str(params['damage']), 3.0, 20.0)
-	animation_tree.get("parameters/playback").start('hit')
-	#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
-	character_body.velocity = character_body.direction_from_enemy * (200.0 / character_body.knockback_protection)
+	if params.has('attacking_body'):
+		var attacking_body = params['attacking_body']
+		var damage = attacking_body.attack_damage
+		Global.hit_indicator(self, str(damage), 3.0, 20.0)
+		character_body.health -= damage
+		if character_body.health <= 0:
+			character_body.health = 0
+			state_transition.emit(character_body.state_machine.current_state, 'death')
+			return
+		else:
+			animation_tree.get("parameters/playback").start('hit')
+			#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
+			var direction_from_enemy = attacking_body.direction_to_player
+			character_body.velocity = direction_from_enemy * (200.0 / character_body.knockback_protection)
 	
 func Exit():
 	pass

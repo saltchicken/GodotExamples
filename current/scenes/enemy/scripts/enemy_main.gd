@@ -29,15 +29,7 @@ func _physics_process(delta):
 	direction_to_player = self.global_position.direction_to(player.global_position)
 	move_and_collide(self.velocity * delta)
 
-func get_hit(damage):
-	#print('Enemy took ' + str(damage) + ' damage')
-	#Global.hit_indicator(self, str(damage), 0.0, 5.0)
+func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
-		health -= damage
-		if health <= 0:
-			health = 0
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death', {'damage': damage})
-		else:
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'damage': damage})
+		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
 			
-
