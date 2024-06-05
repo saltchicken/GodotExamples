@@ -9,7 +9,7 @@ var rng = RandomNumberGenerator.new()
 
 @onready var camera = player.get_node('Camera2D')
 @onready var timer = get_node('Timer')
-@onready var spawner_node = preload("res://scenes/util/spawner/spawner.tscn")
+#@onready var spawner_node = preload("res://scenes/util/spawner/spawner.tscn")
 
 #const SPAWN_MIN = -100
 #const SPAWN_MAX = 100
@@ -62,7 +62,6 @@ func _process(_delta):
 func _on_timer_timeout():
 	var player_position = camera.get_screen_center_position()
 	var new_enemy = Enemy.instantiate()
-	get_tree().current_scene.add_child(new_enemy)
 	var position_x = rng.randi_range(50, 200)
 	var position_y = rng.randi_range(50, 200)
 	var rand_flip_x = rng.randi_range(0, 1) * 2 - 1
@@ -72,3 +71,6 @@ func _on_timer_timeout():
 	position_x += player_position.x
 	position_y += player_position.y
 	new_enemy.position = Vector2(position_x, position_y)
+	get_tree().current_scene.add_child(new_enemy)
+	
+	
