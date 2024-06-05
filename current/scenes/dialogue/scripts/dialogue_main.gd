@@ -11,11 +11,34 @@ var current_line: int = 0
 
 @onready var letter_per_second = 30.0
 
+@onready var line_complete: bool = false
+@onready var tween
+
 func _ready():
 	panel.hide()
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("use"):
+		if !line_complete:
+			tween.kill()
+			label.visible_ratio = 1
+			line_complete = true
+		else:
+			current_line += 1
+			line_complete = false
+			type()
+		
+		#current_line += 1
+		#timer.stop()
+		#type()
+		#start_timer()
+		#finish()
 
 func set_text(text_array: Array):
 	story_text = text_array
+	
+func set_complete_line():
+	line_complete = true
 
 func type():
 	get_tree().paused = true
@@ -25,11 +48,12 @@ func type():
 		var time_length = round((story_text[current_line].length() / letter_per_second))
 		label.text = ""
 		label.visible_ratio = 0
-		var tween = create_tween()
+		tween = create_tween()
 		label.text = "[center]" + story_text[current_line] + "[/center]" 
 		tween.tween_property(label, "visible_ratio", 1, time_length)
 		tween.set_trans(Tween.TRANS_LINEAR)
-		tween.tween_callback(start_timer)
+		tween.tween_callback(set_complete_line)
+		#tween.tween_callback(start_timer)
 		
 		#panel.position.y -= lines * 2
 		#panel.size.y = label.size.y + lines * 4 + 5
@@ -40,8 +64,8 @@ func main():
 	panel.show()
 	type()
 		
-func start_timer():
-	timer.start()
+#func start_timer():
+	#timer.start()
 	
 func finish():
 	panel.hide()
@@ -49,7 +73,7 @@ func finish():
 	queue_free()
 	#finished_dialogue.emit()
 	
-func _on_timer_timeout():
-	current_line += 1
-	timer.stop()
-	type()
+#func _on_timer_timeout():
+	#current_line += 1
+	#timer.stop()
+	#type()
