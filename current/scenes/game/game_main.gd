@@ -55,11 +55,11 @@ func _process(_delta):
 func set_tile_at_mouse_position(atlas_coords, source_id: int = 0):
 	var mouse_pos = tile_map_layer.get_global_mouse_position()
 	var tile_map_coords = tile_map_layer.local_to_map(mouse_pos)
-	tile_map_layer.set_cell(tile_map_coords, 0, atlas_coords, 0)
+	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, 0)
 	
 func set_tile_player_facing(atlas_coords, source_id: int = 0):
 	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
 	tile_map_coords += Vector2i(player.direction)
-	tile_map_layer.set_cell(tile_map_coords, 0, atlas_coords, 0)
+	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, 0)
 	
 	
