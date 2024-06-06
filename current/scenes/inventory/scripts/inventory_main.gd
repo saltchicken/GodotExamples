@@ -1,15 +1,36 @@
 extends CanvasLayer
 
 @onready var player = get_parent()
+@onready var style_box = preload('res://scenes/inventory/themes/item_slot.tres')
+@onready var selected_style_box = preload('res://scenes/inventory/themes/highlighted_item_slot.tres')
 
 var InvSize = 24
+@onready var item_slot_reference: Array = []
+@onready var selected_slot: int = 0: set = _set_selected_slot
+
+func _set_selected_slot(new_value):
+	var previous_slot = selected_slot
+	if new_value < 0:
+		selected_slot = 0
+	elif new_value >= InvSize:
+		selected_slot = InvSize - 1
+	else:
+		selected_slot = new_value
+	select_new_slot(previous_slot, selected_slot)
+		
+func select_new_slot(previous_slot, new_slot):
+	item_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
+	item_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 func _ready():
 	self.visible = false
 	for i in InvSize:
 		var slot := InventorySlot.new()
 		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
+		slot.add_theme_stylebox_override('panel', style_box)
+		item_slot_reference.append(slot)
 		%Inventory.add_child(slot)
+	print(item_slot_reference)
 		
 	#_load_items_from_file()
 	#get_inventory()
@@ -23,9 +44,23 @@ func _process(_delta):
 	# TODO: Move this to main function with other inputs
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		toggle_inventory()
+	if self.visible:
+		if Input.is_action_just_pressed('left'):
+			selected_slot -= 1
+			print(selected_slot)
+		if Input.is_action_just_pressed('right'):
+			selected_slot += 1
+			print(selected_slot)
+		if Input.is_action_just_pressed('up'):
+			selected_slot -= InvSize / 2
+			print(selected_slot)
+		if Input.is_action_just_pressed('down'):
+			selected_slot += InvSize / 2
+			print(selected_slot)
 		
 func toggle_inventory():
 	self.visible = !self.visible
+	item_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = !get_tree().paused
 
 func get_first_open_slot():

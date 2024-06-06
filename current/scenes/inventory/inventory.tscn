@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm1wpccpepime"]
+[gd_scene load_steps=7 format=3 uid="uid://cm1wpccpepime"]
 
 [ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_main.gd" id="1_1pt06"]
 [ext_resource type="Shader" path="res://scenes/inventory/scripts/inventory_menu.gdshader" id="2_irdu4"]
 [ext_resource type="Script" path="res://scenes/inventory/scripts/inventory_slot.gd" id="2_uu36n"]
+[ext_resource type="StyleBox" uid="uid://vuano8fvn3vo" path="res://scenes/inventory/themes/item_slot.tres" id="3_e77kw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay68b"]
 bg_color = Color(0, 0, 0, 0)
@@ -95,6 +96,7 @@ offset_left = 119.0
 offset_top = 23.0
 offset_right = 159.0
 offset_bottom = 63.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 
 [node name="ChestSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
@@ -103,6 +105,7 @@ offset_left = 119.0
 offset_top = 77.0
 offset_right = 159.0
 offset_bottom = 117.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 1
 
@@ -112,6 +115,7 @@ offset_left = 76.0
 offset_top = 133.0
 offset_right = 116.0
 offset_bottom = 173.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 2
 
@@ -121,6 +125,7 @@ offset_left = 164.0
 offset_top = 132.0
 offset_right = 204.0
 offset_bottom = 172.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 3
 
@@ -130,6 +135,7 @@ offset_left = 63.0
 offset_top = 60.0
 offset_right = 103.0
 offset_bottom = 100.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 4
 
@@ -139,6 +145,7 @@ offset_left = 178.0
 offset_top = 59.0
 offset_right = 218.0
 offset_bottom = 99.0
+theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 5
 
