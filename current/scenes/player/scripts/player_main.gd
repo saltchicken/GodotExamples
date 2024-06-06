@@ -9,9 +9,12 @@ class_name Player
 
 @export var initial_state : State
 
+var JOYSTICK_DEADZONE: float = 0.2
+
 var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var direction = DEFAULT_DIRECTION		
 @onready var movement
+@onready var joystick_movement
 @onready var run
 @onready var attack
 @onready var cast
@@ -34,22 +37,54 @@ func _physics_process(delta):
 
 func get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
+	joystick_movement = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
 	run = Input.is_action_pressed('run')
 	attack = Input.is_action_just_pressed('attack')
 	cast = Input.is_action_just_pressed('cast')
 	use = Input.is_action_just_pressed('use')
 	
 func get_direction():
-	# TODO: Handle input from a joystick so that it conforms to (1, 0)
-	if movement:
-		if movement.x < 0 and movement.y == 0:
-			direction = movement
-		elif movement.x > 0 and movement.y == 0:
-			direction = movement
-		elif movement.y < 0 and movement.x == 0:
-			direction = movement
-		elif movement.y > 0 and movement.x == 0:
-			direction = movement
+	if !handle_joystick_movement():
+		if movement:
+			if movement.x < 0 and movement.y == 0:
+				direction = movement
+			elif movement.x > 0 and movement.y == 0:
+				direction = movement
+			elif movement.y < 0 and movement.x == 0:
+				direction = movement
+			elif movement.y > 0 and movement.x == 0:
+				direction = movement
+			
+func handle_joystick_movement():
+	# TODO: There should be a more elegant way to calculate direction from joystick
+	if joystick_movement:
+		var magnitude_joystick_movement = abs(joystick_movement)
+		if magnitude_joystick_movement.x > magnitude_joystick_movement.y:
+			if joystick_movement.x > 0:
+				direction = Vector2(1, 0)
+			else:
+				direction = Vector2(-1, 0)
+		else:
+			if joystick_movement.y > 0:
+				direction = Vector2(0, 1)
+			else:
+				direction = Vector2(0, -1)
+		if joystick_movement.x > JOYSTICK_DEADZONE:
+			movement.x = 1
+		elif joystick_movement.x < -JOYSTICK_DEADZONE:
+			movement.x = -1
+		else:
+			movement.x = 0
+		if joystick_movement.y > JOYSTICK_DEADZONE:
+			movement.y = 1
+		elif joystick_movement.y < -JOYSTICK_DEADZONE:
+			movement.y = -1
+		else:
+			movement.y = 0
+		return true
+	return false
+		#movement = round(joystick_movement)
+	
 			
 func handle_use_hitbox_direction():
 	use_hitbox.position = direction * stats.use_reach

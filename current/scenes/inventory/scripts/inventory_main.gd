@@ -6,6 +6,7 @@ extends CanvasLayer
 
 var InvSize = 24
 @onready var item_slot_reference: Array = []
+@onready var equipment_slot_reference: Array = %Equipment.get_children()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
 func _set_selected_slot(new_value):
@@ -119,17 +120,15 @@ func save_equipment():
 			if item:
 				equipment_list.append(item.data.get_path())
 	return equipment_list
-			
-			
-func get_equipment():
-	var slotsCheck = %Equipment.get_children()
-	for slot in slotsCheck:
+	
+func apply_equipment_modifiers():
+	for slot in equipment_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
 				item.data.apply_upgrade(player)
-				#print(item.data.name)
 	print('Applied equipment modifiers')
+		
 			
 func is_in_inventory(): # TODO: Implement 
 	pass
@@ -147,31 +146,30 @@ func _on_quit_pressed():
 	# TODO: Add a confirmation pop up to make sure user wants to restart
 	toggle_inventory()
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
+	
+func _on_load_latest_save_pressed():
+	Global.load_game()
+	pass # Replace with function body.
 
 func _on_head_slot_change_inventory():
 	print('Inventory head_slot changed')
-	get_equipment()
+	apply_equipment_modifiers()
 
 func _on_weapon_slot_change_inventory():
 	print('Inventory weapon_slot changed')
-	get_equipment()
+	apply_equipment_modifiers()
 
 
 func _on_chest_slot_change_inventory():
 	print('Inventory chest_slot changed')
-	get_equipment()
+	apply_equipment_modifiers()
 
 
 func _on_legs_slot_change_inventory():
 	print('Inventory legs_slot changed')
-	get_equipment()
+	apply_equipment_modifiers()
 
 
 func _on_feet_slot_change_inventory():
 	print('Inventory feet_slot changed')
-	get_equipment()
-
-
-func _on_load_latest_save_pressed():
-	Global.load_game()
-	pass # Replace with function body.
+	apply_equipment_modifiers()
