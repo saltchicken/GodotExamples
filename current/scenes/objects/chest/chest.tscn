@@ -122,6 +122,24 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_wvfrp")
 anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = false
+parameters/current_position = false
+parameters/current_delta = false
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = null
+parameters/Start/current_position = null
+parameters/Start/current_delta = null
+parameters/closed/current_length = null
+parameters/closed/current_position = null
+parameters/closed/current_delta = null
+parameters/open/current_length = null
+parameters/open/current_position = null
+parameters/open/current_delta = null
+parameters/opening/current_length = null
+parameters/opening/current_position = null
+parameters/opening/current_delta = null
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_sor80")

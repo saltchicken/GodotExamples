@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgbv7e2yr5xpl"]
+[gd_scene load_steps=9 format=4 uid="uid://cgbv7e2yr5xpl"]
 
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
 [ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="2_wylly"]
 [ext_resource type="Resource" uid="uid://dwk8b2actwhwi" path="res://scenes/inventory/item/bow.tres" id="5_flhdt"]
 [ext_resource type="Texture2D" uid="uid://bls622afek2ng" path="res://assets/Hills.png" id="6_367yx"]
-[ext_resource type="Texture2D" uid="uid://o47wm4xjxsim" path="res://assets/Wooden House.png" id="7_3ik0l"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dgwu"]
@@ -78,42 +77,8 @@ texture = ExtResource("6_367yx")
 9:6/0 = 0
 10:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ba70n"]
-texture = ExtResource("7_3ik0l")
-1:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_s45dm"]
 sources/0 = SubResource("TileSetAtlasSource_3dgwu")
-sources/1 = SubResource("TileSetAtlasSource_ba70n")
 
 [node name="game" type="Node2D"]
 z_index = -1
@@ -135,5 +100,5 @@ item = ExtResource("5_flhdt")
 initial_state = NodePath("StateMachine/closed")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0)
+tile_map_data = PackedByteArray("AAD7/wIAAAAAAAEAAAD8/wIAAAACAAUAAAD9/wIAAAACAAUAAAD+/wIAAAACAAUAAAD//wIAAAACAAUAAAAAAAIAAAACAAUAAAABAAIAAAACAAUAAAACAAIAAAACAAUAAAADAAIAAAACAAUAAAAEAAIAAAACAAUAAAAFAAIAAAACAAUAAAAGAAIAAAACAAEAAAD7/wMAAAAAAAEAAAD8/wMAAAACAAUAAAD8/wQAAAACAAUAAAD7/wQAAAAAAAEAAAD9/wMAAAACAAUAAAD+/wMAAAACAAUAAAD//wMAAAACAAUAAAAAAAMAAAACAAUAAAABAAMAAAACAAUAAAACAAMAAAACAAUAAAADAAMAAAACAAUAAAAEAAMAAAACAAUAAAAFAAMAAAACAAUAAAD9/wQAAAACAAUAAAD+/wQAAAACAAUAAAD//wQAAAACAAUAAAAAAAQAAAACAAUAAAABAAQAAAACAAUAAAACAAQAAAACAAUAAAADAAQAAAACAAUAAAAEAAQAAAACAAUAAAAFAAQAAAACAAUAAAAGAAMAAAACAAEAAAAGAAQAAAACAAEAAAD7/wEAAAAAAAEAAAD7/wAAAAAAAAEAAAD7////AAAAAAEAAAD7//7/AAAAAAEAAAD7//3/AAAAAAEAAAD8/wEAAAABAAEAAAD9/wEAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAFAAEAAAABAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wAAAAABAAEAAAD8/wAAAAABAAEAAAD8////AAABAAEAAAD9////AAABAAEAAAD+////AAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAACAP//AAABAAEAAAADAP//AAABAAEAAAAEAP//AAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP7/AAABAAEAAAADAP7/AAABAAEAAAACAP7/AAABAAEAAAABAP7/AAABAAEAAAAAAP7/AAABAAEAAAD///7/AAABAAEAAAD+//7/AAABAAEAAAD9//7/AAABAAEAAAD8//7/AAABAAEAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAACAP3/AAABAAEAAAADAP3/AAABAAEAAAAEAP3/AAABAAEAAAAFAP3/AAABAAEAAAAGAP3/AAACAAEAAAAGAP7/AAACAAEAAAAGAP//AAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_s45dm")
