@@ -69,6 +69,7 @@ func handle_joystick_movement():
 				direction = Vector2(0, 1)
 			else:
 				direction = Vector2(0, -1)
+				
 		if joystick_movement.x > JOYSTICK_DEADZONE:
 			movement.x = 1
 		elif joystick_movement.x < -JOYSTICK_DEADZONE:

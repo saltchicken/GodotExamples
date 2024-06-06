@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var selected_style_box = preload('res://scenes/inventory/themes/highlighted_item_slot.tres')
 
 var InvSize = 24
-@onready var item_slot_reference: Array = []
+@onready var item_slot_reference: Array = get_inventory_slots()
 @onready var equipment_slot_reference: Array = %Equipment.get_children()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
@@ -23,15 +23,11 @@ func select_new_slot(previous_slot, new_slot):
 	item_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
 	item_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
+func get_inventory_slots():
+	return %Inventory.get_node('VBoxContainer/HBoxContainer').get_children() + %Inventory.get_node('VBoxContainer/HBoxContainer2').get_children()
+	
 func _ready():
 	self.visible = false
-	for i in InvSize:
-		var slot := InventorySlot.new()
-		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
-		slot.add_theme_stylebox_override('panel', style_box)
-		item_slot_reference.append(slot)
-		%Inventory.add_child(slot)
-	print(item_slot_reference)
 		
 	#_load_items_from_file()
 	#get_inventory()
@@ -46,16 +42,16 @@ func _process(_delta):
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
 		toggle_inventory()
 	if self.visible:
-		if Input.is_action_just_pressed('left'):
+		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 			selected_slot -= 1
 			print(selected_slot)
-		if Input.is_action_just_pressed('right'):
+		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
 			selected_slot += 1
 			print(selected_slot)
-		if Input.is_action_just_pressed('up'):
+		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
 			selected_slot -= InvSize / 2
 			print(selected_slot)
-		if Input.is_action_just_pressed('down'):
+		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
 			selected_slot += InvSize / 2
 			print(selected_slot)
 		
@@ -65,9 +61,8 @@ func toggle_inventory():
 	get_tree().paused = !get_tree().paused
 
 func get_first_open_slot():
-	var slots = %Inventory.get_children()
-	for i in slots.size():
-		if slots[i].get_child_count() == 0:
+	for i in item_slot_reference.size():
+		if item_slot_reference[i].get_child_count() == 0:
 			return i
 	return -1 # TODO: Better error handling for when inventory is full
 
@@ -75,7 +70,8 @@ func load_item_into_inventory(path_to_item, slot_index):
 	var item := InventoryItem.new()
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
-	%Inventory.get_child(slot_index).add_child(item)
+	#%Inventory.get_child(slot_index).add_child(item)
+	item_slot_reference[slot_index].add_child(item)
 	
 #func _load_items_from_file():
 	#var itemsLoad = [
@@ -88,14 +84,14 @@ func load_item_into_inventory(path_to_item, slot_index):
 		##item.add_to_group('items')
 
 func collect_item(item):
+	print(get_first_open_slot())
 	load_item_into_inventory(item, get_first_open_slot())
 	
 
 		
 func get_inventory():
 	print('TODO: Implement checking inventory')
-	var slotsCheck = %Inventory.get_children()
-	for slot in slotsCheck:
+	for slot in item_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
@@ -103,8 +99,7 @@ func get_inventory():
 			
 func save_inventory():
 	var inventory_list = []
-	var slotsCheck = %Inventory.get_children()
-	for slot in slotsCheck:
+	for slot in item_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:

@@ -4,9 +4,9 @@ extends PanelContainer
 signal change_inventory
 @export var type: ItemData.Type
 
-func init(t: ItemData.Type, cms: Vector2) -> void:
-	type = t
-	custom_minimum_size = cms
+#func init(t: ItemData.Type, cms: Vector2) -> void:
+	#type = t
+	#custom_minimum_size = cms
 
 func _can_drop_data(_at_position, data):
 	if data is InventoryItem:

@@ -78,9 +78,187 @@ offset_bottom = 584.0
 [node name="Inventory" type="GridContainer" parent="Panel/InventoryPanel"]
 unique_name_in_owner = true
 layout_mode = 0
+offset_left = 76.0
 offset_right = 1024.0
-offset_bottom = 260.0
+offset_bottom = 239.0
 columns = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/InventoryPanel/Inventory"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer4" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer5" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer6" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer7" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer8" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer9" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer10" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer11" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer12" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer4" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer5" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer6" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer7" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer8" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer9" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer10" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer11" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
+
+[node name="PanelContainer12" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_e77kw")
+script = ExtResource("2_uu36n")
+type = 6
 
 [node name="Equipment" type="Panel" parent="Panel/InventoryPanel"]
 unique_name_in_owner = true
