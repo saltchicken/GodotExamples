@@ -1,18 +1,18 @@
 extends CanvasLayer
 
 @onready var player = get_parent()
-@onready var style_box = preload('res://scenes/inventory/themes/item_slot.tres')
-@onready var selected_style_box = preload('res://scenes/inventory/themes/highlighted_item_slot.tres')
+@onready var style_box = preload('res://scenes/menu/inventory_menu/themes/item_slot.tres')
+@onready var selected_style_box = preload('res://scenes/menu/inventory_menu/themes/highlighted_item_slot.tres')
 
 
 @onready var item_slot_reference: Array = get_inventory_slots()
-@onready var equipment_slot_reference: Array = %Equipment.get_children()
+@onready var equipment_slot_reference: Array = get_equipment_slots()
 @onready var item_and_equipment_slot_reference: Array = item_slot_reference + equipment_slot_reference
 @onready var InvSize = item_slot_reference.size()
 @onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
-@onready var purse_label = get_node('PurseLabel')
+@onready var purse_label = get_node('InventoryMenu/PurseLabel')
 
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
@@ -31,7 +31,10 @@ func select_new_slot(previous_slot, new_slot):
 	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 func get_inventory_slots():
-	return %Inventory.get_node('VBoxContainer/HBoxContainer').get_children() + %Inventory.get_node('VBoxContainer/HBoxContainer2').get_children()
+	return get_node('InventoryMenu/Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('InventoryMenu/Inventory/VBoxContainer/HBoxContainer2').get_children()
+	
+func get_equipment_slots():
+	return get_node('InventoryMenu/Equipment').get_children()
 	
 func _ready():
 	self.visible = false
@@ -119,7 +122,7 @@ func save_inventory():
 	
 func save_equipment():
 	var equipment_list = []
-	var slotsCheck = %Equipment.get_children()
+	var slotsCheck = equipment_slot_reference
 	for slot in slotsCheck:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
@@ -157,33 +160,33 @@ func _on_load_latest_save_pressed():
 	Global.load_game()
 	pass # Replace with function body.
 
-func _on_head_slot_change_inventory():
-	print('Inventory head_slot changed')
-	apply_equipment_modifiers()
-
-func _on_weapon_slot_change_inventory():
-	print('Inventory weapon_slot changed')
-	apply_equipment_modifiers()
-
-
-func _on_chest_slot_change_inventory():
-	print('Inventory chest_slot changed')
-	apply_equipment_modifiers()
-
-
-func _on_legs_slot_change_inventory():
-	print('Inventory legs_slot changed')
-	apply_equipment_modifiers()
-
-
-func _on_feet_slot_change_inventory():
-	print('Inventory feet_slot changed')
-	apply_equipment_modifiers()
-
-
-func _on_accessory_slot_change_inventory() -> void:
-	print('Inventory feet_slot changed')
-	apply_equipment_modifiers()
+#func _on_head_slot_change_inventory():
+	#print('Inventory head_slot changed')
+	#apply_equipment_modifiers()
+#
+#func _on_weapon_slot_change_inventory():
+	#print('Inventory weapon_slot changed')
+	#apply_equipment_modifiers()
+#
+#
+#func _on_chest_slot_change_inventory():
+	#print('Inventory chest_slot changed')
+	#apply_equipment_modifiers()
+#
+#
+#func _on_legs_slot_change_inventory():
+	#print('Inventory legs_slot changed')
+	#apply_equipment_modifiers()
+#
+#
+#func _on_feet_slot_change_inventory():
+	#print('Inventory feet_slot changed')
+	#apply_equipment_modifiers()
+#
+#
+#func _on_accessory_slot_change_inventory() -> void:
+	#print('Inventory feet_slot changed')
+	#apply_equipment_modifiers()
 
 func set_purse_text():
 	purse_label.text = 'Purse: %s' % str(player.purse)
