@@ -4,24 +4,29 @@ extends CanvasLayer
 @onready var style_box = preload('res://scenes/inventory/themes/item_slot.tres')
 @onready var selected_style_box = preload('res://scenes/inventory/themes/highlighted_item_slot.tres')
 
-var InvSize = 24
+
 @onready var item_slot_reference: Array = get_inventory_slots()
 @onready var equipment_slot_reference: Array = %Equipment.get_children()
+@onready var item_and_equipment_slot_reference: Array = item_slot_reference + equipment_slot_reference
+@onready var InvSize = item_slot_reference.size()
+@onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
 	if new_value < 0:
 		selected_slot = 0
-	elif new_value >= InvSize:
-		selected_slot = InvSize - 1
+	elif new_value >= InvSize and previous_slot < InvSize:
+		selected_slot = 24
+	elif new_value >= InventoryEquipmentSize:
+		selected_slot = InventoryEquipmentSize - 1
 	else:
 		selected_slot = new_value
 	select_new_slot(previous_slot, selected_slot)
 		
 func select_new_slot(previous_slot, new_slot):
-	item_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
-	item_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
+	item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
+	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 func get_inventory_slots():
 	return %Inventory.get_node('VBoxContainer/HBoxContainer').get_children() + %Inventory.get_node('VBoxContainer/HBoxContainer2').get_children()
@@ -44,20 +49,22 @@ func _process(_delta):
 	if self.visible:
 		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 			selected_slot -= 1
-			print(selected_slot)
 		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
 			selected_slot += 1
-			print(selected_slot)
 		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-			selected_slot -= InvSize / 2
-			print(selected_slot)
+			if selected_slot <= InvSize:
+				selected_slot -= InvSize / 2
+			else:
+				selected_slot -= 2
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-			selected_slot += InvSize / 2
-			print(selected_slot)
+			if selected_slot < InvSize:
+				selected_slot += InvSize / 2
+			else:
+				selected_slot += 2
 		
 func toggle_inventory():
 	self.visible = !self.visible
-	item_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = !get_tree().paused
 
 func get_first_open_slot():
@@ -166,5 +173,10 @@ func _on_legs_slot_change_inventory():
 
 
 func _on_feet_slot_change_inventory():
+	print('Inventory feet_slot changed')
+	apply_equipment_modifiers()
+
+
+func _on_accessory_slot_change_inventory() -> void:
 	print('Inventory feet_slot changed')
 	apply_equipment_modifiers()
