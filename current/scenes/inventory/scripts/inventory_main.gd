@@ -12,6 +12,8 @@ extends CanvasLayer
 @onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
+@onready var purse_label = get_node('PurseLabel')
+
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
 	if new_value < 0:
@@ -33,6 +35,8 @@ func get_inventory_slots():
 	
 func _ready():
 	self.visible = false
+	set_purse_text()
+	
 		
 	#_load_items_from_file()
 	#get_inventory()
@@ -180,3 +184,8 @@ func _on_feet_slot_change_inventory():
 func _on_accessory_slot_change_inventory() -> void:
 	print('Inventory feet_slot changed')
 	apply_equipment_modifiers()
+
+func set_purse_text():
+	purse_label.text = 'Purse: %s' % str(player.purse)
+func _on_player_update_purse() -> void:
+	set_purse_text()

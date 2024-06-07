@@ -30,52 +30,51 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ay68b")
 
-[node name="SystemPanel" type="Control" parent="Panel"]
+[node name="SystemPanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 70.0
 offset_bottom = 61.0
 
-[node name="ColorRect" type="ColorRect" parent="Panel/SystemPanel"]
+[node name="ColorRect" type="ColorRect" parent="SystemPanel"]
 material = SubResource("ShaderMaterial_tnhip")
 layout_mode = 1
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/SystemPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="SystemPanel"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 31.0
 offset_right = 1088.0
 offset_bottom = 63.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SystemPanel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SystemPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+[node name="Resume" type="Button" parent="SystemPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Resume"
 
-[node name="Restart" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+[node name="Restart" type="Button" parent="SystemPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Restart"
 
-[node name="Quit" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+[node name="Quit" type="Button" parent="SystemPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[node name="LoadLatestSave" type="Button" parent="Panel/SystemPanel/MarginContainer/HBoxContainer"]
+[node name="LoadLatestSave" type="Button" parent="SystemPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Load Last Save"
 
-[node name="InventoryPanel" type="Panel" parent="Panel"]
-layout_mode = 0
+[node name="InventoryPanel" type="Panel" parent="."]
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 1088.0
 offset_bottom = 584.0
 
-[node name="Inventory" type="GridContainer" parent="Panel/InventoryPanel"]
+[node name="Inventory" type="GridContainer" parent="InventoryPanel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 268.0
@@ -84,184 +83,184 @@ offset_right = 940.0
 offset_bottom = 279.0
 columns = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/InventoryPanel/Inventory"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/Inventory"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPanel/Inventory/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer2" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer3" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer4" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer5" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer5" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer6" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer6" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer7" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer7" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer8" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer8" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer9" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer9" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer10" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer10" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer11" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer11" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer12" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer12" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="InventoryPanel/Inventory/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer2" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer3" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer3" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer4" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer4" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer5" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer5" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer6" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer6" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer7" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer7" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer8" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer8" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer9" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer9" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer10" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer10" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer11" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer11" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="PanelContainer12" type="PanelContainer" parent="Panel/InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer12" type="PanelContainer" parent="InventoryPanel/Inventory/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 6
 
-[node name="Equipment" type="Panel" parent="Panel/InventoryPanel"]
+[node name="Equipment" type="Panel" parent="InventoryPanel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 66.0
@@ -269,7 +268,7 @@ offset_top = 291.0
 offset_right = 352.0
 offset_bottom = 487.0
 
-[node name="HeadSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="HeadSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 67.0
 offset_top = 27.0
@@ -278,7 +277,7 @@ offset_bottom = 67.0
 theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 
-[node name="WeaponSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="WeaponSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 27.0
@@ -288,7 +287,7 @@ theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 4
 
-[node name="ChestSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="ChestSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 67.0
 offset_top = 69.0
@@ -298,7 +297,7 @@ theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 1
 
-[node name="AccessorySlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="AccessorySlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 69.0
@@ -308,7 +307,7 @@ theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 5
 
-[node name="LegsSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="LegsSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 67.0
 offset_top = 111.0
@@ -318,7 +317,7 @@ theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 2
 
-[node name="FeetSlot" type="PanelContainer" parent="Panel/InventoryPanel/Equipment"]
+[node name="FeetSlot" type="PanelContainer" parent="InventoryPanel/Equipment"]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 111.0
@@ -328,13 +327,20 @@ theme_override_styles/panel = ExtResource("3_e77kw")
 script = ExtResource("2_uu36n")
 type = 3
 
-[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Panel/SystemPanel/MarginContainer/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/HeadSlot" to="." method="_on_head_slot_change_inventory"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/WeaponSlot" to="." method="_on_weapon_slot_change_inventory"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/ChestSlot" to="." method="_on_chest_slot_change_inventory"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/AccessorySlot" to="." method="_on_accessory_slot_change_inventory"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/LegsSlot" to="." method="_on_legs_slot_change_inventory"]
-[connection signal="change_inventory" from="Panel/InventoryPanel/Equipment/FeetSlot" to="." method="_on_feet_slot_change_inventory"]
+[node name="PurseLabel" type="Label" parent="."]
+offset_left = 723.0
+offset_top = 427.0
+offset_right = 776.0
+offset_bottom = 450.0
+text = "Purse: "
+
+[connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="SystemPanel/MarginContainer/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/HeadSlot" to="." method="_on_head_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/WeaponSlot" to="." method="_on_weapon_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/ChestSlot" to="." method="_on_chest_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/AccessorySlot" to="." method="_on_accessory_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/LegsSlot" to="." method="_on_legs_slot_change_inventory"]
+[connection signal="change_inventory" from="InventoryPanel/Equipment/FeetSlot" to="." method="_on_feet_slot_change_inventory"]
