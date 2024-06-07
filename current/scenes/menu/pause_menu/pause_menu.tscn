@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm1wpccpepime"]
+[gd_scene load_steps=8 format=3 uid="uid://cm1wpccpepime"]
 
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/scripts/pause_menu_main.gd" id="1_1wyvu"]
 [ext_resource type="Shader" path="res://scenes/menu/pause_menu/shaders/pause_menu_blur.gdshader" id="2_hxhow"]
 [ext_resource type="PackedScene" uid="uid://bn4rd5tslq0dg" path="res://scenes/menu/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
+[ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/quest_menu/quest_menu.tscn" id="4_37rwm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
 shader = ExtResource("2_hxhow")
 shader_parameter/lod = 0.917
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqbcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehayh"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -54,20 +59,30 @@ offset_top = 86.0
 offset_right = 1080.0
 offset_bottom = 117.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabsPanel"]
+[node name="Tabs" type="HBoxContainer" parent="TabsPanel"]
 layout_mode = 2
 
-[node name="InventoryTab" type="Button" parent="TabsPanel/HBoxContainer"]
+[node name="InventoryTab" type="Button" parent="TabsPanel/Tabs"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xqbcl")
 text = "Inventory"
 
-[node name="QuestTab" type="Button" parent="TabsPanel/HBoxContainer"]
+[node name="QuestTab" type="Button" parent="TabsPanel/Tabs"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ehayh")
 text = "Quests"
 
 [node name="InventoryMenu" parent="." instance=ExtResource("3_0peq7")]
+unique_name_in_owner = true
+visible = false
+
+[node name="QuestMenu" parent="." instance=ExtResource("4_37rwm")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="SystemPanel/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="SystemPanel/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="SystemPanel/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SystemPanel/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
+[connection signal="pressed" from="TabsPanel/Tabs/InventoryTab" to="." method="_on_inventory_tab_pressed"]
+[connection signal="pressed" from="TabsPanel/Tabs/QuestTab" to="." method="_on_quest_tab_pressed"]

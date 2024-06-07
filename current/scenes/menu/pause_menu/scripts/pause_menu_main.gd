@@ -12,7 +12,10 @@ extends CanvasLayer
 @onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
-@onready var purse_label = get_node('InventoryMenu/PurseLabel')
+@onready var tabs: Array = [%InventoryMenu, %QuestMenu]
+@onready var selected_tab = %InventoryMenu
+
+@onready var purse_label = get_node('%InventoryMenu/PurseLabel')
 
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
@@ -31,13 +34,23 @@ func select_new_slot(previous_slot, new_slot):
 	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 func get_inventory_slots():
-	return get_node('InventoryMenu/Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('InventoryMenu/Inventory/VBoxContainer/HBoxContainer2').get_children()
+	return get_node('%InventoryMenu/Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('%InventoryMenu/Inventory/VBoxContainer/HBoxContainer2').get_children()
 	
 func get_equipment_slots():
-	return get_node('InventoryMenu/Equipment').get_children()
+	return get_node('%InventoryMenu/Equipment').get_children()
+	
+func show_tab(selected_tab):
+	for tab in tabs:
+		if tab == selected_tab:
+			tab.visible = true
+		else:
+			tab.visible = false
+		
 	
 func _ready():
 	self.visible = false
+	#get_node('TabsPanel/Tabs/InventoryTab').set_pressed(true)
+	show_tab(selected_tab)
 	set_purse_text()
 	
 		
@@ -192,3 +205,13 @@ func set_purse_text():
 	purse_label.text = 'Purse: %s' % str(player.purse)
 func _on_player_update_purse() -> void:
 	set_purse_text()
+
+
+func _on_inventory_tab_pressed() -> void:
+	selected_tab = get_node('%InventoryMenu')
+	show_tab(selected_tab)
+
+
+func _on_quest_tab_pressed() -> void:
+	selected_tab = get_node('%QuestMenu')
+	show_tab(selected_tab)
