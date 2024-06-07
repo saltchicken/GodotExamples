@@ -21,7 +21,7 @@ const MAX_NUMBER_OF_ENEMIES = 5
 func _ready():
 	#var player = Player.instantiate()
 	get_tree().current_scene.add_child(player)
-	await get_tree().create_timer(2.0).timeout
+	#await get_tree().create_timer(2.0).timeoutsd
 	timer.start()
 	
 	#for i in MAX_NUMBER_OF_ENEMIES:
