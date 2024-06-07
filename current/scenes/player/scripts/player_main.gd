@@ -37,7 +37,7 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	pickup_items()
-	print(purse)
+	#print(purse)
 	move_and_collide(self.velocity * delta)
 	
 func pickup_items():

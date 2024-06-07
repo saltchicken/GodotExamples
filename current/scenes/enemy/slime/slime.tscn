@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cjqipfkx82msx"]
+[gd_scene load_steps=57 format=3 uid="uid://cjqipfkx82msx"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_main.gd" id="1_daphs"]
 [ext_resource type="Resource" uid="uid://bvyr6xlwkotev" path="res://scenes/enemy/slime/resources/slime_stats.tres" id="2_hswul"]
@@ -366,33 +366,6 @@ nodes/TimeScale/position = Vector2(1006, 230)
 nodes/output/position = Vector2(1360, 260)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ij05"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rybts"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aosfy"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aim7o"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8aadu"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dwjh"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_juino"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a7uen"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpocl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nf8di"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yo3t"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwev0"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yyhg6"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ltibh"]
 states/End/position = Vector2(1551, 196)
 states/attack/node = SubResource("AnimationNodeBlendTree_232hn")
@@ -405,7 +378,6 @@ states/hit/node = SubResource("AnimationNodeBlendTree_h4abx")
 states/hit/position = Vector2(772, 142)
 states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
-transitions = ["idle", "chase", SubResource("AnimationNodeStateMachineTransition_3ij05"), "chase", "idle", SubResource("AnimationNodeStateMachineTransition_rybts"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_aosfy"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_aim7o"), "chase", "hit", SubResource("AnimationNodeStateMachineTransition_8aadu"), "hit", "chase", SubResource("AnimationNodeStateMachineTransition_8dwjh"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_juino"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_a7uen"), "chase", "death", SubResource("AnimationNodeStateMachineTransition_dpocl"), "death", "idle", SubResource("AnimationNodeStateMachineTransition_nf8di"), "death", "chase", SubResource("AnimationNodeStateMachineTransition_7yo3t"), "chase", "attack", SubResource("AnimationNodeStateMachineTransition_qwev0"), "attack", "chase", SubResource("AnimationNodeStateMachineTransition_yyhg6")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jtqdn"]
 radius = 8.0
@@ -433,7 +405,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ltibh")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 1.0
-parameters/current_position = 0.941019
+parameters/current_position = 0.783646
 parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
@@ -533,10 +505,10 @@ parameters/hit/output/current_length = null
 parameters/hit/output/current_position = null
 parameters/hit/output/current_delta = null
 parameters/idle/current_length = 1.0
-parameters/idle/current_position = 0.941019
+parameters/idle/current_position = 0.783646
 parameters/idle/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/current_length = 1.0
-parameters/idle/BlendSpace2D/current_position = 0.941019
+parameters/idle/BlendSpace2D/current_position = 0.783646
 parameters/idle/BlendSpace2D/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.998555, 0.00207043)
 parameters/idle/BlendSpace2D/0/current_length = null
@@ -546,17 +518,17 @@ parameters/idle/BlendSpace2D/1/current_length = null
 parameters/idle/BlendSpace2D/1/current_position = null
 parameters/idle/BlendSpace2D/1/current_delta = null
 parameters/idle/BlendSpace2D/2/current_length = 1.0
-parameters/idle/BlendSpace2D/2/current_position = 0.941019
+parameters/idle/BlendSpace2D/2/current_position = 0.783646
 parameters/idle/BlendSpace2D/2/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/3/current_length = null
 parameters/idle/BlendSpace2D/3/current_position = null
 parameters/idle/BlendSpace2D/3/current_delta = null
 parameters/idle/TimeScale/current_length = 1.0
-parameters/idle/TimeScale/current_position = 0.941019
+parameters/idle/TimeScale/current_position = 0.783646
 parameters/idle/TimeScale/current_delta = 0.00694444
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 1.0
-parameters/idle/output/current_position = 0.941019
+parameters/idle/output/current_position = 0.783646
 parameters/idle/output/current_delta = 0.00694444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
