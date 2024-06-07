@@ -3,6 +3,7 @@ class_name Player
 @onready var state_machine = $StateMachine
 @onready var animation_tree = $AnimationTree
 @onready var use_hitbox = $UseArea
+@onready var pickup_hitbox = $PickupArea
 #@onready var attack_hitbox = $AttackArea
 
 @onready var inventory = $InventoryMenu
@@ -27,13 +28,31 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 
 @onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
 
+@onready var purse: int = 0
+
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
 
 func _physics_process(delta):
 	get_input()
+	pickup_items()
+	print(purse)
 	move_and_collide(self.velocity * delta)
+	
+func pickup_items():
+	var pickupable_objects = pickup_hitbox.get_overlapping_areas()
+	if pickupable_objects:
+		for body in pickupable_objects:
+			if body != use_hitbox:
+				if body.get_script() == Coins:
+					collect(body)
+
+# TODO: Add checking for a collectable body
+func collect(body):
+	purse += body.value
+	body.collected()
+	
 
 func get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
