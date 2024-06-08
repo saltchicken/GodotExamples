@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ey4v4kmiwnnd"]
+[gd_scene load_steps=10 format=3 uid="uid://cfb4c45667nrp"]
 
-[ext_resource type="Script" path="res://scenes/spell/tornado/scripts/tornado_main.gd" id="1_oe345"]
-[ext_resource type="Texture2D" uid="uid://cpmonl2kpb7x3" path="res://scenes/spell/tornado/assets/whirlwind.png" id="1_v5mfm"]
-[ext_resource type="Resource" uid="uid://dwmh4d1sjoyx8" path="res://scenes/spell/tornado/resources/tornado_stats.tres" id="2_tjo5n"]
+[ext_resource type="Script" path="res://scenes/spell/whirlwind/scripts/whirlwind_main.gd" id="1_8y55y"]
+[ext_resource type="Resource" uid="uid://bkntls4yssjpe" path="res://scenes/spell/whirlwind/resources/whirlwind.tres" id="2_t8hsx"]
+[ext_resource type="Texture2D" uid="uid://c6wwevierc8y4" path="res://scenes/spell/whirlwind/assets/whirlwind.png" id="3_gs4fi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o15r5"]
 radius = 6.0
@@ -53,12 +53,12 @@ animation = &"cast"
 states/cast/node = SubResource("AnimationNodeAnimation_wb3h6")
 states/cast/position = Vector2(365, 100)
 
-[node name="Tornado" type="Area2D"]
-script = ExtResource("1_oe345")
-default_stats = ExtResource("2_tjo5n")
+[node name="Whirlwind" type="Area2D"]
+script = ExtResource("1_8y55y")
+default_stats = ExtResource("2_t8hsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_v5mfm")
+texture = ExtResource("3_gs4fi")
 hframes = 4
 
 [node name="AttackArea" type="CollisionShape2D" parent="."]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://djfho244tjv2a"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_menu_main.gd" id="1_ppd33"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_slot.gd" id="2_i6mhp"]
+
+[node name="SpellsMenu" type="Node2D"]
+script = ExtResource("1_ppd33")
+
+[node name="Spells" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Spells"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Spells/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_i6mhp")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_i6mhp")
+
+[node name="PanelContainer3" type="PanelContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_i6mhp")
+
+[node name="CurrentSpell" type="PanelContainer" parent="."]
+offset_left = 33.0
+offset_top = 95.0
+offset_right = 73.0
+offset_bottom = 135.0
+script = ExtResource("2_i6mhp")

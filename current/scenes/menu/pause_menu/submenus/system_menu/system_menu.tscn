@@ -3,14 +3,13 @@
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/system_menu/scripts/system_menu_main.gd" id="1_2f66f"]
 
 [node name="SystemMenu" type="Node2D"]
-visible = false
 script = ExtResource("1_2f66f")
 
-[node name="SystemButtonContainer" type="HBoxContainer" parent="."]
+[node name="SystemButtonContainer" type="VBoxContainer" parent="."]
 offset_left = -165.0
 offset_top = -15.0
 offset_right = 206.0
-offset_bottom = 17.0
+offset_bottom = 121.0
 
 [node name="Resume" type="Button" parent="SystemButtonContainer"]
 layout_mode = 2

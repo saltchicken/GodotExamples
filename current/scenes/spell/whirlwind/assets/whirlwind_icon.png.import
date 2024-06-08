@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpmonl2kpb7x3"
-path="res://.godot/imported/whirlwind.png-1aa48a999f4ada417d95309f0f6e00ea.ctex"
+uid="uid://cjxw7on6fb6vo"
+path="res://.godot/imported/whirlwind_icon.png-4b093a0e7d5542a63c1b2ae3ad6b8e20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/spell/tornado/assets/whirlwind.png"
-dest_files=["res://.godot/imported/whirlwind.png-1aa48a999f4ada417d95309f0f6e00ea.ctex"]
+source_file="res://scenes/spell/whirlwind/assets/whirlwind_icon.png"
+dest_files=["res://.godot/imported/whirlwind_icon.png-4b093a0e7d5542a63c1b2ae3ad6b8e20.ctex"]
 
 [params]
 

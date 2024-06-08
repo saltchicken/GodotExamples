@@ -6,7 +6,7 @@ extends CanvasLayer
 
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
-@onready var tabs: Array = [%InventoryMenu, %QuestMenu, %SystemMenu]
+@onready var tabs: Array = [%InventoryMenu, %SpellsMenu, %QuestMenu, %SystemMenu]
 @onready var selected_tab = %InventoryMenu
 
 @onready var purse_label = get_node('%InventoryMenu/PurseLabel')
@@ -38,6 +38,8 @@ func show_tab(selected_tab):
 	
 func _ready():
 	self.visible = false
+	for button in get_node('CenteredPanel/TabsPanel/Tabs').get_children():
+		button.pressed.connect(tabmenu_pressed.bind(button))
 	show_tab(selected_tab)
 	set_purse_text()
 	
@@ -130,17 +132,14 @@ func set_purse_text():
 func _on_player_update_purse() -> void:
 	set_purse_text()
 
-
-func _on_inventory_tab_pressed() -> void:
-	selected_tab = get_node('%InventoryMenu')
-	show_tab(selected_tab)
-
-
-func _on_quest_tab_pressed() -> void:
-	selected_tab = get_node('%QuestMenu')
-	show_tab(selected_tab)
-
-
-func _on_system_tab_pressed() -> void:
-	selected_tab = get_node('%SystemMenu')
+func tabmenu_pressed(button):
+	match button.text:
+		'Inventory':
+			selected_tab = get_node('%InventoryMenu')
+		'Spells':
+			selected_tab = get_node('%SpellsMenu')
+		'Quests':
+			selected_tab = get_node('%QuestMenu')
+		'System':
+			selected_tab = get_node('%SystemMenu')
 	show_tab(selected_tab)

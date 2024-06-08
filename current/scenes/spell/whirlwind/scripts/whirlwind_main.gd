@@ -6,8 +6,8 @@ extends Area2D
 
 @onready var cast_direction
 
-@export var default_stats: SpellStats
-@onready var stats: SpellStats = default_stats.duplicate()
+@export var default_stats: SpellData
+@onready var stats: SpellData = default_stats.duplicate()
 
 func _ready():
 	animation_tree.get("parameters/playback").start('cast')

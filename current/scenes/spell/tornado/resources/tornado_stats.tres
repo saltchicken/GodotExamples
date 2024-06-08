@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SpellStats" load_steps=2 format=3 uid="uid://dwmh4d1sjoyx8"]
-
-[ext_resource type="Script" path="res://scenes/spell/resources/spell_stats.gd" id="1_jrini"]
-
-[resource]
-script = ExtResource("1_jrini")
-cast_speed = 150.0
-attack_damage = 30
-attack_knockback = 50.0
