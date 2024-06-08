@@ -4,12 +4,6 @@ extends CanvasLayer
 @onready var style_box = preload('res://scenes/menu/inventory_menu/themes/item_slot.tres')
 @onready var selected_style_box = preload('res://scenes/menu/inventory_menu/themes/highlighted_item_slot.tres')
 
-
-@onready var item_slot_reference: Array = get_inventory_slots()
-@onready var equipment_slot_reference: Array = get_equipment_slots()
-@onready var item_and_equipment_slot_reference: Array = item_slot_reference + equipment_slot_reference
-@onready var InvSize = item_slot_reference.size()
-@onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
 @onready var tabs: Array = [%InventoryMenu, %QuestMenu]
@@ -21,23 +15,18 @@ func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
 	if new_value < 0:
 		selected_slot = 0
-	elif new_value >= InvSize and previous_slot < InvSize:
+	elif new_value >= %InventoryMenu.InvSize and previous_slot < %InventoryMenu.InvSize:
 		selected_slot = 24
-	elif new_value >= InventoryEquipmentSize:
-		selected_slot = InventoryEquipmentSize - 1
+	elif new_value >= %InventoryMenu.InventoryEquipmentSize:
+		selected_slot = %InventoryMenu.InventoryEquipmentSize - 1
 	else:
 		selected_slot = new_value
 	select_new_slot(previous_slot, selected_slot)
 		
 func select_new_slot(previous_slot, new_slot):
-	item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
-	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
+	%InventoryMenu.item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
+	%InventoryMenu.item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
-func get_inventory_slots():
-	return get_node('%InventoryMenu/Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('%InventoryMenu/Inventory/VBoxContainer/HBoxContainer2').get_children()
-	
-func get_equipment_slots():
-	return get_node('%InventoryMenu/Equipment').get_children()
 	
 func show_tab(selected_tab):
 	for tab in tabs:
@@ -72,24 +61,24 @@ func _process(_delta):
 		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
 			selected_slot += 1
 		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-			if selected_slot <= InvSize:
-				selected_slot -= InvSize / 2
+			if selected_slot <= %InventoryMenu.InvSize:
+				selected_slot -= %InventoryMenu.InvSize / 2
 			else:
 				selected_slot -= 2
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-			if selected_slot < InvSize:
-				selected_slot += InvSize / 2
+			if selected_slot < %InventoryMenu.InvSize:
+				selected_slot += %InventoryMenu.InvSize / 2
 			else:
 				selected_slot += 2
 		
 func toggle_inventory():
 	self.visible = !self.visible
-	item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = !get_tree().paused
 
 func get_first_open_slot():
-	for i in item_slot_reference.size():
-		if item_slot_reference[i].get_child_count() == 0:
+	for i in %InventoryMenu.item_slot_reference.size():
+		if %InventoryMenu.item_slot_reference[i].get_child_count() == 0:
 			return i
 	return -1 # TODO: Better error handling for when inventory is full
 
@@ -98,7 +87,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
-	item_slot_reference[slot_index].add_child(item)
+	%InventoryMenu.item_slot_reference[slot_index].add_child(item)
 	
 #func _load_items_from_file():
 	#var itemsLoad = [
@@ -118,7 +107,7 @@ func collect_item(item):
 		
 func get_inventory():
 	print('TODO: Implement checking inventory')
-	for slot in item_slot_reference:
+	for slot in %InventoryMenu.item_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
@@ -126,7 +115,7 @@ func get_inventory():
 			
 func save_inventory():
 	var inventory_list = []
-	for slot in item_slot_reference:
+	for slot in %InventoryMenu.item_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
@@ -135,21 +124,13 @@ func save_inventory():
 	
 func save_equipment():
 	var equipment_list = []
-	var slotsCheck = equipment_slot_reference
+	var slotsCheck = %InventoryMenu.equipment_slot_reference
 	for slot in slotsCheck:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
 				equipment_list.append(item.data.get_path())
 	return equipment_list
-	
-func apply_equipment_modifiers():
-	for slot in equipment_slot_reference:
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				item.data.apply_upgrade(player)
-	print('Applied equipment modifiers')
 		
 			
 func is_in_inventory(): # TODO: Implement 

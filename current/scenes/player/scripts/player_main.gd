@@ -6,7 +6,7 @@ class_name Player
 @onready var pickup_hitbox = $PickupArea
 #@onready var attack_hitbox = $AttackArea
 
-@onready var inventory = $InventoryMenu
+@onready var inventory = $PauseMenu
 
 @export var initial_state : State
 

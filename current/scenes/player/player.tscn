@@ -706,7 +706,7 @@ default_stats = ExtResource("2_j8050")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="InventoryMenu" parent="." instance=ExtResource("2_3uprd")]
+[node name="PauseMenu" parent="." instance=ExtResource("2_3uprd")]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -732,7 +732,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_itwp3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.1
-parameters/current_position = 0.0991727
+parameters/current_position = 0.0576969
 parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
@@ -819,17 +819,17 @@ parameters/hit/output/current_length = null
 parameters/hit/output/current_position = null
 parameters/hit/output/current_delta = null
 parameters/idle/current_length = 0.1
-parameters/idle/current_position = 0.0991727
+parameters/idle/current_position = 0.0576969
 parameters/idle/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/current_length = 0.1
-parameters/idle/BlendSpace2D/current_position = 0.0991727
+parameters/idle/BlendSpace2D/current_position = 0.0576969
 parameters/idle/BlendSpace2D/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.114732, 0.329193)
 parameters/idle/BlendSpace2D/0/current_length = null
 parameters/idle/BlendSpace2D/0/current_position = null
 parameters/idle/BlendSpace2D/0/current_delta = null
 parameters/idle/BlendSpace2D/1/current_length = 0.1
-parameters/idle/BlendSpace2D/1/current_position = 0.0991727
+parameters/idle/BlendSpace2D/1/current_position = 0.0576969
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/2/current_length = null
 parameters/idle/BlendSpace2D/2/current_position = null
@@ -838,11 +838,11 @@ parameters/idle/BlendSpace2D/3/current_length = null
 parameters/idle/BlendSpace2D/3/current_position = null
 parameters/idle/BlendSpace2D/3/current_delta = null
 parameters/idle/TimeScale/current_length = 0.1
-parameters/idle/TimeScale/current_position = 0.0991727
+parameters/idle/TimeScale/current_position = 0.0576969
 parameters/idle/TimeScale/current_delta = 0.00694444
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.1
-parameters/idle/output/current_position = 0.0991727
+parameters/idle/output/current_position = 0.0576969
 parameters/idle/output/current_delta = 0.00694444
 parameters/run/current_length = null
 parameters/run/current_position = null
@@ -939,7 +939,7 @@ script = ExtResource("8_ioajo")
 [node name="death" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_hk3e8")
 
-[connection signal="update_purse" from="." to="InventoryMenu" method="_on_player_update_purse"]
+[connection signal="update_purse" from="." to="PauseMenu" method="_on_player_update_purse"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/attack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/death" method="_on_animation_tree_animation_finished"]
