@@ -140,7 +140,6 @@ func _on_resume_pressed():
 	toggle_inventory()
 
 func _on_restart_pressed():
-	#print('This is not implemented')
 	# TODO: Add a confirmation pop up to make sure user wants to restart
 	toggle_inventory()
 	Global.restart()
@@ -152,35 +151,6 @@ func _on_quit_pressed():
 	
 func _on_load_latest_save_pressed():
 	Global.load_game()
-	pass # Replace with function body.
-
-#func _on_head_slot_change_inventory():
-	#print('Inventory head_slot changed')
-	#apply_equipment_modifiers()
-#
-#func _on_weapon_slot_change_inventory():
-	#print('Inventory weapon_slot changed')
-	#apply_equipment_modifiers()
-#
-#
-#func _on_chest_slot_change_inventory():
-	#print('Inventory chest_slot changed')
-	#apply_equipment_modifiers()
-#
-#
-#func _on_legs_slot_change_inventory():
-	#print('Inventory legs_slot changed')
-	#apply_equipment_modifiers()
-#
-#
-#func _on_feet_slot_change_inventory():
-	#print('Inventory feet_slot changed')
-	#apply_equipment_modifiers()
-#
-#
-#func _on_accessory_slot_change_inventory() -> void:
-	#print('Inventory feet_slot changed')
-	#apply_equipment_modifiers()
 
 func set_purse_text():
 	purse_label.text = 'Purse: %s' % str(player.purse)
