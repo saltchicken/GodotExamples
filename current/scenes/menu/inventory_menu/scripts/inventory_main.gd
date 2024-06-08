@@ -9,7 +9,6 @@ extends Node
 @onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 
 func _ready() -> void:
-	print(player)
 	for slot in item_and_equipment_slot_reference:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
 

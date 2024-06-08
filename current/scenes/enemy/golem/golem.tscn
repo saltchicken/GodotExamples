@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://damkwhn4sgrhk"]
+
+[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy.tscn" id="1_864w1"]
+[ext_resource type="Texture2D" uid="uid://dook06lkfkho6" path="res://scenes/enemy/golem/assets/golem-spritesheet.png" id="2_pe2l4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oo4gw"]
+radius = 11.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c5phm"]
+radius = 13.0
+height = 46.0
+
+[node name="Golem" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_864w1")]
+initial_state = NodePath("StateMachine/idle")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -19)
+texture = ExtResource("2_pe2l4")
+hframes = 7
+vframes = 10
+frame = 21
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_oo4gw")
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_c5phm")

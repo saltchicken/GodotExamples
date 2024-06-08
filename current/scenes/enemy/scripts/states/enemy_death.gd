@@ -30,4 +30,3 @@ func drop_coins():
 	var coins = coins_node.instantiate()
 	coins.position = character_body.position
 	get_tree().current_scene.add_child(coins)
-	print('making coins')

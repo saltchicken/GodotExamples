@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgbv7e2yr5xpl"]
+[gd_scene load_steps=18 format=3 uid="uid://cgbv7e2yr5xpl"]
 
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
-[ext_resource type="PackedScene" uid="uid://cjqipfkx82msx" path="res://scenes/enemy/slime/slime.tscn" id="2_wylly"]
 [ext_resource type="Resource" uid="uid://dwk8b2actwhwi" path="res://resources/items/bow.tres" id="5_flhdt"]
 [ext_resource type="Texture2D" uid="uid://bls622afek2ng" path="res://assets/Hills.png" id="6_367yx"]
 [ext_resource type="Texture2D" uid="uid://o47wm4xjxsim" path="res://assets/Wooden House.png" id="7_3ik0l"]
 [ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://scenes/objects/coins/coins.tscn" id="8_422q1"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
 [ext_resource type="Texture2D" uid="uid://ioeoh483yn2y" path="res://assets/tile_highlight.png" id="9_skikj"]
+[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/slime/slime.tscn" id="10_p7t17"]
+[ext_resource type="PackedScene" uid="uid://damkwhn4sgrhk" path="res://scenes/enemy/golem/golem.tscn" id="11_6vsga"]
+[ext_resource type="Resource" uid="uid://ctcy1x1ffpuuu" path="res://scenes/enemy/golem/resources/golem_stats.tres" id="12_74tv1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dgwu"]
 texture = ExtResource("6_367yx")
@@ -137,11 +139,6 @@ script = ExtResource("1_vw3na")
 [node name="Player" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("1_iqfig")]
 initial_state = NodePath("StateMachine/idle")
 
-[node name="Slime" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_wylly")]
-z_as_relative = false
-position = Vector2(194, 28)
-initial_state = NodePath("StateMachine/idle")
-
 [node name="Chest" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
 position = Vector2(-56, -47)
 item = ExtResource("5_flhdt")
@@ -156,3 +153,12 @@ position = Vector2(23, 44)
 
 [node name="PlacementHighlightMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_4rtwm")
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("10_p7t17")]
+position = Vector2(198, -40)
+initial_state = NodePath("StateMachine/idle")
+
+[node name="Golem" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("11_6vsga")]
+position = Vector2(106, -84)
+initial_state = NodePath("StateMachine/idle")
+default_stats = ExtResource("12_74tv1")
