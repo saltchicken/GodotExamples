@@ -27,7 +27,8 @@ func Update(_delta:float):
 	var bodies = attack_hitbox.get_overlapping_bodies()
 	if bodies:
 		for body in bodies:
-			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
+			if body.has_method('get_hit') and body != character_body:
+			#if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
 				body.get_hit(character_body)
 		
 func handle_attack_hitbox_direction():
