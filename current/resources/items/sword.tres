@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://di112al45tois"]
 
-[ext_resource type="Script" path="res://scenes/menu/inventory_menu/scripts/item_data.gd" id="1_lin7m"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/inventory_menu/scripts/item_data.gd" id="1_lin7m"]
 [ext_resource type="Texture2D" uid="uid://cpmyxo7bm01ib" path="res://resources/items/assets/sword.png" id="2_fgf5l"]
 
 [resource]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgw438pdkorrb"]
 
-[ext_resource type="Script" path="res://scenes/menu/inventory_menu/scripts/inventory_main.gd" id="1_pwasw"]
-[ext_resource type="StyleBox" uid="uid://vuano8fvn3vo" path="res://scenes/menu/inventory_menu/themes/item_slot.tres" id="2_q6u6v"]
-[ext_resource type="Script" path="res://scenes/menu/inventory_menu/scripts/inventory_slot.gd" id="3_edo73"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/inventory_menu/scripts/inventory_main.gd" id="1_pwasw"]
+[ext_resource type="StyleBox" uid="uid://vuano8fvn3vo" path="res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres" id="2_q6u6v"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/inventory_menu/scripts/inventory_slot.gd" id="3_edo73"]
 
 [node name="InventoryMenu" type="Node2D"]
 script = ExtResource("1_pwasw")

@@ -1,12 +1,12 @@
 extends CanvasLayer
 
 @onready var player = get_parent()
-@onready var style_box = preload('res://scenes/menu/inventory_menu/themes/item_slot.tres')
-@onready var selected_style_box = preload('res://scenes/menu/inventory_menu/themes/highlighted_item_slot.tres')
+@onready var style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres')
+@onready var selected_style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/highlighted_item_slot.tres')
 
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
-@onready var tabs: Array = [%InventoryMenu, %QuestMenu]
+@onready var tabs: Array = [%InventoryMenu, %QuestMenu, %SystemMenu]
 @onready var selected_tab = %InventoryMenu
 
 @onready var purse_label = get_node('%InventoryMenu/PurseLabel')
@@ -38,23 +38,13 @@ func show_tab(selected_tab):
 	
 func _ready():
 	self.visible = false
-	#get_node('TabsPanel/Tabs/InventoryTab').set_pressed(true)
 	show_tab(selected_tab)
 	set_purse_text()
 	
-		
-	#_load_items_from_file()
-	#get_inventory()
-	#check_inventory.connect(get_inventory)
-	
 func _process(_delta):
-	#if Input.is_action_just_pressed('inventory'):
-	#if Input.is_action_just_pressed('TESTTESTTEST'):
-		#get_inventory()
-		#get_equipment()
 	# TODO: Move this to main function with other inputs
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
-		toggle_inventory()
+		toggle_pause_menu()
 	if self.visible:
 		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 			selected_slot -= 1
@@ -71,7 +61,7 @@ func _process(_delta):
 			else:
 				selected_slot += 2
 		
-func toggle_inventory():
+func toggle_pause_menu():
 	self.visible = !self.visible
 	%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = !get_tree().paused
@@ -103,8 +93,6 @@ func collect_item(item):
 	#print(get_first_open_slot())
 	load_item_into_inventory(item, get_first_open_slot())
 	
-
-		
 func get_inventory():
 	print('TODO: Implement checking inventory')
 	for slot in %InventoryMenu.item_slot_reference:
@@ -136,24 +124,9 @@ func save_equipment():
 func is_in_inventory(): # TODO: Implement 
 	pass
 
-func _on_resume_pressed():
-	toggle_inventory()
-
-func _on_restart_pressed():
-	# TODO: Add a confirmation pop up to make sure user wants to restart
-	toggle_inventory()
-	Global.restart()
-	
-func _on_quit_pressed():
-	# TODO: Add a confirmation pop up to make sure user wants to restart
-	toggle_inventory()
-	get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
-	
-func _on_load_latest_save_pressed():
-	Global.load_game()
-
 func set_purse_text():
 	purse_label.text = 'Purse: %s' % str(player.purse)
+	
 func _on_player_update_purse() -> void:
 	set_purse_text()
 
@@ -165,4 +138,9 @@ func _on_inventory_tab_pressed() -> void:
 
 func _on_quest_tab_pressed() -> void:
 	selected_tab = get_node('%QuestMenu')
+	show_tab(selected_tab)
+
+
+func _on_system_tab_pressed() -> void:
+	selected_tab = get_node('%SystemMenu')
 	show_tab(selected_tab)
