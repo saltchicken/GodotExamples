@@ -23,8 +23,14 @@ func _ready():
 # TODO: These are just for testing remove both '1' and '2'
 func _process(_delta):
 	if Input.is_action_just_pressed('rightclick'):
-		#set_tile_at_mouse_position(Vector2(0,1))
-		set_tile_player_facing(Vector2(0,1))
+		#set_tile_at_mouse_position(0, Vector2i(0,1))
+		
+		 #Best for setting in front of player
+		set_tile_player_facing(2, Vector2i(0,0), 1)
+		
+		
+		
+		
 		#print(tile_map_layer.get_cell_atlas_coords(Vector2(10,0)))
 		#var pattern = tile_map_layer.get_pattern([Vector2(0,0)])
 		
@@ -52,14 +58,14 @@ func _process(_delta):
 		#print('loading game')
 		#Global.load_game()
 
-func set_tile_at_mouse_position(atlas_coords, source_id: int = 0):
+func set_tile_at_mouse_position(source_id: int, atlas_coords: Vector2i, alternative_tile: int = 0):
 	var mouse_pos = tile_map_layer.get_global_mouse_position()
 	var tile_map_coords = tile_map_layer.local_to_map(mouse_pos)
 	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, 0)
 	
-func set_tile_player_facing(atlas_coords, source_id: int = 0):
+func set_tile_player_facing(source_id: int, atlas_coords: Vector2i, alternative_tile: int = 0):
 	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
 	tile_map_coords += Vector2i(player.direction)
-	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, 0)
+	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, alternative_tile)
 	
 	

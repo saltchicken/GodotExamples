@@ -5,6 +5,7 @@ var rng = RandomNumberGenerator.new()
 @onready var value
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print('Creating coin')
 	var choice = weighted_random()
 	match choice:
 		0:
