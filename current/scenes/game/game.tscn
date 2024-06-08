@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgbv7e2yr5xpl"]
+[gd_scene load_steps=16 format=3 uid="uid://cgbv7e2yr5xpl"]
 
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://o47wm4xjxsim" path="res://assets/Wooden House.png" id="7_3ik0l"]
 [ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://scenes/objects/coins/coins.tscn" id="8_422q1"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
+[ext_resource type="Texture2D" uid="uid://ioeoh483yn2y" path="res://assets/tile_highlight.png" id="9_skikj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dgwu"]
 texture = ExtResource("6_367yx")
@@ -120,6 +121,13 @@ sources/0 = SubResource("TileSetAtlasSource_3dgwu")
 sources/1 = SubResource("TileSetAtlasSource_ba70n")
 sources/2 = SubResource("TileSetScenesCollectionSource_ld58v")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfjgc"]
+texture = ExtResource("9_skikj")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4rtwm"]
+sources/0 = SubResource("TileSetAtlasSource_kfjgc")
+
 [node name="game" type="Node2D"]
 z_index = -1
 z_as_relative = false
@@ -145,3 +153,6 @@ tile_set = SubResource("TileSet_s45dm")
 
 [node name="Coins" parent="." instance=ExtResource("8_422q1")]
 position = Vector2(23, 44)
+
+[node name="PlacementHighlightMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_4rtwm")

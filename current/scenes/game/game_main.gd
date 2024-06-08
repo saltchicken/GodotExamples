@@ -6,6 +6,8 @@ extends Node
 #var rng = RandomNumberGenerator.new()
 @onready var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
 @onready var tile_map_layer = get_node('TileMapLayer')
+@onready var placement_highlight_layer = get_node('PlacementHighlightMapLayer')
+@onready var current_highlighted_tile_coords = Vector2i(0,0)
 
 func _ready():
 	# TODO: Put this in a better place
@@ -22,6 +24,7 @@ func _ready():
 	
 # TODO: These are just for testing remove both '1' and '2'
 func _process(_delta):
+	tile_highlight()
 	if Input.is_action_just_pressed('rightclick'):
 		#set_tile_at_mouse_position(0, Vector2i(0,1))
 		
@@ -57,6 +60,16 @@ func _process(_delta):
 	#if Input.is_action_just_pressed('2'):
 		#print('loading game')
 		#Global.load_game()
+		
+func tile_highlight():
+	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
+	tile_map_coords += Vector2i(player.direction)
+	if tile_map_coords != current_highlighted_tile_coords:
+		placement_highlight_layer.set_cell(current_highlighted_tile_coords, -1, Vector2i(-1,-1), -1)
+		placement_highlight_layer.set_cell(tile_map_coords, 0, Vector2i(0,0), 0)
+		current_highlighted_tile_coords = tile_map_coords
+	else:
+		pass
 
 func set_tile_at_mouse_position(source_id: int, atlas_coords: Vector2i, alternative_tile: int = 0):
 	var mouse_pos = tile_map_layer.get_global_mouse_position()
