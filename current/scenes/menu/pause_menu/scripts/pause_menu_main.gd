@@ -111,7 +111,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 		##item.add_to_group('items')
 
 func collect_item(item):
-	print(get_first_open_slot())
+	#print(get_first_open_slot())
 	load_item_into_inventory(item, get_first_open_slot())
 	
 

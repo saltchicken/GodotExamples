@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm1wpccpepime"]
+[gd_scene load_steps=9 format=3 uid="uid://cm1wpccpepime"]
 
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/scripts/pause_menu_main.gd" id="1_1wyvu"]
 [ext_resource type="Shader" path="res://scenes/menu/pause_menu/shaders/pause_menu_blur.gdshader" id="2_hxhow"]
 [ext_resource type="PackedScene" uid="uid://bn4rd5tslq0dg" path="res://scenes/menu/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
 [ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/quest_menu/quest_menu.tscn" id="4_37rwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhmdq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
 shader = ExtResource("2_hxhow")
@@ -17,72 +19,88 @@ shader_parameter/lod = 0.917
 process_mode = 3
 script = ExtResource("1_1wyvu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xhmdq")
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
 material = SubResource("ShaderMaterial_tnhip")
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -556.0
+offset_top = -304.0
+offset_right = 596.0
+offset_bottom = 344.0
 
-[node name="MenuPanel" type="Panel" parent="."]
-offset_left = 64.0
-offset_top = 77.0
-offset_right = 1088.0
-offset_bottom = 597.0
+[node name="MenuPanel" type="Panel" parent="Panel"]
+offset_left = -492.0
+offset_top = -227.0
+offset_right = 532.0
+offset_bottom = 293.0
 
-[node name="SystemPanel" type="MarginContainer" parent="."]
-offset_left = 64.0
-offset_top = 42.0
-offset_right = 1088.0
-offset_bottom = 74.0
+[node name="SystemPanel" type="MarginContainer" parent="Panel"]
+offset_left = -492.0
+offset_top = -262.0
+offset_right = 532.0
+offset_bottom = -230.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SystemPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SystemPanel"]
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="SystemPanel/HBoxContainer"]
+[node name="Resume" type="Button" parent="Panel/SystemPanel/HBoxContainer"]
 layout_mode = 2
 text = "Resume"
 
-[node name="Restart" type="Button" parent="SystemPanel/HBoxContainer"]
+[node name="Restart" type="Button" parent="Panel/SystemPanel/HBoxContainer"]
 layout_mode = 2
 text = "Restart"
 
-[node name="Quit" type="Button" parent="SystemPanel/HBoxContainer"]
+[node name="Quit" type="Button" parent="Panel/SystemPanel/HBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[node name="LoadLatestSave" type="Button" parent="SystemPanel/HBoxContainer"]
+[node name="LoadLatestSave" type="Button" parent="Panel/SystemPanel/HBoxContainer"]
 layout_mode = 2
 text = "Load Last Save"
 
-[node name="TabsPanel" type="MarginContainer" parent="."]
-offset_left = 73.0
-offset_top = 86.0
-offset_right = 1080.0
-offset_bottom = 117.0
+[node name="TabsPanel" type="MarginContainer" parent="Panel"]
+offset_left = -483.0
+offset_top = -218.0
+offset_right = 524.0
+offset_bottom = -187.0
 
-[node name="Tabs" type="HBoxContainer" parent="TabsPanel"]
+[node name="Tabs" type="HBoxContainer" parent="Panel/TabsPanel"]
 layout_mode = 2
 
-[node name="InventoryTab" type="Button" parent="TabsPanel/Tabs"]
+[node name="InventoryTab" type="Button" parent="Panel/TabsPanel/Tabs"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xqbcl")
 text = "Inventory"
 
-[node name="QuestTab" type="Button" parent="TabsPanel/Tabs"]
+[node name="QuestTab" type="Button" parent="Panel/TabsPanel/Tabs"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ehayh")
 text = "Quests"
 
-[node name="InventoryMenu" parent="." instance=ExtResource("3_0peq7")]
+[node name="InventoryMenu" parent="Panel" instance=ExtResource("3_0peq7")]
 unique_name_in_owner = true
-visible = false
+position = Vector2(-556, -304)
 
-[node name="QuestMenu" parent="." instance=ExtResource("4_37rwm")]
+[node name="QuestMenu" parent="Panel" instance=ExtResource("4_37rwm")]
 unique_name_in_owner = true
-visible = false
+position = Vector2(-556, -304)
 
-[connection signal="pressed" from="SystemPanel/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="SystemPanel/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="SystemPanel/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="SystemPanel/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
-[connection signal="pressed" from="TabsPanel/Tabs/InventoryTab" to="." method="_on_inventory_tab_pressed"]
-[connection signal="pressed" from="TabsPanel/Tabs/QuestTab" to="." method="_on_quest_tab_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/SystemPanel/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]
+[connection signal="pressed" from="Panel/TabsPanel/Tabs/InventoryTab" to="." method="_on_inventory_tab_pressed"]
+[connection signal="pressed" from="Panel/TabsPanel/Tabs/QuestTab" to="." method="_on_quest_tab_pressed"]
