@@ -46,7 +46,10 @@ func _ready():
 func _process(_delta):
 	# TODO: Move this to main function with other inputs
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
-		toggle_pause_menu()
+		if self.visible:
+			close_pause_menu()
+		else:
+			open_pause_menu()
 	if self.visible:
 		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 			selected_slot -= 1
@@ -63,10 +66,21 @@ func _process(_delta):
 			else:
 				selected_slot += 2
 		
-func toggle_pause_menu():
-	self.visible = !self.visible
+#func toggle_pause_menu():
+	#self.visible = !self.visible
+	#%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	#get_tree().paused = !get_tree().paused
+	
+func open_pause_menu():
+	self.visible = true
 	%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = true
+	
+func close_pause_menu():
+	self.visible = false
+	#%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	get_tree().paused = false
+	
 
 func get_first_open_slot():
 	for i in %InventoryMenu.item_slot_reference.size():

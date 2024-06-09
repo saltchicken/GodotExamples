@@ -18,7 +18,9 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var joystick_movement
 @onready var run
 @onready var attack
+
 @onready var cast
+
 @onready var use
 
 @export var default_stats: PlayerStats
@@ -39,11 +41,11 @@ func _set_purse(new_value):
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
-	var current_spell_reference = $PauseMenu/CenteredPanel/SpellsMenu/CurrentSpell.get_child_count()
-	if current_spell_reference > 0:
-		current_spell = $PauseMenu/CenteredPanel/SpellsMenu/CurrentSpell.get_children()[0]
-	else:
-		print('No spell selected: Need to implement check for that when cast is pressed')
+	#var current_spell_reference = $PauseMenu/CenteredPanel/SpellsMenu.current_spells_slot_reference
+	#if current_spell_reference > 0:
+		#current_spell = $PauseMenu/CenteredPanel/SpellsMenu/CurrentSpell.get_children()[0]
+	#else:
+		#print('No spell selected: Need to implement check for that when cast is pressed')
 
 func _physics_process(delta):
 	get_input()
@@ -70,8 +72,9 @@ func get_input():
 	joystick_movement = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
 	run = Input.is_action_pressed('run')
 	attack = Input.is_action_just_pressed('attack')
-	cast = Input.is_action_just_pressed('cast')
 	use = Input.is_action_just_pressed('use')
+	
+
 	
 func get_direction():
 	if !handle_joystick_movement():

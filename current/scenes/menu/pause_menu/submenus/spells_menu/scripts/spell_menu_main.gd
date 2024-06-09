@@ -3,7 +3,8 @@ extends Node
 @onready var player = get_owner().get_owner() # TODO: Better way to reference player for applying equipment modifiers
 
 @onready var spell_slot_reference: Array = get_spell_slots()
-@onready var current_spell = get_node('CurrentSpell')
+@onready var current_spells_slot_reference: Array = get_current_spells_slots()
+#@onready var current_spell = get_node('CurrentSpell')
 #@onready var equipment_slot_reference: Array = get_equipment_slots()
 #@onready var item_and_equipment_slot_reference: Array = item_slot_reference + equipment_slot_reference
 #@onready var InvSize = item_slot_reference.size()
@@ -12,14 +13,18 @@ extends Node
 func _ready() -> void:
 	for slot in spell_slot_reference:
 		slot.change_spell.connect(spell_changed.bind(slot))
-		
-	current_spell.change_spell.connect(spell_changed.bind(current_spell))
+	
+	for slot in current_spells_slot_reference:
+		slot.change_spell.connect(spell_changed.bind(slot))
 		
 	# FOR TESTING
 	load_item_into_spell("res://scenes/spell/whirlwind/resources/whirlwind.tres", 0)
 
 func get_spell_slots():
 	return get_node('Spells/VBoxContainer/HBoxContainer').get_children()
+
+func get_current_spells_slots():
+	return get_node('CurrentSpells').get_children()
 	
 func load_item_into_spell(path_to_item, slot_index):
 	var spell := SpellItem.new()
@@ -35,10 +40,10 @@ func spell_changed(slot):
 	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
 	#if slot == current_spell:
 		#print('Current Spell changed. Currently no logic is being applied')
-	if current_spell.get_child_count() > 0:
-		player.current_spell = load(slot.get_children()[0].data.scene)
-	else:
-		player.current_spell = null
+	#if current_spell.get_child_count() > 0:
+		#player.current_spell = load(slot.get_children()[0].data.scene)
+	#else:
+		#player.current_spell = null
 		
 	
 #func apply_equipment_modifiers():

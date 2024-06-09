@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=110 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_main.gd" id="1_u0ca5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4nqrtl2ov7dp" path="res://scenes/player/assets/universal_sprite.png" id="2_vjjc5"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_run_state.gd" id="4_0pa3q"]
+[ext_resource type="PackedScene" uid="uid://dj34bj75qdoa3" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_menu.tscn" id="4_w0itk"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_attack_state.gd" id="7_27ein"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_hit_state.gd" id="8_ioajo"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_death_state.gd" id="9_hk3e8"]
@@ -709,6 +710,8 @@ zoom = Vector2(2, 2)
 [node name="PauseMenu" parent="." instance=ExtResource("2_3uprd")]
 visible = false
 
+[node name="SpellSelectionMenu" parent="." instance=ExtResource("4_w0itk")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -22)
 texture = ExtResource("2_vjjc5")
@@ -732,8 +735,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_itwp3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.1
-parameters/current_position = 0.0429918
-parameters/current_delta = 0.00694444
+parameters/current_position = 0.0974589
+parameters/current_delta = 0.013859
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -819,18 +822,18 @@ parameters/hit/output/current_length = null
 parameters/hit/output/current_position = null
 parameters/hit/output/current_delta = null
 parameters/idle/current_length = 0.1
-parameters/idle/current_position = 0.0429918
-parameters/idle/current_delta = 0.00694444
+parameters/idle/current_position = 0.0974589
+parameters/idle/current_delta = 0.013859
 parameters/idle/BlendSpace2D/current_length = 0.1
-parameters/idle/BlendSpace2D/current_position = 0.0429918
-parameters/idle/BlendSpace2D/current_delta = 0.00694444
+parameters/idle/BlendSpace2D/current_position = 0.0974589
+parameters/idle/BlendSpace2D/current_delta = 0.013859
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.114732, 0.329193)
 parameters/idle/BlendSpace2D/0/current_length = null
 parameters/idle/BlendSpace2D/0/current_position = null
 parameters/idle/BlendSpace2D/0/current_delta = null
 parameters/idle/BlendSpace2D/1/current_length = 0.1
-parameters/idle/BlendSpace2D/1/current_position = 0.0429918
-parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
+parameters/idle/BlendSpace2D/1/current_position = 0.0974589
+parameters/idle/BlendSpace2D/1/current_delta = 0.013859
 parameters/idle/BlendSpace2D/2/current_length = null
 parameters/idle/BlendSpace2D/2/current_position = null
 parameters/idle/BlendSpace2D/2/current_delta = null
@@ -838,12 +841,12 @@ parameters/idle/BlendSpace2D/3/current_length = null
 parameters/idle/BlendSpace2D/3/current_position = null
 parameters/idle/BlendSpace2D/3/current_delta = null
 parameters/idle/TimeScale/current_length = 0.1
-parameters/idle/TimeScale/current_position = 0.0429918
-parameters/idle/TimeScale/current_delta = 0.00694444
+parameters/idle/TimeScale/current_position = 0.0974589
+parameters/idle/TimeScale/current_delta = 0.013859
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.1
-parameters/idle/output/current_position = 0.0429918
-parameters/idle/output/current_delta = 0.00694444
+parameters/idle/output/current_position = 0.0974589
+parameters/idle/output/current_delta = 0.013859
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null

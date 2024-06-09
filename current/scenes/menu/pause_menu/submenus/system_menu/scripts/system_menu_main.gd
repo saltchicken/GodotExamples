@@ -9,12 +9,12 @@ func _ready():
 func system_button_press(button):
 	match button.text:
 		'Resume':
-			pause_menu.toggle_pause_menu()
+			pause_menu.close_pause_menu()
 		'Restart':
-			pause_menu.toggle_pause_menu()
+			pause_menu.close_pause_menu()
 			Global.restart()
 		'Quit':
-			pause_menu.toggle_pause_menu()
+			pause_menu.close_pause_menu()
 			get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
 		'Load Last Save':
 			Global.load_game()

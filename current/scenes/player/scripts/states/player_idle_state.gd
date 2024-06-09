@@ -18,8 +18,13 @@ func Update(_delta:float):
 	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	if character_body.cast:
 		#state_transtion.emit(self, 'cast') # TODO: Create a cast state
-		if character_body.current_spell != null:
-			var current_spell = character_body.current_spell.instantiate()
+		var spell_selection_menu = character_body.get_node('SpellSelectionMenu')
+		var current_selected_spell_slot = spell_selection_menu.spell_choices[spell_selection_menu.selected_spell]
+		var current_selected_spell = null
+		if current_selected_spell_slot.get_child_count() > 0:
+			current_selected_spell = current_selected_spell_slot.get_children()[0]
+		if current_selected_spell != null:
+			var current_spell = load(current_selected_spell.data.scene).instantiate()
 			current_spell.position = character_body.position
 			get_tree().current_scene.add_child(current_spell)
 		else:
