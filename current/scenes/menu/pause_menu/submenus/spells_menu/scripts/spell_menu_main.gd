@@ -19,6 +19,7 @@ func _ready() -> void:
 		
 	# FOR TESTING
 	load_item_into_spell("res://scenes/spell/whirlwind/resources/whirlwind.tres", 0)
+	load_item_into_spell("res://scenes/spell/fireball/resources/fireball.tres", 1)
 
 func get_spell_slots():
 	return get_node('Spells/VBoxContainer/HBoxContainer').get_children()

@@ -72,18 +72,18 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_7w7jd")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.0
-parameters/current_position = 0.0
-parameters/current_delta = 0.0
+parameters/current_length = 0.4
+parameters/current_position = 0.0551216
+parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
 parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
-parameters/cast/current_length = null
-parameters/cast/current_position = null
-parameters/cast/current_delta = null
+parameters/cast/current_length = 0.4
+parameters/cast/current_position = 0.0551216
+parameters/cast/current_delta = 0.00694444
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

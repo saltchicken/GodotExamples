@@ -29,9 +29,7 @@ func select_new_slot(previous_slot, new_slot):
 	
 func _ready():
 	self.visible = false
-	var blur_rect = get_node('BlurRect')
-	blur_rect.set_size(get_viewport().get_visible_rect().size)
-	print(blur_rect.size)
+	get_node('BlurRect').set_size(get_viewport().get_visible_rect().size)
 	set_purse_text()
 	
 func _process(_delta):
