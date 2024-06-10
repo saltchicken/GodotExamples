@@ -11,7 +11,7 @@ extends Node
 @onready var current_selected_spell = null
 
 @onready var pause_menu = player.get_node('PauseMenu')
-@onready var spell_menu = pause_menu.get_node('CenteredPanel/SpellsMenu')
+@onready var spell_menu = pause_menu.get_node('MenuTabs/Spells/SpellsMenu')
 
 @onready var style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_unselected.tres')
 @onready var selected_style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_selected.tres')
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 			#selected_spell -= 2
 				
 func get_current_spells():
-	var spell_menu_current_spells = pause_menu.get_node('CenteredPanel/SpellsMenu/CurrentSpells').get_children()
+	var spell_menu_current_spells = pause_menu.get_node('MenuTabs/Spells/SpellsMenu/CurrentSpells').get_children()
 	
 	# TODO: Do I really have to clear out all of the values everytime?
 	for spell_choice in spell_choices:

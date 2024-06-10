@@ -21,7 +21,47 @@ vframes = 10
 frame = 21
 
 [node name="AnimationTree" parent="." index="2"]
+parameters/current_length = 0.4
+parameters/current_position = 0.0763377
+parameters/current_delta = 0.00666667
+parameters/chase/current_length = 0.4
+parameters/chase/current_position = 0.0763377
+parameters/chase/current_delta = 0.00666667
+parameters/chase/BlendSpace2D/current_length = 0.4
+parameters/chase/BlendSpace2D/current_position = 0.0763377
+parameters/chase/BlendSpace2D/current_delta = 0.00666667
+parameters/chase/BlendSpace2D/0/current_length = 0.4
+parameters/chase/BlendSpace2D/0/current_position = 0.0763377
+parameters/chase/BlendSpace2D/0/current_delta = 0.00666667
+parameters/chase/TimeScale/current_length = 0.4
+parameters/chase/TimeScale/current_position = 0.0763377
+parameters/chase/TimeScale/current_delta = 0.00666667
+parameters/chase/output/current_length = 0.4
+parameters/chase/output/current_position = 0.0763377
+parameters/chase/output/current_delta = 0.00666667
 parameters/collision_attack/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/hit/current_length = 0.6
+parameters/hit/current_position = 0.6
+parameters/hit/current_delta = 0.0
+parameters/hit/Animation/current_length = 0.6
+parameters/hit/Animation/current_position = 0.6
+parameters/hit/Animation/current_delta = 0.0
+parameters/hit/TimeScale/current_length = 0.6
+parameters/hit/TimeScale/current_position = 0.6
+parameters/hit/TimeScale/current_delta = 0.0
+parameters/hit/output/current_length = 0.6
+parameters/hit/output/current_position = 0.6
+parameters/hit/output/current_delta = 0.0
+parameters/idle/current_position = 0.609199
+parameters/idle/current_delta = 0.006927
+parameters/idle/BlendSpace2D/current_position = 0.609199
+parameters/idle/BlendSpace2D/current_delta = 0.006927
+parameters/idle/BlendSpace2D/2/current_position = 0.609199
+parameters/idle/BlendSpace2D/2/current_delta = 0.006927
+parameters/idle/TimeScale/current_position = 0.609199
+parameters/idle/TimeScale/current_delta = 0.006927
+parameters/idle/output/current_position = 0.609199
+parameters/idle/output/current_delta = 0.006927
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource("CircleShape2D_ah05p")

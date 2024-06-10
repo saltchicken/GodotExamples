@@ -27,20 +27,11 @@ func select_new_slot(previous_slot, new_slot):
 	%InventoryMenu.item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
 	%InventoryMenu.item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
-	
-func show_tab(selected_tab):
-	for tab in tabs:
-		if tab == selected_tab:
-			tab.visible = true
-		else:
-			tab.visible = false
-		
-	
 func _ready():
 	self.visible = false
-	for button in get_node('CenteredPanel/TabsPanel/Tabs').get_children():
-		button.pressed.connect(tabmenu_pressed.bind(button))
-	show_tab(selected_tab)
+	var blur_rect = get_node('BlurRect')
+	blur_rect.set_size(get_viewport().get_visible_rect().size)
+	print(blur_rect.size)
 	set_purse_text()
 	
 func _process(_delta):
@@ -65,12 +56,7 @@ func _process(_delta):
 				selected_slot += %InventoryMenu.InvSize / 2
 			else:
 				selected_slot += 2
-		
-#func toggle_pause_menu():
-	#self.visible = !self.visible
-	#%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
-	#get_tree().paused = !get_tree().paused
-	
+			
 func open_pause_menu():
 	self.visible = true
 	%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
@@ -81,7 +67,6 @@ func close_pause_menu():
 	#%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = false
 	
-
 func get_first_open_slot():
 	for i in %InventoryMenu.item_slot_reference.size():
 		if %InventoryMenu.item_slot_reference[i].get_child_count() == 0:
@@ -145,15 +130,3 @@ func set_purse_text():
 	
 func _on_player_update_purse() -> void:
 	set_purse_text()
-
-func tabmenu_pressed(button):
-	match button.text:
-		'Inventory':
-			selected_tab = get_node('%InventoryMenu')
-		'Spells':
-			selected_tab = get_node('%SpellsMenu')
-		'Quests':
-			selected_tab = get_node('%QuestMenu')
-		'System':
-			selected_tab = get_node('%SystemMenu')
-	show_tab(selected_tab)

@@ -377,6 +377,7 @@ states/hit/node = SubResource("AnimationNodeBlendTree_h4abx")
 states/hit/position = Vector2(772, 142)
 states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
+graph_offset = Vector2(-15, 111)
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 y_sort_enabled = true
