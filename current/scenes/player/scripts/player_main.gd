@@ -26,7 +26,7 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @export var default_stats: PlayerStats
 @onready var stats: PlayerStats = default_stats.duplicate()
 
-@onready var current_spell
+#@onready var current_spell
 
 @onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
 
@@ -41,11 +41,6 @@ func _set_purse(new_value):
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
-	#var current_spell_reference = $PauseMenu/CenteredPanel/SpellsMenu.current_spells_slot_reference
-	#if current_spell_reference > 0:
-		#current_spell = $PauseMenu/CenteredPanel/SpellsMenu/CurrentSpell.get_children()[0]
-	#else:
-		#print('No spell selected: Need to implement check for that when cast is pressed')
 
 func _physics_process(delta):
 	get_input()

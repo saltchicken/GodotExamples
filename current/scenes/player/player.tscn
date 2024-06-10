@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=85 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_main.gd" id="1_u0ca5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_hit_state.gd" id="8_ioajo"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_death_state.gd" id="9_hk3e8"]
 [ext_resource type="Texture2D" uid="uid://cbul7asp1qxig" path="res://scenes/player/assets/down_sword.png" id="10_x1ppx"]
+[ext_resource type="Script" path="res://scenes/player/scripts/states/player_cast_state.gd" id="14_4g4yl"]
 
 [sub_resource type="Animation" id="Animation_erpvo"]
 length = 0.001
@@ -391,6 +392,23 @@ tracks/0/keys = {
 "values": [Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8), Vector2i(6, 8), Vector2i(7, 8), Vector2i(8, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_bbwc8"]
+resource_name = "cast"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(3, 2), Vector2i(4, 2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akx5f"]
 _data = {
 "RESET": SubResource("Animation_erpvo"),
@@ -398,6 +416,7 @@ _data = {
 "attack_left": SubResource("Animation_skmic"),
 "attack_right": SubResource("Animation_cayq6"),
 "attack_up": SubResource("Animation_dhmas"),
+"cast": SubResource("Animation_bbwc8"),
 "death": SubResource("Animation_0ivtw"),
 "hit": SubResource("Animation_2sgxd"),
 "idle_down": SubResource("Animation_y8eqe"),
@@ -446,6 +465,9 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_qd47v")
 nodes/TimeScale/position = Vector2(705, 230)
 nodes/output/position = Vector2(1160, 240)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ekc3s"]
+animation = &"cast"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sw1v1"]
 animation = &"death"
@@ -615,77 +637,23 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2j1fm"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u68qe"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2kvg7"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_govux"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4cyq3"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tfrfn"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dlbo2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sj43d"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1brur"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ci7v"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_croty"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_74okk"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6i2ux"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0tb1"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w00yv"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wr1ud"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rll1v"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j6krc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7prdv"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwrcc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f3emg"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w521q"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y4fpl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yjsyj"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7x8mu"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vi0an"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bcjon"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mqw6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gp53p"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_itwp3"]
 states/End/position = Vector2(1800, 340)
 states/attack/node = SubResource("AnimationNodeBlendTree_tfsdk")
-states/attack/position = Vector2(1009, 22)
+states/attack/position = Vector2(646, 163)
+states/cast/node = SubResource("AnimationNodeAnimation_ekc3s")
+states/cast/position = Vector2(634, 345)
 states/death/node = SubResource("AnimationNodeBlendTree_3pl4b")
-states/death/position = Vector2(1402, 404)
+states/death/position = Vector2(891, 233)
 states/hit/node = SubResource("AnimationNodeBlendTree_70sh5")
-states/hit/position = Vector2(1369, 226)
+states/hit/position = Vector2(891, 91)
 states/idle/node = SubResource("AnimationNodeBlendTree_e8wgn")
 states/idle/position = Vector2(357, 100)
 states/run/node = SubResource("AnimationNodeBlendTree_l58bp")
-states/run/position = Vector2(715, 476)
+states/run/position = Vector2(357, 353)
 states/walk/node = SubResource("AnimationNodeBlendTree_jwfmn")
-states/walk/position = Vector2(141, 409)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2j1fm"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_u68qe"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_2kvg7"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_govux"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_4cyq3"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_tfrfn"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_dlbo2"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_sj43d"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_1brur"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_3ci7v"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_croty"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_74okk"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6i2ux"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_m0tb1"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_w00yv"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_wr1ud"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_rll1v"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_j6krc"), "hit", "run", SubResource("AnimationNodeStateMachineTransition_7prdv"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_hwrcc"), "hit", "attack", SubResource("AnimationNodeStateMachineTransition_f3emg"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_w521q"), "death", "attack", SubResource("AnimationNodeStateMachineTransition_y4fpl"), "run", "death", SubResource("AnimationNodeStateMachineTransition_yjsyj"), "death", "run", SubResource("AnimationNodeStateMachineTransition_7x8mu"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_vi0an"), "death", "walk", SubResource("AnimationNodeStateMachineTransition_bcjon"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_8mqw6"), "death", "idle", SubResource("AnimationNodeStateMachineTransition_gp53p")]
+states/walk/position = Vector2(357, 226)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2j1fm")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
 
@@ -735,8 +703,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_itwp3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.1
-parameters/current_position = 0.0974589
-parameters/current_delta = 0.013859
+parameters/current_position = 0.0133531
+parameters/current_delta = 0.00666667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -769,6 +737,9 @@ parameters/attack/TimeScale/scale = 1.0
 parameters/attack/output/current_length = null
 parameters/attack/output/current_position = null
 parameters/attack/output/current_delta = null
+parameters/cast/current_length = 0.6
+parameters/cast/current_position = 0.6
+parameters/cast/current_delta = 0.0
 parameters/death/current_length = null
 parameters/death/current_position = null
 parameters/death/current_delta = null
@@ -822,18 +793,18 @@ parameters/hit/output/current_length = null
 parameters/hit/output/current_position = null
 parameters/hit/output/current_delta = null
 parameters/idle/current_length = 0.1
-parameters/idle/current_position = 0.0974589
-parameters/idle/current_delta = 0.013859
+parameters/idle/current_position = 0.0133531
+parameters/idle/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/current_length = 0.1
-parameters/idle/BlendSpace2D/current_position = 0.0974589
-parameters/idle/BlendSpace2D/current_delta = 0.013859
+parameters/idle/BlendSpace2D/current_position = 0.0133531
+parameters/idle/BlendSpace2D/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.114732, 0.329193)
 parameters/idle/BlendSpace2D/0/current_length = null
 parameters/idle/BlendSpace2D/0/current_position = null
 parameters/idle/BlendSpace2D/0/current_delta = null
 parameters/idle/BlendSpace2D/1/current_length = 0.1
-parameters/idle/BlendSpace2D/1/current_position = 0.0974589
-parameters/idle/BlendSpace2D/1/current_delta = 0.013859
+parameters/idle/BlendSpace2D/1/current_position = 0.0133531
+parameters/idle/BlendSpace2D/1/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/2/current_length = null
 parameters/idle/BlendSpace2D/2/current_position = null
 parameters/idle/BlendSpace2D/2/current_delta = null
@@ -841,12 +812,12 @@ parameters/idle/BlendSpace2D/3/current_length = null
 parameters/idle/BlendSpace2D/3/current_position = null
 parameters/idle/BlendSpace2D/3/current_delta = null
 parameters/idle/TimeScale/current_length = 0.1
-parameters/idle/TimeScale/current_position = 0.0974589
-parameters/idle/TimeScale/current_delta = 0.013859
+parameters/idle/TimeScale/current_position = 0.0133531
+parameters/idle/TimeScale/current_delta = 0.00666667
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.1
-parameters/idle/output/current_position = 0.0974589
-parameters/idle/output/current_delta = 0.013859
+parameters/idle/output/current_position = 0.0133531
+parameters/idle/output/current_delta = 0.00666667
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null
@@ -942,7 +913,11 @@ script = ExtResource("8_ioajo")
 [node name="death" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_hk3e8")
 
+[node name="cast" type="Node2D" parent="StateMachine"]
+script = ExtResource("14_4g4yl")
+
 [connection signal="update_purse" from="." to="PauseMenu" method="_on_player_update_purse"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/attack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/death" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="StateMachine/cast" method="_on_animation_tree_animation_finished"]

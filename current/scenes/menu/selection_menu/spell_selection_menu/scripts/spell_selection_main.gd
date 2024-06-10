@@ -8,8 +8,10 @@ extends Node
 #@onready var selected_spell
 @onready var selected_spell: int = 0: set = _set_selected_spell
 @onready var spell_choices: Array = get_children()
+@onready var current_selected_spell = null
 
 @onready var pause_menu = player.get_node('PauseMenu')
+@onready var spell_menu = pause_menu.get_node('CenteredPanel/SpellsMenu')
 
 @onready var style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres')
 @onready var selected_style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/highlighted_item_slot.tres')
@@ -23,6 +25,7 @@ func _set_selected_spell(new_value):
 	else:
 		selected_spell = new_value
 	select_new_slot(previous_spell, selected_spell)
+	select_current_spell()
 	
 func select_new_slot(previous_spell, selected_spell):
 	spell_choices[previous_spell].add_theme_stylebox_override('panel', style_box)
@@ -47,14 +50,28 @@ func _ready() -> void:
 	
 	self.visible = false
 	select_new_slot(0, selected_spell)
+	
+	for slot in spell_menu.spell_slot_reference:
+		slot.change_spell.connect(spell_menu_spell_changed.bind(slot))
+	
+	for slot in spell_menu.current_spells_slot_reference:
+		slot.change_spell.connect(spell_menu_spell_changed.bind(slot))
+	
+func spell_menu_spell_changed(slot):
+	get_current_spells()
+	select_current_spell()
+	
+		
+func select_current_spell():
+	var current_selected_spell_slot = spell_choices[selected_spell]
+	if current_selected_spell_slot.get_child_count() > 0:
+		current_selected_spell = current_selected_spell_slot.get_children()[0]
+	else:
+		current_selected_spell = null
 
 func _physics_process(delta: float) -> void:
 	player.cast = cast_held_logic(delta)
 	if self.visible and !pause_menu.visible:
-		#if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
-			#selected_spell -= 1
-		#if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
-			#selected_spell += 1
 		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 			selected_spell = 3
 		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
@@ -63,16 +80,15 @@ func _physics_process(delta: float) -> void:
 			selected_spell = 0
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
 			selected_spell = 2
+		# TODO: Leaving commented code in case spell selection should act as a wheel.
+		#if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+			#selected_spell -= 1
+		#if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+			#selected_spell += 1
 		#if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-			#if selected_spell <= %InventoryMenu.InvSize:
-				#selected_spell -= %InventoryMenu.InvSize / 2
-			#else:
-				#selected_spell -= 2
+			#selected_spell += 2
 		#if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-			#if selected_spell < %InventoryMenu.InvSize:
-				#selected_spell += %InventoryMenu.InvSize / 2
-			#else:
-				#selected_spell += 2
+			#selected_spell -= 2
 				
 func get_current_spells():
 	var spell_menu_current_spells = pause_menu.get_node('CenteredPanel/SpellsMenu/CurrentSpells').get_children()
@@ -80,7 +96,9 @@ func get_current_spells():
 	# TODO: Do I really have to clear out all of the values everytime?
 	for spell_choice in spell_choices:
 		if spell_choice.get_child_count() > 0:
-			spell_choice.get_children()[0].queue_free()
+			var child_to_remove = spell_choice.get_children()[0]
+			spell_choice.remove_child(child_to_remove)
+			child_to_remove.queue_free()
 	# TODO: Maybe add some checking to make sure there are four current spells. That is the current hardcode. With flexibility can add to the spell wheel. SPELL WHEEL SHOULD BE THE NAME.
 	for i in range(spell_menu_current_spells.size()):
 		if spell_menu_current_spells[i].get_child_count() > 0:
@@ -93,7 +111,7 @@ func get_current_spells():
 		
 func open_spell_menu():
 	print('Open up spell menu')
-	get_current_spells()
+	#get_current_spells()
 	spell_selection_menu_open = true
 	self.visible = true
 	get_tree().paused = true
