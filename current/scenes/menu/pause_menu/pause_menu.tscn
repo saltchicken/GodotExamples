@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm1wpccpepime"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/scripts/pause_menu_main.gd" id="1_1wyvu"]
+[ext_resource type="Shader" path="res://scenes/menu/pause_menu/shaders/pause_menu_blur.gdshader" id="2_hxhow"]
+[ext_resource type="PackedScene" uid="uid://cgw438pdkorrb" path="res://scenes/menu/pause_menu/submenus/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
+[ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/pause_menu/submenus/quest_menu/quest_menu.tscn" id="4_37rwm"]
+[ext_resource type="PackedScene" uid="uid://djfho244tjv2a" path="res://scenes/menu/pause_menu/submenus/spells_menu/spells_menu.tscn" id="4_87qle"]
+[ext_resource type="PackedScene" uid="uid://ce2hekpqo0xd" path="res://scenes/menu/pause_menu/submenus/system_menu/system_menu.tscn" id="5_hpp43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhmdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
+shader = ExtResource("2_hxhow")
+shader_parameter/lod = 0.917
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqbcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehayh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4jry"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1wyvu")
+
+[node name="CenteredPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xhmdq")
+
+[node name="ColorRect" type="ColorRect" parent="CenteredPanel"]
+material = SubResource("ShaderMaterial_tnhip")
+layout_mode = 0
+offset_left = -556.0
+offset_top = -304.0
+offset_right = 596.0
+offset_bottom = 344.0
+
+[node name="MenuPanel" type="Panel" parent="CenteredPanel"]
+layout_mode = 0
+offset_left = -492.0
+offset_top = -227.0
+offset_right = 532.0
+offset_bottom = 293.0
+
+[node name="TabsPanel" type="MarginContainer" parent="CenteredPanel"]
+layout_mode = 0
+offset_left = -483.0
+offset_top = -218.0
+offset_right = 524.0
+offset_bottom = -187.0
+
+[node name="Tabs" type="HBoxContainer" parent="CenteredPanel/TabsPanel"]
+layout_mode = 2
+
+[node name="InventoryTab" type="Button" parent="CenteredPanel/TabsPanel/Tabs"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xqbcl")
+text = "Inventory"
+
+[node name="SpellsTab" type="Button" parent="CenteredPanel/TabsPanel/Tabs"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Spells"
+
+[node name="QuestsTab" type="Button" parent="CenteredPanel/TabsPanel/Tabs"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ehayh")
+text = "Quests"
+
+[node name="SystemTab" type="Button" parent="CenteredPanel/TabsPanel/Tabs"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r4jry")
+text = "System"
+
+[node name="InventoryMenu" parent="CenteredPanel" instance=ExtResource("3_0peq7")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-556, -304)
+
+[node name="SpellsMenu" parent="CenteredPanel" instance=ExtResource("4_87qle")]
+unique_name_in_owner = true
+visible = false
+
+[node name="QuestMenu" parent="CenteredPanel" instance=ExtResource("4_37rwm")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-556, -304)
+
+[node name="SystemMenu" parent="CenteredPanel" instance=ExtResource("5_hpp43")]
+unique_name_in_owner = true
+visible = false

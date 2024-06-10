@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhjo81a7nde87"]
+
+[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy.tscn" id="1_bexjs"]
+[ext_resource type="Resource" uid="uid://bvyr6xlwkotev" path="res://scenes/enemy/slime/resources/slime_stats.tres" id="2_dffh6"]
+[ext_resource type="Texture2D" uid="uid://3ihy37f8u0mb" path="res://scenes/enemy/slime/assets/slime_monster_spritesheet.png" id="3_l5sl2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_op0td"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3dgba"]
+
+[node name="Slime" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_bexjs")]
+initial_state = NodePath("StateMachine/idle")
+default_stats = ExtResource("2_dffh6")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_l5sl2")
+vframes = 6
+
+[node name="AnimationTree" parent="." index="2"]
+parameters/collision_attack/BlendSpace2D/blend_position = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_op0td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackArea" index="0"]
+shape = SubResource("CircleShape2D_3dgba")
