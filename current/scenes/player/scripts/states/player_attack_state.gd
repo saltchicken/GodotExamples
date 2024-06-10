@@ -46,7 +46,7 @@ func handle_attack_hitbox_direction():
 		attack_hitbox.position.y = 0
 
 func _on_animation_tree_animation_finished(anim_name):
-	if 'attack' in anim_name:
+	if anim_name in ["attack_left", "attack_right", "attack_up", "attack_down"]:
 		if character_body.movement:
 			if character_body.run:
 				state_transition.emit(self, 'run')

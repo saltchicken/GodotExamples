@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=93 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/scripts/player_main.gd" id="1_u0ca5"]
@@ -392,9 +392,9 @@ tracks/0/keys = {
 "values": [Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8), Vector2i(6, 8), Vector2i(7, 8), Vector2i(8, 8)]
 }
 
-[sub_resource type="Animation" id="Animation_bbwc8"]
-resource_name = "cast"
-length = 0.6
+[sub_resource type="Animation" id="Animation_nghm3"]
+resource_name = "cast_left"
+length = 0.7
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -403,10 +403,61 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(3, 2), Vector2i(4, 2)]
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bbwc8"]
+resource_name = "cast"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_4xr8r"]
+resource_name = "cast_right"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_qyah4"]
+resource_name = "cast_up"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akx5f"]
@@ -416,7 +467,10 @@ _data = {
 "attack_left": SubResource("Animation_skmic"),
 "attack_right": SubResource("Animation_cayq6"),
 "attack_up": SubResource("Animation_dhmas"),
-"cast": SubResource("Animation_bbwc8"),
+"cast_down": SubResource("Animation_bbwc8"),
+"cast_left": SubResource("Animation_nghm3"),
+"cast_right": SubResource("Animation_4xr8r"),
+"cast_up": SubResource("Animation_qyah4"),
 "death": SubResource("Animation_0ivtw"),
 "hit": SubResource("Animation_2sgxd"),
 "idle_down": SubResource("Animation_y8eqe"),
@@ -466,8 +520,38 @@ nodes/TimeScale/position = Vector2(705, 230)
 nodes/output/position = Vector2(1160, 240)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ekc3s"]
-animation = &"cast"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_td0pv"]
+animation = &"cast_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cmis4"]
+animation = &"cast_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kx2c5"]
+animation = &"cast_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h15dv"]
+animation = &"cast_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_v0lr5"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_td0pv")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_cmis4")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kx2c5")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_h15dv")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fstkp"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nl1x8"]
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_v0lr5")
+nodes/BlendSpace2D/position = Vector2(600, 40)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fstkp")
+nodes/TimeScale/position = Vector2(935, 126)
+nodes/output/position = Vector2(1180, 120)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sw1v1"]
 animation = &"death"
@@ -634,15 +718,12 @@ nodes/TimeScale/position = Vector2(520, 180)
 nodes/output/position = Vector2(920, 220)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2j1fm"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_itwp3"]
 states/End/position = Vector2(1800, 340)
 states/attack/node = SubResource("AnimationNodeBlendTree_tfsdk")
 states/attack/position = Vector2(646, 163)
-states/cast/node = SubResource("AnimationNodeAnimation_ekc3s")
-states/cast/position = Vector2(634, 345)
+states/cast/node = SubResource("AnimationNodeBlendTree_nl1x8")
+states/cast/position = Vector2(636, 282)
 states/death/node = SubResource("AnimationNodeBlendTree_3pl4b")
 states/death/position = Vector2(891, 233)
 states/hit/node = SubResource("AnimationNodeBlendTree_70sh5")
@@ -653,7 +734,7 @@ states/run/node = SubResource("AnimationNodeBlendTree_l58bp")
 states/run/position = Vector2(357, 353)
 states/walk/node = SubResource("AnimationNodeBlendTree_jwfmn")
 states/walk/position = Vector2(357, 226)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_2j1fm")]
+graph_offset = Vector2(-283, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
 
@@ -679,6 +760,7 @@ zoom = Vector2(2, 2)
 visible = false
 
 [node name="SpellSelectionMenu" parent="." instance=ExtResource("4_w0itk")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -22)
@@ -702,9 +784,9 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_itwp3")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.1
-parameters/current_position = 0.0133531
-parameters/current_delta = 0.00666667
+parameters/current_length = 0.7
+parameters/current_position = 0.7
+parameters/current_delta = 0.0
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -737,9 +819,32 @@ parameters/attack/TimeScale/scale = 1.0
 parameters/attack/output/current_length = null
 parameters/attack/output/current_position = null
 parameters/attack/output/current_delta = null
-parameters/cast/current_length = 0.6
-parameters/cast/current_position = 0.6
+parameters/cast/current_length = 0.7
+parameters/cast/current_position = 0.7
 parameters/cast/current_delta = 0.0
+parameters/cast/BlendSpace2D/current_length = 0.7
+parameters/cast/BlendSpace2D/current_position = 0.7
+parameters/cast/BlendSpace2D/current_delta = 0.0
+parameters/cast/BlendSpace2D/blend_position = Vector2(0.130457, -0.2)
+parameters/cast/BlendSpace2D/0/current_length = null
+parameters/cast/BlendSpace2D/0/current_position = null
+parameters/cast/BlendSpace2D/0/current_delta = null
+parameters/cast/BlendSpace2D/1/current_length = 0.7
+parameters/cast/BlendSpace2D/1/current_position = 0.7
+parameters/cast/BlendSpace2D/1/current_delta = 0.0
+parameters/cast/BlendSpace2D/2/current_length = null
+parameters/cast/BlendSpace2D/2/current_position = null
+parameters/cast/BlendSpace2D/2/current_delta = null
+parameters/cast/BlendSpace2D/3/current_length = null
+parameters/cast/BlendSpace2D/3/current_position = null
+parameters/cast/BlendSpace2D/3/current_delta = null
+parameters/cast/TimeScale/current_length = 0.7
+parameters/cast/TimeScale/current_position = 0.7
+parameters/cast/TimeScale/current_delta = 0.0
+parameters/cast/TimeScale/scale = 1.0
+parameters/cast/output/current_length = 0.7
+parameters/cast/output/current_position = 0.7
+parameters/cast/output/current_delta = 0.0
 parameters/death/current_length = null
 parameters/death/current_position = null
 parameters/death/current_delta = null
@@ -793,17 +898,17 @@ parameters/hit/output/current_length = null
 parameters/hit/output/current_position = null
 parameters/hit/output/current_delta = null
 parameters/idle/current_length = 0.1
-parameters/idle/current_position = 0.0133531
+parameters/idle/current_position = 0.0650751
 parameters/idle/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/current_length = 0.1
-parameters/idle/BlendSpace2D/current_position = 0.0133531
+parameters/idle/BlendSpace2D/current_position = 0.0650751
 parameters/idle/BlendSpace2D/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.114732, 0.329193)
 parameters/idle/BlendSpace2D/0/current_length = null
 parameters/idle/BlendSpace2D/0/current_position = null
 parameters/idle/BlendSpace2D/0/current_delta = null
 parameters/idle/BlendSpace2D/1/current_length = 0.1
-parameters/idle/BlendSpace2D/1/current_position = 0.0133531
+parameters/idle/BlendSpace2D/1/current_position = 0.0650751
 parameters/idle/BlendSpace2D/1/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/2/current_length = null
 parameters/idle/BlendSpace2D/2/current_position = null
@@ -812,11 +917,11 @@ parameters/idle/BlendSpace2D/3/current_length = null
 parameters/idle/BlendSpace2D/3/current_position = null
 parameters/idle/BlendSpace2D/3/current_delta = null
 parameters/idle/TimeScale/current_length = 0.1
-parameters/idle/TimeScale/current_position = 0.0133531
+parameters/idle/TimeScale/current_position = 0.0650751
 parameters/idle/TimeScale/current_delta = 0.00666667
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.1
-parameters/idle/output/current_position = 0.0133531
+parameters/idle/output/current_position = 0.0650751
 parameters/idle/output/current_delta = 0.00666667
 parameters/run/current_length = null
 parameters/run/current_position = null

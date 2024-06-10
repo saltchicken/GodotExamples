@@ -13,8 +13,8 @@ extends Node
 @onready var pause_menu = player.get_node('PauseMenu')
 @onready var spell_menu = pause_menu.get_node('CenteredPanel/SpellsMenu')
 
-@onready var style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres')
-@onready var selected_style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/highlighted_item_slot.tres')
+@onready var style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_unselected.tres')
+@onready var selected_style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_selected.tres')
 
 func _set_selected_spell(new_value):
 	var previous_spell = selected_spell
@@ -30,24 +30,8 @@ func _set_selected_spell(new_value):
 func select_new_slot(previous_spell, selected_spell):
 	spell_choices[previous_spell].add_theme_stylebox_override('panel', style_box)
 	spell_choices[selected_spell].add_theme_stylebox_override('panel', selected_style_box)
-	
-	
-	#var previous_slot = selected_slot
-	#if new_value < 0:
-		#selected_slot = 0
-	#elif new_value >= %InventoryMenu.InvSize and previous_slot < %InventoryMenu.InvSize:
-		#selected_slot = 24
-	#elif new_value >= %InventoryMenu.InventoryEquipmentSize:
-		#selected_slot = %InventoryMenu.InventoryEquipmentSize - 1
-	#else:
-		#selected_slot = new_value
-	#select_new_slot(previous_slot, selected_slot)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#print(player)
-	
 	self.visible = false
 	select_new_slot(0, selected_spell)
 	
@@ -65,7 +49,7 @@ func spell_menu_spell_changed(slot):
 func select_current_spell():
 	var current_selected_spell_slot = spell_choices[selected_spell]
 	if current_selected_spell_slot.get_child_count() > 0:
-		current_selected_spell = current_selected_spell_slot.get_children()[0]
+		current_selected_spell = load(current_selected_spell_slot.get_children()[0].data.scene)
 	else:
 		current_selected_spell = null
 
@@ -110,14 +94,11 @@ func get_current_spells():
 			
 		
 func open_spell_menu():
-	print('Open up spell menu')
-	#get_current_spells()
 	spell_selection_menu_open = true
 	self.visible = true
 	get_tree().paused = true
 
 func close_spell_menu():
-	print('Close spell menu')
 	spell_selection_menu_open = false
 	self.visible = false
 	get_tree().paused = false
