@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://damkwhn4sgrhk"]
 
-[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy.tscn" id="1_864w1"]
+[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy_base.tscn" id="1_864w1"]
 [ext_resource type="Texture2D" uid="uid://dook06lkfkho6" path="res://scenes/enemy/golem/assets/golem-spritesheet.png" id="2_pe2l4"]
 
 [sub_resource type="Animation" id="Animation_isyo0"]

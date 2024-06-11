@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5qsiopg8p8nx"]
+
+[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_main.gd" id="1_hikg6"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_dcb3k"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_idle_state.gd" id="3_eryq8"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_chase_state.gd" id="4_q18xp"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_hit_state.gd" id="5_dfj16"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_death.gd" id="6_2lmxr"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_collision_attack_state.gd" id="7_t7ns1"]
+
+[node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+y_sort_enabled = true
+script = ExtResource("1_hikg6")
+initial_state = NodePath("StateMachine/idle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_dcb3k")
+
+[node name="idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_eryq8")
+
+[node name="chase" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_q18xp")
+
+[node name="hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_dfj16")
+
+[node name="death" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_2lmxr")
+
+[node name="collision_attack" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_t7ns1")
+
+[node name="CollisionAttackArea" type="Area2D" parent="."]

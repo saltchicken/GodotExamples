@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/spell/spell_main.gd" id="1_iejke"]
 
-[node name="SpellName" type="Area2D"]
+[node name="SpellBase" type="Area2D"]
 script = ExtResource("1_iejke")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
