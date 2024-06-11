@@ -7,7 +7,9 @@ extends CanvasLayer
 
 var current_line: int = 0
 @export var story_text: PackedStringArray
-@onready var timer = get_node("Panel/Timer")
+
+# Timer was no longer needed. Keeping in case that needs to be an option
+#@onready var timer = get_node("Panel/Timer")
 
 @onready var letter_per_second = 30.0
 

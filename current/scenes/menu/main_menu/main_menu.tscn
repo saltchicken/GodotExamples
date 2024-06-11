@@ -38,8 +38,7 @@ alignment = 1
 [node name="StartGame" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_l026q")
-text = "Start Game
-"
+text = "Start Game"
 
 [node name="LoadGame" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -50,7 +49,3 @@ text = "Load Game"
 layout_mode = 2
 theme = ExtResource("2_l026q")
 text = "Exit To Deskop"
-
-[connection signal="pressed" from="Panel/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/ExitToDesktop" to="." method="_on_exit_to_desktop_pressed"]

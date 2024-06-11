@@ -35,7 +35,3 @@ grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 scroll_active = false
-
-[node name="Timer" type="Timer" parent="Panel"]
-
-[connection signal="timeout" from="Panel/Timer" to="." method="_on_timer_timeout"]

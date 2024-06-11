@@ -5,6 +5,9 @@ extends State
 @onready var attack_hitbox = $"../../CollisionAttackArea"
 @onready var attack_collision = $"../../CollisionAttackArea/CollisionShape2D"
 
+func _ready():
+	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+
 func Enter():
 	animation_tree.get("parameters/playback").start('collision_attack')
 	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction_to_player)

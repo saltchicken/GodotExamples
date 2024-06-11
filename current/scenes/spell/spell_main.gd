@@ -16,6 +16,7 @@ func _ready() -> void:
 	animation_tree.get("parameters/playback").start('casted')
 	cast_direction = player.direction
 	animation_tree.set("parameters/casted/BlendSpace2D/blend_position", cast_direction)
+	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 
 

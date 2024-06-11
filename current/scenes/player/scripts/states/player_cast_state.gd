@@ -4,6 +4,9 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 @onready var spell_selection_menu = character_body.get_node('SpellSelectionMenu')
 
+func _ready():
+	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+
 func Enter():
 	animation_tree.get("parameters/playback").travel('cast')
 	animation_tree.set("parameters/cast/BlendSpace2D/blend_position", character_body.direction)
@@ -16,7 +19,6 @@ func Exit():
 	
 func Update(_delta:float):
 	character_body.velocity = Vector2(0.0, 0.0)
-	pass
 	
 func cast_spell():
 	if spell_selection_menu.current_selected_spell != null:

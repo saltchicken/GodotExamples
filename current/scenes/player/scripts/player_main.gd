@@ -41,6 +41,8 @@ func _set_purse(new_value):
 func _ready():
 	add_to_group('Players')
 	add_to_group('Persist')
+	
+	update_purse.connect(get_node('PauseMenu')._on_player_update_purse)
 
 func _physics_process(delta):
 	get_input()

@@ -7,6 +7,9 @@ extends State
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 @onready var down_sword_sprite = $"../../DownSwordSprite"
 
+func _ready():
+	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+
 func Enter():
 	animation_tree.get("parameters/playback").start('attack')
 	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction)

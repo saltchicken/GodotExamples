@@ -9,6 +9,7 @@ extends Panel
 #@onready var letter_per_second = 30.0
 
 func _ready():
+	timer.timeout.connect(_on_timer_timeout)
 	hide()
 	main()
 

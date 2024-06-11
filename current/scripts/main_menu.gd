@@ -1,12 +1,15 @@
 extends CanvasLayer
 
-func _on_start_game_pressed():
-	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
-	#if get_tree().paused:
-		#get_tree().paused = !get_tree().paused
+func _ready():
+	var buttons = get_node('Panel/VBoxContainer').get_children()
+	for button in buttons:
+		button.pressed.connect(button_pressed.bind(button))
 
-func _on_load_game_pressed():
-	print('Not implemented yet')
-
-func _on_exit_to_desktop_pressed():
-	get_tree().quit()
+func button_pressed(button):
+	match button.text:
+		"Start Game":
+			get_tree().change_scene_to_file("res://scenes/game/game.tscn")
+		"Load Game":
+			print('Not implemented yet')
+		"Exit To Deskop":
+			get_tree().quit()	

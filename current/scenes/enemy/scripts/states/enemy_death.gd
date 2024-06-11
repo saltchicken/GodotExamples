@@ -7,6 +7,9 @@ extends State
 
 @onready var death_animation_finished = false
 
+func _ready():
+	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+
 func Enter():
 	animation_tree.get("parameters/playback").travel('death')
 	animation_tree.set("parameters/death/BlendSpace2D/blend_position", character_body.direction_to_player)

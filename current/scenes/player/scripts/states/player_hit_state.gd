@@ -3,6 +3,9 @@ extends State
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
 
+func _ready():
+	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+
 func Enter(params: Dictionary = {}):
 	#print('Player has been hit. Health remaining: ' + str(character_body.stats.health)) # TODO: Implement way of monitoring health
 	if params.has('attacking_body'):
@@ -22,6 +25,9 @@ func Exit():
 func Update(_delta:float):
 	character_body.velocity.x = move_toward(character_body.velocity.x, 0, 5.0)
 	character_body.velocity.y = move_toward(character_body.velocity.y, 0, 5.0)
+
+func test(test):
+	print('hello')
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == 'hit':

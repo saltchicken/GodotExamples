@@ -1020,9 +1020,3 @@ script = ExtResource("9_hk3e8")
 
 [node name="cast" type="Node2D" parent="StateMachine"]
 script = ExtResource("14_4g4yl")
-
-[connection signal="update_purse" from="." to="PauseMenu" method="_on_player_update_purse"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/attack" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/hit" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/death" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/cast" method="_on_animation_tree_animation_finished"]
