@@ -18,8 +18,8 @@ func _ready() -> void:
 		slot.change_spell.connect(spell_changed.bind(slot))
 		
 	# FOR TESTING
-	load_item_into_spell("res://scenes/spell/whirlwind/resources/whirlwind.tres", 0)
-	load_item_into_spell("res://scenes/spell/fireball/resources/fireball.tres", 1)
+	load_item_into_spell("res://scenes/spell/whirlwind/whirlwind.tres", 0)
+	load_item_into_spell("res://scenes/spell/fireball/fireball.tres", 1)
 
 func get_spell_slots():
 	return get_node('Spells/VBoxContainer/HBoxContainer').get_children()

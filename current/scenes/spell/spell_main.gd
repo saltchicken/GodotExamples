@@ -9,6 +9,8 @@ extends Area2D
 @export var default_stats: SpellData
 @onready var stats: SpellData = default_stats.duplicate()
 
+@onready var scene_script = stats.scene_script.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_tree.get("parameters/playback").start('casted')
@@ -19,12 +21,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += cast_direction * delta * stats.cast_speed
-	var bodies = self.get_overlapping_bodies()
-	if bodies:
-		for body in bodies:
-			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body.get_hit(self)
+	scene_script.process(self, delta)
 
 
 func _on_timer_timeout() -> void:

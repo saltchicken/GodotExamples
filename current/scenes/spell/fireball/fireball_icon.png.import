@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6wwevierc8y4"
-path="res://.godot/imported/whirlwind.png-2bea9f35e4053820f25703663a807392.ctex"
+uid="uid://cqp0egc0alvxq"
+path="res://.godot/imported/fireball_icon.png-98f04261348da6d9212e7ddee46f1e1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/spell/whirlwind/assets/whirlwind.png"
-dest_files=["res://.godot/imported/whirlwind.png-2bea9f35e4053820f25703663a807392.ctex"]
+source_file="res://scenes/spell/fireball/fireball_icon.png"
+dest_files=["res://.godot/imported/fireball_icon.png-98f04261348da6d9212e7ddee46f1e1b.ctex"]
 
 [params]
 

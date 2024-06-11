@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="SpellData" load_steps=3 format=3 uid="uid://bkntls4yssjpe"]
+[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://bkntls4yssjpe"]
 
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_data.gd" id="1_0hkgn"]
-[ext_resource type="Texture2D" uid="uid://cjxw7on6fb6vo" path="res://scenes/spell/whirlwind/assets/whirlwind_icon.png" id="2_pytdg"]
+[ext_resource type="Script" path="res://scenes/spell/whirlwind/whirlwind.gd" id="1_5ehn2"]
+[ext_resource type="Texture2D" uid="uid://cjxw7on6fb6vo" path="res://scenes/spell/whirlwind/whirlwind_icon.png" id="2_pytdg"]
 
 [resource]
 script = ExtResource("1_0hkgn")
 scene = "res://scenes/spell/whirlwind/whirlwind.tscn"
+scene_script = ExtResource("1_5ehn2")
 element = 3
 type = 0
 name = "Whirlwind"

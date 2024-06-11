@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfb4c45667nrp"]
 
-[ext_resource type="Script" path="res://scenes/spell/whirlwind/scripts/whirlwind_main.gd" id="1_8y55y"]
-[ext_resource type="Resource" uid="uid://bkntls4yssjpe" path="res://scenes/spell/whirlwind/resources/whirlwind.tres" id="2_t8hsx"]
-[ext_resource type="Texture2D" uid="uid://c6wwevierc8y4" path="res://scenes/spell/whirlwind/assets/whirlwind.png" id="3_gs4fi"]
+[ext_resource type="Resource" uid="uid://bkntls4yssjpe" path="res://scenes/spell/whirlwind/whirlwind.tres" id="2_t8hsx"]
+[ext_resource type="Texture2D" uid="uid://c6wwevierc8y4" path="res://scenes/spell/whirlwind/whirlwind_spritesheet.png" id="3_gs4fi"]
+[ext_resource type="Script" path="res://scenes/spell/spell_main.gd" id="4_wydrx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o15r5"]
 radius = 6.0
@@ -43,18 +43,18 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tgunx"]
 _data = {
 "RESET": SubResource("Animation_jnuek"),
-"cast": SubResource("Animation_fmxtr")
+"casted": SubResource("Animation_fmxtr")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wb3h6"]
-animation = &"cast"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kaq0u"]
+animation = &"casted"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7w7jd"]
-states/cast/node = SubResource("AnimationNodeAnimation_wb3h6")
-states/cast/position = Vector2(365, 100)
+states/casted/node = SubResource("AnimationNodeAnimation_kaq0u")
+states/casted/position = Vector2(347, 83)
 
 [node name="Whirlwind" type="Area2D"]
-script = ExtResource("1_8y55y")
+script = ExtResource("4_wydrx")
 default_stats = ExtResource("2_t8hsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -72,18 +72,18 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_7w7jd")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.4
-parameters/current_position = 0.0551216
-parameters/current_delta = 0.00694444
+parameters/current_length = 0.0
+parameters/current_position = 0.0
+parameters/current_delta = 0.0
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
 parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
-parameters/cast/current_length = 0.4
-parameters/cast/current_position = 0.0551216
-parameters/cast/current_delta = 0.00694444
+parameters/casted/current_length = 0.4
+parameters/casted/current_position = 0.305931
+parameters/casted/current_delta = 0.00672522
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

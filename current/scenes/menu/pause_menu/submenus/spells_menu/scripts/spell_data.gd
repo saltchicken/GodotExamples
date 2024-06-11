@@ -5,6 +5,7 @@ enum Element {FIRE, WATER, EARTH, WIND, DARK, LIGHT, NEUTRAL}
 enum Type {ATTACK, BUFF, HEAL, AURA}
 
 @export var scene: String
+@export var scene_script: GDScript
 @export var element: Element
 @export var type: Type
 @export var name: String
