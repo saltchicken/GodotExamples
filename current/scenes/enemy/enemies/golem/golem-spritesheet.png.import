@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fcbcbnmg22gd"
-path="res://.godot/imported/coins_spritesheet.png-3c46fddf9f2751e87823d03632be1a67.ctex"
+uid="uid://dook06lkfkho6"
+path="res://.godot/imported/golem-spritesheet.png-ac9a0e07fea590ae61df05b25dc7ec39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/coins/assets/coins_spritesheet.png"
-dest_files=["res://.godot/imported/coins_spritesheet.png-3c46fddf9f2751e87823d03632be1a67.ctex"]
+source_file="res://scenes/enemy/enemies/golem/golem-spritesheet.png"
+dest_files=["res://.godot/imported/golem-spritesheet.png-ac9a0e07fea590ae61df05b25dc7ec39.ctex"]
 
 [params]
 

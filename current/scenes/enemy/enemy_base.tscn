@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b5qsiopg8p8nx"]
 
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy_main.gd" id="1_hikg6"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_main.gd" id="1_hikg6"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_dcb3k"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_idle_state.gd" id="3_eryq8"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_chase_state.gd" id="4_q18xp"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_hit_state.gd" id="5_dfj16"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_death.gd" id="6_2lmxr"]
-[ext_resource type="Script" path="res://scenes/enemy/scripts/states/enemy_collision_attack_state.gd" id="7_t7ns1"]
+[ext_resource type="Script" path="res://scenes/enemy/states/enemy_idle_state.gd" id="3_eryq8"]
+[ext_resource type="Script" path="res://scenes/enemy/states/enemy_chase_state.gd" id="4_q18xp"]
+[ext_resource type="Script" path="res://scenes/enemy/states/enemy_hit_state.gd" id="5_dfj16"]
+[ext_resource type="Script" path="res://scenes/enemy/states/enemy_death.gd" id="6_2lmxr"]
+[ext_resource type="Script" path="res://scenes/enemy/states/enemy_collision_attack_state.gd" id="7_t7ns1"]
 
 [node name="EnemyBase" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 y_sort_enabled = true

@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://bspgte3mfuy0r"]
 
-[ext_resource type="Script" path="res://scenes/objects/chest/scripts/chest_main.gd" id="1_llsbc"]
-[ext_resource type="Texture2D" uid="uid://djppdb7cnqtgq" path="res://scenes/objects/chest/assets/chest_spritesheet.png" id="2_shb6y"]
+[ext_resource type="Script" path="res://scenes/objects/chest/chest_main.gd" id="1_llsbc"]
+[ext_resource type="Texture2D" uid="uid://djppdb7cnqtgq" path="res://scenes/objects/chest/chest_spritesheet.png" id="2_shb6y"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_sor80"]
-[ext_resource type="Script" path="res://scenes/objects/chest/scripts/closed_state.gd" id="4_j7j2v"]
-[ext_resource type="Script" path="res://scenes/objects/chest/scripts/open_state.gd" id="5_npled"]
-[ext_resource type="Script" path="res://scenes/objects/chest/scripts/opening_state.gd" id="6_woup1"]
+[ext_resource type="Script" path="res://scenes/objects/chest/states/closed_state.gd" id="4_j7j2v"]
+[ext_resource type="Script" path="res://scenes/objects/chest/states/open_state.gd" id="5_npled"]
+[ext_resource type="Script" path="res://scenes/objects/chest/states/opening_state.gd" id="6_woup1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tniwv"]
 size = Vector2(24, 18)

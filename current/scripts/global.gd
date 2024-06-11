@@ -2,7 +2,7 @@ extends Node
 
 var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
 var hit_indicator_node = preload("res://scenes/dialogue/hit_indicator.tscn")
-var slime_node = preload("res://scenes/enemy/slime/slime.tscn")
+var slime_node = preload("res://scenes/enemy/enemies/slime/slime.tscn")
 
 func dialogue(parent_node, text_array: Array):
 	var dialogue_instance = dialogue_node.instantiate()

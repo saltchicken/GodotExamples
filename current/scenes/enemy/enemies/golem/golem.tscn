@@ -1,8 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://bhjo81a7nde87"]
+[gd_scene load_steps=50 format=3 uid="uid://damkwhn4sgrhk"]
 
-[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy_base.tscn" id="1_bexjs"]
-[ext_resource type="Resource" uid="uid://bvyr6xlwkotev" path="res://scenes/enemy/slime/resources/slime_stats.tres" id="2_dffh6"]
-[ext_resource type="Texture2D" uid="uid://3ihy37f8u0mb" path="res://scenes/enemy/slime/assets/slime_monster_spritesheet.png" id="3_l5sl2"]
+[ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy_base.tscn" id="1_864w1"]
+[ext_resource type="Texture2D" uid="uid://dook06lkfkho6" path="res://scenes/enemy/enemies/golem/golem-spritesheet.png" id="2_pe2l4"]
 
 [sub_resource type="Animation" id="Animation_isyo0"]
 length = 0.001
@@ -375,18 +374,22 @@ states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
 graph_offset = Vector2(-15, 111)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3dgba"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wm8w"]
+radius = 14.0
+height = 46.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_op0td"]
-radius = 9.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ah05p"]
+radius = 12.0
 
-[node name="Slime" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_bexjs")]
+[node name="Golem" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_864w1")]
 initial_state = NodePath("StateMachine/idle")
-default_stats = ExtResource("2_dffh6")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_l5sl2")
-vframes = 6
+position = Vector2(0, -19)
+texture = ExtResource("2_pe2l4")
+hframes = 7
+vframes = 10
+frame = 21
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -524,7 +527,8 @@ parameters/idle/output/current_position = 0.939451
 parameters/idle/output/current_delta = 0.00694444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackArea" index="0"]
-shape = SubResource("CircleShape2D_3dgba")
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_7wm8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
-shape = SubResource("CircleShape2D_op0td")
+shape = SubResource("CircleShape2D_ah05p")

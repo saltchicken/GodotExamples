@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ihy37f8u0mb"
-path="res://.godot/imported/slime_monster_spritesheet.png-e91c465eebb989b438fb5704a33b82a5.ctex"
+uid="uid://fcbcbnmg22gd"
+path="res://.godot/imported/coins_spritesheet.png-78825e15452e2ca452ebf9b9a3170290.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/slime/assets/slime_monster_spritesheet.png"
-dest_files=["res://.godot/imported/slime_monster_spritesheet.png-e91c465eebb989b438fb5704a33b82a5.ctex"]
+source_file="res://scenes/objects/coins/coins_spritesheet.png"
+dest_files=["res://.godot/imported/coins_spritesheet.png-78825e15452e2ca452ebf9b9a3170290.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djppdb7cnqtgq"
-path="res://.godot/imported/chest_spritesheet.png-adfcc433b099098f6095557e8ebfab85.ctex"
+uid="uid://3ihy37f8u0mb"
+path="res://.godot/imported/slime_monster_spritesheet.png-70019ba9320b2b19925002861e7dea70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/objects/chest/assets/chest_spritesheet.png"
-dest_files=["res://.godot/imported/chest_spritesheet.png-adfcc433b099098f6095557e8ebfab85.ctex"]
+source_file="res://scenes/enemy/enemies/slime/slime_monster_spritesheet.png"
+dest_files=["res://.godot/imported/slime_monster_spritesheet.png-70019ba9320b2b19925002861e7dea70.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dook06lkfkho6"
-path="res://.godot/imported/golem-spritesheet.png-8ae5a36489104bde2434390b248ad606.ctex"
+uid="uid://djppdb7cnqtgq"
+path="res://.godot/imported/chest_spritesheet.png-9f279510022b8d66934df7623e24c658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/golem/assets/golem-spritesheet.png"
-dest_files=["res://.godot/imported/golem-spritesheet.png-8ae5a36489104bde2434390b248ad606.ctex"]
+source_file="res://scenes/objects/chest/chest_spritesheet.png"
+dest_files=["res://.godot/imported/chest_spritesheet.png-9f279510022b8d66934df7623e24c658.ctex"]
 
 [params]
 

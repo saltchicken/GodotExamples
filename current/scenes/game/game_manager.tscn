@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game/scripts/game_manager.gd" id="1_t78s6"]
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="2_l8brt"]
-[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/slime/slime.tscn" id="3_y283a"]
+[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/slime/slime.tscn" id="3_y283a"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_t78s6")

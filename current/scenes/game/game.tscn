@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b0nb3ms13osie" path="res://assets/utility/tile_highlight32.png" id="6_hq12p"]
 [ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://scenes/objects/coins/coins.tscn" id="8_422q1"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
-[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/slime/slime.tscn" id="10_p7t17"]
-[ext_resource type="PackedScene" uid="uid://damkwhn4sgrhk" path="res://scenes/enemy/golem/golem.tscn" id="11_6vsga"]
-[ext_resource type="Resource" uid="uid://ctcy1x1ffpuuu" path="res://scenes/enemy/golem/resources/golem_stats.tres" id="12_74tv1"]
+[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/slime/slime.tscn" id="10_p7t17"]
+[ext_resource type="PackedScene" uid="uid://damkwhn4sgrhk" path="res://scenes/enemy/enemies/golem/golem.tscn" id="11_6vsga"]
+[ext_resource type="Resource" uid="uid://ctcy1x1ffpuuu" path="res://scenes/enemy/enemies/golem/golem_stats.tres" id="12_74tv1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gnspn"]
 scenes/1/scene = ExtResource("8_422q1")
