@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmoc8sfrxyx0t"]
+[gd_scene load_steps=14 format=3 uid="uid://ck1kdwmam2767"]
 
-[ext_resource type="PackedScene" uid="uid://btbs1qjh7qxw0" path="res://scenes/spell/spell_base.tscn" id="1_b357q"]
-[ext_resource type="Texture2D" uid="uid://cqp0egc0alvxq" path="res://scenes/spell/fireball/fireball_icon.png" id="2_a3kw7"]
-[ext_resource type="Resource" uid="uid://dghcbppp25eff" path="res://scenes/spell/fireball/fireball.tres" id="2_m5mmk"]
-[ext_resource type="AnimationLibrary" uid="uid://dq1f752w0wm7s" path="res://scenes/spell/fireball/fireball_animation.res" id="3_3toh1"]
+[ext_resource type="Script" path="res://scenes/spell/spell_main.gd" id="1_1pqnj"]
+[ext_resource type="Resource" uid="uid://dghcbppp25eff" path="res://scenes/spell/fireball/fireball.tres" id="2_r3kc7"]
+[ext_resource type="Texture2D" uid="uid://cqp0egc0alvxq" path="res://scenes/spell/fireball/fireball_icon.png" id="2_t2fd1"]
+[ext_resource type="AnimationLibrary" uid="uid://dq1f752w0wm7s" path="res://scenes/spell/fireball/fireball_animation.res" id="4_muhm5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_20jxm"]
 animation = &"casted_down"
@@ -42,22 +42,26 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 states/casted/node = SubResource("AnimationNodeBlendTree_dr5hq")
 states/casted/position = Vector2(365, 79)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iw6ar"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abn3t"]
+radius = 8.0
+height = 32.0
 
-[node name="Fireball" instance=ExtResource("1_b357q")]
-default_stats = ExtResource("2_m5mmk")
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_1pqnj")
+default_stats = ExtResource("2_r3kc7")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
 rotation = 1.5708
-texture = ExtResource("2_a3kw7")
+texture = ExtResource("2_t2fd1")
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": ExtResource("3_3toh1")
+"": ExtResource("4_muhm5")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_l54vm")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.0
@@ -96,5 +100,11 @@ parameters/casted/output/current_length = null
 parameters/casted/output/current_position = null
 parameters/casted/output/current_delta = null
 
-[node name="CollisionShape2D" parent="." index="3"]
-shape = SubResource("CapsuleShape2D_iw6ar")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_abn3t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
