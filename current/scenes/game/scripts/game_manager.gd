@@ -14,9 +14,9 @@ var rng = RandomNumberGenerator.new()
 #const SPAWN_MIN = -100
 #const SPAWN_MAX = 100
 
-const PLAYER_SPAWN_POSITION = Vector2(0, 0)
+#const PLAYER_SPAWN_POSITION = Vector2(0, 0)
 
-const MAX_NUMBER_OF_ENEMIES = 5
+#const MAX_NUMBER_OF_ENEMIES = 5
 
 func _ready():
 	#var player = Player.instantiate()
