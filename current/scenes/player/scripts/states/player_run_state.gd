@@ -16,6 +16,8 @@ func Update(_delta:float):
 	character_body.handle_use_hitbox_direction()
 	
 	animation_tree.set("parameters/run/BlendSpace2D/blend_position", character_body.direction)
+	if character_body.cast:
+		state_transition.emit(self, 'cast')
 	if character_body.use:
 		character_body.use_objects()
 	if character_body.attack:

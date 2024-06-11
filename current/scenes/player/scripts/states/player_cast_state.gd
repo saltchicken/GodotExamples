@@ -15,6 +15,7 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
+	character_body.velocity = Vector2(0.0, 0.0)
 	pass
 	
 func cast_spell():
