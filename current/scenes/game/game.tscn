@@ -55,6 +55,6 @@ position = Vector2(198, -40)
 initial_state = NodePath("StateMachine/idle")
 
 [node name="Golem" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("11_6vsga")]
-position = Vector2(106, -84)
+position = Vector2(91, -68)
 initial_state = NodePath("StateMachine/idle")
 default_stats = ExtResource("12_74tv1")
