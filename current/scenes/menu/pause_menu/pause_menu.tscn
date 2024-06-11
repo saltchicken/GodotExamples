@@ -49,7 +49,7 @@ metadata/_tab_index = 1
 
 [node name="SpellsMenu" parent="MenuTabs/Spells" instance=ExtResource("4_87qle")]
 unique_name_in_owner = true
-position = Vector2(483, 218)
+position = Vector2(-35.5, -86.5)
 
 [node name="Quests" type="RichTextLabel" parent="MenuTabs"]
 visible = false
