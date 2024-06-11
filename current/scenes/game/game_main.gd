@@ -29,7 +29,12 @@ func _process(_delta):
 		#set_tile_at_mouse_position(0, Vector2i(0,1))
 		
 		 #Best for setting in front of player
-		set_tile_player_facing(0, Vector2i(0,0), 1)
+		
+		var source_id = get_tile_source_id_player_facing()
+		if source_id == -1:
+			set_tile_player_facing(0, Vector2i(0,0), 1)
+		else:
+			reset_tile_source_id_player_facing()
 		
 		
 		
@@ -80,5 +85,16 @@ func set_tile_player_facing(source_id: int, atlas_coords: Vector2i, alternative_
 	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
 	tile_map_coords += Vector2i(player.direction)
 	tile_map_layer.set_cell(tile_map_coords, source_id, atlas_coords, alternative_tile)
+	
+func get_tile_source_id_player_facing():
+	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
+	tile_map_coords += Vector2i(player.direction)
+	var tile_data = tile_map_layer.get_cell_source_id(tile_map_coords)
+	return tile_data
+	
+func reset_tile_source_id_player_facing() -> void:
+	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
+	tile_map_coords += Vector2i(player.direction)
+	tile_map_layer.set_cell(tile_map_coords, -1, Vector2i(-1,-1), -1)
 	
 	

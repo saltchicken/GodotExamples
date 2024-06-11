@@ -35,16 +35,7 @@ script = ExtResource("1_vw3na")
 [node name="Player" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("1_iqfig")]
 initial_state = NodePath("StateMachine/idle")
 
-[node name="Chest" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
-position = Vector2(-56, -47)
-item = ExtResource("5_flhdt")
-initial_state = NodePath("StateMachine/closed")
-
-[node name="Coins" parent="." instance=ExtResource("8_422q1")]
-position = Vector2(23, 44)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0)
 tile_set = SubResource("TileSet_lm12f")
 
 [node name="PlacementHighlightMapLayer" type="TileMapLayer" parent="."]
@@ -58,3 +49,8 @@ initial_state = NodePath("StateMachine/idle")
 position = Vector2(91, -68)
 initial_state = NodePath("StateMachine/idle")
 default_stats = ExtResource("12_74tv1")
+
+[node name="Chest" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
+position = Vector2(-111, -61)
+item = ExtResource("5_flhdt")
+initial_state = NodePath("StateMachine/closed")
