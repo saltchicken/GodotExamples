@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds6bietdrclib"]
+[gd_scene load_steps=10 format=3 uid="uid://blvg81vwemjo8"]
 
 [ext_resource type="Script" path="res://scenes/spell/spell_main.gd" id="1_wxd1y"]
 [ext_resource type="Resource" uid="uid://bkntls4yssjpe" path="res://scenes/spell/whirlwind/whirlwind.tres" id="2_c2mim"]

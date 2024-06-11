@@ -29,7 +29,7 @@ func _process(_delta):
 		#set_tile_at_mouse_position(0, Vector2i(0,1))
 		
 		 #Best for setting in front of player
-		set_tile_player_facing(2, Vector2i(0,0), 1)
+		set_tile_player_facing(0, Vector2i(0,0), 1)
 		
 		
 		
@@ -62,7 +62,7 @@ func _process(_delta):
 		#Global.load_game()
 		
 func tile_highlight():
-	var tile_map_coords = tile_map_layer.local_to_map(player.global_position)
+	var tile_map_coords = placement_highlight_layer.local_to_map(player.global_position)
 	tile_map_coords += Vector2i(player.direction)
 	if tile_map_coords != current_highlighted_tile_coords:
 		placement_highlight_layer.set_cell(current_highlighted_tile_coords, -1, Vector2i(-1,-1), -1)
