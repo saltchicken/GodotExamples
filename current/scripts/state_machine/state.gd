@@ -22,4 +22,10 @@ func take_damage_check_death(receiving_body, attacking_body):
 	else:
 		return false
 		
-	
+func action_from_input(calling_node, character_body): # TODO: Probably shouldn't store this in the state class
+	if character_body.cast:
+		state_transition.emit(calling_node, 'cast')
+	if character_body.attack:
+		state_transition.emit(calling_node, 'sword_attack')
+	if character_body.use:
+		character_body.use_objects()

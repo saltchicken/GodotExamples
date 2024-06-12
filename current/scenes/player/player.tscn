@@ -9,10 +9,10 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_run_state.gd" id="4_0pa3q"]
 [ext_resource type="PackedScene" uid="uid://dj34bj75qdoa3" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_menu.tscn" id="4_w0itk"]
-[ext_resource type="Script" path="res://scenes/player/scripts/states/player_attack_state.gd" id="7_27ein"]
+[ext_resource type="Texture2D" uid="uid://bslrlk38t0x0c" path="res://scenes/player/assets/sword_attack.png" id="6_jhr4l"]
+[ext_resource type="Script" path="res://scenes/player/scripts/states/player_sword_attack_state.gd" id="7_27ein"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_hit_state.gd" id="8_ioajo"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_death_state.gd" id="9_hk3e8"]
-[ext_resource type="Texture2D" uid="uid://cbul7asp1qxig" path="res://scenes/player/assets/down_sword.png" id="10_x1ppx"]
 [ext_resource type="Script" path="res://scenes/player/scripts/states/player_cast_state.gd" id="14_4g4yl"]
 
 [sub_resource type="Animation" id="Animation_erpvo"]
@@ -28,132 +28,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DownSwordSprite:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DownSwordSprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_uyhd2"]
-resource_name = "attack_down"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 14), Vector2i(1, 14), Vector2i(2, 14), Vector2i(3, 14), Vector2i(4, 14), Vector2i(5, 14)]
-}
-tracks/1/type = "animation"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DownSwordAnimation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": PackedStringArray(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DownSwordSprite:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DownSwordSprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_skmic"]
-resource_name = "attack_left"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 13), Vector2i(1, 13), Vector2i(2, 13), Vector2i(3, 13), Vector2i(4, 13), Vector2i(5, 13)]
-}
-
-[sub_resource type="Animation" id="Animation_cayq6"]
-resource_name = "attack_right"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 15), Vector2i(1, 15), Vector2i(2, 15), Vector2i(3, 15), Vector2i(4, 15), Vector2i(5, 15)]
-}
-
-[sub_resource type="Animation" id="Animation_dhmas"]
-resource_name = "attack_up"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 12), Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12), Vector2i(5, 12)]
 }
 
 [sub_resource type="Animation" id="Animation_bbwc8"]
@@ -460,13 +334,221 @@ tracks/0/keys = {
 "values": [Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8), Vector2i(6, 8), Vector2i(7, 8), Vector2i(8, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_uyhd2"]
+resource_name = "attack_down"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 14), Vector2i(1, 14), Vector2i(2, 14), Vector2i(3, 14), Vector2i(4, 14), Vector2i(5, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordAttackSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordAttackSprite:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwordAttackSprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_skmic"]
+resource_name = "attack_left"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 13), Vector2i(1, 13), Vector2i(2, 13), Vector2i(3, 13), Vector2i(4, 13), Vector2i(5, 13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordAttackSprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordAttackSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwordAttackSprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_cayq6"]
+resource_name = "attack_right"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 15), Vector2i(1, 15), Vector2i(2, 15), Vector2i(3, 15), Vector2i(4, 15), Vector2i(5, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordAttackSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordAttackSprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, -13)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwordAttackSprite:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_dhmas"]
+resource_name = "attack_up"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 12), Vector2i(1, 12), Vector2i(2, 12), Vector2i(3, 12), Vector2i(4, 12), Vector2i(5, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordAttackSprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SwordAttackSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SwordAttackSprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, -21)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_akx5f"]
 _data = {
 "RESET": SubResource("Animation_erpvo"),
-"attack_down": SubResource("Animation_uyhd2"),
-"attack_left": SubResource("Animation_skmic"),
-"attack_right": SubResource("Animation_cayq6"),
-"attack_up": SubResource("Animation_dhmas"),
 "cast_down": SubResource("Animation_bbwc8"),
 "cast_left": SubResource("Animation_nghm3"),
 "cast_right": SubResource("Animation_4xr8r"),
@@ -481,44 +563,15 @@ _data = {
 "run_left": SubResource("Animation_7cdts"),
 "run_right": SubResource("Animation_meaxu"),
 "run_up": SubResource("Animation_ef1wj"),
+"sword_attack_down": SubResource("Animation_uyhd2"),
+"sword_attack_left": SubResource("Animation_skmic"),
+"sword_attack_right": SubResource("Animation_cayq6"),
+"sword_attack_up": SubResource("Animation_dhmas"),
 "walk_down": SubResource("Animation_sfhb4"),
 "walk_left": SubResource("Animation_3mesi"),
 "walk_right": SubResource("Animation_ibjrx"),
 "walk_up": SubResource("Animation_g265m")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8qg06"]
-animation = &"attack_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i32uu"]
-animation = &"attack_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_66d1u"]
-animation = &"attack_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ia6ss"]
-animation = &"attack_right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_yby0x"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_8qg06")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_i32uu")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_66d1u")
-blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_ia6ss")
-blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_qd47v"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tfsdk"]
-nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_yby0x")
-nodes/BlendSpace2D/position = Vector2(180, 166)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_qd47v")
-nodes/TimeScale/position = Vector2(705, 230)
-nodes/output/position = Vector2(1160, 240)
-node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_td0pv"]
 animation = &"cast_down"
@@ -685,6 +738,40 @@ nodes/TimeScale/position = Vector2(640, 180)
 nodes/output/position = Vector2(1140, 240)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8qg06"]
+animation = &"sword_attack_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i32uu"]
+animation = &"sword_attack_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_66d1u"]
+animation = &"sword_attack_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ia6ss"]
+animation = &"sword_attack_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_yby0x"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8qg06")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_i32uu")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_66d1u")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ia6ss")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_qd47v"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tfsdk"]
+graph_offset = Vector2(-121.291, 210.527)
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_yby0x")
+nodes/BlendSpace2D/position = Vector2(180, 166)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_qd47v")
+nodes/TimeScale/position = Vector2(705, 230)
+nodes/output/position = Vector2(1160, 240)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oy80l"]
 animation = &"walk_down"
 
@@ -720,8 +807,6 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_itwp3"]
 states/End/position = Vector2(1800, 340)
-states/attack/node = SubResource("AnimationNodeBlendTree_tfsdk")
-states/attack/position = Vector2(646, 163)
 states/cast/node = SubResource("AnimationNodeBlendTree_nl1x8")
 states/cast/position = Vector2(636, 282)
 states/death/node = SubResource("AnimationNodeBlendTree_3pl4b")
@@ -732,6 +817,8 @@ states/idle/node = SubResource("AnimationNodeBlendTree_e8wgn")
 states/idle/position = Vector2(357, 100)
 states/run/node = SubResource("AnimationNodeBlendTree_l58bp")
 states/run/position = Vector2(357, 353)
+states/sword_attack/node = SubResource("AnimationNodeBlendTree_tfsdk")
+states/sword_attack/position = Vector2(646, 163)
 states/walk/node = SubResource("AnimationNodeBlendTree_jwfmn")
 states/walk/position = Vector2(357, 226)
 graph_offset = Vector2(-283, 32)
@@ -769,12 +856,11 @@ hframes = 13
 vframes = 46
 frame = 117
 
-[node name="DownSwordSprite" type="Sprite2D" parent="."]
+[node name="SwordAttackSprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("10_x1ppx")
-offset = Vector2(6, -6)
+texture = ExtResource("6_jhr4l")
 hframes = 6
-frame = 1
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -793,32 +879,6 @@ parameters/End/current_delta = null
 parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
-parameters/attack/current_length = null
-parameters/attack/current_position = null
-parameters/attack/current_delta = null
-parameters/attack/BlendSpace2D/current_length = Vector2(0, 0)
-parameters/attack/BlendSpace2D/current_position = Vector2(0, 0)
-parameters/attack/BlendSpace2D/current_delta = Vector2(0, 0)
-parameters/attack/BlendSpace2D/blend_position = Vector2(-0.248279, 0.383023)
-parameters/attack/BlendSpace2D/0/current_length = null
-parameters/attack/BlendSpace2D/0/current_position = null
-parameters/attack/BlendSpace2D/0/current_delta = null
-parameters/attack/BlendSpace2D/1/current_length = null
-parameters/attack/BlendSpace2D/1/current_position = null
-parameters/attack/BlendSpace2D/1/current_delta = null
-parameters/attack/BlendSpace2D/2/current_length = null
-parameters/attack/BlendSpace2D/2/current_position = null
-parameters/attack/BlendSpace2D/2/current_delta = null
-parameters/attack/BlendSpace2D/3/current_length = null
-parameters/attack/BlendSpace2D/3/current_position = null
-parameters/attack/BlendSpace2D/3/current_delta = null
-parameters/attack/TimeScale/current_length = 1.0
-parameters/attack/TimeScale/current_position = 1.0
-parameters/attack/TimeScale/current_delta = 1.0
-parameters/attack/TimeScale/scale = 1.0
-parameters/attack/output/current_length = null
-parameters/attack/output/current_position = null
-parameters/attack/output/current_delta = null
 parameters/cast/current_length = 0.7
 parameters/cast/current_position = 0.7
 parameters/cast/current_delta = 0.0
@@ -949,6 +1009,32 @@ parameters/run/TimeScale/scale = 1.0
 parameters/run/output/current_length = null
 parameters/run/output/current_position = null
 parameters/run/output/current_delta = null
+parameters/sword_attack/current_length = 0.3
+parameters/sword_attack/current_position = 0.3
+parameters/sword_attack/current_delta = 0.0
+parameters/sword_attack/BlendSpace2D/current_length = 0.3
+parameters/sword_attack/BlendSpace2D/current_position = 0.3
+parameters/sword_attack/BlendSpace2D/current_delta = 0.0
+parameters/sword_attack/BlendSpace2D/blend_position = Vector2(0.00106275, 0.99005)
+parameters/sword_attack/BlendSpace2D/0/current_length = 0.3
+parameters/sword_attack/BlendSpace2D/0/current_position = 0.3
+parameters/sword_attack/BlendSpace2D/0/current_delta = 0.0
+parameters/sword_attack/BlendSpace2D/1/current_length = null
+parameters/sword_attack/BlendSpace2D/1/current_position = null
+parameters/sword_attack/BlendSpace2D/1/current_delta = null
+parameters/sword_attack/BlendSpace2D/2/current_length = null
+parameters/sword_attack/BlendSpace2D/2/current_position = null
+parameters/sword_attack/BlendSpace2D/2/current_delta = null
+parameters/sword_attack/BlendSpace2D/3/current_length = null
+parameters/sword_attack/BlendSpace2D/3/current_position = null
+parameters/sword_attack/BlendSpace2D/3/current_delta = null
+parameters/sword_attack/TimeScale/current_length = 0.3
+parameters/sword_attack/TimeScale/current_position = 0.3
+parameters/sword_attack/TimeScale/current_delta = 0.0
+parameters/sword_attack/TimeScale/scale = 1.0
+parameters/sword_attack/output/current_length = 0.3
+parameters/sword_attack/output/current_position = 0.3
+parameters/sword_attack/output/current_delta = 0.0
 parameters/walk/current_length = null
 parameters/walk/current_position = null
 parameters/walk/current_delta = null
@@ -975,8 +1061,6 @@ parameters/walk/TimeScale/scale = 1.0
 parameters/walk/output/current_length = null
 parameters/walk/output/current_position = null
 parameters/walk/output/current_delta = null
-
-[node name="DownSwordAnimation" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_220ml")
@@ -1009,7 +1093,7 @@ script = ExtResource("3_m6xxc")
 [node name="run" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_0pa3q")
 
-[node name="attack" type="Node2D" parent="StateMachine"]
+[node name="sword_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_27ein")
 
 [node name="hit" type="Node2D" parent="StateMachine"]

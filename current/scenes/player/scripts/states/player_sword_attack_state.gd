@@ -5,14 +5,15 @@ extends State
 @onready var attack_hitbox = $"../../AttackArea"
 @onready var attack_collision = $"../../AttackArea/CollisionShape2D"
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
-@onready var down_sword_sprite = $"../../DownSwordSprite"
+#@onready var down_sword_sprite = $"../../DownSwordSprite"
 
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
+	print($"../../AnimationPlayer")
 
 func Enter():
-	animation_tree.get("parameters/playback").start('attack')
-	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").start('sword_attack')
+	animation_tree.set("parameters/sword_attack/BlendSpace2D/blend_position", character_body.direction)
 	attack_collision.disabled = false
 	use_area_collision.disabled = true
 	handle_attack_hitbox_direction()
@@ -20,7 +21,7 @@ func Enter():
 func Exit():
 	attack_collision.disabled = true
 	use_area_collision.disabled = false
-	down_sword_sprite.visible = false # TODO: Make animation smart enough to make this invisible or have a position it goes to on hit.
+	#down_sword_sprite.visible = false # TODO: Make animation smart enough to make this invisible or have a position it goes to on hit.
 	
 func Update(_delta:float):
 	#character_body.velocity.x = move_toward(character_body.velocity.x, 0, DECELERATION_SPEED)
@@ -49,7 +50,7 @@ func handle_attack_hitbox_direction():
 		attack_hitbox.position.y = 0
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["attack_left", "attack_right", "attack_up", "attack_down"]:
+	if anim_name in ["sword_attack_left", "sword_attack_right", "sword_attack_up", "sword_attack_down"]:
 		if character_body.movement:
 			if character_body.run:
 				state_transition.emit(self, 'run')

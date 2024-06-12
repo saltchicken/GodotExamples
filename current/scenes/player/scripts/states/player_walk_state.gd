@@ -15,10 +15,7 @@ func Update(_delta:float):
 	character_body.handle_use_hitbox_direction()
 	
 	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
-	if character_body.cast:
-		state_transition.emit(self, 'cast')
-	if character_body.attack:
-		state_transition.emit(self, 'attack')
+	action_from_input(self, character_body) # TODO: Probably shouldn't store this in the state class
 	if character_body.movement:
 		if character_body.run:
 			state_transition.emit(self, 'run')
@@ -27,5 +24,4 @@ func Update(_delta:float):
 			character_body.velocity.y = character_body.movement.y * character_body.stats.walk_speed
 	else:
 		state_transition.emit(self, 'idle')
-	if character_body.use:
-		character_body.use_objects()
+	
