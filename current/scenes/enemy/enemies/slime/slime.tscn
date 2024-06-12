@@ -304,10 +304,12 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_oechb")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_x14ib")
 blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_48sud"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_uh3r4"]
+graph_offset = Vector2(51, 63)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_6o4c5")
 nodes/BlendSpace2D/position = Vector2(943, 190)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_48sud")
@@ -373,7 +375,7 @@ states/hit/node = SubResource("AnimationNodeBlendTree_h4abx")
 states/hit/position = Vector2(772, 142)
 states/idle/node = SubResource("AnimationNodeBlendTree_1iefp")
 states/idle/position = Vector2(389, 75)
-graph_offset = Vector2(-15, 111)
+graph_offset = Vector2(-105, 257)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dgba"]
 

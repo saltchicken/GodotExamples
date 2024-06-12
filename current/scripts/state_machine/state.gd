@@ -32,8 +32,7 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 			if attack_type == 'SWORD':
 				state_transition.emit(calling_node, 'sword_attack')
 			elif attack_type == 'BOW':
-				print('Need to implement bow attack')
-				#state_transition.emit(calling_node, 'sword_attack')
+				state_transition.emit(calling_node, 'bow_attack')
 			else:
 				print('Error with calling the proper attack function for %s' % attack_type)
 		else:

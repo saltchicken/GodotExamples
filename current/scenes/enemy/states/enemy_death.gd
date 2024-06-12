@@ -5,7 +5,6 @@ extends State
 
 @onready var coins_node = preload("res://scenes/objects/coins/coins.tscn")
 
-@onready var death_animation_finished = false
 
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
@@ -23,9 +22,7 @@ func Update(_delta:float):
 	pass
 
 func _on_animation_tree_animation_finished(anim_name):
-	# TODO: Why is death getting called multiple times
-	if anim_name == 'death' and !death_animation_finished:
-		death_animation_finished = true
+	if anim_name == 'death':
 		drop_coins()
 		character_body.queue_free()
 		
