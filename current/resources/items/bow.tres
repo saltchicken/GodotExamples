@@ -11,3 +11,4 @@ description = "A powerful bow"
 texture = ExtResource("2_58rjb")
 attack_damage = 10
 defense = 0
+attack_type = 2

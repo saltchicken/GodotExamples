@@ -11,3 +11,4 @@ description = "A powerful sword"
 texture = ExtResource("2_fgf5l")
 attack_damage = 15
 defense = 0
+attack_type = 1

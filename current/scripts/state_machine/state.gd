@@ -26,6 +26,19 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 	if character_body.cast:
 		state_transition.emit(calling_node, 'cast')
 	if character_body.attack:
-		state_transition.emit(calling_node, 'sword_attack')
+		var current_weapon = character_body.inventory.get_node('MenuTabs/Inventory/InventoryMenu').current_weapon
+		if current_weapon:
+			var attack_type = current_weapon.AttackType.keys()[current_weapon.attack_type]
+			if attack_type == 'SWORD':
+				state_transition.emit(calling_node, 'sword_attack')
+			elif attack_type == 'BOW':
+				print('Need to implement bow attack')
+				#state_transition.emit(calling_node, 'sword_attack')
+			else:
+				print('Error with calling the proper attack function for %s' % attack_type)
+		else:
+			print('Player does not have a weapon equipped')
+			
+		
 	if character_body.use:
 		character_body.use_objects()
