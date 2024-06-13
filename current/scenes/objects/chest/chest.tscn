@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/objects/chest/states/opening_state.gd" id="6_woup1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tniwv"]
-size = Vector2(24, 18)
+size = Vector2(24, 17)
 
 [sub_resource type="Animation" id="Animation_xa882"]
 length = 0.001
@@ -111,7 +111,7 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 47)
+position = Vector2(0, 48.5)
 shape = SubResource("RectangleShape2D_tniwv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

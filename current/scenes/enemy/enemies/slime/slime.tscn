@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bhjo81a7nde87"]
+[gd_scene load_steps=52 format=3 uid="uid://bhjo81a7nde87"]
 
 [ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy_base.tscn" id="1_bexjs"]
 [ext_resource type="Resource" uid="uid://bvyr6xlwkotev" path="res://scenes/enemy/enemies/slime/slime_stats.tres" id="2_dffh6"]
@@ -382,6 +382,9 @@ graph_offset = Vector2(-105, 257)
 [sub_resource type="CircleShape2D" id="CircleShape2D_op0td"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_81vqb"]
+radius = 11.0
+
 [node name="Slime" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_bexjs")]
 initial_state = NodePath("StateMachine/idle")
 default_stats = ExtResource("2_dffh6")
@@ -530,3 +533,6 @@ shape = SubResource("CircleShape2D_3dgba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource("CircleShape2D_op0td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseAttackArea" index="0"]
+shape = SubResource("CircleShape2D_81vqb")

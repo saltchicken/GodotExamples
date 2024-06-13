@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://damkwhn4sgrhk"]
+[gd_scene load_steps=51 format=3 uid="uid://damkwhn4sgrhk"]
 
 [ext_resource type="PackedScene" uid="uid://b5qsiopg8p8nx" path="res://scenes/enemy/enemy_base.tscn" id="1_864w1"]
 [ext_resource type="Texture2D" uid="uid://dook06lkfkho6" path="res://scenes/enemy/enemies/golem/golem-spritesheet.png" id="2_pe2l4"]
@@ -383,6 +383,8 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ah05p"]
 radius = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bkeh"]
+
 [node name="Golem" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_864w1")]
 initial_state = NodePath("StateMachine/idle")
 
@@ -534,3 +536,6 @@ shape = SubResource("CapsuleShape2D_7wm8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource("CircleShape2D_ah05p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseAttackArea" index="0"]
+shape = SubResource("CircleShape2D_2bkeh")
