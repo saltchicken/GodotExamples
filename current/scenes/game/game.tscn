@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgbv7e2yr5xpl"]
+[gd_scene load_steps=13 format=3 uid="uid://cgbv7e2yr5xpl"]
 
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
 [ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
 [ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/slime/slime.tscn" id="10_p7t17"]
 [ext_resource type="Resource" uid="uid://di112al45tois" path="res://resources/items/sword.tres" id="10_xy8qs"]
-[ext_resource type="PackedScene" uid="uid://damkwhn4sgrhk" path="res://scenes/enemy/enemies/golem/golem.tscn" id="11_6vsga"]
-[ext_resource type="Resource" uid="uid://ctcy1x1ffpuuu" path="res://scenes/enemy/enemies/golem/golem_stats.tres" id="12_74tv1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gnspn"]
 scenes/1/scene = ExtResource("8_422q1")
@@ -45,11 +43,6 @@ tile_set = SubResource("TileSet_4rtwm")
 [node name="Slime2" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("10_p7t17")]
 position = Vector2(198, -40)
 initial_state = NodePath("StateMachine/idle")
-
-[node name="Golem" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("11_6vsga")]
-position = Vector2(91, -68)
-initial_state = NodePath("StateMachine/idle")
-default_stats = ExtResource("12_74tv1")
 
 [node name="ChestBow" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
 position = Vector2(-111, -61)

@@ -2,8 +2,8 @@ extends State
 
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
-@onready var attack_hitbox = $"../../AttackArea"
-@onready var attack_collision = $"../../AttackArea/CollisionShape2D"
+#@onready var attack_hitbox = $"../../AttackArea"
+#@onready var attack_collision = $"../../AttackArea/CollisionShape2D"
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 #@onready var down_sword_sprite = $"../../DownSwordSprite"
 

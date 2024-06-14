@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4nqrtl2ov7dp"
-path="res://.godot/imported/universal_sprite.png-e52dea9e09939213bd03742f596cab96.ctex"
+uid="uid://bk033kxm2k06b"
+path="res://.godot/imported/iron_sword.png-ede31f6f087b2d80e3939205f3baa7d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/assets/OLD/universal_sprite.png"
-dest_files=["res://.godot/imported/universal_sprite.png-e52dea9e09939213bd03742f596cab96.ctex"]
+source_file="res://scenes/player/assets/equipment/iron_sword.png"
+dest_files=["res://.godot/imported/iron_sword.png-ede31f6f087b2d80e3939205f3baa7d3.ctex"]
 
 [params]
 
