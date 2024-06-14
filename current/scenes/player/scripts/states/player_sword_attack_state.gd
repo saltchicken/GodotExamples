@@ -12,8 +12,8 @@ func _ready():
 	print($"../../AnimationPlayer")
 
 func Enter():
-	animation_tree.get("parameters/playback").start('sword_attack')
-	animation_tree.set("parameters/sword_attack/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").start('sword_attack1')
+	animation_tree.set("parameters/sword_attack1/BlendSpace2D/blend_position", character_body.direction)
 	attack_collision.disabled = false
 	use_area_collision.disabled = true
 	handle_attack_hitbox_direction()
@@ -50,7 +50,7 @@ func handle_attack_hitbox_direction():
 		attack_hitbox.position.y = 0
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["sword_attack_left", "sword_attack_right", "sword_attack_up", "sword_attack_down"]:
+	if anim_name in ["sword_attack1_left", "sword_attack1_right", "sword_attack1_up", "sword_attack1_down"]:
 		if character_body.movement:
 			if character_body.run:
 				state_transition.emit(self, 'run')

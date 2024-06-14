@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4nqrtl2ov7dp"
-path="res://.godot/imported/universal_sprite.png-31b97f2acd3f8849d13238abf8360826.ctex"
+uid="uid://ddnmjtnp085t6"
+path="res://.godot/imported/walk_right.png-1423cc70a0174d51a09e1c5fd634a72c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/assets/universal_sprite.png"
-dest_files=["res://.godot/imported/universal_sprite.png-31b97f2acd3f8849d13238abf8360826.ctex"]
+source_file="res://scenes/player/assets/walk_right.png"
+dest_files=["res://.godot/imported/walk_right.png-1423cc70a0174d51a09e1c5fd634a72c.ctex"]
 
 [params]
 

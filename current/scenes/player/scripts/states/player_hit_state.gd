@@ -14,8 +14,8 @@ func Enter(params: Dictionary = {}):
 			return
 		else:
 			animation_tree.get("parameters/playback").start('hit')
-			#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 			var direction_from_enemy = params['attacking_body'].direction_to_player
+			animation_tree.set("parameters/hit/BlendSpace2D/blend_position", -direction_from_enemy)
 			var knockback = params['attacking_body'].stats.attack_knockback
 			character_body.velocity = direction_from_enemy * (knockback / character_body.stats.knockback_protection)
 	
@@ -30,5 +30,5 @@ func test(test):
 	print('hello')
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == 'hit':
+	if anim_name in ["hit_left", "hit_right", "hit_up", "hit_down"]:
 		state_transition.emit(self, 'idle')

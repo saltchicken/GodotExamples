@@ -19,6 +19,6 @@ func Update(_delta:float):
 	pass
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == 'death':
+	if anim_name in ["death_left", "death_right", "death_up", "death_down"]:
 		print('Handle death properly. If use queue_free then enemy calculations error')
 		#character_body.queue_free()
