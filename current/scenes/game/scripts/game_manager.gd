@@ -20,9 +20,21 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	#var player = Player.instantiate()
-	get_tree().current_scene.add_child(player)
-	#await get_tree().create_timer(2.0).timeoutsd
-	timer.start()
+	get_tree().current_scene.get_node('bodies').add_child(player)
+	#await get_tree().create_timer(2.0).timeouts
+	var player_position = camera.get_screen_center_position()
+	var new_enemy = Enemy.instantiate()
+	var position_x = rng.randi_range(50, 200)
+	var position_y = rng.randi_range(50, 200)
+	var rand_flip_x = rng.randi_range(0, 1) * 2 - 1
+	var rand_flip_y = rng.randi_range(0, 1) * 2 - 1
+	position_x *= rand_flip_x
+	position_y *= rand_flip_y
+	position_x += player_position.x
+	position_y += player_position.y
+	new_enemy.position = Vector2(position_x, position_y)
+	get_tree().current_scene.get_node('bodies').add_child(new_enemy)
+	#timer.start()
 	
 	#for i in MAX_NUMBER_OF_ENEMIES:
 		#var new_enemy = Enemy.instantiate()
@@ -30,20 +42,35 @@ func _ready():
 		#var position_x = rng.randi_range(SPAWN_MIN, SPAWN_MAX)
 		#var position_y = rng.randi_range(SPAWN_MIN, SPAWN_MAX)
 		#new_enemy.position = Vector2(position_x, position_y)
-		
+
+func spawn_enemy(global_position):
+	var enemy = Enemy.instantiate()
+	enemy.global_position = player.global_position + global_position
+	get_tree().current_scene.get_node('bodies').add_child(enemy)
+	
+func calculate_random_position_at_range(range_magnitude):
+	var direction = rng.randf_range(0.0, 6.283)
+	var x = range_magnitude * cos(direction)
+	var y = range_magnitude * sin(direction)
+	return Vector2(x, y)
+	
+	
+	
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("rightclick"):
+		spawn_enemy(calculate_random_position_at_range(150))
 		#print(camera.get_target_position())
-		print(camera.get_screen_center_position())
-		print(get_viewport().get_mouse_position())
-		#print(DisplayServer.window_get_size())
-		var screen_width = get_viewport().get_visible_rect().size.x
-		var screen_height = get_viewport().get_visible_rect().size.y
-		var screen_center = Vector2(screen_width / 2, screen_height / 2)
-		
-		print(get_viewport().get_mouse_position() - screen_center)
-		
-		print(get_viewport().get_mouse_position() / screen_center)
+		#print(camera.get_screen_center_position())
+		#print(get_viewport().get_mouse_position())
+		##print(DisplayServer.window_get_size())
+		#var screen_width = get_viewport().get_visible_rect().size.x
+		#var screen_height = get_viewport().get_visible_rect().size.y
+		#var screen_center = Vector2(screen_width / 2, screen_height / 2)
+		#
+		#print(get_viewport().get_mouse_position() - screen_center)
+		#
+		#print(get_viewport().get_mouse_position() / screen_center)
 		
 		
 		

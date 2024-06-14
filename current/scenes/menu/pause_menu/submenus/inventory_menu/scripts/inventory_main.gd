@@ -28,6 +28,9 @@ func _get_current_weapon():
 func _ready() -> void:
 	for slot in item_and_equipment_slot_reference:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
+	
+	# THIS IS FOR TESTING A DEFAULT ITEM
+	load_item_into_inventory("res://resources/items/sword.tres", 0)
 
 func get_inventory_slots():
 	return get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()
@@ -50,3 +53,30 @@ func apply_equipment_modifiers():
 			if item:
 				item.data.apply_upgrade(player)
 	print('Applied equipment modifiers')
+	
+func load_item_into_inventory(path_to_item, slot_index):
+	var item := InventoryItem.new()
+	item.init(load(path_to_item))
+	#var item_index = _get_first_open_slot()
+	#%Inventory.get_child(slot_index).add_child(item)
+	item_slot_reference[slot_index].add_child(item)
+	
+#func _load_items_from_file():
+	#var itemsLoad = [
+	#"res://scenes/inventory/item/sword.tres",
+	#"res://scenes/inventory/item/bow.tres"
+#]
+	#for i in itemsLoad.size():
+		#_load_item_into_inventory(itemsLoad[i], i)
+		##_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
+		##item.add_to_group('items')
+
+func collect_item(item):
+	#print(get_first_open_slot())
+	load_item_into_inventory(item, get_first_open_slot())
+	
+func get_first_open_slot():
+	for i in item_slot_reference.size():
+		if item_slot_reference[i].get_child_count() == 0:
+			return i
+	return -1 # TODO: Better error handling for when inventory is full

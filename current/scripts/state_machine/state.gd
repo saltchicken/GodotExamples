@@ -26,7 +26,7 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 	if character_body.cast:
 		state_transition.emit(calling_node, 'cast')
 	if character_body.attack:
-		var current_weapon = character_body.inventory.get_node('MenuTabs/Inventory/InventoryMenu').current_weapon
+		var current_weapon = character_body.inventory.current_weapon
 		if current_weapon:
 			var attack_type = current_weapon.AttackType.keys()[current_weapon.attack_type]
 			if attack_type == 'SWORD':

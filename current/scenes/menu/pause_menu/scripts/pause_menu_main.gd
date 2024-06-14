@@ -65,32 +65,7 @@ func close_pause_menu():
 	#%InventoryMenu.item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	get_tree().paused = false
 	
-func get_first_open_slot():
-	for i in %InventoryMenu.item_slot_reference.size():
-		if %InventoryMenu.item_slot_reference[i].get_child_count() == 0:
-			return i
-	return -1 # TODO: Better error handling for when inventory is full
 
-func load_item_into_inventory(path_to_item, slot_index):
-	var item := InventoryItem.new()
-	item.init(load(path_to_item))
-	#var item_index = _get_first_open_slot()
-	#%Inventory.get_child(slot_index).add_child(item)
-	%InventoryMenu.item_slot_reference[slot_index].add_child(item)
-	
-#func _load_items_from_file():
-	#var itemsLoad = [
-	#"res://scenes/inventory/item/sword.tres",
-	#"res://scenes/inventory/item/bow.tres"
-#]
-	#for i in itemsLoad.size():
-		#_load_item_into_inventory(itemsLoad[i], i)
-		##_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
-		##item.add_to_group('items')
-
-func collect_item(item):
-	#print(get_first_open_slot())
-	load_item_into_inventory(item, get_first_open_slot())
 	
 func get_inventory():
 	print('TODO: Implement checking inventory')

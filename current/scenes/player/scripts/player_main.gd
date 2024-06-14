@@ -6,7 +6,7 @@ class_name Player
 @onready var pickup_hitbox = $PickupArea
 #@onready var attack_hitbox = $AttackArea
 
-@onready var inventory = $PauseMenu # TODO: This likely not needed. Only being used for broken save and load right now
+@onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu # TODO: This likely not needed. Only being used for broken save and load right now
 
 @export var initial_state : State
 

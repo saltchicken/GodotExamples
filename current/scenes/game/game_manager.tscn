@@ -12,4 +12,7 @@ Enemy = ExtResource("3_y283a")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.592
 
+[node name="bodies" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
