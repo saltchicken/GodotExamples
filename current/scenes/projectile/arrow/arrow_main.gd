@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
-@export var arrow_speed: float = 600
-@onready var direction: Vector2 = Vector2.ZERO: set = _set_arrow_direction
-
 @onready var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
 
 @export var default_stats: ProjectileStats
 @onready var stats: ProjectileStats = default_stats.duplicate()
 
+@onready var direction: Vector2 = Vector2.ZERO: set = _set_arrow_direction
 func _set_arrow_direction(new_direction):
 	direction = new_direction
 	if direction == Vector2(0,1):
@@ -24,14 +22,8 @@ func _set_arrow_direction(new_direction):
 func _ready() -> void:
 	self.position.y -= 15
 	add_collision_exception_with(player)
-	
-# TODO: Arrow needs to queue_free after either time or leaving the screen
-# TODO: Add piercing
 
 func _physics_process(delta: float) -> void:
-	#if start:
-		#velocity = direction * arrow_speed
-		#start = false
 	velocity.x = move_toward(velocity.x, 0, 10)
 	velocity.y = move_toward(velocity.y, 0, 10)
 	if abs(velocity.x) <= 250 and abs(velocity.y) <= 250:
