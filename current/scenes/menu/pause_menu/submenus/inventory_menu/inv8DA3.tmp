@@ -1,0 +1,264 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgw438pdkorrb"]
+
+[ext_resource type="Script" path="res://scenes/menu/inventory_menu/scripts/inventory_main.gd" id="1_pwasw"]
+[ext_resource type="StyleBox" uid="uid://vuano8fvn3vo" path="res://scenes/menu/inventory_menu/themes/item_slot.tres" id="2_q6u6v"]
+[ext_resource type="Script" path="res://scenes/menu/inventory_menu/scripts/inventory_slot.gd" id="3_edo73"]
+
+[node name="InventoryMenu" type="Node2D"]
+script = ExtResource("1_pwasw")
+
+[node name="Inventory" type="GridContainer" parent="."]
+offset_left = 332.0
+offset_top = 174.0
+offset_right = 1004.0
+offset_bottom = 356.0
+columns = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer3" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer4" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer5" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer6" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer7" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer8" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer9" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer10" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer11" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer12" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer3" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer4" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer5" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer6" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer7" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer8" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer9" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer10" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer11" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="PanelContainer12" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="Equipment" type="Panel" parent="."]
+offset_left = 130.0
+offset_top = 368.0
+offset_right = 416.0
+offset_bottom = 564.0
+
+[node name="HeadSlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 27.0
+offset_right = 107.0
+offset_bottom = 67.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+
+[node name="WeaponSlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 27.0
+offset_right = 217.0
+offset_bottom = 67.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 4
+
+[node name="ChestSlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 69.0
+offset_right = 107.0
+offset_bottom = 109.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 1
+
+[node name="AccessorySlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 69.0
+offset_right = 217.0
+offset_bottom = 109.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 5
+
+[node name="LegsSlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 111.0
+offset_right = 107.0
+offset_bottom = 151.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 2
+
+[node name="FeetSlot" type="PanelContainer" parent="Equipment"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 111.0
+offset_right = 217.0
+offset_bottom = 151.0
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 3
+
+[node name="PurseLabel" type="Label" parent="."]
+offset_left = 723.0
+offset_top = 427.0
+offset_right = 776.0
+offset_bottom = 450.0
+text = "Purse: "

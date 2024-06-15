@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://ctcy1x1ffpuuu"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy_stats.gd" id="1_dr88n"]
+
+[resource]
+script = ExtResource("1_dr88n")
+attack_reach = 10
+attack_damage = 60
+attack_knockback = 200.0
+defense = 10
+health = 200
+chase_distance = 100
+chase_speed = 10
+knockback_protection = 3.0
+hit_indicator_offset = Vector2(0, 0)

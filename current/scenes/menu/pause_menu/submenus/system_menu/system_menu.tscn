@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce2hekpqo0xd"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/system_menu/scripts/system_menu_main.gd" id="1_2f66f"]
+
+[node name="SystemMenu" type="Node2D"]
+process_mode = 2
+script = ExtResource("1_2f66f")
+
+[node name="SystemButtonContainer" type="VBoxContainer" parent="."]
+offset_left = -165.0
+offset_top = -15.0
+offset_right = 206.0
+offset_bottom = 121.0
+
+[node name="Resume" type="Button" parent="SystemButtonContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="SystemButtonContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="SystemButtonContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LoadLatestSave" type="Button" parent="SystemButtonContainer"]
+layout_mode = 2
+text = "Load Last Save"
