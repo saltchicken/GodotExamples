@@ -25,14 +25,24 @@ class_name Enemy
 
 @onready var hit_indicator_offset: Vector2 = stats.hit_indicator_offset
 
+@onready var collision
+
 func _ready():
 	add_to_group('Enemies')
 
 func _physics_process(delta):
 	distance_to_player = self.global_position.distance_to(player.global_position)
 	direction_to_player = self.global_position.direction_to(player.global_position)
-	move_and_collide(self.velocity * delta)
+	collision = move_and_collide(self.velocity * delta)
 
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
+		
+func handle_collision_with_player():
+	if collision:
+		var body = collision.get_collider()
+		#print(body)
+		if body.has_method('get_hit') and body.get_script() == Player:
+			#add_collision_exception_with(body)
+			body.get_hit(self)

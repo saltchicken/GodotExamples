@@ -40,6 +40,4 @@ script = ExtResource("7_t7ns1")
 [node name="close_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_tf1uu")
 
-[node name="CollisionAttackArea" type="Area2D" parent="."]
-
 [node name="CloseAttackArea" type="Area2D" parent="."]

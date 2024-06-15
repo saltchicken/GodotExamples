@@ -24,7 +24,6 @@ func Exit():
 	character_body.idle_direction = character_body.direction_to_player
 	
 func Update(delta:float):
-	check_attack_range()
 	if close_attack_duration < 0.5:
 		close_attack_duration += delta
 		print('speed')
@@ -46,6 +45,8 @@ func Update(delta:float):
 	
 	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
+	character_body.handle_collision_with_player()
+	
 	
 	
 	
@@ -58,16 +59,3 @@ func Update(delta:float):
 	
 func handle_close_attack_hitbox_direction():
 	close_attack_hitbox.position = character_body.direction_to_player * character_body.stats.attack_reach
-	
-				
-				
-	
-func check_attack_range():
-	var bodies = attack_hitbox.get_overlapping_bodies()
-	if bodies:
-		#var closest_body = bodies.front() # TODO: Only interested in closest object?
-		for obj in bodies:
-			#print(obj)
-			if obj.get_script() == Player:
-				if obj.state_machine.current_state.name != 'hit' and obj.state_machine.current_state.name != 'death':
-					state_transition.emit(self, 'collision_attack')
