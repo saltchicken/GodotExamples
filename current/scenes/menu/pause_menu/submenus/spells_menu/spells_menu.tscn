@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_slot.gd" id="2_i6mhp"]
 
 [node name="SpellsMenu" type="Node2D"]
+process_mode = 2
 script = ExtResource("1_ppd33")
 
 [node name="Spells" type="GridContainer" parent="."]

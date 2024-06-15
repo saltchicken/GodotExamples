@@ -8,7 +8,7 @@ func _ready():
 func button_pressed(button):
 	match button.text:
 		"Start Game":
-			get_tree().change_scene_to_file("res://scenes/game/game.tscn")
+			get_tree().change_scene_to_file("res://scenes/game/game_manager.tscn")
 		"Load Game":
 			print('Not implemented yet')
 		"Exit To Deskop":

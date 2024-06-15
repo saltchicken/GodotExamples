@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkpam5xdp4lu1"]
 
 [node name="QuestMenu" type="Node2D"]
+process_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 281.0

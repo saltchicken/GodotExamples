@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/inventory_menu/scripts/inventory_slot.gd" id="3_edo73"]
 
 [node name="InventoryMenu" type="Node2D"]
+process_mode = 2
 script = ExtResource("1_pwasw")
 
 [node name="Inventory" type="GridContainer" parent="."]

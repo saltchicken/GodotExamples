@@ -1,6 +1,11 @@
 extends Node
 
 @onready var player = get_owner().get_owner() # TODO: Better way to reference player for applying equipment modifiers
+@onready var pause_menu = get_owner()
+@onready var inventory_tab = get_parent()
+
+@onready var style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres')
+@onready var selected_style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/highlighted_item_slot.tres')
 
 @onready var item_slot_reference: Array = get_inventory_slots()
 @onready var equipment_slot_reference: Array = get_equipment_slots()
@@ -10,6 +15,25 @@ extends Node
 
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
 @onready var current_weapon: get = _get_current_weapon
+
+@onready var selected_slot: int = 0: set = _set_selected_slot
+
+func _set_selected_slot(new_value):
+	print(new_value)
+	var previous_slot = selected_slot
+	if new_value < 0:
+		selected_slot = 0
+	elif new_value >= InvSize and previous_slot < InvSize:
+		selected_slot = 24
+	elif new_value >= InventoryEquipmentSize:
+		selected_slot = InventoryEquipmentSize - 1
+	else:
+		selected_slot = new_value
+	select_new_slot(previous_slot, selected_slot)
+	
+func select_new_slot(previous_slot, new_slot):
+	item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
+	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 
 func _get_current_weapon():
 	var child_count = weapon_slot.get_child_count()
@@ -28,9 +52,29 @@ func _get_current_weapon():
 func _ready() -> void:
 	for slot in item_and_equipment_slot_reference:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
+		
+	item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	load_item_into_inventory("res://resources/items/sword.tres", 0)
+	load_item_into_inventory("res://resources/items/bow.tres", 1)
+	
+func _process(_delta):
+	if pause_menu.visible and inventory_tab.visible:
+		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+			selected_slot -= 1
+		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+			selected_slot += 1
+		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+			if selected_slot <= InvSize:
+				selected_slot -= InvSize / 2
+			else:
+				selected_slot -= 2
+		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+			if selected_slot < InvSize:
+				selected_slot += InvSize / 2
+			else:
+				selected_slot += 2
 
 func get_inventory_slots():
 	return get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()

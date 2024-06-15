@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/system_menu/scripts/system_menu_main.gd" id="1_2f66f"]
 
 [node name="SystemMenu" type="Node2D"]
+process_mode = 2
 script = ExtResource("1_2f66f")
 
 [node name="SystemButtonContainer" type="VBoxContainer" parent="."]
