@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0nb3ms13osie" path="res://assets/utility/tile_highlight32.png" id="6_hq12p"]
 [ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://scenes/objects/coins/coins.tscn" id="8_422q1"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
-[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/slime/slime.tscn" id="10_p7t17"]
+[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/red_slime/red_slime.tscn" id="10_p7t17"]
 [ext_resource type="Resource" uid="uid://di112al45tois" path="res://resources/items/sword.tres" id="10_xy8qs"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gnspn"]

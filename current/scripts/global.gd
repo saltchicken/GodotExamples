@@ -2,7 +2,7 @@ extends Node
 
 var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
 var hit_indicator_node = preload("res://scenes/dialogue/hit_indicator.tscn")
-var slime_node = preload("res://scenes/enemy/enemies/slime/slime.tscn")
+var red_slime_node = preload("res://scenes/enemy/enemies/red_slime/red_slime.tscn")
 
 func dialogue(parent_node, text_array: Array):
 	var dialogue_instance = dialogue_node.instantiate()
@@ -19,7 +19,7 @@ func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offs
 	hit_indicator_instance.main()
 	
 func spawn_enemy(parent_node, position):
-	var slime_instance = slime_node.instantiate()
+	var slime_instance = red_slime_node.instantiate()
 	slime_instance.position = position
 	parent_node.add_child(slime_instance)
 	

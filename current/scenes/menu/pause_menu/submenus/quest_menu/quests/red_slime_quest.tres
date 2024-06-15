@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="QuestResource" load_steps=2 format=3 uid="uid://77deld4n4f80"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/quest_menu/quests/quest_data.gd" id="1_1wpel"]
+
+[resource]
+script = ExtResource("1_1wpel")
+name = "Kill Red Slimes"
+description = "Kill a bunch of red slimes
+PLACEHOLDER: please"
+status = "0"
+action = "killed_enemy"
+requirement = "RedSlime"

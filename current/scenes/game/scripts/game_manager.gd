@@ -17,6 +17,7 @@ func _process(_delta):
 func spawn_enemy(global_position):
 	var enemy = Enemy.instantiate()
 	enemy.global_position = player.global_position + global_position
+	#enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
 	get_tree().current_scene.add_child(enemy)
 	
 func calculate_random_position_at_range(range_magnitude):
@@ -24,3 +25,6 @@ func calculate_random_position_at_range(range_magnitude):
 	var x = range_magnitude * cos(direction)
 	var y = range_magnitude * sin(direction)
 	return Vector2(x, y)
+	
+#func on_enemy_killed(body):
+	#print(body)

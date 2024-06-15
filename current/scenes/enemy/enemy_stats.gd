@@ -1,6 +1,9 @@
 class_name EnemyStats
 extends Resource
 
+@export var name: String
+@export var type: String
+
 @export var attack_reach: int
 @export var attack_damage: int
 @export var attack_knockback: float

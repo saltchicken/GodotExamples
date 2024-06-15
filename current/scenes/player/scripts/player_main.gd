@@ -7,6 +7,7 @@ class_name Player
 #@onready var attack_hitbox = $AttackArea
 
 @onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu # TODO: This likely not needed. Only being used for broken save and load right now
+@onready var quests = $PauseMenu/MenuTabs/Quests/QuestMenu
 
 @export var initial_state : State
 
@@ -123,6 +124,12 @@ func handle_use_hitbox_direction():
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
+		
+func killed_enemy(body):
+	var objective = OBJECTIVE.new()
+	objective.action = 'killed_enemy'
+	objective.value = body.stats.name
+	quests.handle_objective(objective)
 	
 func use_objects():
 	var useable_objects = use_hitbox.get_overlapping_bodies()
