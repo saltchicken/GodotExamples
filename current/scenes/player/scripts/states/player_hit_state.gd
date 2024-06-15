@@ -26,9 +26,6 @@ func Update(_delta:float):
 	character_body.velocity.x = move_toward(character_body.velocity.x, 0, 5.0)
 	character_body.velocity.y = move_toward(character_body.velocity.y, 0, 5.0)
 
-func test(test):
-	print('hello')
-
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["hit_left", "hit_right", "hit_up", "hit_down"]:
 		state_transition.emit(self, 'idle')

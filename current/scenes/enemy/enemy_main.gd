@@ -44,5 +44,7 @@ func handle_collision_with_player():
 		var body = collision.get_collider()
 		#print(body)
 		if body.has_method('get_hit') and body.get_script() == Player:
+			#if obj.state_machine.current_state.name != 'hit' and obj.state_machine.current_state.name != 'death': # TODO: Should this check be added even though its already handled in player.get_hit()
+			self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
 			#add_collision_exception_with(body)
 			body.get_hit(self)

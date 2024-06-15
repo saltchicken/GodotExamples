@@ -7,5 +7,5 @@
 [node name="GameManager" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_t78s6")
-Player = ExtResource("2_l8brt")
-Enemy = ExtResource("3_y283a")
+player_scene = ExtResource("2_l8brt")
+enemy_scene = ExtResource("3_y283a")

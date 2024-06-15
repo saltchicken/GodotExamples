@@ -44,7 +44,6 @@ func _get_current_weapon():
 	else:
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
-	return "hello"
 
 
 #@onready var selected_slot: int = 0: set = _set_selected_slot

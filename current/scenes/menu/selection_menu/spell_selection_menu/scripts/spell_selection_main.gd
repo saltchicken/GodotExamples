@@ -27,9 +27,9 @@ func _set_selected_spell(new_value):
 	select_new_slot(previous_spell, selected_spell)
 	select_current_spell()
 	
-func select_new_slot(previous_spell, selected_spell):
+func select_new_slot(previous_spell, new_spell):
 	spell_choices[previous_spell].add_theme_stylebox_override('panel', style_box)
-	spell_choices[selected_spell].add_theme_stylebox_override('panel', selected_style_box)
+	spell_choices[new_spell].add_theme_stylebox_override('panel', selected_style_box)
 
 func _ready() -> void:
 	self.visible = false
@@ -41,7 +41,7 @@ func _ready() -> void:
 	for slot in spell_menu.current_spells_slot_reference:
 		slot.change_spell.connect(spell_menu_spell_changed.bind(slot))
 	
-func spell_menu_spell_changed(slot):
+func spell_menu_spell_changed(_slot):
 	get_current_spells()
 	select_current_spell()
 	

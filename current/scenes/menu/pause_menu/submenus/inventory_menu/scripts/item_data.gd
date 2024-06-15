@@ -11,7 +11,7 @@ enum AttackType {NULL, SWORD, BOW}
 @export var attack_damage: int
 @export var defense: int
 
-@export var attack_type: AttackType = 0
+@export var attack_type: AttackType = AttackType.NULL
 
 func apply_upgrade(body: CharacterBody2D):
 	body.stats.attack_damage = body.stats.base_attack_damage + attack_damage

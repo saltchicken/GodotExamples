@@ -2,7 +2,6 @@ extends State
 
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
-@onready var attack_hitbox = $"../../CollisionAttackArea"
 @onready var close_attack_hitbox = $"../../CloseAttackArea"
 
 @onready var close_attack_duration: float = 0.0
@@ -26,7 +25,6 @@ func Exit():
 func Update(delta:float):
 	if close_attack_duration < 0.5:
 		close_attack_duration += delta
-		print('speed')
 		character_body.velocity.x = close_attack_direction.x * 150
 		character_body.velocity.y = close_attack_direction.y * 150
 		

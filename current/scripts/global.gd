@@ -23,14 +23,6 @@ func spawn_enemy(parent_node, position):
 	slime_instance.position = position
 	parent_node.add_child(slime_instance)
 	
-func check_if_space_occupied(parent_node, position: Vector2):
-	pass
-	#var sensor = sensor_node.instantiate()
-	#sensor.position = position
-	#parent_node.add_child(sensor)
-	#if sensor.check_for_bodies():
-		#print('found')
-	
 	
 func restart():
 	# TODO: This doesn't work
