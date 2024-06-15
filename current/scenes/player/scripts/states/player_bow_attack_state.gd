@@ -7,6 +7,8 @@ extends State
 @onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 #@onready var down_sword_sprite = $"../../DownSwordSprite"
 
+@onready var arrow_scene = preload('res://scenes/projectile/arrow/arrow.tscn')
+
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 	print($"../../AnimationPlayer")
@@ -51,7 +53,10 @@ func Update(_delta:float):
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["bow_attack_left", "bow_attack_right", "bow_attack_up", "bow_attack_down"]:
-		print('TODO: Implement an instantiatied arrow at a frame in the middle of the animation')
+		var arrow = arrow_scene.instantiate()
+		arrow.position = character_body.position
+		get_tree().current_scene.add_child(arrow)
+		arrow.direction = character_body.direction
 		if character_body.movement:
 			if character_body.run:
 				state_transition.emit(self, 'run')

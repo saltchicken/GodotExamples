@@ -2595,6 +2595,7 @@ visible = false
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(1, -13)
 scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_8bee1")
 hframes = 6
 
 [node name="HandEquip" type="Node2D" parent="."]

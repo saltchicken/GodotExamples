@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=2 format=3 uid="uid://6cf4x80g1gyp"]
+
+[ext_resource type="Script" path="res://scenes/projectile/arrow/projectile_data.gd" id="1_01rll"]
+
+[resource]
+script = ExtResource("1_01rll")
+attack_damage = 10
