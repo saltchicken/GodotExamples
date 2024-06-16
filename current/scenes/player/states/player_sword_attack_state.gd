@@ -7,7 +7,6 @@ extends State
 
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
-	print($"../../AnimationPlayer")
 
 func Enter():
 	animation_tree.get("parameters/playback").start('sword_attack1')
@@ -32,9 +31,9 @@ func Update(_delta:float):
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["sword_attack1_left", "sword_attack1_right", "sword_attack1_up", "sword_attack1_down"]:
 		if character_body.movement:
-			if character_body.run:
-				state_transition.emit(self, 'run')
-			else:
+			if character_body.walk:
 				state_transition.emit(self, 'walk')
+			else:
+				state_transition.emit(self, 'run')
 		else:
 			state_transition.emit(self, 'idle')

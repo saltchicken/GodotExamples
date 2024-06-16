@@ -18,10 +18,10 @@ func Update(_delta:float):
 	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body)
 	if character_body.movement:
-		if character_body.run:
-			state_transition.emit(self, 'run')
-		else:
+		if character_body.walk:
 			state_transition.emit(self, 'walk')
+		else:
+			state_transition.emit(self, 'run')
 	else:
 		#character_body.velocity.x = move_toward(character_body.velocity.x, 0, DECELERATION_SPEED)
 		#character_body.velocity.y = move_toward(character_body.velocity.y, 0, DECELERATION_SPEED)

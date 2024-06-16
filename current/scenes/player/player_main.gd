@@ -1,12 +1,12 @@
 extends CharacterBody2D
 class_name Player
 @onready var state_machine = $StateMachine
-@onready var animation_tree = $AnimationTree
+#@onready var animation_tree = $AnimationTree
 @onready var use_hitbox = $UseArea
 @onready var pickup_hitbox = $PickupArea
 #@onready var attack_hitbox = $AttackArea
 
-@onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu # TODO: This likely not needed. Only being used for broken save and load right now
+@onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu
 @onready var quests = $PauseMenu/MenuTabs/Quests/QuestMenu
 
 @export var initial_state : State
@@ -17,7 +17,7 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var direction = DEFAULT_DIRECTION		
 @onready var movement
 @onready var joystick_movement
-@onready var run
+@onready var walk
 @onready var attack
 
 @onready var cast
@@ -28,8 +28,6 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @export var default_stats: PlayerStats
 @onready var stats: PlayerStats = default_stats.duplicate()
 
-#@onready var current_spell
-
 @onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
 
 signal update_purse
@@ -39,17 +37,13 @@ func _set_purse(new_value):
 	purse = new_value
 	update_purse.emit()
 	
-
 func _ready():
 	add_to_group('Players')
-	add_to_group('Persist')
-	
 	update_purse.connect(get_node('PauseMenu')._on_player_update_purse)
 
 func _physics_process(delta):
 	get_input()
 	pickup_items()
-	#print(purse)
 	if dash_cooldown > 0.0:
 		dash_cooldown -= delta
 	move_and_collide(self.velocity * delta)
@@ -67,16 +61,13 @@ func collect(body):
 	purse += body.value
 	body.collected()
 	
-
 func get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
 	joystick_movement = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
-	run = Input.is_action_pressed('run')
+	walk = Input.is_action_pressed('run')
 	attack = Input.is_action_just_pressed('attack')
 	use = Input.is_action_just_pressed('use')
 	dash = Input.is_action_just_pressed('dash')
-	
-
 	
 func get_direction():
 	if !handle_joystick_movement():

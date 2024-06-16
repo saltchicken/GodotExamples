@@ -8,9 +8,6 @@ class_name Chest
 @onready var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
 
 @export var initial_state : State
-	
-func _ready():
-	add_to_group("Persist") # TODO: Should this be done in the UI instead
 
 func use():
 	#print("Current state is " + state_machine.current_state.name)
