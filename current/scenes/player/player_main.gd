@@ -64,7 +64,7 @@ func collect(body):
 func get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
 	joystick_movement = Input.get_vector("joystick_left", "joystick_right", "joystick_up", "joystick_down")
-	walk = Input.is_action_pressed('run')
+	walk = Input.is_action_pressed('walk')
 	attack = Input.is_action_just_pressed('attack')
 	use = Input.is_action_just_pressed('use')
 	dash = Input.is_action_just_pressed('dash')
