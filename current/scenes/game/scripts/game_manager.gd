@@ -1,9 +1,11 @@
 extends Node2D
 
 @export var player_scene: PackedScene
-@export var enemy_scene: PackedScene
+#@export var enemy_scene: PackedScene
 
 @onready var player = player_scene.instantiate()
+@onready var enemy_scenes: Array[PackedScene] = [ preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn'),
+											preload('res://scenes/enemy/enemies/green_slime/green_slime.tscn') ]
 
 var rng = RandomNumberGenerator.new()
 
@@ -15,7 +17,8 @@ func _process(_delta):
 		spawn_enemy(calculate_random_position_at_range(150))
 		
 func spawn_enemy(spawn_global_position):
-	var enemy = enemy_scene.instantiate()
+	var enemy_type = rng.randi_range(0, 1)
+	var enemy = enemy_scenes[enemy_type].instantiate()
 	enemy.global_position = player.global_position + spawn_global_position
 	#enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
 	get_tree().current_scene.add_child(enemy)

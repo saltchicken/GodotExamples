@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1380c8ofppab"]
+[gd_scene load_steps=3 format=3 uid="uid://b1380c8ofppab"]
 
 [ext_resource type="Script" path="res://scenes/game/scripts/game_manager.gd" id="1_t78s6"]
 [ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="2_l8brt"]
-[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/red_slime/red_slime.tscn" id="3_y283a"]
 
 [node name="GameManager" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_t78s6")
 player_scene = ExtResource("2_l8brt")
-enemy_scene = ExtResource("3_y283a")
