@@ -1,6 +1,9 @@
 extends State
 class_name PlayerState
 
+func state_movement():
+	pass
+
 func action_from_input(calling_node, character_body): # TODO: Probably shouldn't store this in the state class
 	if character_body.cast:
 		state_transition.emit(calling_node, 'cast')
@@ -21,7 +24,7 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 	if character_body.use:
 		character_body.use_objects()
 		
-func handle_movement_remain_in_state(calling_node, character_body):
+func handle_movement(calling_node, character_body):
 	match calling_node.name:
 		'idle':
 			if character_body.movement:
@@ -30,11 +33,11 @@ func handle_movement_remain_in_state(calling_node, character_body):
 				else:
 					state_transition.emit(calling_node, 'run')
 			else:
-				return true
+				calling_node.state_movement()
 		'walk':
 			if character_body.movement:
 				if character_body.walk:
-					return true
+					calling_node.state_movement()
 				else:
 					state_transition.emit(calling_node, 'run')
 			else:
@@ -46,7 +49,7 @@ func handle_movement_remain_in_state(calling_node, character_body):
 				if character_body.walk:
 					state_transition.emit(calling_node, 'walk')
 				else:
-					return true
+					calling_node.state_movement()
 			else:
 				state_transition.emit(calling_node, 'idle')
 		_:

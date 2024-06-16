@@ -16,7 +16,10 @@ func Update(_delta:float):
 	
 	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body) # TODO: Probably shouldn't store this in the state class
-	if handle_movement_remain_in_state(self, character_body):
-		character_body.velocity.x = character_body.movement.x * character_body.stats.walk_speed
-		character_body.velocity.y = character_body.movement.y * character_body.stats.walk_speed
+	handle_movement(self, character_body)
+		
+		
+func state_movement():
+	character_body.velocity.x = character_body.movement.x * character_body.stats.walk_speed
+	character_body.velocity.y = character_body.movement.y * character_body.stats.walk_speed
 	
