@@ -1,16 +1,12 @@
 extends Node2D
-
-@export var player_scene: PackedScene
-#@export var enemy_scene: PackedScene
-
-@onready var player = player_scene.instantiate()
+@onready var player
 @onready var enemy_scenes: Array[PackedScene] = [ preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn'),
 											preload('res://scenes/enemy/enemies/green_slime/green_slime.tscn') ]
 
 var rng = RandomNumberGenerator.new()
 
-func _ready():
-	get_tree().current_scene.add_child(player)
+#func _ready():
+	#add_child(player)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("rightclick"):

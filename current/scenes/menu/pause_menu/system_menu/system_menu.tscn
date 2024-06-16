@@ -16,14 +16,10 @@ offset_bottom = 121.0
 layout_mode = 2
 text = "Resume"
 
-[node name="Restart" type="Button" parent="SystemButtonContainer"]
+[node name="Save" type="Button" parent="SystemButtonContainer"]
 layout_mode = 2
-text = "Restart"
+text = "Save"
 
 [node name="Quit" type="Button" parent="SystemButtonContainer"]
 layout_mode = 2
 text = "Quit"
-
-[node name="LoadLatestSave" type="Button" parent="SystemButtonContainer"]
-layout_mode = 2
-text = "Load Last Save"

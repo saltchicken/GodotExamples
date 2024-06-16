@@ -2,7 +2,6 @@ extends Node
 
 var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
 var hit_indicator_node = preload("res://scenes/dialogue/hit_indicator.tscn")
-var red_slime_node = preload("res://scenes/enemy/enemies/red_slime/red_slime.tscn")
 
 func dialogue(parent_node, text_array: Array):
 	var dialogue_instance = dialogue_node.instantiate()
@@ -18,19 +17,13 @@ func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offs
 	hit_indicator_instance.y_offset = y_offset
 	hit_indicator_instance.main()
 	
-func spawn_enemy(parent_node, position):
-	var slime_instance = red_slime_node.instantiate()
-	slime_instance.position = position
-	parent_node.add_child(slime_instance)
-	
-	
-func restart():
-	# TODO: This doesn't work
-	#var scene_path = get_tree().current_scene.scene_file_path
-	#get_tree().unload_current_scene()
-	#get_tree().change_scene_to_file(scene_path)
-	
-	get_tree().reload_current_scene()
+#func restart():
+	#print("TODO: This doesn't work")
+	##var scene_path = get_tree().current_scene.scene_file_path
+	##get_tree().unload_current_scene()
+	##get_tree().change_scene_to_file(scene_path)
+	#
+	##get_tree().reload_current_scene()
 	
 func save_game():
 	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
@@ -49,8 +42,28 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 		
 		save_game_file.store_line(json_string)
+	print("TODO: Add notification for game saved")
 		
-func load_game():
+#func load_game():
+	#if not FileAccess.file_exists("user://savegame.save"):
+		#print("Error: There is no saved game.")
+		#return # TODO: Implement better logic for this case
+		#
+	#get_tree().change_scene_to_file("res://scenes/game/game_manager.tscn")
+	
+	#var scene = load("res://scenes/game/game_manager.tscn")
+	#get_tree().change_scene_to_packed(scene)
+	#scene.instantiate()
+	#print(scene.get_children())
+	
+	#for child in get_tree().current_scene().get_children():
+		#print(child)
+	#for node in get_tree().get_nodes_in_group("Persist"):
+		#print(node)
+	
+	
+		
+func load_game_REFERENCE():
 	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 

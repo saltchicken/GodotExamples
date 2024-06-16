@@ -49,6 +49,7 @@ func _get_current_weapon():
 #@onready var selected_slot: int = 0: set = _set_selected_slot
 
 func _ready() -> void:
+	add_to_group('Persist')
 	for slot in item_and_equipment_slot_reference:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
 		
@@ -74,6 +75,32 @@ func _process(_delta):
 				selected_slot += InvSize / 2
 			else:
 				selected_slot += 2
+				
+func save():
+	var save_dict = {
+		"inventory" : save_inventory(),
+		"equipment" : save_equipment()
+	}
+	return save_dict
+	
+func save_inventory():
+	var inventory_list = []
+	for slot in item_slot_reference:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				inventory_list.append(item.data.get_path())
+	return inventory_list
+	
+func save_equipment():
+	var equipment_list = []
+	var slotsCheck = equipment_slot_reference
+	for slot in slotsCheck:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				equipment_list.append(item.data.get_path())
+	return equipment_list
 
 func get_inventory_slots():
 	return get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()

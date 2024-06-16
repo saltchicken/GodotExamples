@@ -36,26 +36,6 @@ func get_inventory():
 			if item:
 				print(item.data.get_path())
 			
-func save_inventory():
-	var inventory_list = []
-	for slot in %InventoryMenu.item_slot_reference:
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				inventory_list.append(item.data.get_path())
-	return inventory_list
-	
-func save_equipment():
-	var equipment_list = []
-	var slotsCheck = %InventoryMenu.equipment_slot_reference
-	for slot in slotsCheck:
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				equipment_list.append(item.data.get_path())
-	return equipment_list
-		
-			
 func is_in_inventory(): # TODO: Implement 
 	pass
 

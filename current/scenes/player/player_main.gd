@@ -143,31 +143,31 @@ func use_objects():
 				obj.use()
 				break
 				
-func save():
-	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"inventory" : inventory.save_inventory(),
-		"equipment" : inventory.save_equipment()
-		#"current_state" : state_machine.current_state.name
-	}
-	return save_dict
+#func save():
+	#var save_dict = {
+		#"filename" : get_scene_file_path(),
+		#"parent" : get_parent().get_path(),
+		#"pos_x" : position.x,
+		#"pos_y" : position.y,
+		#"inventory" : inventory.save_inventory(),
+		#"equipment" : inventory.save_equipment()
+		##"current_state" : state_machine.current_state.name
+	#}
+	#return save_dict
 
-func load_player(node_data):
-	if node_data.has('current_state'):
-		initial_state = get_node('StateMachine').get_node(node_data['current_state'])
-		node_data.erase('current_state')
-	
-	
-	position = Vector2(node_data["pos_x"], node_data["pos_y"])
-
-	# Now we set the remaining variables.
-	for i in node_data.keys():
-		if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "inventory" or i == "equipment":
-			continue
-		set(i, node_data[i])
-		
-	print(node_data['inventory'])
-	print(node_data['equipment'])
+#func load_player(node_data):
+	#if node_data.has('current_state'):
+		#initial_state = get_node('StateMachine').get_node(node_data['current_state'])
+		#node_data.erase('current_state')
+	#
+	#
+	#position = Vector2(node_data["pos_x"], node_data["pos_y"])
+#
+	## Now we set the remaining variables.
+	#for i in node_data.keys():
+		#if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "inventory" or i == "equipment":
+			#continue
+		#set(i, node_data[i])
+		#
+	#print(node_data['inventory'])
+	#print(node_data['equipment'])

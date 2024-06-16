@@ -35,15 +35,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartGame" type="Button" parent="Panel/VBoxContainer"]
+[node name="NewGame" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_l026q")
-text = "Start Game"
+text = "New Game"
 
-[node name="LoadGame" type="Button" parent="Panel/VBoxContainer"]
+[node name="Continue" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_l026q")
-text = "Load Game"
+text = "Continue"
 
 [node name="ExitToDesktop" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
