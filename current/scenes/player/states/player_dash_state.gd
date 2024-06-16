@@ -4,14 +4,14 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 #@onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 
-@onready var dodge_speed = 200
+@onready var dash_speed = 200
 
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('dodge')
-	animation_tree.set("parameters/dodge/BlendSpace2D/blend_position", -character_body.direction)
+	animation_tree.get("parameters/playback").travel('dash')
+	animation_tree.set("parameters/dash/BlendSpace2D/blend_position", character_body.direction)
 	print(character_body.movement)
 	# TODO: Possibly disable use_area_collision
 	
@@ -19,7 +19,7 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
-	character_body.velocity = character_body.movement * dodge_speed
+	character_body.velocity = character_body.movement * dash_speed
 	#character_body.get_direction()
 	#character_body.handle_use_hitbox_direction()
 	
@@ -35,5 +35,5 @@ func Update(_delta:float):
 		#state_transition.emit(self, 'idle')
 		
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["dodge_left", "dodge_right", "dodge_up", "dodge_down"]:
+	if anim_name in ["dash_left", "dash_right", "dash_up", "dash_down"]:
 		state_transition.emit(self, 'idle')

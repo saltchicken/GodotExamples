@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0euwgpo1fo45"
-path="res://.godot/imported/dodge_up.png-3c5dc201cbfc178989ba6dae8c20fc5a.ctex"
+uid="uid://gw2eegltdhkx"
+path="res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/assets/dodge_up.png"
-dest_files=["res://.godot/imported/dodge_up.png-3c5dc201cbfc178989ba6dae8c20fc5a.ctex"]
+source_file="res://scenes/player/assets/dash_left.png"
+dest_files=["res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"]
 
 [params]
 

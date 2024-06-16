@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=161 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/player_main.gd" id="1_u0ca5"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/player_walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/states/player_run_state.gd" id="4_0pa3q"]
 [ext_resource type="Texture2D" uid="uid://cx0w5f2kpgvn3" path="res://scenes/player/assets/idle_down.png" id="4_8bee1"]
-[ext_resource type="Texture2D" uid="uid://bswkw81f74jyn" path="res://scenes/player/assets/dodge_left.png" id="4_hfj07"]
+[ext_resource type="Texture2D" uid="uid://gw2eegltdhkx" path="res://scenes/player/assets/dash_left.png" id="4_hfj07"]
 [ext_resource type="PackedScene" uid="uid://dj34bj75qdoa3" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_menu.tscn" id="4_w0itk"]
 [ext_resource type="Texture2D" uid="uid://u8oi8x5vl0wb" path="res://scenes/player/assets/walk_down.png" id="5_o10s7"]
 [ext_resource type="Texture2D" uid="uid://bk033kxm2k06b" path="res://scenes/player/assets/equipment/iron_sword.png" id="5_ucs0r"]
@@ -48,10 +48,13 @@
 [ext_resource type="Texture2D" uid="uid://kio808284uve" path="res://scenes/player/assets/cast_right.png" id="33_1gf8t"]
 [ext_resource type="Texture2D" uid="uid://derxat1575mbq" path="res://scenes/player/assets/cast_up.png" id="34_1kvb5"]
 [ext_resource type="Texture2D" uid="uid://btr72h121d8sc" path="res://scenes/player/assets/cast_down.png" id="35_of6ii"]
-[ext_resource type="Texture2D" uid="uid://whlju0c2ek18" path="res://scenes/player/assets/dodge_right.png" id="39_hrqef"]
-[ext_resource type="Texture2D" uid="uid://b0euwgpo1fo45" path="res://scenes/player/assets/dodge_up.png" id="40_jqmrc"]
-[ext_resource type="Texture2D" uid="uid://cnuh2tfoyd578" path="res://scenes/player/assets/dodge_down.png" id="41_57cn6"]
-[ext_resource type="Script" path="res://scenes/player/states/player_dodge_state.gd" id="46_8tj7h"]
+[ext_resource type="Texture2D" uid="uid://c5j0mts2q8x16" path="res://scenes/player/assets/dash_right.png" id="39_hrqef"]
+[ext_resource type="Texture2D" uid="uid://dsesotwte56il" path="res://scenes/player/assets/dash_up.png" id="40_jqmrc"]
+[ext_resource type="Texture2D" uid="uid://dgsm8hunifpb8" path="res://scenes/player/assets/dash_down.png" id="41_57cn6"]
+[ext_resource type="Script" path="res://scenes/player/states/player_dash_state.gd" id="46_8tj7h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yc56e"]
+load_path = "res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf8r0"]
 radius = 9.54508
@@ -248,7 +251,7 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_hfj07")]
+"values": [SubResource("CompressedTexture2D_yc56e")]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -761,58 +764,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_8e88h"]
-resource_name = "dodge_left"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_hfj07")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ux2wj"]
@@ -2339,6 +2290,110 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_wy025"]
+resource_name = "dodge_down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("41_57cn6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8e88h"]
+resource_name = "dodge_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hfj07")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_7rhsb"]
 resource_name = "dodge_right"
 length = 0.2
@@ -2443,58 +2498,6 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_wy025"]
-resource_name = "dodge_down"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("41_57cn6")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io086"]
 _data = {
 "RESET": SubResource("Animation_vldp8"),
@@ -2506,14 +2509,14 @@ _data = {
 "cast_left": SubResource("Animation_gbrgm"),
 "cast_right": SubResource("Animation_ne56y"),
 "cast_up": SubResource("Animation_fn3xj"),
+"dash_down": SubResource("Animation_wy025"),
+"dash_left": SubResource("Animation_8e88h"),
+"dash_right": SubResource("Animation_7rhsb"),
+"dash_up": SubResource("Animation_duo8r"),
 "death_down": SubResource("Animation_yhvwo"),
 "death_left": SubResource("Animation_fqgw7"),
 "death_right": SubResource("Animation_owl57"),
 "death_up": SubResource("Animation_2k8i7"),
-"dodge_down": SubResource("Animation_wy025"),
-"dodge_left": SubResource("Animation_8e88h"),
-"dodge_right": SubResource("Animation_7rhsb"),
-"dodge_up": SubResource("Animation_duo8r"),
 "hit_down": SubResource("Animation_ux2wj"),
 "hit_left": SubResource("Animation_atw1q"),
 "hit_right": SubResource("Animation_jp175"),
@@ -2602,6 +2605,40 @@ nodes/TimeScale/position = Vector2(1598, 382)
 nodes/output/position = Vector2(1860, 400)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jjhh2"]
+animation = &"dash_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrenw"]
+animation = &"dash_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li2rw"]
+animation = &"dash_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uxx1"]
+animation = &"dash_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_21723"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jjhh2")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_mrenw")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_li2rw")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_6uxx1")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_etlnj"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_u53pd"]
+graph_offset = Vector2(-148.306, 133.273)
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_21723")
+nodes/BlendSpace2D/position = Vector2(652, 245)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_etlnj")
+nodes/TimeScale/position = Vector2(980, 270)
+nodes/output/position = Vector2(1400, 320)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g32ps"]
 animation = &"death_down"
 
@@ -2633,39 +2670,6 @@ nodes/BlendSpace2D/position = Vector2(604, 312)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_d2q44")
 nodes/TimeScale/position = Vector2(1085, 262)
 nodes/output/position = Vector2(1620, 240)
-node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jjhh2"]
-animation = &"dodge_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrenw"]
-animation = &"dodge_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li2rw"]
-animation = &"dodge_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uxx1"]
-animation = &"dodge_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_21723"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jjhh2")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_mrenw")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_li2rw")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_6uxx1")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_etlnj"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_u53pd"]
-nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_21723")
-nodes/BlendSpace2D/position = Vector2(652, 245)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_etlnj")
-nodes/TimeScale/position = Vector2(980, 270)
-nodes/output/position = Vector2(1400, 320)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mdhiv"]
@@ -2843,10 +2847,10 @@ states/bow_attack/node = SubResource("AnimationNodeBlendTree_wif6l")
 states/bow_attack/position = Vector2(656, 118)
 states/cast/node = SubResource("AnimationNodeBlendTree_hocsw")
 states/cast/position = Vector2(537, 227)
+states/dash/node = SubResource("AnimationNodeBlendTree_u53pd")
+states/dash/position = Vector2(582, -205)
 states/death/node = SubResource("AnimationNodeBlendTree_j2lnu")
 states/death/position = Vector2(859, -112)
-states/dodge/node = SubResource("AnimationNodeBlendTree_u53pd")
-states/dodge/position = Vector2(582, -205)
 states/hit/node = SubResource("AnimationNodeBlendTree_clnl1")
 states/hit/position = Vector2(750, -112)
 states/idle/node = SubResource("AnimationNodeBlendTree_1o2w0")
@@ -2883,7 +2887,7 @@ visible = false
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(1, -13)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_hfj07")
+texture = SubResource("CompressedTexture2D_yc56e")
 hframes = 6
 
 [node name="HandEquip" type="Node2D" parent="."]
@@ -2982,6 +2986,32 @@ parameters/cast/TimeScale/scale = 1.0
 parameters/cast/output/current_length = null
 parameters/cast/output/current_position = null
 parameters/cast/output/current_delta = null
+parameters/dash/current_length = 0.2
+parameters/dash/current_position = 0.2
+parameters/dash/current_delta = 0.0
+parameters/dash/BlendSpace2D/current_length = 0.2
+parameters/dash/BlendSpace2D/current_position = 0.2
+parameters/dash/BlendSpace2D/current_delta = 0.0
+parameters/dash/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/dash/BlendSpace2D/0/current_length = 0.2
+parameters/dash/BlendSpace2D/0/current_position = 0.2
+parameters/dash/BlendSpace2D/0/current_delta = 0.0
+parameters/dash/BlendSpace2D/1/current_length = null
+parameters/dash/BlendSpace2D/1/current_position = null
+parameters/dash/BlendSpace2D/1/current_delta = null
+parameters/dash/BlendSpace2D/2/current_length = null
+parameters/dash/BlendSpace2D/2/current_position = null
+parameters/dash/BlendSpace2D/2/current_delta = null
+parameters/dash/BlendSpace2D/3/current_length = null
+parameters/dash/BlendSpace2D/3/current_position = null
+parameters/dash/BlendSpace2D/3/current_delta = null
+parameters/dash/TimeScale/current_length = 0.2
+parameters/dash/TimeScale/current_position = 0.2
+parameters/dash/TimeScale/current_delta = 0.0
+parameters/dash/TimeScale/scale = 1.0
+parameters/dash/output/current_length = 0.2
+parameters/dash/output/current_position = 0.2
+parameters/dash/output/current_delta = 0.0
 parameters/death/current_length = null
 parameters/death/current_position = null
 parameters/death/current_delta = null
@@ -3008,32 +3038,6 @@ parameters/death/TimeScale/scale = 1.0
 parameters/death/output/current_length = null
 parameters/death/output/current_position = null
 parameters/death/output/current_delta = null
-parameters/dodge/current_length = 0.2
-parameters/dodge/current_position = 0.2
-parameters/dodge/current_delta = 0.0
-parameters/dodge/BlendSpace2D/current_length = 0.2
-parameters/dodge/BlendSpace2D/current_position = 0.2
-parameters/dodge/BlendSpace2D/current_delta = 0.0
-parameters/dodge/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/dodge/BlendSpace2D/0/current_length = 0.2
-parameters/dodge/BlendSpace2D/0/current_position = 0.2
-parameters/dodge/BlendSpace2D/0/current_delta = 0.0
-parameters/dodge/BlendSpace2D/1/current_length = null
-parameters/dodge/BlendSpace2D/1/current_position = null
-parameters/dodge/BlendSpace2D/1/current_delta = null
-parameters/dodge/BlendSpace2D/2/current_length = null
-parameters/dodge/BlendSpace2D/2/current_position = null
-parameters/dodge/BlendSpace2D/2/current_delta = null
-parameters/dodge/BlendSpace2D/3/current_length = null
-parameters/dodge/BlendSpace2D/3/current_position = null
-parameters/dodge/BlendSpace2D/3/current_delta = null
-parameters/dodge/TimeScale/current_length = 0.2
-parameters/dodge/TimeScale/current_position = 0.2
-parameters/dodge/TimeScale/current_delta = 0.0
-parameters/dodge/TimeScale/scale = 1.0
-parameters/dodge/output/current_length = 0.2
-parameters/dodge/output/current_position = 0.2
-parameters/dodge/output/current_delta = 0.0
 parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
@@ -3190,7 +3194,7 @@ script = ExtResource("2_ivc8t")
 [node name="walk" type="Node2D" parent="StateMachine"]
 script = ExtResource("3_m6xxc")
 
-[node name="dodge" type="Node2D" parent="StateMachine"]
+[node name="dash" type="Node2D" parent="StateMachine"]
 script = ExtResource("46_8tj7h")
 
 [node name="run" type="Node2D" parent="StateMachine"]
