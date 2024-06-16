@@ -17,15 +17,6 @@ func Update(_delta:float):
 	
 	animation_tree.set("parameters/run/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body)
-	if character_body.movement:
-		if character_body.walk:
-			state_transition.emit(self, 'walk')
-		else:
-			if character_body.dash and character_body.dash_cooldown <= 0.0:
-				state_transition.emit(self, 'dash')
-				character_body.dash_cooldown = 1.0
-			else:
-				character_body.velocity.x = character_body.movement.x * character_body.stats.run_speed
-				character_body.velocity.y = character_body.movement.y * character_body.stats.run_speed
-	else:
-		state_transition.emit(self, 'idle')
+	if handle_movement_transition(self, character_body):
+		character_body.velocity.x = character_body.movement.x * character_body.stats.run_speed
+		character_body.velocity.y = character_body.movement.y * character_body.stats.run_speed

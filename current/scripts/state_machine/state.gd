@@ -41,3 +41,34 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 		
 	if character_body.use:
 		character_body.use_objects()
+		
+func handle_movement_transition(calling_node, character_body):
+	match calling_node.name:
+		'idle':
+			if character_body.movement:
+				if character_body.walk:
+					state_transition.emit(calling_node, 'walk')
+				else:
+					state_transition.emit(calling_node, 'run')
+			else:
+				return true
+		'walk':
+			if character_body.movement:
+				if character_body.walk:
+					return true
+				else:
+					state_transition.emit(calling_node, 'run')
+			else:
+				state_transition.emit(calling_node, 'idle')
+		'run':
+			if character_body.dash:
+				state_transition.emit(calling_node, 'dash')
+			if character_body.movement:
+				if character_body.walk:
+					state_transition.emit(calling_node, 'walk')
+				else:
+					return true
+			else:
+				state_transition.emit(calling_node, 'idle')
+		_:
+			print('Error: Movement transition not handled')
