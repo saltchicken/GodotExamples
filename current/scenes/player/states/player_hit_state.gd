@@ -1,4 +1,4 @@
-extends State
+extends PlayerState
 
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../AnimationTree"
