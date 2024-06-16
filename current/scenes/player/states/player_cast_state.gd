@@ -34,10 +34,4 @@ func cast_spell():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name in ["cast_left", "cast_right", "cast_up", "cast_down"]:
-		if character_body.movement:
-			if character_body.walk:
-				state_transition.emit(self, 'walk')
-			else:
-				state_transition.emit(self, 'run')
-		else:
-			state_transition.emit(self, 'idle')
+		handle_movement_state(self, character_body)

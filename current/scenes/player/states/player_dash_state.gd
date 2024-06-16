@@ -36,4 +36,4 @@ func Update(_delta:float):
 		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["dash_left", "dash_right", "dash_up", "dash_down"]:
-		state_transition.emit(self, 'idle')
+		handle_movement_state(self, character_body)

@@ -27,10 +27,4 @@ func _on_animation_tree_animation_finished(anim_name):
 		get_tree().current_scene.add_child(arrow)
 		arrow.direction = character_body.direction
 		arrow.velocity = arrow.direction * 600 # TODO: Set this to be the speed of the bow
-		if character_body.movement:
-			if character_body.walk:
-				state_transition.emit(self, 'walk')
-			else:
-				state_transition.emit(self, 'run')
-		else:
-			state_transition.emit(self, 'idle')
+		handle_movement_state(self, character_body)

@@ -28,4 +28,4 @@ func Update(_delta:float):
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["hit_left", "hit_right", "hit_up", "hit_down"]:
-		state_transition.emit(self, 'idle')
+		handle_movement_state(self, character_body)
