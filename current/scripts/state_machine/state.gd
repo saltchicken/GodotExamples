@@ -42,7 +42,7 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 	if character_body.use:
 		character_body.use_objects()
 		
-func handle_movement_transition(calling_node, character_body):
+func handle_movement_remain_in_state(calling_node, character_body):
 	match calling_node.name:
 		'idle':
 			if character_body.movement:

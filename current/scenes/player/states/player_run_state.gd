@@ -17,6 +17,6 @@ func Update(_delta:float):
 	
 	animation_tree.set("parameters/run/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body)
-	if handle_movement_transition(self, character_body):
+	if handle_movement_remain_in_state(self, character_body):
 		character_body.velocity.x = character_body.movement.x * character_body.stats.run_speed
 		character_body.velocity.y = character_body.movement.y * character_body.stats.run_speed

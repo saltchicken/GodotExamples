@@ -17,7 +17,7 @@ func Update(_delta:float):
 	
 	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body)
-	if handle_movement_transition(self, character_body):
+	if handle_movement_remain_in_state(self, character_body):
 		#character_body.velocity.x = move_toward(character_body.velocity.x, 0, DECELERATION_SPEED)
 		#character_body.velocity.y = move_toward(character_body.velocity.y, 0, DECELERATION_SPEED)
 		character_body.velocity = Vector2(0.0, 0.0)
