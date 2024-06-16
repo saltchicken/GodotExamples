@@ -26,7 +26,8 @@ func Update(_delta:float):
 		for body in bodies:
 			if body.has_method('get_hit') and body != character_body:
 			#if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
-				body.get_hit(character_body)
+				if body.get_hit(character_body):
+					print('TODO: Can add functionality for when player successfully hits')
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in ["sword_attack1_left", "sword_attack1_right", "sword_attack1_up", "sword_attack1_down"]:

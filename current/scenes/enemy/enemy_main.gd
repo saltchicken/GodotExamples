@@ -38,13 +38,14 @@ func _physics_process(delta):
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
+		return true
+	return false
 		
 func handle_collision_with_player():
 	if collision:
 		var body = collision.get_collider()
 		#print(body)
 		if body.has_method('get_hit') and body.get_script() == Player:
-			#if obj.state_machine.current_state.name != 'hit' and obj.state_machine.current_state.name != 'death': # TODO: Should this check be added even though its already handled in player.get_hit()
-			self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
+			if body.get_hit(self):
+				self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
 			#add_collision_exception_with(body)
-			body.get_hit(self)

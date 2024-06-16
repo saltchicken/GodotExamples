@@ -119,6 +119,9 @@ func handle_use_hitbox_direction():
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', {'attacking_body': attacking_body})
+		return true
+	else:
+		return false
 		
 func killed_enemy(body):
 	var objective = OBJECTIVE.new()

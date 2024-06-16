@@ -12,7 +12,7 @@ func _ready():
 func Enter():
 	animation_tree.get("parameters/playback").travel('dash')
 	animation_tree.set("parameters/dash/BlendSpace2D/blend_position", character_body.direction)
-	print(character_body.movement)
+	character_body.dash_cooldown = 1.0
 	# TODO: Possibly disable use_area_collision
 	
 func Exit():
