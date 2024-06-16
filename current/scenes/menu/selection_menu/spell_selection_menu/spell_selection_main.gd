@@ -13,8 +13,8 @@ extends Node
 @onready var pause_menu = player.get_node('PauseMenu')
 @onready var spell_menu = pause_menu.get_node('MenuTabs/Spells/SpellsMenu')
 
-@onready var style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_unselected.tres')
-@onready var selected_style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_selected.tres')
+@onready var style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_unselected.tres')
+@onready var selected_style_box = preload('res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_selected.tres')
 
 func _set_selected_spell(new_value):
 	var previous_spell = selected_spell

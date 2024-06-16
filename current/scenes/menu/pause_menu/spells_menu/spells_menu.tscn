@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djfho244tjv2a"]
 
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_menu_main.gd" id="1_ppd33"]
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/spells_menu/scripts/spell_slot.gd" id="2_i6mhp"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/spells_menu/spell_menu_main.gd" id="1_ppd33"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/spells_menu/spell_slot.gd" id="2_i6mhp"]
 
 [node name="SpellsMenu" type="Node2D"]
 process_mode = 2

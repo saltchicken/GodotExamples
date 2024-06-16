@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce2hekpqo0xd"]
 
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/system_menu/scripts/system_menu_main.gd" id="1_2f66f"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/system_menu/system_menu_main.gd" id="1_2f66f"]
 
 [node name="SystemMenu" type="Node2D"]
 process_mode = 2

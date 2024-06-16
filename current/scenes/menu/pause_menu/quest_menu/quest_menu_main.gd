@@ -1,7 +1,7 @@
 extends Node
 
-@onready var red_slime_quest = preload('res://scenes/menu/pause_menu/submenus/quest_menu/quests/red_slime_quest.tres')
-@onready var green_slime_quest = preload('res://scenes/menu/pause_menu/submenus/quest_menu/quests/green_slime_quest.tres')
+@onready var red_slime_quest = preload('res://scenes/menu/pause_menu/quest_menu/quests/red_slime_quest.tres')
+@onready var green_slime_quest = preload('res://scenes/menu/pause_menu/quest_menu/quests/green_slime_quest.tres')
 
 @onready var activeQuests: Array[QuestResource] = [red_slime_quest, green_slime_quest]
 @onready var activeQuestsContainer = get_node('VBoxContainer')

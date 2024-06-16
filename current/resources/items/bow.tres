@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dwk8b2actwhwi"]
 
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/inventory_menu/scripts/item_data.gd" id="1_cimd4"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/inventory_menu/item_data.gd" id="1_cimd4"]
 [ext_resource type="Texture2D" uid="uid://cfw7vbho84bjs" path="res://resources/items/assets/bow.png" id="2_58rjb"]
 
 [resource]

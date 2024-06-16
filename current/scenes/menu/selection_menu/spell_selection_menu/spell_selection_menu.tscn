@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dj34bj75qdoa3"]
 
-[ext_resource type="Script" path="res://scenes/menu/selection_menu/spell_selection_menu/scripts/spell_selection_main.gd" id="1_ilitq"]
-[ext_resource type="StyleBox" uid="uid://b5tfl3rbeg1le" path="res://scenes/menu/selection_menu/spell_selection_menu/themes/spell_selection_unselected.tres" id="2_7ti1f"]
+[ext_resource type="Script" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_main.gd" id="1_ilitq"]
+[ext_resource type="StyleBox" uid="uid://b5tfl3rbeg1le" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_unselected.tres" id="2_7ti1f"]
 
 [node name="SpellSelectionMenu" type="Node2D"]
 process_mode = 3

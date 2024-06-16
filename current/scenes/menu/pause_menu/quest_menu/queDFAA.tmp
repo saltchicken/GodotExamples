@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkpam5xdp4lu1"]
 
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/submenus/quest_menu/quest_menu_main.gd" id="1_wp548"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/quest_menu/quest_menu_main.gd" id="1_wp548"]
 
 [node name="QuestMenu" type="Node2D"]
 process_mode = 2

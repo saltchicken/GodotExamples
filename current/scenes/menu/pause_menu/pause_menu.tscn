@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cm1wpccpepime"]
 
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/scripts/pause_menu_main.gd" id="1_1wyvu"]
-[ext_resource type="Shader" path="res://scenes/menu/pause_menu/shaders/pause_menu_blur.gdshader" id="2_hxhow"]
-[ext_resource type="PackedScene" uid="uid://cgw438pdkorrb" path="res://scenes/menu/pause_menu/submenus/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
-[ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/pause_menu/submenus/quest_menu/quest_menu.tscn" id="4_37rwm"]
-[ext_resource type="PackedScene" uid="uid://djfho244tjv2a" path="res://scenes/menu/pause_menu/submenus/spells_menu/spells_menu.tscn" id="4_87qle"]
-[ext_resource type="PackedScene" uid="uid://ce2hekpqo0xd" path="res://scenes/menu/pause_menu/submenus/system_menu/system_menu.tscn" id="5_hpp43"]
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/pause_menu_main.gd" id="1_1wyvu"]
+[ext_resource type="Shader" path="res://scenes/menu/pause_menu/pause_menu_blur.gdshader" id="2_hxhow"]
+[ext_resource type="PackedScene" uid="uid://cgw438pdkorrb" path="res://scenes/menu/pause_menu/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
+[ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/pause_menu/quest_menu/quest_menu.tscn" id="4_37rwm"]
+[ext_resource type="PackedScene" uid="uid://djfho244tjv2a" path="res://scenes/menu/pause_menu/spells_menu/spells_menu.tscn" id="4_87qle"]
+[ext_resource type="PackedScene" uid="uid://ce2hekpqo0xd" path="res://scenes/menu/pause_menu/system_menu/system_menu.tscn" id="5_hpp43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
 shader = ExtResource("2_hxhow")

@@ -4,8 +4,8 @@ extends Node
 @onready var pause_menu = get_owner()
 @onready var inventory_tab = get_parent()
 
-@onready var style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/item_slot.tres')
-@onready var selected_style_box = preload('res://scenes/menu/pause_menu/submenus/inventory_menu/themes/highlighted_item_slot.tres')
+@onready var style_box = preload('res://scenes/menu/pause_menu/inventory_menu/item_slot.tres')
+@onready var selected_style_box = preload('res://scenes/menu/pause_menu/inventory_menu/highlighted_item_slot.tres')
 
 @onready var item_slot_reference: Array = get_inventory_slots()
 @onready var equipment_slot_reference: Array = get_equipment_slots()
