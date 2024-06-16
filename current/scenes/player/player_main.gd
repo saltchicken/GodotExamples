@@ -21,8 +21,9 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var attack
 
 @onready var cast
-
 @onready var use
+@onready var dodge
+@onready var dodge_cooldown = 0.0
 
 @export var default_stats: PlayerStats
 @onready var stats: PlayerStats = default_stats.duplicate()
@@ -49,6 +50,8 @@ func _physics_process(delta):
 	get_input()
 	pickup_items()
 	#print(purse)
+	if dodge_cooldown > 0.0:
+		dodge_cooldown -= delta
 	move_and_collide(self.velocity * delta)
 	
 func pickup_items():
@@ -71,6 +74,7 @@ func get_input():
 	run = Input.is_action_pressed('run')
 	attack = Input.is_action_just_pressed('attack')
 	use = Input.is_action_just_pressed('use')
+	dodge = Input.is_action_just_pressed('dodge')
 	
 
 	

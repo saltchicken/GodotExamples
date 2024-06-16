@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=160 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/player_main.gd" id="1_u0ca5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/player_walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/states/player_run_state.gd" id="4_0pa3q"]
 [ext_resource type="Texture2D" uid="uid://cx0w5f2kpgvn3" path="res://scenes/player/assets/idle_down.png" id="4_8bee1"]
+[ext_resource type="Texture2D" uid="uid://bswkw81f74jyn" path="res://scenes/player/assets/dodge_left.png" id="4_hfj07"]
 [ext_resource type="PackedScene" uid="uid://dj34bj75qdoa3" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_menu.tscn" id="4_w0itk"]
 [ext_resource type="Texture2D" uid="uid://u8oi8x5vl0wb" path="res://scenes/player/assets/walk_down.png" id="5_o10s7"]
 [ext_resource type="Texture2D" uid="uid://bk033kxm2k06b" path="res://scenes/player/assets/equipment/iron_sword.png" id="5_ucs0r"]
@@ -47,6 +48,10 @@
 [ext_resource type="Texture2D" uid="uid://kio808284uve" path="res://scenes/player/assets/cast_right.png" id="33_1gf8t"]
 [ext_resource type="Texture2D" uid="uid://derxat1575mbq" path="res://scenes/player/assets/cast_up.png" id="34_1kvb5"]
 [ext_resource type="Texture2D" uid="uid://btr72h121d8sc" path="res://scenes/player/assets/cast_down.png" id="35_of6ii"]
+[ext_resource type="Texture2D" uid="uid://whlju0c2ek18" path="res://scenes/player/assets/dodge_right.png" id="39_hrqef"]
+[ext_resource type="Texture2D" uid="uid://b0euwgpo1fo45" path="res://scenes/player/assets/dodge_up.png" id="40_jqmrc"]
+[ext_resource type="Texture2D" uid="uid://cnuh2tfoyd578" path="res://scenes/player/assets/dodge_down.png" id="41_57cn6"]
+[ext_resource type="Script" path="res://scenes/player/states/player_dodge_state.gd" id="46_8tj7h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf8r0"]
 radius = 9.54508
@@ -232,6 +237,42 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(24, -12)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PlayerSprite:texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hfj07")]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerSprite:vframes")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("PlayerSprite:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_higrh"]
@@ -720,6 +761,58 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_8e88h"]
+resource_name = "dodge_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hfj07")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ux2wj"]
@@ -2246,6 +2339,162 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_7rhsb"]
+resource_name = "dodge_right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("39_hrqef")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_duo8r"]
+resource_name = "dodge_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("40_jqmrc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wy025"]
+resource_name = "dodge_down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("41_57cn6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io086"]
 _data = {
 "RESET": SubResource("Animation_vldp8"),
@@ -2261,6 +2510,10 @@ _data = {
 "death_left": SubResource("Animation_fqgw7"),
 "death_right": SubResource("Animation_owl57"),
 "death_up": SubResource("Animation_2k8i7"),
+"dodge_down": SubResource("Animation_wy025"),
+"dodge_left": SubResource("Animation_8e88h"),
+"dodge_right": SubResource("Animation_7rhsb"),
+"dodge_up": SubResource("Animation_duo8r"),
 "hit_down": SubResource("Animation_ux2wj"),
 "hit_left": SubResource("Animation_atw1q"),
 "hit_right": SubResource("Animation_jp175"),
@@ -2380,6 +2633,39 @@ nodes/BlendSpace2D/position = Vector2(604, 312)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_d2q44")
 nodes/TimeScale/position = Vector2(1085, 262)
 nodes/output/position = Vector2(1620, 240)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jjhh2"]
+animation = &"dodge_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrenw"]
+animation = &"dodge_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_li2rw"]
+animation = &"dodge_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uxx1"]
+animation = &"dodge_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_21723"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jjhh2")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_mrenw")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_li2rw")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_6uxx1")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_etlnj"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_u53pd"]
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_21723")
+nodes/BlendSpace2D/position = Vector2(652, 245)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_etlnj")
+nodes/TimeScale/position = Vector2(980, 270)
+nodes/output/position = Vector2(1400, 320)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mdhiv"]
@@ -2559,6 +2845,8 @@ states/cast/node = SubResource("AnimationNodeBlendTree_hocsw")
 states/cast/position = Vector2(537, 227)
 states/death/node = SubResource("AnimationNodeBlendTree_j2lnu")
 states/death/position = Vector2(859, -112)
+states/dodge/node = SubResource("AnimationNodeBlendTree_u53pd")
+states/dodge/position = Vector2(582, -205)
 states/hit/node = SubResource("AnimationNodeBlendTree_clnl1")
 states/hit/position = Vector2(750, -112)
 states/idle/node = SubResource("AnimationNodeBlendTree_1o2w0")
@@ -2570,7 +2858,7 @@ states/sword_attack1/position = Vector2(656, 42)
 states/walk/node = SubResource("AnimationNodeBlendTree_1jc8d")
 states/walk/position = Vector2(387, 6)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jsmfi")]
-graph_offset = Vector2(-46, -89)
+graph_offset = Vector2(-108, -320)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
 
@@ -2595,7 +2883,7 @@ visible = false
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(1, -13)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_8bee1")
+texture = ExtResource("4_hfj07")
 hframes = 6
 
 [node name="HandEquip" type="Node2D" parent="."]
@@ -2720,6 +3008,32 @@ parameters/death/TimeScale/scale = 1.0
 parameters/death/output/current_length = null
 parameters/death/output/current_position = null
 parameters/death/output/current_delta = null
+parameters/dodge/current_length = 0.2
+parameters/dodge/current_position = 0.2
+parameters/dodge/current_delta = 0.0
+parameters/dodge/BlendSpace2D/current_length = 0.2
+parameters/dodge/BlendSpace2D/current_position = 0.2
+parameters/dodge/BlendSpace2D/current_delta = 0.0
+parameters/dodge/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/dodge/BlendSpace2D/0/current_length = 0.2
+parameters/dodge/BlendSpace2D/0/current_position = 0.2
+parameters/dodge/BlendSpace2D/0/current_delta = 0.0
+parameters/dodge/BlendSpace2D/1/current_length = null
+parameters/dodge/BlendSpace2D/1/current_position = null
+parameters/dodge/BlendSpace2D/1/current_delta = null
+parameters/dodge/BlendSpace2D/2/current_length = null
+parameters/dodge/BlendSpace2D/2/current_position = null
+parameters/dodge/BlendSpace2D/2/current_delta = null
+parameters/dodge/BlendSpace2D/3/current_length = null
+parameters/dodge/BlendSpace2D/3/current_position = null
+parameters/dodge/BlendSpace2D/3/current_delta = null
+parameters/dodge/TimeScale/current_length = 0.2
+parameters/dodge/TimeScale/current_position = 0.2
+parameters/dodge/TimeScale/current_delta = 0.0
+parameters/dodge/TimeScale/scale = 1.0
+parameters/dodge/output/current_length = 0.2
+parameters/dodge/output/current_position = 0.2
+parameters/dodge/output/current_delta = 0.0
 parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
@@ -2875,6 +3189,9 @@ script = ExtResource("2_ivc8t")
 
 [node name="walk" type="Node2D" parent="StateMachine"]
 script = ExtResource("3_m6xxc")
+
+[node name="dodge" type="Node2D" parent="StateMachine"]
+script = ExtResource("46_8tj7h")
 
 [node name="run" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_0pa3q")

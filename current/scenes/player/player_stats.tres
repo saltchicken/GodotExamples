@@ -16,4 +16,4 @@ use_reach = 10
 attack_reach = 15
 health = 120
 walk_speed = 50.0
-run_speed = 100.0
+run_speed = 125.0
