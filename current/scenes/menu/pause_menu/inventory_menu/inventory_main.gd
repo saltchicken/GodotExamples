@@ -8,10 +8,10 @@ extends Node
 @onready var selected_style_box = preload('res://scenes/menu/pause_menu/inventory_menu/highlighted_item_slot.tres')
 
 @onready var item_slots: Array = get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()
-@onready var equipment_slot_reference: Array = get_node('Equipment').get_children()
-@onready var item_and_equipment_slot_reference: Array = item_slots + equipment_slot_reference
-@onready var InvSize = item_slots.size()
-@onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
+@onready var equipment_slots: Array = get_node('Equipment').get_children()
+@onready var item_and_equipment_slots: Array = item_slots + equipment_slots
+@onready var inventory_size = item_slots.size()
+@onready var inventory_and_equipment_size = item_and_equipment_slots.size()
 
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
 @onready var current_weapon: get = _get_current_weapon
@@ -25,17 +25,17 @@ func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
 	if new_value < 0:
 		selected_slot = 0
-	elif new_value >= InvSize and previous_slot < InvSize:
+	elif new_value >= inventory_size and previous_slot < inventory_size:
 		selected_slot = 24
-	elif new_value >= InventoryEquipmentSize:
-		selected_slot = InventoryEquipmentSize - 1
+	elif new_value >= inventory_and_equipment_size:
+		selected_slot = inventory_and_equipment_size - 1
 	else:
 		selected_slot = new_value
 	select_new_slot(previous_slot, selected_slot)
 	
 func select_new_slot(previous_slot, new_slot):
-	item_and_equipment_slot_reference[previous_slot].add_theme_stylebox_override('panel', style_box)
-	item_and_equipment_slot_reference[new_slot].add_theme_stylebox_override('panel', selected_style_box)
+	item_and_equipment_slots[previous_slot].add_theme_stylebox_override('panel', style_box)
+	item_and_equipment_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 
 func _get_current_weapon():
 	var child_count = weapon_slot.get_child_count()
@@ -47,16 +47,13 @@ func _get_current_weapon():
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
 
-
-#@onready var selected_slot: int = 0: set = _set_selected_slot
-
 func _ready() -> void:
 	add_to_group('Persist')
 	set_purse_text()
-	for slot in item_and_equipment_slot_reference:
+	for slot in item_and_equipment_slots:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
 		
-	item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://resources/items/sword.tres", 0)
@@ -69,13 +66,13 @@ func _process(_delta):
 		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
 			selected_slot += 1
 		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-			if selected_slot <= InvSize:
-				selected_slot -= InvSize / 2
+			if selected_slot <= inventory_size:
+				selected_slot -= inventory_size / 2
 			else:
 				selected_slot -= 2
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-			if selected_slot < InvSize:
-				selected_slot += InvSize / 2
+			if selected_slot < inventory_size:
+				selected_slot += inventory_size / 2
 			else:
 				selected_slot += 2
 				
@@ -83,7 +80,8 @@ func save():
 	var save_dict = {
 		"node_name" : self.name,
 		"inventory" : save_inventory(),
-		"equipment" : save_equipment()
+		"equipment" : save_equipment(),
+		"purse"		: save_purse()
 	}
 	return save_dict
 	
@@ -95,6 +93,7 @@ func load(node_data):
 		load_item_into_equipment(item, node_data['equipment'][item])
 	apply_equipment_modifiers()
 	# TODO: Remember to apply equipment modifiers and that this may not be working properly
+	player.purse = node_data["purse"]
 	
 func save_inventory():
 	var inventory_dict = {}
@@ -108,24 +107,23 @@ func save_inventory():
 	
 func save_equipment():
 	var equipment_dict = {}
-	for i in range(equipment_slot_reference.size()):
-		var slot = equipment_slot_reference[i]
+	for i in range(equipment_slots.size()):
+		var slot = equipment_slots[i]
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
 				equipment_dict[item.data.get_path()] = i
 	return equipment_dict
 	
+func save_purse():
+	return player.purse
+	
 func inventory_changed(slot):
 	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
-	#if current_weapon:
-		#print(current_weapon.attack_type)
-	#else:
-		#print('current weapon is null')
 	apply_equipment_modifiers()
 	
 func apply_equipment_modifiers():
-	for slot in equipment_slot_reference:
+	for slot in equipment_slots:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
@@ -147,17 +145,7 @@ func load_item_into_equipment(path_to_item, slot_index):
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
-	equipment_slot_reference[slot_index].add_child(item)
-	
-#func _load_items_from_file():
-	#var itemsLoad = [
-	#"res://scenes/inventory/item/sword.tres",
-	#"res://scenes/inventory/item/bow.tres"
-#]
-	#for i in itemsLoad.size():
-		#_load_item_into_inventory(itemsLoad[i], i)
-		##_load_item_into_inventory(itemsLoad[i], _get_first_open_slot())
-		##item.add_to_group('items')
+	equipment_slots[slot_index].add_child(item)
 
 func collect_item(item):
 	#print(get_first_open_slot())
