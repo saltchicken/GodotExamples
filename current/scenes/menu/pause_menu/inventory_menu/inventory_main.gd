@@ -20,8 +20,9 @@ extends Node
 
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
+signal update_stats
+
 func _set_selected_slot(new_value):
-	print(new_value)
 	var previous_slot = selected_slot
 	if new_value < 0:
 		selected_slot = 0
@@ -89,49 +90,17 @@ func load(node_data):
 	for item in node_data['inventory'].keys():
 		load_item_into_inventory(item, node_data['inventory'][item])
 	for item in node_data['equipment'].keys():
-		print(node_data['equipment'][item])
 		load_item_into_equipment(item, node_data['equipment'][item])
-	apply_equipment_modifiers()
+	update_stats.emit()
 	# TODO: Remember to apply equipment modifiers and that this may not be working properly
 	player.purse = node_data["purse"]
-	
-#func save_inventory():
-	#var inventory_dict = {}
-	#for i in range(item_slots.size()):
-		#var slot = item_slots[i]
-		#if slot.get_child_count() > 0:
-			#var item = slot.get_child(0)
-			#if item:
-				#inventory_dict[item.data.get_path()] = i
-	#return inventory_dict
-	#
-#func save_equipment():
-	#var equipment_dict = {}
-	#for i in range(equipment_slots.size()):
-		#var slot = equipment_slots[i]
-		#if slot.get_child_count() > 0:
-			#var item = slot.get_child(0)
-			#if item:
-				#equipment_dict[item.data.get_path()] = i
-	#return equipment_dict
 	
 func save_purse():
 	return player.purse
 	
 func inventory_changed(slot):
 	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
-	apply_equipment_modifiers()
-	
-func apply_equipment_modifiers():
-	for slot in equipment_slots:
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				item.data.apply_upgrade(player)
-		else:
-			print("TODO: This is not removing the buff")
-	print('Applied equipment modifiers')
-	# TODO: This is not removing buffs when the equipment is taken off
+	update_stats.emit()
 	
 func load_item_into_inventory(path_to_item, slot_index):
 	var item := InventoryItem.new()

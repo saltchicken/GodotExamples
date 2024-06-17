@@ -13,6 +13,6 @@ enum AttackType {NULL, SWORD, BOW}
 
 @export var attack_type: AttackType = AttackType.NULL
 
-func apply_upgrade(body: CharacterBody2D):
-	body.stats.attack_damage = body.stats.base_attack_damage + attack_damage
-	body.stats.defense = body.stats.base_defense + defense
+func apply_upgrade(stats: PlayerStats):
+	stats.attack_damage += attack_damage
+	stats.defense += defense

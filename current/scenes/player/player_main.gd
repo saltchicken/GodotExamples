@@ -40,6 +40,7 @@ func set_purse(new_value):
 func _ready():
 	add_to_group('Players')
 	update_purse.connect(get_node('PauseMenu/MenuTabs/Inventory/InventoryMenu')._on_player_update_purse)
+	inventory.update_stats.connect(calculate_stats)
 
 func _physics_process(delta):
 	get_input()
@@ -142,6 +143,18 @@ func use_objects():
 			if obj.get_script() == Chest:
 				obj.use()
 				break
+
+func calculate_stats():
+	var new_stats = default_stats.duplicate()
+	for slot in inventory.equipment_slots:
+		if slot.get_child_count() > 0:
+			var item = slot.get_child(0)
+			if item:
+				item.data.apply_upgrade(new_stats)
+			else:
+				print("Error: Issue with getting equipment")
+	stats = new_stats
+	
 				
 #func save():
 	#var save_dict = {
