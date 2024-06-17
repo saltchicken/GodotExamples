@@ -12,7 +12,10 @@ func action_from_input(calling_node, character_body): # TODO: Probably shouldn't
 		if current_weapon:
 			var attack_type = current_weapon.AttackType.keys()[current_weapon.attack_type]
 			if attack_type == 'SWORD':
-				state_transition.emit(calling_node, 'sword_attack')
+				if calling_node.name == 'dash':
+					state_transition.emit(calling_node, 'dash_sword_attack')
+				else:
+					state_transition.emit(calling_node, 'sword_attack')
 			elif attack_type == 'BOW':
 				state_transition.emit(calling_node, 'bow_attack')
 			else:
