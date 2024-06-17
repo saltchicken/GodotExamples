@@ -53,7 +53,9 @@ func load_game(save_file):
 		else:
 			match node_data['node_name']:
 				'InventoryMenu':
-					print("Loading inventory Menu")
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'SpellsMenu':
 					var node = persisting_nodes[node_data['node_name']]
 					node.load(node_data)
 				_:

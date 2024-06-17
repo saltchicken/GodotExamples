@@ -79,8 +79,8 @@ func _process(_delta):
 func save():
 	var save_dict = {
 		"node_name" : self.name,
-		"inventory" : save_inventory(),
-		"equipment" : save_equipment(),
+		"inventory" : Global.save_slots_to_dict(item_slots),
+		"equipment" : Global.save_slots_to_dict(equipment_slots),
 		"purse"		: save_purse()
 	}
 	return save_dict
@@ -95,25 +95,25 @@ func load(node_data):
 	# TODO: Remember to apply equipment modifiers and that this may not be working properly
 	player.purse = node_data["purse"]
 	
-func save_inventory():
-	var inventory_dict = {}
-	for i in range(item_slots.size()):
-		var slot = item_slots[i]
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				inventory_dict[item.data.get_path()] = i
-	return inventory_dict
-	
-func save_equipment():
-	var equipment_dict = {}
-	for i in range(equipment_slots.size()):
-		var slot = equipment_slots[i]
-		if slot.get_child_count() > 0:
-			var item = slot.get_child(0)
-			if item:
-				equipment_dict[item.data.get_path()] = i
-	return equipment_dict
+#func save_inventory():
+	#var inventory_dict = {}
+	#for i in range(item_slots.size()):
+		#var slot = item_slots[i]
+		#if slot.get_child_count() > 0:
+			#var item = slot.get_child(0)
+			#if item:
+				#inventory_dict[item.data.get_path()] = i
+	#return inventory_dict
+	#
+#func save_equipment():
+	#var equipment_dict = {}
+	#for i in range(equipment_slots.size()):
+		#var slot = equipment_slots[i]
+		#if slot.get_child_count() > 0:
+			#var item = slot.get_child(0)
+			#if item:
+				#equipment_dict[item.data.get_path()] = i
+	#return equipment_dict
 	
 func save_purse():
 	return player.purse
