@@ -32,6 +32,7 @@ func select_new_slot(previous_spell, new_spell):
 	spell_choices[new_spell].add_theme_stylebox_override('panel', selected_style_box)
 
 func _ready() -> void:
+	add_to_group('Persist')
 	self.visible = false
 	select_new_slot(0, selected_spell)
 	
@@ -121,3 +122,13 @@ func cast_held_logic(delta):
 		return cast_input
 	else:
 		return false
+		
+func save():
+	var save_dict = {
+		"node_name" : self.name,
+		"selected_spell" : selected_spell
+	}
+	return save_dict
+	
+func load(node_data):
+	selected_spell = node_data["selected_spell"]
