@@ -4,8 +4,8 @@ extends PlayerState
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('walk')
-	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	
 func Exit():
 	pass
@@ -14,7 +14,7 @@ func Update(_delta:float):
 	character_body.get_direction()
 	character_body.handle_use_hitbox_direction()
 	
-	animation_tree.set("parameters/walk/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body) # TODO: Probably shouldn't store this in the state class
 	handle_movement_state(self, character_body)
 		

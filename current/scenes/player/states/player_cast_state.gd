@@ -8,8 +8,8 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('cast')
-	animation_tree.set("parameters/cast/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	#character_body.velocity = -character_body.direction_to_player * 10.0
 	character_body.velocity = Vector2(0.0, 0.0)
 	cast_spell()
@@ -33,5 +33,5 @@ func cast_spell():
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if anim_name in ["cast_left", "cast_right", "cast_up", "cast_down"]:
+	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
 		handle_movement_state(self, character_body)

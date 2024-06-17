@@ -10,8 +10,8 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	animation_tree.get("parameters/playback").start('bow_attack')
-	animation_tree.set("parameters/bow_attack/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	use_area_collision.disabled = true
 	
 func Exit():
@@ -21,7 +21,7 @@ func Update(_delta:float):
 	character_body.velocity = Vector2(0.0, 0.0)
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["bow_attack_left", "bow_attack_right", "bow_attack_up", "bow_attack_down"]:
+	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
 		var arrow = arrow_scene.instantiate()
 		arrow.position = character_body.position
 		get_tree().current_scene.add_child(arrow)

@@ -52,7 +52,42 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 		
 		save_game_file.store_line(json_string)
-	print("TODO: Add notification for game saved")	
+	print("TODO: Add notification for game saved")
+	
+func load_game(save_file):
+	if not FileAccess.file_exists(save_file):
+		print("Error: There is no saved game.")
+		return # TODO: Implement better logic for this case
+	var persisting_nodes = {}
+	for node in get_tree().get_nodes_in_group("Persist"):
+		persisting_nodes[node.name] = node
+		
+	var save_game_file = FileAccess.open(save_file, FileAccess.READ)
+	while save_game_file.get_position() < save_game_file.get_length():
+		var json_string = save_game_file.get_line()
+		var json = JSON.new()
+
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+			
+		var node_data = json.get_data()
+		if not node_data.has('node_name'):
+			print('Improperly saved node. Skipping')
+		else:
+			match node_data['node_name']:
+				'InventoryMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'SpellsMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'SpellSelectionMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				_:
+					print("%s not handled." % node_data['node_name'])	
 		
 #func load_game_REFERENCE():
 	#if not FileAccess.file_exists("user://savegame.save"):

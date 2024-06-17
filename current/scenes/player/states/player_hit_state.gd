@@ -13,9 +13,9 @@ func Enter(params: Dictionary = {}):
 			state_transition.emit(character_body.state_machine.current_state, 'death')
 			return
 		else:
-			animation_tree.get("parameters/playback").start('hit')
+			animation_tree.get("parameters/playback").start(self.name)
 			var direction_from_enemy = params['attacking_body'].direction_to_player
-			animation_tree.set("parameters/hit/BlendSpace2D/blend_position", -direction_from_enemy)
+			animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", -direction_from_enemy)
 			var knockback = params['attacking_body'].stats.attack_knockback
 			character_body.velocity = direction_from_enemy * (knockback / character_body.stats.knockback_protection)
 	
@@ -27,5 +27,5 @@ func Update(_delta:float):
 	character_body.velocity.y = move_toward(character_body.velocity.y, 0, 5.0)
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["hit_left", "hit_right", "hit_up", "hit_down"]:
+	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
 		handle_movement_state(self, character_body)

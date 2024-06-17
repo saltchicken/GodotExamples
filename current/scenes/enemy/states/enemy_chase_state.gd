@@ -8,8 +8,8 @@ extends State
 @onready var player_exists_duration: float = 0.0
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('chase')
-	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction_to_player)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
 func Exit():
 	character_body.idle_direction = character_body.direction_to_player
@@ -19,7 +19,7 @@ func Update(delta:float):
 	handle_close_attack_hitbox_direction()
 	check_close_attack_range(delta)
 	#check_attack_range()
-	animation_tree.set("parameters/chase/BlendSpace2D/blend_position", character_body.direction_to_player)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction_to_player)
 	if character_body.distance_to_player < character_body.stats.chase_distance:
 		character_body.velocity.x = character_body.direction_to_player.x * character_body.stats.chase_speed
 		character_body.velocity.y = character_body.direction_to_player.y * character_body.stats.chase_speed

@@ -12,7 +12,7 @@ func Enter(params: Dictionary = {}):
 			state_transition.emit(character_body.state_machine.current_state, 'death')
 			return
 		else:
-			animation_tree.get("parameters/playback").start('hit')
+			animation_tree.get("parameters/playback").start(self.name)
 			#animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 			var knockback = params['attacking_body'].stats.attack_knockback
 			character_body.velocity = -character_body.direction_to_player * (knockback / character_body.stats.knockback_protection)
@@ -26,5 +26,5 @@ func Update(_delta:float):
 	pass
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == 'hit':
+	if anim_name == self.name:
 		state_transition.emit(self, 'idle') # TODO: Should this revert to the previous state and not just idle

@@ -4126,10 +4126,10 @@ script = ExtResource("46_8tj7h")
 [node name="run" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_0pa3q")
 
-[node name="sword_attack" type="Node2D" parent="StateMachine"]
+[node name="sword_attack1" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_27ein")
 
-[node name="dash_sword_attack" type="Node2D" parent="StateMachine"]
+[node name="dash_sword_attack1" type="Node2D" parent="StateMachine"]
 script = ExtResource("49_u5x2t")
 
 [node name="bow_attack" type="Node2D" parent="StateMachine"]

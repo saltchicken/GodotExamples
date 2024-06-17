@@ -7,8 +7,8 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	animation_tree.get("parameters/playback").start('collision_attack')
-	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", character_body.direction_to_player)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
 func Exit():
 	pass
@@ -23,5 +23,5 @@ func Update(_delta:float):
 				#body.get_hit(character_body) 
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == 'collision_attack':
+	if anim_name == self.name:
 		state_transition.emit(self, 'idle')

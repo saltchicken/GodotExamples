@@ -5,8 +5,8 @@ extends PlayerState
 @onready var game_scene = character_body.get_owner()
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('idle')	
-	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	
 func Exit():
 	pass
@@ -15,7 +15,7 @@ func Update(_delta:float):
 	character_body.get_direction()
 	character_body.handle_use_hitbox_direction()
 	
-	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	action_from_input(self, character_body)
 	handle_movement_state(self, character_body)
 	

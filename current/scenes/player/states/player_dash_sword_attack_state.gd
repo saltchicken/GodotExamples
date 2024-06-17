@@ -9,8 +9,8 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	animation_tree.get("parameters/playback").start('dash_sword_attack1')
-	animation_tree.set("parameters/dash_sword_attack1/BlendSpace2D/blend_position", character_body.direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	use_area_collision.disabled = true
 	
 func Exit():
@@ -30,5 +30,5 @@ func Update(_delta:float):
 					print('TODO: Can add functionality for when player successfully hits')
 
 func _on_animation_tree_animation_finished(anim_name):
-	if anim_name in ["dash_sword_attack1_left", "dash_sword_attack1_right", "dash_sword_attack1_up", "dash_sword_attack1_down"]:
+	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
 		handle_movement_state(self, character_body)

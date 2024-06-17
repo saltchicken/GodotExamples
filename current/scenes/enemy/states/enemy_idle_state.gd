@@ -4,8 +4,8 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 
 func Enter():
-	animation_tree.get("parameters/playback").travel('idle')
-	animation_tree.set("parameters/idle/BlendSpace2D/blend_position", character_body.idle_direction)
+	animation_tree.get("parameters/playback").travel(self.name)
+	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.idle_direction)
 	
 func Exit():
 	character_body.idle_direction = character_body.direction_to_player
