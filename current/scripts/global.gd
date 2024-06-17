@@ -42,26 +42,7 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 		
 		save_game_file.store_line(json_string)
-	print("TODO: Add notification for game saved")
-		
-#func load_game():
-	#if not FileAccess.file_exists("user://savegame.save"):
-		#print("Error: There is no saved game.")
-		#return # TODO: Implement better logic for this case
-		#
-	#get_tree().change_scene_to_file("res://scenes/game/game_manager.tscn")
-	
-	#var scene = load("res://scenes/game/game_manager.tscn")
-	#get_tree().change_scene_to_packed(scene)
-	#scene.instantiate()
-	#print(scene.get_children())
-	
-	#for child in get_tree().current_scene().get_children():
-		#print(child)
-	#for node in get_tree().get_nodes_in_group("Persist"):
-		#print(node)
-	
-	
+	print("TODO: Add notification for game saved")	
 		
 func load_game_REFERENCE():
 	if not FileAccess.file_exists("user://savegame.save"):

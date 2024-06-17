@@ -31,15 +31,15 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
 
 signal update_purse
-@onready var purse: int = 0: set = _set_purse
+@onready var purse: int = 0: set = set_purse
 
-func _set_purse(new_value):
+func set_purse(new_value):
 	purse = new_value
 	update_purse.emit()
 	
 func _ready():
 	add_to_group('Players')
-	update_purse.connect(get_node('PauseMenu')._on_player_update_purse)
+	update_purse.connect(get_node('PauseMenu/MenuTabs/Inventory/InventoryMenu')._on_player_update_purse)
 
 func _physics_process(delta):
 	get_input()

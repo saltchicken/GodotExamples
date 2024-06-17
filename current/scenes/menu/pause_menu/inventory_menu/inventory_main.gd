@@ -16,6 +16,8 @@ extends Node
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
 @onready var current_weapon: get = _get_current_weapon
 
+@onready var purse_label = get_node('PurseLabel')
+
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
 func _set_selected_slot(new_value):
@@ -50,14 +52,15 @@ func _get_current_weapon():
 
 func _ready() -> void:
 	add_to_group('Persist')
+	set_purse_text()
 	for slot in item_and_equipment_slot_reference:
 		slot.change_inventory.connect(inventory_changed.bind(slot))
 		
 	item_and_equipment_slot_reference[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
-	load_item_into_inventory("res://resources/items/sword.tres", 0)
-	load_item_into_inventory("res://resources/items/bow.tres", 1)
+	#load_item_into_inventory("res://resources/items/sword.tres", 0)
+	#load_item_into_inventory("res://resources/items/bow.tres", 1)
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:
@@ -78,29 +81,40 @@ func _process(_delta):
 				
 func save():
 	var save_dict = {
+		"node_name" : self.name,
 		"inventory" : save_inventory(),
 		"equipment" : save_equipment()
 	}
 	return save_dict
 	
+func load(node_data):
+	for item in node_data['inventory'].keys():
+		load_item_into_inventory(item, node_data['inventory'][item])
+	for item in node_data['equipment'].keys():
+		print(node_data['equipment'][item])
+		load_item_into_equipment(item, node_data['equipment'][item])
+	apply_equipment_modifiers()
+	# TODO: Remember to apply equipment modifiers and that this may not be working properly
+	
 func save_inventory():
-	var inventory_list = []
-	for slot in item_slot_reference:
+	var inventory_dict = {}
+	for i in range(item_slot_reference.size()):
+		var slot = item_slot_reference[i]
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
-				inventory_list.append(item.data.get_path())
-	return inventory_list
+				inventory_dict[item.data.get_path()] = i
+	return inventory_dict
 	
 func save_equipment():
-	var equipment_list = []
-	var slotsCheck = equipment_slot_reference
-	for slot in slotsCheck:
+	var equipment_dict = {}
+	for i in range(equipment_slot_reference.size()):
+		var slot = equipment_slot_reference[i]
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
-				equipment_list.append(item.data.get_path())
-	return equipment_list
+				equipment_dict[item.data.get_path()] = i
+	return equipment_dict
 
 func get_inventory_slots():
 	return get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()
@@ -117,12 +131,15 @@ func inventory_changed(slot):
 	apply_equipment_modifiers()
 	
 func apply_equipment_modifiers():
-	for slot in item_and_equipment_slot_reference:
+	for slot in equipment_slot_reference:
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
 				item.data.apply_upgrade(player)
+		else:
+			print("TODO: This is not removing the buff")
 	print('Applied equipment modifiers')
+	# TODO: This is not removing buffs when the equipment is taken off
 	
 func load_item_into_inventory(path_to_item, slot_index):
 	var item := InventoryItem.new()
@@ -130,6 +147,13 @@ func load_item_into_inventory(path_to_item, slot_index):
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
 	item_slot_reference[slot_index].add_child(item)
+	
+func load_item_into_equipment(path_to_item, slot_index):
+	var item := InventoryItem.new()
+	item.init(load(path_to_item))
+	#var item_index = _get_first_open_slot()
+	#%Inventory.get_child(slot_index).add_child(item)
+	equipment_slot_reference[slot_index].add_child(item)
 	
 #func _load_items_from_file():
 	#var itemsLoad = [
@@ -150,3 +174,12 @@ func get_first_open_slot():
 		if item_slot_reference[i].get_child_count() == 0:
 			return i
 	return -1 # TODO: Better error handling for when inventory is full
+	
+func is_in_inventory(): # TODO: Implement 
+	pass
+
+func set_purse_text():
+	purse_label.text = 'Purse: %s' % str(player.purse)
+	
+func _on_player_update_purse() -> void:
+	set_purse_text()
