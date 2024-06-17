@@ -7,10 +7,10 @@ extends Node
 @onready var style_box = preload('res://scenes/menu/pause_menu/inventory_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://scenes/menu/pause_menu/inventory_menu/highlighted_item_slot.tres')
 
-@onready var item_slot_reference: Array = get_inventory_slots()
-@onready var equipment_slot_reference: Array = get_equipment_slots()
-@onready var item_and_equipment_slot_reference: Array = item_slot_reference + equipment_slot_reference
-@onready var InvSize = item_slot_reference.size()
+@onready var item_slots: Array = get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()
+@onready var equipment_slot_reference: Array = get_node('Equipment').get_children()
+@onready var item_and_equipment_slot_reference: Array = item_slots + equipment_slot_reference
+@onready var InvSize = item_slots.size()
 @onready var InventoryEquipmentSize = item_and_equipment_slot_reference.size()
 
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
@@ -98,8 +98,8 @@ func load(node_data):
 	
 func save_inventory():
 	var inventory_dict = {}
-	for i in range(item_slot_reference.size()):
-		var slot = item_slot_reference[i]
+	for i in range(item_slots.size()):
+		var slot = item_slots[i]
 		if slot.get_child_count() > 0:
 			var item = slot.get_child(0)
 			if item:
@@ -115,12 +115,6 @@ func save_equipment():
 			if item:
 				equipment_dict[item.data.get_path()] = i
 	return equipment_dict
-
-func get_inventory_slots():
-	return get_node('Inventory/VBoxContainer/HBoxContainer').get_children() + get_node('Inventory/VBoxContainer/HBoxContainer2').get_children()
-	
-func get_equipment_slots():
-	return get_node('Equipment').get_children()
 	
 func inventory_changed(slot):
 	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
@@ -146,7 +140,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
-	item_slot_reference[slot_index].add_child(item)
+	item_slots[slot_index].add_child(item)
 	
 func load_item_into_equipment(path_to_item, slot_index):
 	var item := InventoryItem.new()
@@ -170,8 +164,8 @@ func collect_item(item):
 	load_item_into_inventory(item, get_first_open_slot())
 	
 func get_first_open_slot():
-	for i in item_slot_reference.size():
-		if item_slot_reference[i].get_child_count() == 0:
+	for i in item_slots.size():
+		if item_slots[i].get_child_count() == 0:
 			return i
 	return -1 # TODO: Better error handling for when inventory is full
 	

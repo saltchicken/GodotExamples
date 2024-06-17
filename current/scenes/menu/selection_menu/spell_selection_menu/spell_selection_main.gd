@@ -35,10 +35,10 @@ func _ready() -> void:
 	self.visible = false
 	select_new_slot(0, selected_spell)
 	
-	for slot in spell_menu.spell_slot_reference:
+	for slot in spell_menu.spell_slots:
 		slot.change_spell.connect(spell_menu_spell_changed.bind(slot))
 	
-	for slot in spell_menu.current_spells_slot_reference:
+	for slot in spell_menu.current_spells_slots:
 		slot.change_spell.connect(spell_menu_spell_changed.bind(slot))
 	
 func spell_menu_spell_changed(_slot):
