@@ -8,11 +8,18 @@ enum AttackType {NULL, SWORD, BOW}
 @export var name: String
 @export_multiline var description: String
 @export var texture: Texture2D
+@export var attack_type: AttackType = AttackType.NULL
+
 @export var attack_damage: int
 @export var defense: int
+@export var speed_modifier: float = 1.0
+@export var dash_modifier: float = 1.0
 
-@export var attack_type: AttackType = AttackType.NULL
+
 
 func apply_upgrade(stats: PlayerStats):
 	stats.attack_damage += attack_damage
 	stats.defense += defense
+	stats.walk_speed *= speed_modifier
+	stats.run_speed *= speed_modifier
+	stats.dash_speed *= dash_modifier

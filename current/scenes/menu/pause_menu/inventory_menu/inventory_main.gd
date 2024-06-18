@@ -58,7 +58,7 @@ func _ready() -> void:
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://resources/items/sword.tres", 0)
-	#load_item_into_inventory("res://resources/items/bow.tres", 1)
+	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:

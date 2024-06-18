@@ -155,6 +155,13 @@ func calculate_stats():
 				print("Error: Issue with getting equipment")
 	stats = new_stats
 	
+func set_dash_length(length):
+	var animation_tree = get_node('AnimationTree')
+	animation_tree.get_animation("dash_up").length = 2.0
+	animation_tree.get_animation("dash_down").length = 2.0
+	animation_tree.get_animation("dash_left").length = 2.0
+	animation_tree.get_animation("dash_right").length = 2.0
+	
 				
 #func save():
 	#var save_dict = {

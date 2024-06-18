@@ -12,3 +12,4 @@ extends Resource
 
 @export var walk_speed: float
 @export var run_speed: float
+@export var dash_speed: float

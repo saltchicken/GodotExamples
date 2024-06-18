@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://di112al45tois"]
 
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/inventory_menu/item_data.gd" id="1_lin7m"]
-[ext_resource type="Texture2D" uid="uid://cpmyxo7bm01ib" path="res://resources/items/assets/sword.png" id="2_fgf5l"]
+[ext_resource type="Texture2D" uid="uid://b1oj3fmxtiv2f" path="res://resources/items/assets/iron_sword_icon.png" id="2_f16bk"]
 
 [resource]
 script = ExtResource("1_lin7m")
 type = 4
 name = "Sword"
 description = "A powerful sword"
-texture = ExtResource("2_fgf5l")
+texture = ExtResource("2_f16bk")
+attack_type = 1
 attack_damage = 15
 defense = 0
-attack_type = 1
+speed_modifier = 1.0
+dash_modifier = 1.0
