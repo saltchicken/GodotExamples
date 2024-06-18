@@ -8,6 +8,7 @@ class_name Player
 
 @onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu
 @onready var quests = $PauseMenu/MenuTabs/Quests/QuestMenu
+@onready var stats_menu = $PauseMenu/MenuTabs/Stats/StatsMenu
 
 @export var initial_state : State
 
@@ -26,7 +27,11 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var dash_cooldown = 0.0
 
 @export var default_stats: PlayerStats
-@onready var stats: PlayerStats = default_stats.duplicate()
+@onready var stats: PlayerStats = default_stats.duplicate(): set = set_stats
+
+func set_stats(new_stats):
+	stats = new_stats
+	stats_menu.update_stats()
 
 @onready var hit_indicator_offset: Vector2 = Vector2(3.0, 20.0)
 

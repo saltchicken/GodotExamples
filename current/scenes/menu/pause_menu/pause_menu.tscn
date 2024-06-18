@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm1wpccpepime"]
+[gd_scene load_steps=9 format=3 uid="uid://cm1wpccpepime"]
 
 [ext_resource type="Script" path="res://scenes/menu/pause_menu/pause_menu_main.gd" id="1_1wyvu"]
 [ext_resource type="Shader" path="res://scenes/menu/pause_menu/pause_menu_blur.gdshader" id="2_hxhow"]
 [ext_resource type="PackedScene" uid="uid://cgw438pdkorrb" path="res://scenes/menu/pause_menu/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
 [ext_resource type="PackedScene" uid="uid://bkpam5xdp4lu1" path="res://scenes/menu/pause_menu/quest_menu/quest_menu.tscn" id="4_37rwm"]
 [ext_resource type="PackedScene" uid="uid://djfho244tjv2a" path="res://scenes/menu/pause_menu/spells_menu/spells_menu.tscn" id="4_87qle"]
+[ext_resource type="PackedScene" uid="uid://c0gqk3bmau4gb" path="res://scenes/menu/pause_menu/stats_menu/stats_menu.tscn" id="4_vepqd"]
 [ext_resource type="PackedScene" uid="uid://ce2hekpqo0xd" path="res://scenes/menu/pause_menu/system_menu/system_menu.tscn" id="5_hpp43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
@@ -42,10 +43,18 @@ metadata/_tab_index = 0
 unique_name_in_owner = true
 position = Vector2(-73, -117)
 
-[node name="Spells" type="RichTextLabel" parent="MenuTabs"]
+[node name="Stats" type="RichTextLabel" parent="MenuTabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="StatsMenu" parent="MenuTabs/Stats" instance=ExtResource("4_vepqd")]
+unique_name_in_owner = true
+
+[node name="Spells" type="RichTextLabel" parent="MenuTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="SpellsMenu" parent="MenuTabs/Spells" instance=ExtResource("4_87qle")]
 unique_name_in_owner = true
@@ -54,7 +63,7 @@ position = Vector2(-35.5, -86.5)
 [node name="Quests" type="RichTextLabel" parent="MenuTabs"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="QuestMenu" parent="MenuTabs/Quests" instance=ExtResource("4_37rwm")]
 unique_name_in_owner = true
@@ -63,7 +72,7 @@ position = Vector2(-73, -86)
 [node name="System" type="RichTextLabel" parent="MenuTabs"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="SystemMenu" parent="MenuTabs/System" instance=ExtResource("5_hpp43")]
 unique_name_in_owner = true
