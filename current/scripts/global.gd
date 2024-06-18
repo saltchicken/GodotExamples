@@ -86,6 +86,9 @@ func load_game(save_file):
 				'SpellSelectionMenu':
 					var node = persisting_nodes[node_data['node_name']]
 					node.load(node_data)
+				'QuestMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
 				_:
 					print("%s not handled." % node_data['node_name'])	
 		
