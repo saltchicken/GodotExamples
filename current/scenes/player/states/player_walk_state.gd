@@ -1,7 +1,7 @@
 extends PlayerState
 
 @onready var character_body = self.get_owner()
-@onready var animation_tree = $"../../AnimationTree"
+@onready var animation_tree = $"../../Animation/AnimationTree"
 
 func Enter():
 	animation_tree.get("parameters/playback").travel(self.name)

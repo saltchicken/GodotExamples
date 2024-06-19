@@ -1,7 +1,7 @@
 extends PlayerState
 
 @onready var character_body = self.get_owner()
-@onready var animation_tree = $"../../AnimationTree"
+@onready var animation_tree = $"../../Animation/AnimationTree"
 #@onready var animation_player = $"../../AnimationPlayer"
 #@onready var use_area_collision = $"../../UseArea/CollisionShape2D"
 
