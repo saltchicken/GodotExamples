@@ -52,6 +52,7 @@ states/casted/position = Vector2(347, 83)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xy0t3"]
 
 [node name="Whirlwind" instance=ExtResource("1_36jb2")]
+scale = Vector2(2, 2)
 default_stats = ExtResource("2_qkkoa")
 
 [node name="Sprite2D" parent="." index="0"]

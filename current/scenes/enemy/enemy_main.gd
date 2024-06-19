@@ -52,20 +52,14 @@ func handle_collision():
 				self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
 			#add_collision_exception_with(body)
 		elif body.get_script() == Enemy:
-			if self.state_machine.current_state.name == 'hit' or (self.impact_velocity.x > 0.0 and self.impact_velocity.y > 0.0):
+			if self.state_machine.current_state.name == 'hit' or (abs(self.impact_velocity.x) > 0.0 and abs(self.impact_velocity.y) > 0.0):
 				print('collision')
 				body.handle_impact_with_enemy(self)
-			#body.handle_impact_with_enemy(self)
-				
 				
 func handle_impact_with_enemy(initiating_body):
 	add_collision_exception_with(initiating_body)
 	impact_velocity_initiating_body = initiating_body
-	# TODO: Restablish collision after a impact velocity resolves
 	var direction_from_body = initiating_body.global_position.direction_to(self.global_position)
-	print(direction_from_body)
 	#impact_velocity = direction_from_body * initiating_body.velocity * 1.1
 	#impact_velocity = initiating_body.velocity * direction_from_body
-	impact_velocity = initiating_body.velocity * 1.5
-	#print(impact_velocity)
-	pass
+	impact_velocity = initiating_body.velocity

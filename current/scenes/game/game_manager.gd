@@ -5,7 +5,7 @@ extends Node2D
 
 var rng = RandomNumberGenerator.new()
 
-var MAX_ENEMIES = 25
+var MAX_ENEMIES = 1000
 var ENEMIES_COUNT = 0
 
 func _ready():

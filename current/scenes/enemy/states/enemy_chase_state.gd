@@ -22,7 +22,6 @@ func Update(delta:float):
 	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction_to_player)
 	if character_body.distance_to_player < character_body.stats.chase_distance:
 		if abs(character_body.impact_velocity.x) > 0.0 and abs(character_body.impact_velocity.y) > 0.0:
-			print('impact')
 			character_body.impact_velocity.x = move_toward(character_body.impact_velocity.x, 0.0, 5.0)
 			character_body.impact_velocity.y = move_toward(character_body.impact_velocity.y, 0.0, 5.0)
 			character_body.velocity.x = character_body.impact_velocity.x
@@ -31,9 +30,13 @@ func Update(delta:float):
 			character_body.velocity.x = character_body.direction_to_player.x * character_body.stats.chase_speed
 			character_body.velocity.y = character_body.direction_to_player.y * character_body.stats.chase_speed
 			if character_body.impact_velocity_initiating_body != null:
-				print('Removing collision exception')
-				character_body.impact_velocity_initiating_body = null
-				character_body.remove_collision_exception_with(character_body.impact_velocity_initiating_body)
+				for body in character_body.get_collision_exceptions():
+					if body == character_body.impact_velocity_initiating_body:
+						character_body.remove_collision_exception_with(character_body.impact_velocity_initiating_body)
+						character_body.impact_velocity_initiating_body = null
+						print('Removing collision exception')
+				
+				
 	else:
 		state_transition.emit(self, 'idle')
 		
@@ -52,11 +55,11 @@ func check_close_attack_range(delta):
 		for obj in bodies:
 			if obj.get_script() == Player:
 				player_exists = true
-	if player_exists:
+	if player_exists and (abs(character_body.impact_velocity.x) <= 1.0 and abs(character_body.impact_velocity.y) <= 1.0): # TODO: Better check for when enemy has impact velocity and remove magic number of 1.0
 		player_exists_duration += delta
 	else:
 		player_exists_duration = 0.0
-	if player_exists_duration > 1.0 and (abs(character_body.impact_velocity.x) <= 1.0 and abs(character_body.impact_velocity.y) <= 1.0): # TODO: Better check for when enemy has impact velocity and remove magic number of 1.0
+	if player_exists_duration > 1.0:
 		player_exists_duration = 0.0
 		state_transition.emit(self, 'close_attack')
 				
