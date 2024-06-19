@@ -9,3 +9,9 @@ script = ExtResource("1_t78s6")
 
 [node name="LevelOne" parent="." instance=ExtResource("2_30vyt")]
 z_index = -1
+
+[node name="RedSlimeTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="GreenSlimeTimer" type="Timer" parent="."]
+wait_time = 0.75
