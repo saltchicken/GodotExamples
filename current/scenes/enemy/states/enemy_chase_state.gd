@@ -31,6 +31,7 @@ func Update(delta:float):
 			character_body.velocity.y = character_body.direction_to_player.y * character_body.stats.chase_speed
 			if character_body.impact_velocity_initiating_body != null:
 				for body in character_body.get_collision_exceptions():
+					# TODO: May be necessary for having multiple initiating bodies
 					if body == character_body.impact_velocity_initiating_body:
 						character_body.remove_collision_exception_with(character_body.impact_velocity_initiating_body)
 						character_body.impact_velocity_initiating_body = null

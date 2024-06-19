@@ -53,6 +53,7 @@ func handle_collision():
 			if self.state_machine.current_state.name == 'hit' or (abs(self.impact_velocity.x) > 0.0 and abs(self.impact_velocity.y) > 0.0):
 				body.handle_impact_with_enemy(self)
 				
+# TODO: Make case for multiple initiating bodies. Velocities will need to be combined
 func handle_impact_with_enemy(initiating_body):
 	add_collision_exception_with(initiating_body)
 	impact_velocity_initiating_body = initiating_body
@@ -60,18 +61,13 @@ func handle_impact_with_enemy(initiating_body):
 	#impact_velocity = direction_from_body * initiating_body.velocity * 1.1
 	#impact_velocity = initiating_body.velocity * direction_from_body
 	#impact_velocity = initiating_body.velocity
-	#print(self)
-	#print(impact_velocity)
-	#print(direction_from_body)
-	#print(change_velocity(impact_velocity, direction_from_body))
 	impact_velocity = change_velocity(initiating_body.velocity, direction_from_body)
 
 func calculate_angle_from_direction(direction):
 	return atan2(direction.y, direction.x)
 	
 func change_velocity(velocity, direction):
-	var new_angle = calculate_angle_from_direction(direction)
-	#print(new_angle)
 	var speed = sqrt(velocity.x ** 2 + velocity.y ** 2)
+	var new_angle = calculate_angle_from_direction(direction)
 	return Vector2(speed * cos(new_angle), speed * sin(new_angle))
 	
