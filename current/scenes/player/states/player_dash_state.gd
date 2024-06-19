@@ -3,7 +3,7 @@ extends PlayerState
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../Animation/AnimationTree"
 #@onready var animation_player = $"../../AnimationPlayer"
-#@onready var use_area_collision = $"../../UseArea/CollisionShape2D"
+#@onready var use_area_collision = $"../../Areas/UseArea/CollisionShape2D"
 
 var dash_direction
 

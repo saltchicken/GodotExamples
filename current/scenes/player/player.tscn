@@ -55,8 +55,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/player_dash_state.gd" id="46_8tj7h"]
 [ext_resource type="Script" path="res://scenes/player/states/player_dash_sword_attack_state.gd" id="49_u5x2t"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yc56e"]
-load_path = "res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_drcbk"]
 animation = &"bow_attack_down"
@@ -418,12 +417,15 @@ states/walk/position = Vector2(387, 6)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jsmfi")]
 graph_offset = Vector2(-89, -136)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yc56e"]
+load_path = "res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"
+
 [sub_resource type="Animation" id="Animation_vldp8"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -579,7 +581,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/13/interp = 3
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -591,7 +593,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1320,7 +1322,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1332,7 +1334,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/14/interp = 3
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1356,7 +1358,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/16/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1541,7 +1543,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/13/interp = 3
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1553,7 +1555,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1565,7 +1567,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/15/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1750,7 +1752,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/13/interp = 3
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1762,7 +1764,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1774,7 +1776,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/15/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1959,7 +1961,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1971,7 +1973,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/14/interp = 3
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1995,7 +1997,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/16/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -2888,7 +2890,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -2900,7 +2902,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/14/interp = 3
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -2924,7 +2926,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/16/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -3109,7 +3111,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/13/interp = 3
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -3121,7 +3123,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -3133,7 +3135,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/15/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -3318,7 +3320,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/13/interp = 3
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -3330,7 +3332,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -3342,7 +3344,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/15/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -3527,7 +3529,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/path = NodePath("Areas/AttackArea/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -3539,7 +3541,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/path = NodePath("Areas/AttackArea/CollisionShape2D:rotation")
 tracks/14/interp = 3
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -3563,7 +3565,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/16/path = NodePath("Areas/AttackArea/CollisionShape2D:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -3837,8 +3839,6 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf8r0"]
 radius = 9.54508
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jp4oi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yakv4"]
@@ -3851,6 +3851,12 @@ script = ExtResource("1_u0ca5")
 initial_state = NodePath("StateMachine/idle")
 default_stats = ExtResource("2_j8050")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_220ml")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
 [node name="Animation" type="Node2D" parent="."]
 
 [node name="Sprites" type="Node2D" parent="Animation"]
@@ -3858,7 +3864,7 @@ default_stats = ExtResource("2_j8050")
 [node name="CharacterBase" type="Sprite2D" parent="Animation/Sprites"]
 position = Vector2(1, -13)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("CompressedTexture2D_yc56e")
+texture = ExtResource("4_8bee1")
 
 [node name="Sword" type="Sprite2D" parent="Animation/Sprites"]
 visible = false
@@ -4162,36 +4168,11 @@ libraries = {
 "": SubResource("AnimationLibrary_io086")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
-[node name="AttackArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(24, -12)
-rotation = -1.5708
-scale = Vector2(3.35251, 1.39929)
-shape = SubResource("CapsuleShape2D_vf8r0")
-disabled = true
-
 [node name="PauseMenu" parent="." instance=ExtResource("2_3uprd")]
 visible = false
 
 [node name="SpellSelectionMenu" parent="." instance=ExtResource("4_w0itk")]
 visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_220ml")
-
-[node name="PickupArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
-shape = SubResource("CircleShape2D_jp4oi")
-
-[node name="UseArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UseArea"]
-shape = SubResource("CircleShape2D_yakv4")
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("1_md2ya")
@@ -4225,3 +4206,24 @@ script = ExtResource("9_hk3e8")
 
 [node name="cast" type="Node2D" parent="StateMachine"]
 script = ExtResource("14_4g4yl")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AttackArea"]
+position = Vector2(24, -12)
+rotation = -1.5708
+scale = Vector2(3.35251, 1.39929)
+shape = SubResource("CapsuleShape2D_vf8r0")
+disabled = true
+
+[node name="PickupArea" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/PickupArea"]
+shape = SubResource("CircleShape2D_jp4oi")
+
+[node name="UseArea" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/UseArea"]
+shape = SubResource("CircleShape2D_yakv4")

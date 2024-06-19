@@ -2,8 +2,8 @@ extends PlayerState
 
 @onready var character_body = self.get_owner()
 @onready var animation_tree = $"../../Animation/AnimationTree"
-@onready var attack_hitbox = $"../../AttackArea"
-@onready var use_area_collision = $"../../UseArea/CollisionShape2D"
+@onready var attack_hitbox = $"../../Areas/AttackArea"
+@onready var use_area_collision = $"../../Areas/UseArea/CollisionShape2D"
 
 func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)

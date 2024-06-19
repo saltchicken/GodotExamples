@@ -10,13 +10,21 @@ var rng = RandomNumberGenerator.new()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("rightclick"):
-		spawn_enemy(calculate_random_position_at_range(150))
+		#spawn_enemy(calculate_random_position_at_range(150))
+		spawn_mob()
 		
-func spawn_enemy(spawn_global_position):
+#func spawn_enemy(spawn_global_position):
+	#var enemy_type = rng.randi_range(0, 1)
+	#var enemy = enemy_scenes[enemy_type].instantiate()
+	#enemy.global_position = player.global_position + spawn_global_position
+	##enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
+	#get_tree().current_scene.add_child(enemy)
+	
+func spawn_mob():
 	var enemy_type = rng.randi_range(0, 1)
 	var enemy = enemy_scenes[enemy_type].instantiate()
-	enemy.global_position = player.global_position + spawn_global_position
-	#enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
+	player.path_follow.progress_ratio = randf()
+	enemy.global_position = player.path_follow.global_position
 	get_tree().current_scene.add_child(enemy)
 	
 func calculate_random_position_at_range(range_magnitude):

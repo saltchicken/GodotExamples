@@ -2,10 +2,10 @@ extends CharacterBody2D
 class_name Player
 @onready var state_machine = $StateMachine
 #@onready var animation_tree = $AnimationTree
-@onready var use_hitbox = $UseArea
-@onready var pickup_hitbox = $PickupArea
+@onready var use_hitbox = $Areas/UseArea
+@onready var pickup_hitbox = $Areas/PickupArea
 #@onready var attack_hitbox = $AttackArea
-
+@onready var path_follow = create_path_follow()
 @onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu
 @onready var quests = $PauseMenu/MenuTabs/Quests/QuestMenu
 @onready var stats_menu = $PauseMenu/MenuTabs/Stats/StatsMenu
@@ -53,6 +53,27 @@ func _physics_process(delta):
 	if dash_cooldown > 0.0:
 		dash_cooldown -= delta
 	move_and_collide(self.velocity * delta)
+
+func create_path_follow():
+	var ENEMY_POSITION_OFFSET = 50 # TODO: Needs to be the max size of an enemy probably divided by 2
+	var path2d = Path2D.new()
+	var curve = Curve2D.new()
+	path2d.curve = curve
+	add_child(path2d)
+	var view_port = get_viewport().get_visible_rect().size
+	view_port.x /= get_node('Camera2D').zoom.x
+	view_port.y /= get_node('Camera2D').zoom.y
+	view_port.x += ENEMY_POSITION_OFFSET
+	view_port.y += ENEMY_POSITION_OFFSET
+	curve.clear_points()
+	curve.add_point(Vector2(-view_port.x / 2, -view_port.y / 2))
+	curve.add_point(Vector2(view_port.x / 2, -view_port.y / 2))
+	curve.add_point(Vector2(view_port.x / 2, view_port.y / 2))
+	curve.add_point(Vector2(-view_port.x / 2, view_port.y / 2))
+	curve.add_point(Vector2(-view_port.x / 2, -view_port.y / 2))
+	var path2d_follow = PathFollow2D.new()
+	path2d.add_child(path2d_follow)
+	return path2d_follow
 	
 func pickup_items():
 	var pickupable_objects = pickup_hitbox.get_overlapping_areas()
