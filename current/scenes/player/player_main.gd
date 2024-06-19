@@ -46,6 +46,8 @@ func _ready():
 	add_to_group('Players')
 	update_purse.connect(get_node('PauseMenu/MenuTabs/Inventory/InventoryMenu')._on_player_update_purse)
 	inventory.update_stats.connect(calculate_stats)
+	
+	set_dash_length(0.33)
 
 func _physics_process(delta):
 	get_input()
@@ -182,11 +184,11 @@ func calculate_stats():
 	stats = new_stats
 	
 func set_dash_length(length):
-	var animation_tree = get_node('AnimationTree')
-	animation_tree.get_animation("dash_up").length = 2.0
-	animation_tree.get_animation("dash_down").length = 2.0
-	animation_tree.get_animation("dash_left").length = 2.0
-	animation_tree.get_animation("dash_right").length = 2.0
+	var animation_tree = get_node('Animation/AnimationTree')
+	animation_tree.get_animation("dash_up").length = length
+	animation_tree.get_animation("dash_down").length = length
+	animation_tree.get_animation("dash_left").length = length
+	animation_tree.get_animation("dash_right").length = length
 	
 				
 #func save():
