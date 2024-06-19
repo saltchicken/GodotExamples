@@ -1,15 +1,13 @@
-[gd_scene load_steps=172 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=173 format=3 uid="uid://b0xyv7h6eho2a"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
 [ext_resource type="Script" path="res://scenes/player/player_main.gd" id="1_u0ca5"]
 [ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://scenes/menu/pause_menu/pause_menu.tscn" id="2_3uprd"]
 [ext_resource type="Script" path="res://scenes/player/states/player_idle_state.gd" id="2_ivc8t"]
 [ext_resource type="Resource" uid="uid://pu75moibq36b" path="res://scenes/player/player_stats.tres" id="2_j8050"]
-[ext_resource type="Texture2D" uid="uid://dwico4goby0ha" path="res://scenes/player/assets2/char_a_p1_0bas_humn_v00.png" id="3_2tvq8"]
 [ext_resource type="Script" path="res://scenes/player/states/player_walk_state.gd" id="3_m6xxc"]
 [ext_resource type="Script" path="res://scenes/player/states/player_run_state.gd" id="4_0pa3q"]
 [ext_resource type="Texture2D" uid="uid://cx0w5f2kpgvn3" path="res://scenes/player/assets/idle/idle_down.png" id="4_8bee1"]
-[ext_resource type="Texture2D" uid="uid://dceheprjdfc6g" path="res://scenes/player/assets2/char_a_p1_1out_boxr_v01.png" id="4_ef4tb"]
 [ext_resource type="Texture2D" uid="uid://gw2eegltdhkx" path="res://scenes/player/assets/dash/dash_left.png" id="4_hfj07"]
 [ext_resource type="PackedScene" uid="uid://dj34bj75qdoa3" path="res://scenes/menu/selection_menu/spell_selection_menu/spell_selection_menu.tscn" id="4_w0itk"]
 [ext_resource type="Texture2D" uid="uid://bk033kxm2k06b" path="res://scenes/player/assets/equipment/iron_sword.png" id="5_ucs0r"]
@@ -46,14 +44,21 @@
 [ext_resource type="Texture2D" uid="uid://kio808284uve" path="res://scenes/player/assets/cast/cast_right.png" id="33_1gf8t"]
 [ext_resource type="Texture2D" uid="uid://derxat1575mbq" path="res://scenes/player/assets/cast/cast_up.png" id="34_1kvb5"]
 [ext_resource type="Texture2D" uid="uid://btr72h121d8sc" path="res://scenes/player/assets/cast/cast_down.png" id="35_of6ii"]
+[ext_resource type="Texture2D" uid="uid://u8oi8x5vl0wb" path="res://scenes/player/assets/walk/walk_down.png" id="37_lhf2b"]
+[ext_resource type="Texture2D" uid="uid://c42nf6gg6owk2" path="res://scenes/player/assets/walk/walk_left.png" id="38_gxeku"]
+[ext_resource type="Texture2D" uid="uid://ddnmjtnp085t6" path="res://scenes/player/assets/walk/walk_right.png" id="39_hg5e5"]
 [ext_resource type="Texture2D" uid="uid://c5j0mts2q8x16" path="res://scenes/player/assets/dash/dash_right.png" id="39_hrqef"]
 [ext_resource type="Texture2D" uid="uid://dsesotwte56il" path="res://scenes/player/assets/dash/dash_up.png" id="40_jqmrc"]
+[ext_resource type="Texture2D" uid="uid://mpq567o3ffcq" path="res://scenes/player/assets/walk/walk_up.png" id="40_vtc5o"]
 [ext_resource type="Texture2D" uid="uid://dgsm8hunifpb8" path="res://scenes/player/assets/dash/dash_down.png" id="41_57cn6"]
 [ext_resource type="Script" path="res://scenes/player/states/player_dash_state.gd" id="46_8tj7h"]
 [ext_resource type="Script" path="res://scenes/player/states/player_dash_sword_attack_state.gd" id="49_u5x2t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yc56e"]
 load_path = "res://.godot/imported/dash_left.png-4d29741f69f3850f9f977acdf67bf85f.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf8r0"]
+radius = 9.54508
 
 [sub_resource type="Animation" id="Animation_vldp8"]
 length = 0.001
@@ -72,7 +77,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/1/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,7 +89,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/2/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -96,7 +101,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:hframes")
+tracks/3/path = NodePath("Animation/Sprites/Sword:hframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -108,7 +113,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/EffectSprite:hframes")
+tracks/4/path = NodePath("Animation/Sprites/SwordEffect:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -120,7 +125,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/5/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -132,7 +137,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/6/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -144,7 +149,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/7/path = NodePath("Animation/Sprites/Sword:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -156,7 +161,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/8/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/8/interp = 3
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -168,7 +173,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/9/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -180,7 +185,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -192,7 +197,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/11/interp = 3
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -204,7 +209,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/12/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -240,7 +245,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/15/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -252,7 +257,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Animation/Sprites/PlayerSprite:vframes")
+tracks/16/path = NodePath("Animation/Sprites/CharacterBase:vframes")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -264,7 +269,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/17/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -272,54 +277,6 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:frame_coords")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 5)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:texture")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2tvq8")]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Animation (DELETE)/Sprites/Boxers:frame_coords")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Animation (DELETE)/Sprites/Boxers:texture")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_ef4tb")]
 }
 
 [sub_resource type="Animation" id="Animation_higrh"]
@@ -329,7 +286,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -341,7 +298,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -353,7 +310,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -370,7 +327,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -382,7 +339,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -394,7 +351,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -411,7 +368,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -423,7 +380,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -435,7 +392,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -452,7 +409,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -464,7 +421,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -476,7 +433,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -493,7 +450,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -505,7 +462,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -517,7 +474,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -534,7 +491,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -546,7 +503,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -558,7 +515,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -575,7 +532,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -587,7 +544,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -599,7 +556,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -616,7 +573,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -628,7 +585,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -640,7 +597,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -656,7 +613,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -668,7 +625,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -680,7 +637,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:vframes")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -692,7 +649,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/3/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -708,7 +665,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -720,7 +677,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -732,7 +689,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:vframes")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -744,7 +701,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/3/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -760,7 +717,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -772,7 +729,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -784,7 +741,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:vframes")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -796,7 +753,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/3/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -813,7 +770,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -825,7 +782,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -837,7 +794,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -849,7 +806,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/3/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -861,7 +818,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:hframes")
+tracks/4/path = NodePath("Animation/Sprites/Sword:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -873,7 +830,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:frame")
+tracks/5/path = NodePath("Animation/Sprites/Sword:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -885,7 +842,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/6/path = NodePath("Animation/Sprites/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -897,7 +854,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/7/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/7/interp = 3
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -909,7 +866,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -921,7 +878,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -933,7 +890,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -945,7 +902,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -957,7 +914,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -993,7 +950,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/15/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/15/interp = 3
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1017,7 +974,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/17/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -1034,7 +991,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1046,7 +1003,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1058,7 +1015,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1070,7 +1027,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/3/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1082,7 +1039,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/4/path = NodePath("Animation/Sprites/Sword:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1094,7 +1051,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/5/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/5/interp = 3
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1106,7 +1063,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/6/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1118,7 +1075,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/7/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1130,7 +1087,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:hframes")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:hframes")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1142,7 +1099,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1154,7 +1111,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/10/interp = 3
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1166,7 +1123,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1178,7 +1135,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1226,7 +1183,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/16/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1243,7 +1200,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1255,7 +1212,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1267,7 +1224,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1279,7 +1236,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/3/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1291,7 +1248,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/4/path = NodePath("Animation/Sprites/Sword:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1303,7 +1260,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/5/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/5/interp = 3
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1315,7 +1272,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/6/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1327,7 +1284,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/7/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1339,7 +1296,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:hframes")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:hframes")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1351,7 +1308,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1363,7 +1320,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/10/interp = 3
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1375,7 +1332,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1387,7 +1344,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1435,7 +1392,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/16/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1452,7 +1409,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1464,7 +1421,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1476,7 +1433,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1488,7 +1445,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/3/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1500,7 +1457,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:hframes")
+tracks/4/path = NodePath("Animation/Sprites/Sword:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1512,7 +1469,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:frame")
+tracks/5/path = NodePath("Animation/Sprites/Sword:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1524,7 +1481,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/6/path = NodePath("Animation/Sprites/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1536,7 +1493,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/7/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/7/interp = 3
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1548,7 +1505,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1560,7 +1517,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1572,7 +1529,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1584,7 +1541,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1596,7 +1553,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1632,7 +1589,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/15/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/15/interp = 3
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1656,7 +1613,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/17/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -1672,7 +1629,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1684,7 +1641,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1696,7 +1653,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:vframes")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1708,7 +1665,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/3/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1724,7 +1681,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1736,7 +1693,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1748,7 +1705,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1764,7 +1721,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1776,7 +1733,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1788,7 +1745,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1804,7 +1761,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1816,7 +1773,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1828,7 +1785,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1844,7 +1801,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1856,7 +1813,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1868,7 +1825,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1885,7 +1842,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1897,7 +1854,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1909,7 +1866,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1926,7 +1883,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1938,7 +1895,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1950,7 +1907,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1967,7 +1924,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1979,7 +1936,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1991,7 +1948,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2008,7 +1965,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2020,7 +1977,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2032,7 +1989,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2049,7 +2006,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2061,7 +2018,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2073,7 +2030,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2090,7 +2047,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2102,7 +2059,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2114,7 +2071,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2131,7 +2088,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2143,7 +2100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2155,7 +2112,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2172,7 +2129,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2184,7 +2141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2196,7 +2153,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2214,7 +2171,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2226,7 +2183,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2238,7 +2195,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2256,7 +2213,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2268,7 +2225,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2280,7 +2237,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2298,7 +2255,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2310,7 +2267,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2322,7 +2279,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2340,7 +2297,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2352,7 +2309,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2364,7 +2321,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2381,7 +2338,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2393,7 +2350,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2405,7 +2362,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2417,7 +2374,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/3/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2429,7 +2386,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:hframes")
+tracks/4/path = NodePath("Animation/Sprites/Sword:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2441,7 +2398,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:frame")
+tracks/5/path = NodePath("Animation/Sprites/Sword:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -2453,7 +2410,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/6/path = NodePath("Animation/Sprites/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2465,7 +2422,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/7/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/7/interp = 3
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -2477,7 +2434,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2489,7 +2446,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -2501,7 +2458,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -2513,7 +2470,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -2525,7 +2482,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -2561,7 +2518,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/15/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/15/interp = 3
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -2585,7 +2542,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/17/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -2602,7 +2559,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2614,7 +2571,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2626,7 +2583,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2638,7 +2595,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/3/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2650,7 +2607,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/4/path = NodePath("Animation/Sprites/Sword:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2662,7 +2619,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/5/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/5/interp = 3
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -2674,7 +2631,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/6/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2686,7 +2643,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/7/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -2698,7 +2655,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:hframes")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:hframes")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2710,7 +2667,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -2722,7 +2679,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/10/interp = 3
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -2734,7 +2691,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -2746,7 +2703,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -2794,7 +2751,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/16/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -2811,7 +2768,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2823,7 +2780,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2835,7 +2792,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2847,7 +2804,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/3/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2859,7 +2816,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/4/path = NodePath("Animation/Sprites/Sword:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2871,7 +2828,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/5/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/5/interp = 3
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -2883,7 +2840,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/6/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2895,7 +2852,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/7/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -2907,7 +2864,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:hframes")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:hframes")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2919,7 +2876,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -2931,7 +2888,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/10/interp = 3
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -2943,7 +2900,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -2955,7 +2912,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -3003,7 +2960,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/16/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -3020,7 +2977,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation/Sprites/PlayerSprite:hframes")
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3032,7 +2989,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Animation/Sprites/PlayerSprite:texture")
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3044,7 +3001,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Animation/Sprites/PlayerSprite:frame")
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -3056,7 +3013,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Animation/Sprites/WeaponSprite:texture")
+tracks/3/path = NodePath("Animation/Sprites/Sword:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3068,7 +3025,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Animation/Sprites/WeaponSprite:hframes")
+tracks/4/path = NodePath("Animation/Sprites/Sword:hframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -3080,7 +3037,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Animation/Sprites/WeaponSprite:frame")
+tracks/5/path = NodePath("Animation/Sprites/Sword:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -3092,7 +3049,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Animation/Sprites/WeaponSprite:position")
+tracks/6/path = NodePath("Animation/Sprites/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -3104,7 +3061,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Animation/Sprites/WeaponSprite:rotation")
+tracks/7/path = NodePath("Animation/Sprites/Sword:rotation")
 tracks/7/interp = 3
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -3116,7 +3073,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Animation/Sprites/EffectSprite:texture")
+tracks/8/path = NodePath("Animation/Sprites/SwordEffect:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -3128,7 +3085,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Animation/Sprites/EffectSprite:position")
+tracks/9/path = NodePath("Animation/Sprites/SwordEffect:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -3140,7 +3097,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Animation/Sprites/EffectSprite:frame")
+tracks/10/path = NodePath("Animation/Sprites/SwordEffect:frame")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -3152,7 +3109,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Animation/Sprites/EffectSprite:visible")
+tracks/11/path = NodePath("Animation/Sprites/SwordEffect:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -3164,7 +3121,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Animation/Sprites/WeaponSprite:visible")
+tracks/12/path = NodePath("Animation/Sprites/Sword:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -3200,7 +3157,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Animation/Sprites/EffectSprite:rotation")
+tracks/15/path = NodePath("Animation/Sprites/SwordEffect:rotation")
 tracks/15/interp = 3
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -3224,7 +3181,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Animation/Sprites/EffectSprite:scale")
+tracks/17/path = NodePath("Animation/Sprites/SwordEffect:scale")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -3232,6 +3189,174 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_epeck"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("37_lhf2b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_xfpb6"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("38_gxeku")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_dpv0s"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("39_hg5e5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ja2dt"]
+resource_name = "walk_up"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation/Sprites/CharacterBase:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("40_vtc5o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Animation/Sprites/CharacterBase:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Animation/Sprites/CharacterBase:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io086"]
@@ -3272,163 +3397,12 @@ _data = {
 "sword_attack1_down": SubResource("Animation_kife6"),
 "sword_attack1_left": SubResource("Animation_ce73r"),
 "sword_attack1_right": SubResource("Animation_yhtev"),
-"sword_attack1_up": SubResource("Animation_mq8m5")
+"sword_attack1_up": SubResource("Animation_mq8m5"),
+"walk_down": SubResource("Animation_epeck"),
+"walk_left": SubResource("Animation_xfpb6"),
+"walk_right": SubResource("Animation_dpv0s"),
+"walk_up": SubResource("Animation_ja2dt")
 }
-
-[sub_resource type="Animation" id="Animation_qlmhx"]
-resource_name = "walk_down"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2tvq8")]
-}
-
-[sub_resource type="Animation" id="Animation_4sh1c"]
-resource_name = "walk_left"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 7), Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2tvq8")]
-}
-
-[sub_resource type="Animation" id="Animation_k8jh6"]
-resource_name = "walk_right"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6), Vector2i(4, 5), Vector2i(5, 6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2tvq8")]
-}
-
-[sub_resource type="Animation" id="Animation_7ddqx"]
-resource_name = "walk_up"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.000968724, 0.100969, 0.200969, 0.300484, 0.400484, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Animation (DELETE)/Sprites/CharacterBase:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_2tvq8")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Animation (DELETE)/Sprites/Boxers:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.299516, 0.4, 0.499031),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Animation (DELETE)/Sprites/Boxers:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_ef4tb")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3ai3"]
-_data = {
-"walk_down": SubResource("Animation_qlmhx"),
-"walk_left": SubResource("Animation_4sh1c"),
-"walk_right": SubResource("Animation_k8jh6"),
-"walk_up": SubResource("Animation_7ddqx")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vf8r0"]
-radius = 9.54508
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_drcbk"]
 animation = &"bow_attack_down"
@@ -3804,35 +3778,6 @@ script = ExtResource("1_u0ca5")
 initial_state = NodePath("StateMachine/idle")
 default_stats = ExtResource("2_j8050")
 
-[node name="Animation (DELETE)" type="Node2D" parent="."]
-visible = false
-
-[node name="Sprites" type="Node2D" parent="Animation (DELETE)"]
-scale = Vector2(1.5, 1.5)
-
-[node name="CharacterBase" type="Sprite2D" parent="Animation (DELETE)/Sprites"]
-texture = ExtResource("3_2tvq8")
-hframes = 8
-vframes = 8
-frame = 40
-
-[node name="Weapon" type="Sprite2D" parent="Animation (DELETE)/Sprites"]
-
-[node name="Effect" type="Sprite2D" parent="Animation (DELETE)/Sprites"]
-
-[node name="Boxers" type="Sprite2D" parent="Animation (DELETE)/Sprites"]
-texture = ExtResource("4_ef4tb")
-hframes = 8
-vframes = 8
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Animation (DELETE)"]
-active = false
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_io086"),
-"Walk": SubResource("AnimationLibrary_b3ai3")
-}
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
@@ -3840,20 +3785,20 @@ zoom = Vector2(2, 2)
 
 [node name="Sprites" type="Node2D" parent="Animation"]
 
-[node name="PlayerSprite" type="Sprite2D" parent="Animation/Sprites"]
+[node name="CharacterBase" type="Sprite2D" parent="Animation/Sprites"]
 position = Vector2(1, -13)
 scale = Vector2(1.5, 1.5)
 texture = SubResource("CompressedTexture2D_yc56e")
 hframes = 6
 
-[node name="WeaponSprite" type="Sprite2D" parent="Animation/Sprites"]
+[node name="Sword" type="Sprite2D" parent="Animation/Sprites"]
 visible = false
 position = Vector2(-26, -17)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_ucs0r")
 hframes = 2
 
-[node name="EffectSprite" type="Sprite2D" parent="Animation/Sprites"]
+[node name="SwordEffect" type="Sprite2D" parent="Animation/Sprites"]
 visible = false
 position = Vector2(0, -8)
 rotation = 4.71239
@@ -3861,6 +3806,8 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("30_5iaqa")
 hframes = 2
 frame = 1
+
+[node name="Pants" type="Sprite2D" parent="Animation/Sprites"]
 
 [node name="AttackArea" type="Area2D" parent="Animation"]
 
