@@ -46,14 +46,11 @@ func get_hit(attacking_body):
 func handle_collision():
 	if collision:
 		var body = collision.get_collider()
-		#print(body)
 		if body.has_method('get_hit') and body.get_script() == Player:
 			if body.get_hit(self):
 				self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
-			#add_collision_exception_with(body)
 		elif body.get_script() == Enemy:
 			if self.state_machine.current_state.name == 'hit' or (abs(self.impact_velocity.x) > 0.0 and abs(self.impact_velocity.y) > 0.0):
-				print('collision')
 				body.handle_impact_with_enemy(self)
 				
 func handle_impact_with_enemy(initiating_body):
@@ -62,4 +59,19 @@ func handle_impact_with_enemy(initiating_body):
 	var direction_from_body = initiating_body.global_position.direction_to(self.global_position)
 	#impact_velocity = direction_from_body * initiating_body.velocity * 1.1
 	#impact_velocity = initiating_body.velocity * direction_from_body
-	impact_velocity = initiating_body.velocity
+	#impact_velocity = initiating_body.velocity
+	#print(self)
+	#print(impact_velocity)
+	#print(direction_from_body)
+	#print(change_velocity(impact_velocity, direction_from_body))
+	impact_velocity = change_velocity(initiating_body.velocity, direction_from_body)
+
+func calculate_angle_from_direction(direction):
+	return atan2(direction.y, direction.x)
+	
+func change_velocity(velocity, direction):
+	var new_angle = calculate_angle_from_direction(direction)
+	#print(new_angle)
+	var speed = sqrt(velocity.x ** 2 + velocity.y ** 2)
+	return Vector2(speed * cos(new_angle), speed * sin(new_angle))
+	
