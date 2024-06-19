@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm1wpccpepime"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu/scripts/pause_menu_main.gd" id="1_1wyvu"]
+[ext_resource type="Shader" path="res://scenes/menu/pause_menu/shaders/pause_menu_blur.gdshader" id="2_hxhow"]
+[ext_resource type="PackedScene" uid="uid://bn4rd5tslq0dg" path="res://scenes/menu/inventory_menu/inventory_menu.tscn" id="3_0peq7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
+shader = ExtResource("2_hxhow")
+shader_parameter/lod = 0.917
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1wyvu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tnhip")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="MenuPanel" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 77.0
+offset_right = 1088.0
+offset_bottom = 597.0
+
+[node name="SystemPanel" type="MarginContainer" parent="."]
+offset_left = 64.0
+offset_top = 42.0
+offset_right = 1088.0
+offset_bottom = 74.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SystemPanel"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="SystemPanel/HBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="SystemPanel/HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="SystemPanel/HBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LoadLatestSave" type="Button" parent="SystemPanel/HBoxContainer"]
+layout_mode = 2
+text = "Load Last Save"
+
+[node name="TabsPanel" type="MarginContainer" parent="."]
+offset_left = 73.0
+offset_top = 86.0
+offset_right = 1080.0
+offset_bottom = 117.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabsPanel"]
+layout_mode = 2
+
+[node name="InventoryTab" type="Button" parent="TabsPanel/HBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="QuestTab" type="Button" parent="TabsPanel/HBoxContainer"]
+layout_mode = 2
+text = "Quests"
+
+[node name="InventoryMenu" parent="." instance=ExtResource("3_0peq7")]
+
+[connection signal="pressed" from="SystemPanel/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="SystemPanel/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="SystemPanel/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="SystemPanel/HBoxContainer/LoadLatestSave" to="." method="_on_load_latest_save_pressed"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgbv7e2yr5xpl"]
+
+[ext_resource type="PackedScene" uid="uid://b0xyv7h6eho2a" path="res://scenes/player/player.tscn" id="1_iqfig"]
+[ext_resource type="Script" path="res://scenes/game/game_main.gd" id="1_vw3na"]
+[ext_resource type="Resource" uid="uid://dwk8b2actwhwi" path="res://resources/items/bow.tres" id="5_flhdt"]
+[ext_resource type="Texture2D" uid="uid://b0nb3ms13osie" path="res://assets/utility/tile_highlight32.png" id="6_hq12p"]
+[ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://scenes/objects/coins/coins.tscn" id="8_422q1"]
+[ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://scenes/objects/chest/chest.tscn" id="8_g8uvn"]
+[ext_resource type="PackedScene" uid="uid://bhjo81a7nde87" path="res://scenes/enemy/enemies/red_slime/red_slime.tscn" id="10_p7t17"]
+[ext_resource type="Resource" uid="uid://di112al45tois" path="res://resources/items/sword.tres" id="10_xy8qs"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gnspn"]
+scenes/1/scene = ExtResource("8_422q1")
+
+[sub_resource type="TileSet" id="TileSet_lm12f"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_gnspn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ig55w"]
+texture = ExtResource("6_hq12p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4rtwm"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ig55w")
+
+[node name="game" type="Node2D"]
+z_index = -1
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_vw3na")
+
+[node name="Player" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("1_iqfig")]
+initial_state = NodePath("StateMachine/idle")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_lm12f")
+
+[node name="PlacementHighlightMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_4rtwm")
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("10_p7t17")]
+position = Vector2(198, -40)
+initial_state = NodePath("StateMachine/idle")
+
+[node name="ChestBow" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
+position = Vector2(-111, -61)
+item = ExtResource("5_flhdt")
+initial_state = NodePath("StateMachine/closed")
+
+[node name="ChestSword" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_g8uvn")]
+position = Vector2(-111, -27)
+item = ExtResource("10_xy8qs")
+initial_state = NodePath("StateMachine/closed")

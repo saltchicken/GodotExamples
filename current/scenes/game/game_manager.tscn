@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1380c8ofppab"]
+
+[ext_resource type="Script" path="res://scenes/game/game_manager.gd" id="1_t78s6"]
+[ext_resource type="PackedScene" uid="uid://cvguc8467jg7a" path="res://scenes/map/level_one.tscn" id="2_30vyt"]
+
+[node name="GameManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_t78s6")
+
+[node name="LevelOne" parent="." instance=ExtResource("2_30vyt")]
+z_index = -1
+
+[node name="RedSlimeTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="GreenSlimeTimer" type="Timer" parent="."]
+wait_time = 0.75
