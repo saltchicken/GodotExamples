@@ -9,11 +9,13 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
+	character_body.pass_through_enemies(true)
 	animation_tree.get("parameters/playback").travel(self.name)
 	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	use_area_collision.disabled = true
 	
 func Exit():
+	character_body.pass_through_enemies(false)
 	use_area_collision.disabled = false
 	
 func Update(_delta:float):

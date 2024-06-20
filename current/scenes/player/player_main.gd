@@ -172,6 +172,14 @@ func use_objects():
 				obj.use()
 				break
 
+func pass_through_enemies(switch: bool):
+	if switch:
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_layer_value(1, true)
+		set_collision_mask_value(1, true)
+
 func calculate_stats():
 	var new_stats = default_stats.duplicate()
 	for slot in inventory.equipment_slots:

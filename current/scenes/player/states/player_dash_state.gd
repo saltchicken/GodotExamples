@@ -11,8 +11,7 @@ func _ready():
 	animation_tree.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	character_body.set_collision_layer_value(1, false)
-	character_body.set_collision_mask_value(1, false)
+	character_body.pass_through_enemies(true)
 	animation_tree.get("parameters/playback").travel(self.name)
 	animation_tree.set("parameters/" + self.name + "/BlendSpace2D/blend_position", character_body.direction)
 	
@@ -21,8 +20,7 @@ func Enter():
 	# TODO: Possibly disable use_area_collision
 	
 func Exit():
-	character_body.set_collision_layer_value(1, true)
-	character_body.set_collision_mask_value(1, true)
+	character_body.pass_through_enemies(false)
 	
 func Update(_delta:float):
 	#character_body.velocity = character_body.movement * character_body.stats.dash_speed
