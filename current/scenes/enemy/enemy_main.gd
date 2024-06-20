@@ -36,6 +36,21 @@ func _physics_process(delta):
 	distance_to_player = self.global_position.distance_to(player.global_position)
 	direction_to_player = self.global_position.direction_to(player.global_position)
 	collision = move_and_collide(self.velocity * delta)
+	
+func despawn(delay: float = 0.0):
+	print('Enemy despawned')
+	if delay:
+		await get_tree().create_timer(delay).timeout
+		queue_free()
+	else:
+		queue_free()
+	
+func run_away():
+	print('setting run away')
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'run_away')
+	
+func idle():
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'idle')
 
 func get_hit(attacking_body):
 	if state_machine.current_state.name != 'hit' and state_machine.current_state.name != 'death':

@@ -9,12 +9,32 @@ var MAX_ENEMIES = 1000
 var ENEMIES_COUNT = 0
 
 func _ready():
+	register_bonfires()
 	$RedSlimeTimer.timeout.connect(spawn_red_slime)
 	$RedSlimeTimer.start()
 	$GreenSlimeTimer.timeout.connect(spawn_green_slime)
 	$GreenSlimeTimer.start()
 	
 	
+func register_bonfires():
+	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
+		print(bonfire)
+		bonfire.visible_on_screen_notifier_2d.screen_entered.connect(bonfire_visible.bind(bonfire))
+		bonfire.visible_on_screen_notifier_2d.screen_exited.connect(bonfire_not_visible)
+
+
+# TODO: Better way of handling timers. Add to group or something
+func bonfire_visible(bonfire):
+	if bonfire.state_machine.current_state.name == 'on':
+		print('success')
+		$RedSlimeTimer.stop()
+		$GreenSlimeTimer.stop()
+	
+	
+func bonfire_not_visible():
+	$RedSlimeTimer.start()
+	$GreenSlimeTimer.start()
+
 func spawn_red_slime():
 	var mob = preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn')
 	if ENEMIES_COUNT < MAX_ENEMIES:
@@ -45,6 +65,7 @@ func spawn_mob(mob):
 	player.path_follow.progress_ratio = randf()
 	mob_instance.global_position = player.path_follow.global_position
 	get_tree().current_scene.add_child(mob_instance)
+	mob_instance.add_to_group("Enemies")
 	
 func calculate_random_position_at_range(range_magnitude):
 	var direction = rng.randf_range(0.0, 6.283)
