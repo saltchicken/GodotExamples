@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		if body.has_method('get_hit'):
 				add_collision_exception_with(body)
 				if body.get_hit(self):
-					print('TODO: Add functionality for when successfully hit')
+					#TODO: Add functionality for when successfully hit
 					handle_piercing()
 				
 func handle_piercing():

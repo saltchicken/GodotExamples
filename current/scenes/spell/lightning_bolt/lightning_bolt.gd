@@ -5,4 +5,5 @@ func process(parent, delta):
 		for body in bodies:
 			if body.is_in_group('Enemies'): # TODO: Add proto to all entities in enemies to make sure 'hit' is implemented.
 				if body.get_hit(parent):
-					print('TODO: Add functionality for when successfully hit')
+					#TODO: Add functionality for when successfully hit
+					pass

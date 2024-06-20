@@ -48,3 +48,5 @@ script = ExtResource("8_tf1uu")
 script = ExtResource("9_dgytv")
 
 [node name="CloseAttackArea" type="Area2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

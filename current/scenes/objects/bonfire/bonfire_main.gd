@@ -26,14 +26,19 @@ func bonfire_visible():
 	print('bonfire_visible')
 	if state_machine.current_state.name == 'on':
 		for enemy in get_tree().get_nodes_in_group("Enemies"):
-			if enemy.has_method("run_away"):
-				enemy.run_away()
+			if enemy.get_node("VisibleOnScreenNotifier2D").is_on_screen() == false:
+				enemy.despawn()
 			else:
-				print("Error: Enemy doesn't have run_away method")
+				if enemy.has_method("run_away"):
+					enemy.run_away()
+				else:
+					print("Error: Enemy doesn't have run_away method")
 	
 func bonfire_not_visible():
 	print('bonfire not visible')
 	if state_machine.current_state.name == 'on':
 		for enemy in get_tree().get_nodes_in_group("Enemies"):
 			if enemy.state_machine.current_state.name == 'run_away':
+				#print('Disconnecting despawn')
+				enemy.get_node('VisibleOnScreenNotifier2D').screen_exited.disconnect(enemy.despawn)
 				enemy.idle()

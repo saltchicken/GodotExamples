@@ -7,12 +7,14 @@ extends State
 
 func Enter():
 	animation_tree.get("parameters/playback").travel(temp_state_name)
-	print(character_body)
-	animation_tree.set("parameters/" + temp_state_name + "/BlendSpace2D/blend_position", -character_body.direction_to_player)
+	if character_body.direction_to_player == null:
+		print("Error: direction_to_player was null")
+	else:
+		animation_tree.set("parameters/" + temp_state_name + "/BlendSpace2D/blend_position", -character_body.direction_to_player)
 	
-	var visible_on_screen_notifier_2d = VisibleOnScreenEnabler2D.new()
-	character_body.add_child(visible_on_screen_notifier_2d)
-	visible_on_screen_notifier_2d.screen_exited.connect(character_body.despawn.bind(2.0))
+	#var visible_on_screen_notifier_2d = VisibleOnScreenEnabler2D.new()
+	#character_body.add_child(visible_on_screen_notifier_2d)
+	character_body.get_node('VisibleOnScreenNotifier2D').screen_exited.connect(character_body.despawn.bind(0.0))
 	
 func Exit():
 	character_body.idle_direction = character_body.direction_to_player

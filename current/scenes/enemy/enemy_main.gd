@@ -38,7 +38,6 @@ func _physics_process(delta):
 	collision = move_and_collide(self.velocity * delta)
 	
 func despawn(delay: float = 0.0):
-	print('Enemy despawned')
 	if delay:
 		await get_tree().create_timer(delay).timeout
 		queue_free()
@@ -46,7 +45,6 @@ func despawn(delay: float = 0.0):
 		queue_free()
 	
 func run_away():
-	print('setting run away')
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'run_away')
 	
 func idle():
