@@ -168,7 +168,7 @@ func use_objects():
 			#obj._use()
 		for obj in useable_objects: # TODO: This needs better logic to choose the closest chest or useable object.
 			#print(obj)
-			if obj.get_script() == Chest:
+			if obj.has_method('use'):
 				obj.use()
 				break
 
