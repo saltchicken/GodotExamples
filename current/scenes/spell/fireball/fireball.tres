@@ -16,3 +16,6 @@ texture = ExtResource("3_at54u")
 attack_damage = 30
 cast_speed = 150.0
 attack_knockback = 10.0
+position_not_centered = 1
+y_offset = 15.0
+positional_offset = 20.0

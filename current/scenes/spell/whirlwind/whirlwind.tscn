@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfb4c45667nrp"]
+[gd_scene load_steps=9 format=3 uid="uid://cfb4c45667nrp"]
 
 [ext_resource type="PackedScene" uid="uid://btbs1qjh7qxw0" path="res://scenes/spell/spell_base.tscn" id="1_36jb2"]
-[ext_resource type="Resource" uid="uid://bkntls4yssjpe" path="res://scenes/spell/whirlwind/whirlwind.tres" id="2_qkkoa"]
 [ext_resource type="Texture2D" uid="uid://c6wwevierc8y4" path="res://scenes/spell/whirlwind/whirlwind_spritesheet.png" id="3_gs4fi"]
 
 [sub_resource type="Animation" id="Animation_jnuek"]
@@ -53,7 +52,6 @@ states/casted/position = Vector2(347, 83)
 
 [node name="Whirlwind" instance=ExtResource("1_36jb2")]
 scale = Vector2(2, 2)
-default_stats = ExtResource("2_qkkoa")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_gs4fi")

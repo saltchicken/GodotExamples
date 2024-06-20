@@ -14,3 +14,7 @@ enum Type {ATTACK, BUFF, HEAL, AURA}
 @export var attack_damage: int
 @export var cast_speed: float
 @export var attack_knockback: float
+
+@export var position_not_centered: int
+@export var y_offset: float
+@export var positional_offset: float

@@ -16,3 +16,6 @@ texture = ExtResource("2_pytdg")
 attack_damage = 28
 cast_speed = 80.0
 attack_knockback = 200.0
+position_not_centered = 1
+y_offset = 15.0
+positional_offset = 20.0

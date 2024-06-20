@@ -24,9 +24,11 @@ func Update(_delta:float):
 func cast_spell():
 	if spell_selection_menu.current_selected_spell != null:
 		var current_spell = spell_selection_menu.current_selected_spell.instantiate()
-		current_spell.position = character_body.position + character_body.direction * 20 # TODO: Add attribute for spell location in reference to character_body
-		current_spell.position.y -= 15
+		print(current_spell)
+		
 		get_tree().current_scene.add_child(current_spell)
+		current_spell.position = character_body.position + character_body.direction * current_spell.stats.positional_offset * current_spell.stats.position_not_centered # TODO: Clean this up
+		current_spell.position.y -= current_spell.stats.y_offset
 	else:
 		print('No spell selected')
 
