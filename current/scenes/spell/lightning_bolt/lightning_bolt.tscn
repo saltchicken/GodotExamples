@@ -151,7 +151,7 @@ scale = Vector2(3, 3)
 default_stats = ExtResource("2_6je3c")
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(3.33333, -16)
+position = Vector2(2, -16)
 texture = ExtResource("2_vxynr")
 hframes = 15
 
