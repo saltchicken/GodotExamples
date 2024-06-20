@@ -62,7 +62,8 @@ func create_path_follow():
 	var curve = Curve2D.new()
 	path2d.curve = curve
 	add_child(path2d)
-	var view_port = get_viewport().get_visible_rect().size
+	#var view_port = get_viewport().get_visible_rect().size
+	var view_port = Vector2(5118, 1438) # Hardcode 'view_port' so that level are consistent with any resolution. This is chosen as the max resolution expected
 	view_port.x /= get_node('Camera2D').zoom.x
 	view_port.y /= get_node('Camera2D').zoom.y
 	view_port.x += ENEMY_POSITION_OFFSET
