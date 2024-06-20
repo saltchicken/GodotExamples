@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cxncyww8qag7b"]
+[gd_scene load_steps=28 format=3 uid="uid://cxncyww8qag7b"]
 
 [ext_resource type="Texture2D" uid="uid://bnmvr6c7bo4oh" path="res://scenes/objects/bonfire/bonfire.png" id="1_a6ptv"]
 [ext_resource type="Script" path="res://scenes/objects/bonfire/bonfire_main.gd" id="1_l4mkk"]
@@ -150,6 +150,9 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhulh"]
+radius = 128.016
+
 [node name="Bonfire" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_l4mkk")
 initial_state = NodePath("StateMachine/off")
@@ -173,4 +176,7 @@ script = ExtResource("5_32o3t")
 [node name="on" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_b3p32")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rhulh")
