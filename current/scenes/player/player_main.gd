@@ -1,5 +1,7 @@
 extends CharacterBody2D
 class_name Player
+
+@export var input_enabled:bool = true
 @onready var state_machine = $StateMachine
 #@onready var animation_tree = $AnimationTree
 @onready var use_hitbox = $Areas/UseArea
@@ -52,11 +54,21 @@ func _ready():
 	set_dash_length(0.33)
 
 func _physics_process(delta):
+	if not input_enabled:
+		return
 	get_input()
 	pickup_items()
 	if dash_cooldown > 0.0:
 		dash_cooldown -= delta
 	move_and_collide(self.velocity * delta)
+	
+func disable():
+	input_enabled = false
+	#animation_player.play("idle")
+	
+func enable():
+	input_enabled = true
+	visible = true
 
 func create_path_follow():
 	var ENEMY_POSITION_OFFSET = 50 # TODO: Needs to be the max size of an enemy probably divided by 2
