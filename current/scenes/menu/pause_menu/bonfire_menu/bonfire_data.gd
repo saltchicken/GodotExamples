@@ -9,5 +9,6 @@ var label
 
 func _init():
 	label = Label.new()
+	
+func update_label():
 	label.text = name
-	print(label.text)

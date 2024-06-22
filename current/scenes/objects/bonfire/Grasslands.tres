@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_131ra")
-name = "Grasslands"
+name = "grasslands"
 description = "Bonfire in the grasslands"
 status = "off"

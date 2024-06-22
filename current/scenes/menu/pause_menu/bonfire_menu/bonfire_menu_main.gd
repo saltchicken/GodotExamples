@@ -8,7 +8,7 @@ extends Node
 #@onready var green_slime_quest = load('res://scenes/menu/pause_menu/quest_menu/quests/green_slime_quest.tres')
 #@onready var active_quests: Array[QuestResource] = [red_slime_quest, green_slime_quest]
 
-@onready var known_bonfires: Array[Bonfire]
+@onready var known_bonfires: Array = []
 @onready var known_bonfires_container = get_node('VBoxContainer')
 
 func _ready():
@@ -32,9 +32,7 @@ func save():
 func load(node_data):
 	#pass
 	for bonfire in node_data['known_bonfires'].keys():
-		print(bonfire)
-		var bonfire_instance = load(bonfire)
-		known_bonfires.append(bonfire_instance)
+		known_bonfires.append(bonfire)
 	load_known_bonfires()
 	#for quest in node_data['quests'].keys():
 		#var quest_instance = load(quest)
@@ -44,14 +42,16 @@ func load(node_data):
 	
 func load_known_bonfires():
 	for bonfire in known_bonfires:
-		print('loading bonfire')
-		known_bonfires_container.add_child(bonfire.label)
+		var bonfire_instance = load(bonfire)
+		bonfire_instance.update_label()
+		known_bonfires_container.add_child(bonfire_instance.label)
 		#quest.quest_updated.connect(update_quest)
 		
 func get_bonfires():
 	var dict = {}
 	for bonfire in known_bonfires:
-		dict[bonfire.get_path()] = bonfire.status
+		var bonfire_instance = load(bonfire)
+		dict[bonfire] = bonfire_instance.status
 	return dict
 		
 

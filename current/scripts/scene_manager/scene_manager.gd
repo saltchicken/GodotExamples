@@ -118,7 +118,7 @@ func _on_content_finished_loading(incoming_scene) -> void:
 			incoming_scene.receive_data(outgoing_scene.get_data())
 	
 	# load the incoming into the designated node
-	print(incoming_scene)
+	#print(incoming_scene)
 	_load_scene_into.add_child(incoming_scene)
 		# listen for this if you want to perform tasks on the scene immeidately after adding it to the tree
 	# ex: moveing the HUD back up to the top of the stack
