@@ -11,7 +11,7 @@ func system_button_press(button):
 		'Resume':
 			pause_menu.close_pause_menu()
 		'Save':
-			Global.save_game()
+			Global.save_game(self)
 		'Quit':
 			pause_menu.close_pause_menu()
 			get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")

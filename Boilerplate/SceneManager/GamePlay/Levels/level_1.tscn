@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=4 uid="uid://demhd6tkrxfbn"]
+
+[ext_resource type="Script" path="res://GamePlay/Levels/level.gd" id="1_78l7c"]
+[ext_resource type="TileSet" uid="uid://cmj0wreavaupy" path="res://GamePlay/Levels/tile_set.tres" id="2_362el"]
+[ext_resource type="PackedScene" uid="uid://dkpsrphq6nxlf" path="res://GamePlay/Doors/door.tscn" id="3_jsx8s"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_78l7c")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAABAP7/AQABAAAAAAABAP//AQABAAAAAAABAAAAAQABAAAAAAABAAEAAQABAAAAAAAAAAEAAQABAAAAAAD//wEAAQABAAAAAAD+/wEAAQABAAAAAAD+/wAAAQABAAAAAAD+////AQABAAAAAAD+//7/AQABAAAAAAA=")
+tile_set = ExtResource("2_362el")
+
+[node name="Door" parent="." instance=ExtResource("3_jsx8s")]
+position = Vector2(80, -5)

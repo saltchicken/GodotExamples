@@ -16,7 +16,7 @@ func _ready() -> void:
 	# FOR TESTING
 	#load_item_into_spell("res://scenes/spell/whirlwind/whirlwind.tres", 0)
 	#load_item_into_spell("res://scenes/spell/fireball/fireball.tres", 1)
-	load_item_into_spell("res://scenes/spell/lightning_bolt/lightning_bolt.tres", 4)
+	#load_item_into_spell("res://scenes/spell/lightning_bolt/lightning_bolt.tres", 4)
 	
 func load_item_into_spell(path_to_item, slot_index):
 	var spell := SpellItem.new()

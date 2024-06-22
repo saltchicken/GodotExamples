@@ -9,6 +9,7 @@ class_name Player
 @onready var inventory = $PauseMenu/MenuTabs/Inventory/InventoryMenu
 @onready var quests = $PauseMenu/MenuTabs/Quests/QuestMenu
 @onready var stats_menu = $PauseMenu/MenuTabs/Stats/StatsMenu
+@onready var bonfire_menu = $PauseMenu/MenuTabs/Bonfires/BonfireMenu
 
 @export var initial_state : State
 

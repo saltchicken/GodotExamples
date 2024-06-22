@@ -18,21 +18,19 @@ func _ready():
 	
 func register_bonfires():
 	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
-		print(bonfire)
-		bonfire.area_2d.body_entered.connect(bonfire_visible.bind(bonfire))
-		bonfire.area_2d.body_exited.connect(bonfire_not_visible)
+		bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
+		bonfire.area_2d.body_exited.connect(bonfire_body_exited)
 
 
 # TODO: Better way of handling timers. Add to group or something
-func bonfire_visible(body, bonfire):
+func bonfire_body_entered(body, bonfire):
 	if body.get_script() == Player:
 		if bonfire.state_machine.current_state.name == 'on':
-			print('success')
 			$RedSlimeTimer.stop()
 			$GreenSlimeTimer.stop()
 	
 	
-func bonfire_not_visible(body):
+func bonfire_body_exited(body):
 	if body.get_script() == Player:
 		$RedSlimeTimer.start()
 		$GreenSlimeTimer.start()

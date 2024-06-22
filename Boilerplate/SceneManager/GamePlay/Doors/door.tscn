@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkpsrphq6nxlf"]
+
+[ext_resource type="Script" path="res://GamePlay/Doors/door.gd" id="1_e6fd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thcf6"]
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_e6fd1")
+path_to_new_scene = "res://GamePlay/Levels/level_2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_thcf6")
