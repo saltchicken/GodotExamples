@@ -14,4 +14,7 @@ func system_button_press(button):
 			SceneManager.save_game(self)
 		'Quit':
 			pause_menu.close_pause_menu()
-			get_tree().change_scene_to_file("res://scenes/menu/main_menu/main_menu.tscn")
+			var reference_to_gameplay = get_node("/root/Gameplay")
+			print(reference_to_gameplay)
+			SceneManager.swap_scenes("res://scenes/menu/main_menu/main_menu.tscn",get_tree().root,reference_to_gameplay,"fade_to_black")
+			#get_tree().change_scene_to_file()
