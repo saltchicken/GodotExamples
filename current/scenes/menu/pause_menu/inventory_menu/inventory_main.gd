@@ -81,8 +81,8 @@ func _process(_delta):
 func save():
 	var save_dict = {
 		"node_name" : self.name,
-		"inventory" : Global.save_slots_to_dict(item_slots),
-		"equipment" : Global.save_slots_to_dict(equipment_slots),
+		"inventory" : SceneManager.save_slots_to_dict(item_slots),
+		"equipment" : SceneManager.save_slots_to_dict(equipment_slots),
 		"purse"		: save_purse()
 	}
 	return save_dict

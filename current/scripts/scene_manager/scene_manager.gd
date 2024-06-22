@@ -19,6 +19,8 @@ var _loading_in_progress:bool = false	## internal - used to block SceneManager f
 
 #var player: Player
 
+@onready var should_load_game = false;
+
 ## Currently only being used to connect to required, internal signals
 func _ready() -> void:
 	_content_invalid.connect(_on_content_invalid)
@@ -151,3 +153,161 @@ func _on_content_finished_loading(incoming_scene) -> void:
 	# load is complete, free up SceneManager to load something else and report load_complete signal
 	_loading_in_progress = false
 	load_complete.emit(incoming_scene)
+	
+	
+	
+### GLOBALS
+	
+	
+	
+var dialogue_node = preload("res://scenes/dialogue/dialogue_panel.tscn")
+var hit_indicator_node = preload("res://scenes/dialogue/hit_indicator.tscn")
+
+func dialogue(parent_node, text_array: Array):
+	var dialogue_instance = dialogue_node.instantiate()
+	parent_node.add_child(dialogue_instance)
+	dialogue_instance.set_text(text_array)
+	dialogue_instance.main()
+	
+func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offset: float = 10.0):
+	var hit_indicator_instance = hit_indicator_node.instantiate()
+	parent_node.add_child(hit_indicator_instance)
+	hit_indicator_instance.set_text(text_info)
+	hit_indicator_instance.x_offset = x_offset
+	hit_indicator_instance.y_offset = y_offset
+	hit_indicator_instance.main()
+	
+func save_slots_to_dict(slot_array):
+	var dict = {}
+	for i in range(slot_array.size()):
+		var slot = slot_array[i]
+		if slot.get_child_count() > 0:
+			var entity = slot.get_child(0)
+			if entity:
+				dict[entity.data.get_path()] = i
+	return dict
+	
+#func restart():
+	#print("TODO: This doesn't work")
+	##var scene_path = get_tree().current_scene.scene_file_path
+	##get_tree().unload_current_scene()
+	##get_tree().change_scene_to_file(scene_path)
+	#
+	##get_tree().reload_current_scene()
+	
+func save_game(obj):
+	#var global_data = {
+		#'current_bonfire': null
+	#}
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	#var bonfire_nodes = get_tree().get_nodes_in_group("Bonfires")
+	for node in save_nodes:
+		if node.scene_file_path.is_empty():
+			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
+			continue
+
+		if !node.has_method("save"):
+			print("persistent node '%s' is missing a save() function, skipped" % node.name)
+			continue
+	
+		var node_data = node.call("save")
+		var json_string = JSON.stringify(node_data)
+		save_game_file.store_line(json_string)
+	
+	#if obj.name == "Bonfire":
+		##var known_bonfire_nodes = get_tree().get_nodes_in_group("KnownBonfires")
+		##var known_bonfires = []
+		##for bonfire in known_bonfire_nodes:
+			##known_bonfires.append(bonfire.unique_name)
+		#print("Saving from bonfire")
+		#var bonfire_data = {
+			#"node_name" : "Bonfire",
+			#"unique_name" : obj.unique_name,
+			#"location_x"  : obj.global_position.x,
+			#"location_y"  : obj.global_position.y,
+			##"known_bonfires" : known_bonfires
+		#}
+		#var json_string = JSON.stringify(bonfire_data)
+		#save_game_file.store_line(json_string)
+		
+	#for bonfire in bonfire_nodes:
+		
+		#if bonfire.scene_file_path.is_empty():
+			#print("persistent node '%s' is not an instanced scene, skipped" % bonfire.name)
+			#continue
+#
+		#if !bonfire.has_method("save"):
+			#print("persistent node '%s' is missing a save() function, skipped" % bonfire.name)
+			#continue
+		#
+		## This checks against the bonfire being used to save and sets it as the current location to load.
+		#if bonfire.unique_name == obj.unique_name:
+			#global_data["current_bonfire"] = obj.unique_name
+			#
+		#var bonfire_data = bonfire.call("save")
+		#var json_string = JSON.stringify(bonfire_data)
+		#save_game_file.store_line(json_string)
+	
+	# Save global_data
+	#var json_string = JSON.stringify(global_data)
+	#save_game_file.store_line(json_string)
+	
+	print("TODO: Add notification for game saved")
+	
+func load_game(save_file):
+	if not FileAccess.file_exists(save_file):
+		print("Error: There is no saved game.")
+		return # TODO: Implement better logic for this case
+	var persisting_nodes = {}
+	for node in get_tree().get_nodes_in_group("Persist"):
+		persisting_nodes[node.name] = node
+		
+	var save_game_file = FileAccess.open(save_file, FileAccess.READ)
+	while save_game_file.get_position() < save_game_file.get_length():
+		var json_string = save_game_file.get_line()
+		var json = JSON.new()
+
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+			
+		var node_data = json.get_data()
+		print(node_data)
+		if not node_data.has('node_name'):
+			print('Improperly saved node. Skipping')
+		else:
+			match node_data['node_name']:
+				'InventoryMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'SpellsMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'SpellSelectionMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'QuestMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				'BonfireMenu':
+					var node = persisting_nodes[node_data['node_name']]
+					node.load(node_data)
+				#'Bonfire':
+					#var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
+					#if player:
+						##player.global_position = node_data.location
+						##print(node_data.location)
+						#player.global_position.x = node_data.location_x
+						#player.global_position.y = node_data.location_y + 40 # 10 offset for not spawning on top of bonfire
+					#else:
+						#print('no player')
+						
+					#var bonfires = get_tree().get_nodes_in_group('Bonfires')
+					#if bonfires:
+						#for bonfire in bonfires:
+							#if bonfire.unique_name == node_data.unique_name:
+								#print("This bonfire exists")
+				_:
+					print("%s not handled." % node_data['node_name'])	

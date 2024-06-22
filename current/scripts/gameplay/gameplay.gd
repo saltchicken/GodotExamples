@@ -15,6 +15,9 @@ func _ready() -> void:
 	
 	load_player()
 	
+	if SceneManager.should_load_game:
+		SceneManager.load_game("user://savegame.save")
+	
 	var game_manager = load("res://scenes/map/level_one.tscn").instantiate()
 	level_holder.add_child(game_manager)
 	current_level = level_holder.get_child(0) as Level

@@ -60,11 +60,11 @@ func _process(_delta):
 		#dialogue.main()
 	#if Input.is_action_just_pressed('1'):
 		#print('saving game')
-		#Global.save_game()
+		#SceneManager.save_game()
 	#
 	#if Input.is_action_just_pressed('2'):
 		#print('loading game')
-		#Global.load_game()
+		#SceneManager.load_game()
 		
 func tile_highlight():
 	var tile_map_coords = placement_highlight_layer.local_to_map(player.global_position)

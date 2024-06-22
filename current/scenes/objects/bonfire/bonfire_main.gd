@@ -28,7 +28,7 @@ func use():
 			#player.bonfire_menu.known_bonfires.append(self.data)
 		area_2d.body_entered.emit(player)
 	if state_machine.current_state.name == 'on':
-		Global.save_game(self)
+		SceneManager.save_game(self)
 		print('Game saved')
 		# TODO: Need a bonfire menu
 		

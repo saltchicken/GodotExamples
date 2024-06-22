@@ -44,8 +44,8 @@ func spell_changed(slot):
 func save():
 	var save_dict = {
 		"node_name" : self.name,
-		"spell_slots" : Global.save_slots_to_dict(spell_slots),
-		"current_spells_slots" : Global.save_slots_to_dict(current_spells_slots)
+		"spell_slots" : SceneManager.save_slots_to_dict(spell_slots),
+		"current_spells_slots" : SceneManager.save_slots_to_dict(current_spells_slots)
 	}
 	return save_dict
 	
