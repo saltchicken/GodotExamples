@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cvguc8467jg7a"]
+[gd_scene load_steps=12 format=4 uid="uid://cvguc8467jg7a"]
 
 [ext_resource type="Texture2D" uid="uid://c43oxt50spdbw" path="res://scenes/map/plains.png" id="1_qvvmn"]
 [ext_resource type="Script" path="res://scripts/gameplay/levels/level.gd" id="1_ymodt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://pv4g0x35wity" path="res://scenes/map/grass.png" id="3_hn0dv"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://scenes/objects/bonfire/bonfire.tscn" id="4_wbky5"]
 [ext_resource type="Resource" uid="uid://c4e2s7cw4xjmc" path="res://scenes/objects/bonfire/Grasslands.tres" id="5_0edwe"]
+[ext_resource type="PackedScene" uid="uid://dqdwydg0lxuib" path="res://scripts/gameplay/doors/door.tscn" id="7_62hkl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3nwx"]
 texture = ExtResource("1_qvvmn")
@@ -118,3 +119,8 @@ tile_set = SubResource("TileSet_gqqw2")
 [node name="Bonfire" parent="." instance=ExtResource("4_wbky5")]
 position = Vector2(154, 54)
 data = ExtResource("5_0edwe")
+
+[node name="Door" parent="." instance=ExtResource("7_62hkl")]
+position = Vector2(-124, 81)
+path_to_new_scene = "res://scenes/map/level_two.tscn"
+entry_door_name = "NOTUSEDDOORNAME"

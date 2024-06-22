@@ -24,7 +24,9 @@ func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
 		var arrow = arrow_scene.instantiate()
 		arrow.position = character_body.position
-		get_tree().current_scene.add_child(arrow)
+		#get_tree().current_scene.add_child(arrow)
+		character_body.get_parent().get_node("LevelHolder").get_child(0).add_child(arrow) # TODO: This is dangerous. Just trying to append to the current loaded level
+
 		arrow.direction = character_body.direction
 		arrow.velocity = arrow.direction * 600 # TODO: Set this to be the speed of the bow
 		handle_movement_state(self, character_body)

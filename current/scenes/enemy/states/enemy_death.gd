@@ -36,4 +36,4 @@ func _on_animation_tree_animation_finished(anim_name):
 func drop_coins():
 	var coins = coins_node.instantiate()
 	coins.position = character_body.position
-	get_tree().current_scene.add_child(coins)
+	character_body.get_parent().add_child(coins)

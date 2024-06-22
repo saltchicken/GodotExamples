@@ -26,7 +26,8 @@ func cast_spell():
 		var current_spell = spell_selection_menu.current_selected_spell.instantiate()
 		print(current_spell)
 		
-		get_tree().current_scene.add_child(current_spell)
+		#get_tree().current_scene.add_child(current_spell)
+		character_body.get_parent().get_node("LevelHolder").get_child(0).add_child(current_spell) # TODO: This is dangerous. Just trying to append to the current loaded level
 		current_spell.position = character_body.position + character_body.direction * current_spell.stats.positional_offset * current_spell.stats.position_not_centered # TODO: Clean this up
 		current_spell.position.y -= current_spell.stats.y_offset
 	else:

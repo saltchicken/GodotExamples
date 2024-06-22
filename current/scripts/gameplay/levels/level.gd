@@ -135,7 +135,7 @@ func spawn_green_slime():
 	#var enemy = enemy_scenes[enemy_type].instantiate()
 	#enemy.global_position = player.global_position + spawn_global_position
 	##enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
-	#get_tree().current_scene.add_child(enemy)
+	#add_child(enemy)
 	
 func spawn_mob(mob):
 	#var enemy_type = rng.randi_range(0, 1)
@@ -144,7 +144,7 @@ func spawn_mob(mob):
 	var mob_instance = mob.instantiate()
 	player.path_follow.progress_ratio = randf()
 	mob_instance.global_position = player.path_follow.global_position
-	get_tree().current_scene.add_child(mob_instance)
+	add_child(mob_instance)
 	mob_instance.add_to_group("Enemies")
 	
 # TODO: Not being used. Move to utility or something

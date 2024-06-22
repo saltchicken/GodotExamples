@@ -130,8 +130,9 @@ func _on_content_finished_loading(incoming_scene) -> void:
 			_scene_to_unload.queue_free()
 			
 			
-	get_tree().current_scene = incoming_scene # TODO: Where is the best place for this
-	print(incoming_scene)
+	#get_tree().current_scene = incoming_scene # TODO: Where is the best place for this
+	#print("Incoming Scene")
+	#print(incoming_scene)
 	
 	# called right after scene is added to tree (presuming _ready has fired)
 	# ex: do some setup before player gains control (I'm using it to position the player) 
