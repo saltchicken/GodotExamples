@@ -45,6 +45,7 @@ func set_purse(new_value):
 	
 func _ready():
 	add_to_group('Players')
+	print("Player is ready")
 	update_purse.connect(get_node('PauseMenu/MenuTabs/Inventory/InventoryMenu')._on_player_update_purse)
 	inventory.update_stats.connect(calculate_stats)
 	

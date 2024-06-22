@@ -8,7 +8,12 @@ var rng = RandomNumberGenerator.new()
 var MAX_ENEMIES = 1000
 var ENEMIES_COUNT = 0
 
+@onready var gameplay = get_parent().get_parent() # TODO: Better way to reference or not need this at all
+
 func _ready():
+	print(gameplay)
+	player = gameplay.player
+	print(player.path_follow)
 	register_bonfires()
 	$RedSlimeTimer.timeout.connect(spawn_red_slime)
 	$RedSlimeTimer.start()

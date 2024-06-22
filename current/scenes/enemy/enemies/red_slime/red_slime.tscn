@@ -383,8 +383,7 @@ graph_offset = Vector2(-105, 257)
 [sub_resource type="CircleShape2D" id="CircleShape2D_81vqb"]
 radius = 11.0
 
-[node name="Slime" node_paths=PackedStringArray("initial_state") instance=ExtResource("1_k3ir1")]
-initial_state = NodePath("StateMachine/idle")
+[node name="Slime" instance=ExtResource("1_k3ir1")]
 default_stats = ExtResource("2_l2klx")
 
 [node name="Sprite2D" parent="." index="0"]
