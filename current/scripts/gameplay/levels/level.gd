@@ -23,13 +23,14 @@ var data:LevelDataHandoff
 @onready var green_slime_timer = Timer.new()
 
 func _ready() -> void:
-	print('Level is ready')
+	print_debug('Level is ready')
 	player = gameplay.player
 	add_child(player)
 	player.disable()
 	player.visible = false
 	
 	register_bonfires()
+	# TODO: Handle making timers in its own function
 	add_child(red_slime_timer)
 	add_child(green_slime_timer)
 	red_slime_timer.wait_time = 0.25
@@ -40,7 +41,7 @@ func _ready() -> void:
 	green_slime_timer.start()
 	
 	# This block is here to allow us to test current scene without needing the SceneManager to call these :) 
-	if data == null: 
+	if data == null:
 		init_scene()
 		start_scene()
 		
@@ -100,9 +101,9 @@ func register_bonfires():
 		bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
 		bonfire.area_2d.body_exited.connect(bonfire_body_exited)
 		if bonfire.data.get_path() in player.bonfire_menu.known_bonfires:
-			#bonfire.state_machine.current_state.state_transition.emit(bonfire.state_machine.current_state, 'on')
-			#print('yes')
+			# TODO: Make a function that inits a new initial state and also updates the current_state
 			bonfire.initial_state = bonfire.state_machine.get_node('on')
+			bonfire.state_machine.current_state = bonfire.state_machine.get_node('on')
 
 
 # TODO: Better way of handling timers. Add to group or something

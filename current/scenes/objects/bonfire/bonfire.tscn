@@ -153,9 +153,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rhulh"]
 radius = 128.016
 
-[node name="Bonfire" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
+[node name="Bonfire" type="StaticBody2D"]
 script = ExtResource("1_l4mkk")
-initial_state = NodePath("StateMachine/off")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -166,7 +165,7 @@ position = Vector2(1, -54)
 sprite_frames = SubResource("SpriteFrames_bgdhw")
 animation = &"on"
 autoplay = "on"
-frame_progress = 0.646191
+frame_progress = 0.0629705
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("4_skxmn")

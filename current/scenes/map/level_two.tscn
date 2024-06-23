@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bngtrviuhfn52" path="res://scenes/map/decor_16x16.png" id="3_4u5mw"]
 [ext_resource type="Texture2D" uid="uid://pv4g0x35wity" path="res://scenes/map/grass.png" id="4_h7he0"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://scenes/objects/bonfire/bonfire.tscn" id="5_7xyuy"]
-[ext_resource type="Resource" uid="uid://c4e2s7cw4xjmc" path="res://scenes/objects/bonfire/Grasslands.tres" id="6_hkixr"]
+[ext_resource type="Resource" uid="uid://cvq2jq0jqx7eb" path="res://scenes/objects/bonfire/Dirtlands.tres" id="6_ojf4d"]
 [ext_resource type="PackedScene" uid="uid://dqdwydg0lxuib" path="res://scripts/gameplay/doors/door.tscn" id="7_56ig7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3nwx"]
@@ -119,7 +119,7 @@ tile_set = SubResource("TileSet_gqqw2")
 
 [node name="Bonfire" parent="." instance=ExtResource("5_7xyuy")]
 position = Vector2(-164, -127)
-data = ExtResource("6_hkixr")
+data = ExtResource("6_ojf4d")
 
 [node name="Door" parent="." instance=ExtResource("7_56ig7")]
 position = Vector2(142, -66)
