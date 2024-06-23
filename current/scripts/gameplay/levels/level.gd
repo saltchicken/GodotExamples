@@ -99,6 +99,10 @@ func register_bonfires():
 	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
 		bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
 		bonfire.area_2d.body_exited.connect(bonfire_body_exited)
+		if bonfire.data.get_path() in player.bonfire_menu.known_bonfires:
+			#bonfire.state_machine.current_state.state_transition.emit(bonfire.state_machine.current_state, 'on')
+			#print('yes')
+			bonfire.initial_state = bonfire.state_machine.get_node('on')
 
 
 # TODO: Better way of handling timers. Add to group or something

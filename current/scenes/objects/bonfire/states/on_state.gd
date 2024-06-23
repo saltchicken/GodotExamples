@@ -4,6 +4,7 @@ extends State
 @onready var animated_sprite = $"../../AnimatedSprite2D"
 
 func Enter():
+	print("Bonfire lit")
 	animated_sprite.play("on")
 	
 func Exit():

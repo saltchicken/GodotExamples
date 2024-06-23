@@ -166,6 +166,7 @@ position = Vector2(1, -54)
 sprite_frames = SubResource("SpriteFrames_bgdhw")
 animation = &"on"
 autoplay = "on"
+frame_progress = 0.646191
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("4_skxmn")
