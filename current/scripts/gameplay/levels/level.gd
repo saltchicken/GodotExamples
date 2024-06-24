@@ -40,7 +40,8 @@ func _ready() -> void:
 		start_scene()
 		
 func set_player_position(position):
-	player.global_position = position
+	if player.load_location:
+		player.global_position = player.load_location
 	
 func create_timer_for_enemy(enemy, key, wait_time):
 	var timer = Timer.new()

@@ -32,6 +32,8 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @export var default_stats: PlayerStats
 @onready var stats: PlayerStats = default_stats.duplicate(): set = set_stats
 
+@onready var load_location = null
+
 func set_stats(new_stats):
 	stats = new_stats
 	stats_menu.update_stats()

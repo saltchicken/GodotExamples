@@ -216,43 +216,16 @@ func save_game(obj):
 		var json_string = JSON.stringify(node_data)
 		save_game_file.store_line(json_string)
 	
-	#if obj.name == "Bonfire":
-		##var known_bonfire_nodes = get_tree().get_nodes_in_group("KnownBonfires")
-		##var known_bonfires = []
-		##for bonfire in known_bonfire_nodes:
-			##known_bonfires.append(bonfire.unique_name)
-		#print("Saving from bonfire")
-		#var bonfire_data = {
-			#"node_name" : "Bonfire",
-			#"unique_name" : obj.unique_name,
-			#"location_x"  : obj.global_position.x,
-			#"location_y"  : obj.global_position.y,
-			##"known_bonfires" : known_bonfires
-		#}
-		#var json_string = JSON.stringify(bonfire_data)
-		#save_game_file.store_line(json_string)
-		
-	#for bonfire in bonfire_nodes:
-		
-		#if bonfire.scene_file_path.is_empty():
-			#print("persistent node '%s' is not an instanced scene, skipped" % bonfire.name)
-			#continue
-#
-		#if !bonfire.has_method("save"):
-			#print("persistent node '%s' is missing a save() function, skipped" % bonfire.name)
-			#continue
-		#
-		## This checks against the bonfire being used to save and sets it as the current location to load.
-		#if bonfire.unique_name == obj.unique_name:
-			#global_data["current_bonfire"] = obj.unique_name
-			#
-		#var bonfire_data = bonfire.call("save")
-		#var json_string = JSON.stringify(bonfire_data)
-		#save_game_file.store_line(json_string)
-	
-	# Save global_data
-	#var json_string = JSON.stringify(global_data)
-	#save_game_file.store_line(json_string)
+	if obj.name == "Bonfire":
+		print("Saving from bonfire")
+		var bonfire_data = {
+			"node_name" : "Bonfire",
+			"name" : obj.data.name,
+			"location_x"  : obj.global_position.x,
+			"location_y"  : obj.global_position.y,
+		}
+		var json_string = JSON.stringify(bonfire_data)
+		save_game_file.store_line(json_string)
 	
 	print("TODO: Add notification for game saved")
 	
@@ -295,20 +268,12 @@ func load_game(save_file):
 				'BonfireMenu':
 					var node = persisting_nodes[node_data['node_name']]
 					node.load(node_data)
-				#'Bonfire':
-					#var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
-					#if player:
-						##player.global_position = node_data.location
-						##print(node_data.location)
-						#player.global_position.x = node_data.location_x
-						#player.global_position.y = node_data.location_y + 40 # 10 offset for not spawning on top of bonfire
-					#else:
-						#print('no player')
-						
-					#var bonfires = get_tree().get_nodes_in_group('Bonfires')
-					#if bonfires:
-						#for bonfire in bonfires:
-							#if bonfire.unique_name == node_data.unique_name:
-								#print("This bonfire exists")
+				'Bonfire':
+					var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
+					if player:
+						print("Loading player location")
+						player.load_location = Vector2(node_data.location_x, node_data.location_y + 40)  #10 offset for not spawning on top of bonfire
+					else:
+						print('no player')
 				_:
 					print("%s not handled." % node_data['node_name'])	
