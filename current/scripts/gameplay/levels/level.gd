@@ -5,9 +5,6 @@ class_name Level extends Node2D
 ## You will note that because Levels "want" to pass data between them, they implement
 ## the optional methods [method get_data] and [method receive_data]
 
-@onready var enemy_scenes: Array[PackedScene] = [ preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn'),
-											preload('res://scenes/enemy/enemies/green_slime/green_slime.tscn') ]
-
 var rng = RandomNumberGenerator.new()
 
 var MAX_ENEMIES = 1000
@@ -19,8 +16,9 @@ var data:LevelDataHandoff
 
 @onready var gameplay = get_parent().get_parent() # TODO: Better way to reference or not need this at all
 
-@onready var red_slime_timer = Timer.new()
-@onready var green_slime_timer = Timer.new()
+@onready var timers = {}
+#@onready var red_slime_timer = Timer.new()
+#@onready var green_slime_timer = Timer.new()
 
 func _ready() -> void:
 	print_debug('Level is ready')
@@ -28,22 +26,30 @@ func _ready() -> void:
 	add_child(player)
 	player.disable()
 	player.visible = false
+	set_player_position(Vector2(-600.0, 0.0))
 	
 	register_bonfires()
-	# TODO: Handle making timers in its own function
-	add_child(red_slime_timer)
-	add_child(green_slime_timer)
-	red_slime_timer.wait_time = 0.25
-	green_slime_timer.wait_time = 1.0
-	red_slime_timer.timeout.connect(spawn_red_slime)
-	red_slime_timer.start()
-	green_slime_timer.timeout.connect(spawn_green_slime)
-	green_slime_timer.start()
+	check_known_bonfires()
+	
+	create_timer_for_enemy(preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn'), 'red_slime', 0.25)
+	create_timer_for_enemy(preload('res://scenes/enemy/enemies/green_slime/green_slime.tscn'), 'green_slime', 1.0)
 	
 	# This block is here to allow us to test current scene without needing the SceneManager to call these :) 
 	if data == null:
 		init_scene()
 		start_scene()
+		
+func set_player_position(position):
+	player.global_position = position
+	
+func create_timer_for_enemy(enemy, key, wait_time):
+	var timer = Timer.new()
+	add_child(timer)
+	timers[key] = timer
+	timer.wait_time = wait_time
+	timer.timeout.connect(spawn_mob.bind(enemy))
+	timer.start()
+	
 		
 
 ## When a class implements this, SceneManager.on_content_finished_loading will invoke it
@@ -100,48 +106,25 @@ func register_bonfires():
 	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
 		bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
 		bonfire.area_2d.body_exited.connect(bonfire_body_exited)
+		
+func check_known_bonfires():
+	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
 		if bonfire.data.get_path() in player.bonfire_menu.known_bonfires:
-			# TODO: Make a function that inits a new initial state and also updates the current_state
-			bonfire.initial_state = bonfire.state_machine.get_node('on')
-			bonfire.state_machine.current_state = bonfire.state_machine.get_node('on')
-
-
-# TODO: Better way of handling timers. Add to group or something
+				# TODO: Make a function that inits a new initial state and also updates the current_state
+				bonfire.initial_state = bonfire.state_machine.get_node('on')
+				bonfire.state_machine.current_state = bonfire.state_machine.get_node('on')
+				
 func bonfire_body_entered(body, bonfire):
 	if body.get_script() == Player:
 		if bonfire.state_machine.current_state.name == 'on':
-			red_slime_timer.stop()
-			green_slime_timer.stop()
-	
+			for timer in timers.keys():
+				timers[timer].stop()
 	
 func bonfire_body_exited(body):
 	if body.get_script() == Player:
-		red_slime_timer.start()
-		green_slime_timer.start()
-		
-		
-func spawn_red_slime():
-	var mob = preload('res://scenes/enemy/enemies/red_slime/red_slime.tscn')
-	if ENEMIES_COUNT < MAX_ENEMIES:
-		spawn_mob(mob)
-	
-func spawn_green_slime():
-	var mob = preload('res://scenes/enemy/enemies/green_slime/green_slime.tscn')
-	if ENEMIES_COUNT < MAX_ENEMIES:
-		spawn_mob(mob)
-
-#func _process(_delta):
-	#if Input.is_action_just_pressed("rightclick"):
-		##spawn_enemy(calculate_random_position_at_range(150))
-		#spawn_mob()
-		
-#func spawn_enemy(spawn_global_position):
-	#var enemy_type = rng.randi_range(0, 1)
-	#var enemy = enemy_scenes[enemy_type].instantiate()
-	#enemy.global_position = player.global_position + spawn_global_position
-	##enemy.get_node('StateMachine/death').enemy_slain.connect(on_enemy_killed)
-	#add_child(enemy)
-	
+		for timer in timers.keys():
+				timers[timer].start()
+			
 func spawn_mob(mob):
 	#var enemy_type = rng.randi_range(0, 1)
 	#var enemy = enemy_scenes[enemy_type].instantiate()
