@@ -28,6 +28,7 @@ func use():
 			player.bonfire_menu.known_bonfires.append(self.data.get_path())
 		area_2d.body_entered.emit(player)
 	if state_machine.current_state.name == 'on':
+		# TODO: This should be called no matter what state the bonfire is used. Though this should be handled with bonfire menu unless auto save is needed
 		SceneManager.save_game(self)
 		print('Game saved')
 		# TODO: Need a bonfire menu

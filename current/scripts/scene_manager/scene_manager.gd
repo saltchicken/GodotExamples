@@ -221,6 +221,7 @@ func save_game(obj):
 		var bonfire_data = {
 			"node_name" : "Bonfire",
 			"name" : obj.data.name,
+			"level" : obj.get_parent().scene_file_path,
 			"location_x"  : obj.global_position.x,
 			"location_y"  : obj.global_position.y,
 		}
@@ -273,6 +274,7 @@ func load_game(save_file):
 					if player:
 						print("Loading player location")
 						player.load_location = Vector2(node_data.location_x, node_data.location_y + 40)  #10 offset for not spawning on top of bonfire
+						player.load_scene = node_data.level
 					else:
 						print('no player')
 				_:

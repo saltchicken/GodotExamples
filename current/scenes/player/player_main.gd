@@ -33,6 +33,7 @@ var DEFAULT_DIRECTION = Vector2(0.0, 1.0) # Down
 @onready var stats: PlayerStats = default_stats.duplicate(): set = set_stats
 
 @onready var load_location = null
+@onready var load_scene = null
 
 func set_stats(new_stats):
 	stats = new_stats
