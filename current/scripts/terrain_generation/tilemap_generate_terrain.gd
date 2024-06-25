@@ -6,6 +6,7 @@ extends TileMapLayer
 
 @export var mapWidth : int
 @export var mapHeight : int
+@export var centered : bool = true
 
 @export var terrainSeed : int
 
@@ -46,7 +47,11 @@ func GenerateTerrain():
 	
 	
 	for x in range(mapWidth):
+		if centered:
+			x -= mapWidth / 2
 		for y in range(mapHeight):
+			if centered:
+				y -= mapHeight / 2
 			#set_cell(Vector2i(x, y), 4, Vector2i(0,0), 0)
 			if noise.get_noise_2d(x, y) > grassThreshold:
 				set_cell(Vector2i(x, y), 4, Vector2i(0,0), 0)
