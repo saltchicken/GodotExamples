@@ -23,7 +23,7 @@ var data:LevelDataHandoff
 func _ready() -> void:
 	print_debug('Level is ready')
 	player = gameplay.player
-	add_child(player)
+	#add_child(player)
 	player.disable()
 	player.visible = false
 	set_player_position(Vector2(-600.0, 0.0))
