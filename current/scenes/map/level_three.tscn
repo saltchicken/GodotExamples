@@ -89,7 +89,6 @@ seamless = true
 noise = SubResource("FastNoiseLite_1x102")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lhy3c"]
-noise_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4wmb"]
 seamless = true
@@ -98,7 +97,7 @@ noise = SubResource("FastNoiseLite_lhy3c")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lsgdr"]
 shader = ExtResource("6_sox3n")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
-shader_parameter/scroll2 = Vector2(-0.05, -0.05)
+shader_parameter/scroll2 = Vector2(-0.07, -0.05)
 shader_parameter/distortion_strength = 0.037
 shader_parameter/tone_color = Color(0.372302, 0.717422, 0.972769, 1)
 shader_parameter/top_color = Color(0.306665, 0.595824, 0.900435, 0.168627)
