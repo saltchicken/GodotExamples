@@ -125,3 +125,8 @@ data = ExtResource("6_ojf4d")
 position = Vector2(142, -66)
 path_to_new_scene = "res://scenes/map/level_one.tscn"
 entry_door_name = "STILLNOTUSEDDOORNAME"
+
+[node name="Door2" parent="." instance=ExtResource("7_56ig7")]
+position = Vector2(-133, -322)
+path_to_new_scene = "res://scenes/map/level_three.tscn"
+entry_door_name = "STILLNOTUSEDDOORNAME"
