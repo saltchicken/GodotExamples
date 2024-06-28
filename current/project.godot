@@ -15,12 +15,12 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Current"
-run/main_scene="res://scenes/menu/main_menu/main_menu.tscn"
+run/main_scene="res://menus/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
-SceneManager="*res://scripts/scene_manager/scene_manager.tscn"
+SceneManager="*res://utility/scene_manager/scene_manager.tscn"
 
 [display]
 

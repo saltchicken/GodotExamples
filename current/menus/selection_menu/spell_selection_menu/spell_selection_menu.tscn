@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj34bj75qdoa3"]
+
+[ext_resource type="Script" path="res://menus/selection_menu/spell_selection_menu/spell_selection_main.gd" id="1_ilitq"]
+[ext_resource type="StyleBox" uid="uid://b5tfl3rbeg1le" path="res://menus/selection_menu/spell_selection_menu/spell_selection_unselected.tres" id="2_7ti1f"]
+
+[node name="SpellSelectionMenu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_ilitq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -57.0
+offset_right = 16.0
+offset_bottom = -25.0
+theme_override_styles/panel = ExtResource("2_7ti1f")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 25.0
+offset_top = -16.0
+offset_right = 57.0
+offset_bottom = 16.0
+theme_override_styles/panel = ExtResource("2_7ti1f")
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = 25.0
+offset_right = 16.0
+offset_bottom = 57.0
+theme_override_styles/panel = ExtResource("2_7ti1f")
+
+[node name="PanelContainer4" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -57.0
+offset_top = -16.0
+offset_right = -25.0
+offset_bottom = 16.0
+theme_override_styles/panel = ExtResource("2_7ti1f")

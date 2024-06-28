@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProjectileStats" load_steps=2 format=3 uid="uid://6cf4x80g1gyp"]
+
+[ext_resource type="Script" path="res://projectiles/arrow/projectile_data.gd" id="1_01rll"]
+
+[resource]
+script = ExtResource("1_01rll")
+attack_damage = 10
+attack_knockback = 0.0
+piercing = 3
+speed = 600.0

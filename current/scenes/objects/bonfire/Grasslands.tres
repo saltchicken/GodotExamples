@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Bonfire" load_steps=2 format=3 uid="uid://c4e2s7cw4xjmc"]
-
-[ext_resource type="Script" path="res://scenes/menu/pause_menu/bonfire_menu/bonfire_data.gd" id="1_131ra"]
-
-[resource]
-script = ExtResource("1_131ra")
-name = "grasslands"
-description = "Bonfire in the grasslands"
-status = "off"

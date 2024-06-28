@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Bonfire" load_steps=2 format=3 uid="uid://cvq2jq0jqx7eb"]
+
+[ext_resource type="Script" path="res://menus/pause_menu/bonfire_menu/bonfire_data.gd" id="1_3hhfd"]
+
+[resource]
+script = ExtResource("1_3hhfd")
+name = "Dirtlands"
+description = "Bonfire in the dirtlands"
+status = "off"
