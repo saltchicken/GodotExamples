@@ -26,7 +26,7 @@ func _ready() -> void:
 	#add_child(player)
 	player.disable()
 	player.visible = false
-	set_player_position(Vector2(-600.0, 0.0))
+	set_player_position()
 	
 	register_bonfires()
 	check_known_bonfires()
@@ -39,9 +39,11 @@ func _ready() -> void:
 		init_scene()
 		start_scene()
 		
-func set_player_position(position):
+func set_player_position():
 	if player.load_location:
 		player.global_position = player.load_location
+	else:
+		push_warning("Using default 0,0 for player position")
 	
 func create_timer_for_enemy(enemy, key, wait_time):
 	var timer = Timer.new()
@@ -83,7 +85,7 @@ func start_scene() -> void:
 	_connect_to_doors()
 
 # signal emitted by Door, # disables doors and players, create handoff data to pass to the new scene (if new scene is a Level)
-func _on_player_entered_door(door:Door) -> void:
+func _on_player_entered_door(_door:Door) -> void:
 	_disconnect_from_doors()
 	player.disable()
 	#data = LevelDataHandoff.new()

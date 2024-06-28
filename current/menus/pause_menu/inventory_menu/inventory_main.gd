@@ -58,7 +58,7 @@ func _ready() -> void:
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://resources/items/sword.tres", 0)
-	load_item_into_inventory("res://Items/Equipment/Weapons/Bow/bow.tres", 1)
+	load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 	
 func _process(_delta):
@@ -69,11 +69,13 @@ func _process(_delta):
 			selected_slot += 1
 		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
 			if selected_slot <= inventory_size:
+				@warning_ignore("integer_division")
 				selected_slot -= inventory_size / 2
 			else:
 				selected_slot -= 2
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
 			if selected_slot < inventory_size:
+				@warning_ignore("integer_division")
 				selected_slot += inventory_size / 2
 			else:
 				selected_slot += 2

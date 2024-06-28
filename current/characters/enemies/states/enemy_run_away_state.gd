@@ -19,7 +19,7 @@ func Enter():
 func Exit():
 	character_body.idle_direction = character_body.direction_to_player
 	
-func Update(delta:float):
+func Update(_delta:float):
 	animation_tree.set("parameters/" + temp_state_name + "/BlendSpace2D/blend_position", -character_body.direction_to_player)
 	character_body.velocity.x = -character_body.direction_to_player.x * character_body.stats.chase_speed * 2
 	character_body.velocity.y = -character_body.direction_to_player.y * character_body.stats.chase_speed * 2

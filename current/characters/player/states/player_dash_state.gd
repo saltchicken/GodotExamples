@@ -33,5 +33,4 @@ func Update(_delta:float):
 		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name in [self.name + "_left", self.name + "_right", self.name + "_up", self.name + "_down"]:
-		print('dash complete')
 		handle_movement_state(self, character_body)

@@ -79,8 +79,8 @@ func handle_impact_with_enemy(initiating_body):
 func calculate_angle_from_direction(direction):
 	return atan2(direction.y, direction.x)
 	
-func change_velocity(velocity, direction):
-	var speed = sqrt(velocity.x ** 2 + velocity.y ** 2)
+func change_velocity(vel, direction):
+	var speed = sqrt(vel.x ** 2 + vel.y ** 2)
 	var new_angle = calculate_angle_from_direction(direction)
 	return Vector2(speed * cos(new_angle), speed * sin(new_angle))
 	

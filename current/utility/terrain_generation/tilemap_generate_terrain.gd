@@ -20,7 +20,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if generateTerrain:
 		generateTerrain = false
 		GenerateTerrain()
@@ -48,9 +48,11 @@ func GenerateTerrain():
 	
 	for x in range(mapWidth):
 		if centered:
+			@warning_ignore("integer_division")
 			x -= mapWidth / 2
 		for y in range(mapHeight):
 			if centered:
+				@warning_ignore("integer_division")
 				y -= mapHeight / 2
 			#set_cell(Vector2i(x, y), 4, Vector2i(0,0), 0)
 			if noise.get_noise_2d(x, y) > grassThreshold:

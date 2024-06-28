@@ -25,7 +25,7 @@ func _draw():
 			draw_line(path[i], path[i+1], Color.PURPLE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if calculate:
 		calculate = false
 		InitPathfinding()
@@ -33,8 +33,8 @@ func _process(delta):
 		if len(path) == 0:
 			print("Unable to get there")
 		
-func RequestPath(start: Vector2i, end: Vector2i):
-	path = astar_grid.get_point_path(start, end)
+func RequestPath(start_pos: Vector2i, end_pos: Vector2i):
+	path = astar_grid.get_point_path(start_pos, end_pos)
 	
 	for i in range(len(path)):
 		path[i] += Vector2(terrain.rendering_quadrant_size/2, terrain.rendering_quadrant_size/2)
