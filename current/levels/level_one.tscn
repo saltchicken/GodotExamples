@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://cvguc8467jg7a"]
 
 [ext_resource type="Texture2D" uid="uid://c43oxt50spdbw" path="res://levels/plains.png" id="1_qvvmn"]
-[ext_resource type="Script" path="res://utility/scene_manager/gameplay/levels/level.gd" id="1_ymodt"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_ymodt"]
 [ext_resource type="Texture2D" uid="uid://ckn1jnbk0n5sj" path="res://levels/water1.png" id="2_71kj8"]
 [ext_resource type="Texture2D" uid="uid://bngtrviuhfn52" path="res://levels/decor_16x16.png" id="2_tmta4"]
 [ext_resource type="Texture2D" uid="uid://pv4g0x35wity" path="res://levels/grass.png" id="3_hn0dv"]
