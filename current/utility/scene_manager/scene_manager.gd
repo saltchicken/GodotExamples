@@ -30,7 +30,7 @@ func _ready() -> void:
 	#load_player()
 	#
 #func load_player() -> void:
-	#player = preload("res://player/player.tscn").instantiate()
+	#player = preload("res://characters/player/player.tscn").instantiate()
 	#add_child(player)
 	
 

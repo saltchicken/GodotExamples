@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 #@onready var scene_instance = preload("res://scenes/game/game_manager.tscn").instantiate()
-#@onready var player_instance = preload("res://player/player.tscn").instantiate()
+#@onready var player_instance = preload("res://characters/player/player.tscn").instantiate()
 
 func _ready():
 	var buttons = get_node('Panel/VBoxContainer').get_children()

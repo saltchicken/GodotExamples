@@ -28,7 +28,7 @@ func _ready() -> void:
 	current_level = level_holder.get_child(0) as Level
 	
 func load_player() -> void:
-	player = preload("res://player/player.tscn").instantiate()
+	player = preload("res://characters/player/player.tscn").instantiate()
 	add_child(player)
 
 func _on_level_loaded(level) -> void:
