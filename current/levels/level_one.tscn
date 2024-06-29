@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cvguc8467jg7a"]
+[gd_scene load_steps=17 format=4 uid="uid://cvguc8467jg7a"]
 
 [ext_resource type="Texture2D" uid="uid://c43oxt50spdbw" path="res://levels/plains.png" id="1_qvvmn"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ymodt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://utility/terrain_generation/tilemap_generate_terrain.gd" id="5_eupfl"]
 [ext_resource type="PackedScene" uid="uid://dqdwydg0lxuib" path="res://objects/door/door.tscn" id="7_62hkl"]
 [ext_resource type="PackedScene" uid="uid://nbb1ky4yakqx" path="res://utility/pathfinding/pathfinding.tscn" id="9_1qx03"]
+[ext_resource type="PackedScene" uid="uid://o61qii1ciokd" path="res://utility/steering_behavior/boids/boid_manager.tscn" id="11_t0lr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g2ayq"]
 texture = ExtResource("2_71kj8")
@@ -174,3 +175,5 @@ entry_door_name = "NOTUSEDDOORNAME"
 [node name="PathFinding" parent="." instance=ExtResource("9_1qx03")]
 start = Vector2i(-32, -32)
 end = Vector2i(-30, -10)
+
+[node name="BoidManager" parent="." instance=ExtResource("11_t0lr3")]

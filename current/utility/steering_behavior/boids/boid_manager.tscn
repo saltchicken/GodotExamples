@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://o61qii1ciokd"]
+
+[ext_resource type="Script" path="res://utility/steering_behavior/boids/boid_manager_main.gd" id="1_82a7v"]
+
+[node name="BoidManager" type="Node2D"]
+script = ExtResource("1_82a7v")
