@@ -61,6 +61,7 @@ func _load_content(content_path:String) -> void:
 	
 	await _loading_screen.transition_in_complete
 	
+	print(_load_scene_into)
 	# Remove the child from the scene to unload to prevent it from being freed. Wait for transition to be complete
 	if _scene_to_unload is Level:	
 		_scene_to_unload.remove_child(_scene_to_unload.player)	
@@ -131,8 +132,8 @@ func _on_content_finished_loading(incoming_scene) -> void:
 			
 			
 	#get_tree().current_scene = incoming_scene # TODO: Where is the best place for this
-	#print("Incoming Scene")
-	#print(incoming_scene)
+	print("Incoming Scene")
+	print(incoming_scene)
 	
 	# called right after scene is added to tree (presuming _ready has fired)
 	# ex: do some setup before player gains control (I'm using it to position the player)
